@@ -12,7 +12,12 @@ import { FooterfrontComponent } from './FrontOffice/footerfront/footerfront.comp
 import { HeaderfrontComponent } from './FrontOffice/headerfront/headerfront.component';
 import { HomecomponentfrontComponent } from './FrontOffice/homecomponentfront/homecomponentfront.component';
 import { NavbarcomponentfrontComponent } from './FrontOffice/navbarcomponentfront/navbarcomponentfront.component';
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './components/register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthenticateComponent } from './components/authenticate/authenticate.component';
+import { UserlistComponent } from './components/userlist/userlist.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,11 +30,18 @@ import { NavbarcomponentfrontComponent } from './FrontOffice/navbarcomponentfron
     FooterfrontComponent,
     HeaderfrontComponent,
     HomecomponentfrontComponent,
-    NavbarcomponentfrontComponent
+    NavbarcomponentfrontComponent,
+    RegisterComponent,
+    AuthenticateComponent,
+    UserlistComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

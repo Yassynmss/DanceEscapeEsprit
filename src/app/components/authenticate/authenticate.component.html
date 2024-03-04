@@ -1,0 +1,58 @@
+
+<!-- Tout les fichiers CSS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap">
+<link rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap-icons.css">
+<link rel="stylesheet" href="/assets/FrontOffice/assets/css/templatemo-festava-live.css">
+
+<app-headerfront></app-headerfront>      
+<app-navbarcomponentfront></app-navbarcomponentfront> 
+
+
+
+<div class="container">
+  <div class="container">
+    <h2 style="color: rgb(195, 111, 39);">Authenticate</h2>
+    </div>
+    <div class="fullscreen-video">
+      <video autoplay="" loop="" muted="" class="custom-video" poster="">
+        <source src="/assets/FrontOffice/assets/video/pexels-2022395.mp4" type="video/mp4">
+        
+      </video>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email" style="color: rgb(255, 255, 255);">Email</label>
+        <input type="email" formControlName="email" class="form-control" id="email">
+      </div>
+      <div class="form-group">
+        <label for="paswd"  style="color: rgb(255, 255, 255);">Password</label>
+        <input type="password" formControlName="paswd" class="form-control" id="paswd">
+      </div>
+      
+             <button type="submit" class="btn btn-orange" [disabled]="loginForm.invalid">Authenticate</button>
+
+    </form>
+  </div>
+
+
+  <app-footerfront></app-footerfront>
+
+    
+
+  
+
+
+
+
+<!-- tout les fichiers javaScript mawjoudon houni -->
+
+<script src="/assets/FrontOffice/assets/js/jquery.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/bootstrap.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/jquery.sticky.js"></script>
+<script src="/assets/FrontOffice/assets/js/click-scroll.js"></script>
+<script src="/assets/FrontOffice/assets/js/custom.js"></script>
+
+

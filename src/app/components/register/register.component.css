@@ -1,0 +1,106 @@
+.container {
+    width: 50%;
+    margin: auto;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  .common-ancestor-class:not(:first-child) .video-container {
+    display: none; /* Hide video in all elements except the first child */
+  }
+  .container {
+    background-color: black;
+    color: white; /* Change text color to white for better readability */
+  }
+  
+  .container {
+    text-align: center;
+  }
+  .btn-orange {
+    background-color: #FFA500; /* Replace with your chosen hex code */
+    color: white; /* White text color for better contrast */
+    border: none; /* Remove button border */
+    padding: 10px 20px; /* Add some padding */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  .btn-orange:hover {
+    background-color: #a06012;
+    border-color: #FF8C00;
+}
+.fullscreen-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Position the video behind other elements */
+}
+
+.fullscreen-video video {
+  width: 100%; /* Stretch video to cover container */
+  height: 100%; /* Stretch video to cover container */
+  object-fit: cover; /* Ensure video covers the entire area */
+}
+.register-container-class {
+  display: flex; /* Enable flexbox layout */
+  justify-content: space-between; /* Distribute elements horizontally */
+  align-items: center; /* Vertically align elements */
+  margin-bottom: 10px; /* Add some margin for spacing (optional) */
+}
+
+.register-container-class label,
+.register-container-class input {
+  width: 48%; /* Make input fields equal width (optional) */
+}
+.name-fields {
+  display: flex; /* Enable flexbox layout */
+  justify-content: space-between; /* Distribute elements horizontally */
+  align-items: center; /* Vertically align elements */
+  margin-bottom: 10px; /* Add some margin for spacing (optional) */
+}
+
+.name-fields input {
+  width: 48%; /* Make input fields equal width (optional) */
+}
