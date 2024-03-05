@@ -1,0 +1,29 @@
+<div>
+    <h2>Participations List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>showtime</th>
+          <th>Participant Code </th>
+          <th>Total Votes</th>
+          <th>Update</th>
+          <th>Delete</th>
+
+        </tr>
+      </thead>
+      <tbody>
+       <tr *ngFor="let participation of Participations">
+          <td>{{ participation.showtime }}</td>
+          <td>{{ participation.participantCode }}</td>
+          <td>{{ participation.totalVotes }}</td>
+          <td>
+        <button (click)="editParticipation(participation.id_participation)"> Update </button> 
+          </td>
+          <td>
+           <button (click)="deleteParticipationById(participation.id_participation)">Delete</button> 
+          </td>
+        </tr> 
+      </tbody>
+    </table>
+  </div>
+  <button routerLink="/admin/add"> Add </button>

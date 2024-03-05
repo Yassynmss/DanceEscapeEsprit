@@ -1,30 +1,62 @@
-<link rel="shortcut icon" type="image/png" href="/assets/BackOffice/images/logos/favicon.png" />
-<link rel="stylesheet" href="/assets/BackOffice/css/styles.min.css" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Division</title>
+    <link rel="shortcut icon" type="image/png" href="/assets/BackOffice/images/logos/favicon.png" />
+    <link rel="stylesheet" href="/assets/BackOffice/css/styles.min.css" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .sidebar {
+            width: 20%;
+            height: 100%;
+            float: left;
+            background-color: #f0f0f0; /* Light gray */
+        }
+        .backoffice {
+            width: 80%;
+            height: 100%;
+            float: left;
+            background-color: #e0e0e0; /* Lighter gray */
+        }
+        /* Clearfix to contain floated elements */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container clearfix">
+            <div class="sidebar">
+                <!-- Content for sidebar goes here -->
+                <app-navbarback></app-navbarback>
+                <app-sidebarback></app-sidebarback>
+            </div>
+            <div class="backoffice">
+                <!-- Content for backoffice layout goes here -->
+                <app-headerfront></app-headerfront>
+                <router-outlet></router-outlet>
 
-<div class="layout-wrapper layout-content-navbar">
-<div class="layout-container">
-    <app-sidebarback></app-sidebarback>
-    <app-headerfront></app-headerfront>
-    
-    <app-navbarback></app-navbarback>
-    <router-outlet></router-outlet>
-    <app-footerback></app-footerback>
-   
-</div>
-</div>
+                <app-backoffice-layout></app-backoffice-layout>
+            </div>
+        </div>
+    </div>
+                <app-footerback></app-footerback>
 
-
-
-
-
-
-
-
-
-<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-<script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/js/sidebarmenu.js"></script>
-<script src="../assets/js/app.min.js"></script>
-<script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-<script src="../assets/libs/simplebar/dist/simplebar.js"></script>
-<script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

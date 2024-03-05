@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebarback',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebarback.component.css']
 })
 export class SidebarbackComponent {
+  constructor(private router: Router) {}
 
+  showparticipation()
+  {
+    this.router.navigate(['/participations' ]);
+  }
 }

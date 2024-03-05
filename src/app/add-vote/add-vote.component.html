@@ -1,0 +1,29 @@
+<div class="form-container">
+
+<form [formGroup]="voteForm" (ngSubmit)="addVote()">
+    <div class="form-group">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" formControlName="fullName" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="votingPeriodStart">Voting Period Start:</label>
+        <input type="datetime-local" formControlName="votingPeriodStart" class="form-control">
+
+      </div>
+      <div class="form-group">
+        <label for="votingPeriodEnd">Voting Period End:</label>
+        <input type="datetime-local" formControlName="votingPeriodEnd" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="voteConfirmationCode">Vote Confirmation Code:</label>
+        <input type="text" id="voteConfirmationCode" formControlName="voteConfirmationCode" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+<!-- <button type="button" (click)="cancel()" *ngIf="editingPart" class ="btn btn-secondary">Cancel </button> -->
+
+</form>
+</div>

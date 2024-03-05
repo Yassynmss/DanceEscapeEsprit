@@ -12,6 +12,16 @@ import { FooterfrontComponent } from './FrontOffice/footerfront/footerfront.comp
 import { HeaderfrontComponent } from './FrontOffice/headerfront/headerfront.component';
 import { HomecomponentfrontComponent } from './FrontOffice/homecomponentfront/homecomponentfront.component';
 import { NavbarcomponentfrontComponent } from './FrontOffice/navbarcomponentfront/navbarcomponentfront.component';
+import { HttpClientModule } from "@angular/common/http";
+import { BackofficeLayoutComponent } from './BackOffice/backoffice-layout/backoffice-layout.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddParticipationComponent } from './add-participation/add-participation.component';
+import { EditParticipationComponent } from './edit-participation/edit-participation.component';
+import { VoteComponent } from './vote/vote.component';
+import { AddVoteComponent } from './add-vote/add-vote.component';
+import { FetchpartComponent } from './fetchpart/fetchpart.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UpdatevoteComponent } from './updatevote/updatevote.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +35,22 @@ import { NavbarcomponentfrontComponent } from './FrontOffice/navbarcomponentfron
     FooterfrontComponent,
     HeaderfrontComponent,
     HomecomponentfrontComponent,
-    NavbarcomponentfrontComponent
+    NavbarcomponentfrontComponent,
+    BackofficeLayoutComponent,
+    AddParticipationComponent,
+    EditParticipationComponent,
+    VoteComponent,
+    AddVoteComponent,
+    FetchpartComponent,
+    UpdatevoteComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
