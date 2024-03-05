@@ -1,0 +1,36 @@
+<div class="container mt-5"> <!-- Ajoutez une marge en haut pour l'espace -->
+    <h2 class="text-center">Staff List</h2> <!-- Centre le titre -->
+    <table class="table table-striped mx-auto w-75"> <!-- Centre la table et réduit sa largeur à 75% de la fenêtre -->
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Job</th>
+          <th>DateOfBirth</th>
+          <th>number</th>
+          <th>email</th>
+          <!-- Ajoutez d'autres colonnes si nécessaire -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let staff of staffList">
+          <td>{{ staff.id_staff }}</td>
+          <td>{{ staff.name }}</td>
+          <td>{{ staff.job }}</td>
+          <td>{{ staff.DateOfBirth }}</td>
+          <td>{{ staff.number }}</td>
+          <td>{{ staff.email }}</td>
+          <!-- Ajoutez d'autres cellules si nécessaire -->
+          <td>
+            <button (click)="removeStaff(staff)">Supprimer</button>
+            <button routerLink="/admin/modify-staff/{{staff.id_staff}}">Modifier</button>
+            <!-- Assurez-vous que le chemin du routerLink est correct -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center mt-3"> <!-- Centre le bouton et ajoute une marge en haut -->
+      <button routerLink="/admin/addstaff">Ajouter un membre du personnel</button>
+    </div>
+  </div>
+  

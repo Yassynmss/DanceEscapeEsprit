@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <h2 class="text-center">List of suppliers</h2>
+    <table class="table table-striped mx-auto w-75">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Informations about supplier</th>
+          <th>Number</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let supplier of supplierList">
+          <td>{{ supplier.id_supplier }}</td>
+          <td>{{ supplier.name }}</td>
+          <td>{{ supplier.contact_info }}</td>
+          <td>{{ supplier.number }}</td>
+          <td>{{ supplier.email }}</td>
+          <td>
+            <button (click)="removeSupplier(supplier)">Delete</button>
+            <button routerLink="/admin/updatesupplier/{{supplier.id_supplier}}">Modifier</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center mt-3">
+      <button routerLink="/admin/addsupplier">Add new supplier</button>
+    </div>
+</div>

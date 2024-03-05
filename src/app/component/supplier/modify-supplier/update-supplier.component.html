@@ -1,0 +1,23 @@
+<!-- update-supplier.component.html -->
+<h2>Modifier un fournisseur</h2>
+
+<form (ngSubmit)="onSubmit()">
+  <label for="name">Nom :</label>
+  <input id="name" type="text" [(ngModel)]="supplier.name">
+
+  <label for="contact_info">Informations de contact :</label>
+  <input id="contact_info" type="text" [(ngModel)]="supplier.contact_info">
+
+  <label for="number">Number:</label>
+  <input id="number" type="number" [(ngModel)]="supplier.number">
+
+  <label for="email">Email:</label>
+  <input id="email" type="email" [(ngModel)]="supplier.email">
+
+
+  <button type="submit">Modifier un fournisseur</button>
+</form>
+
+
+<button routerLink="/admin/listsupplier">Retour</button>
+

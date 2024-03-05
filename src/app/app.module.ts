@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlltemplatebackComponent } from './BackOffice/alltemplateback/alltemplateback.component';
@@ -12,6 +12,20 @@ import { FooterfrontComponent } from './FrontOffice/footerfront/footerfront.comp
 import { HeaderfrontComponent } from './FrontOffice/headerfront/headerfront.component';
 import { HomecomponentfrontComponent } from './FrontOffice/homecomponentfront/homecomponentfront.component';
 import { NavbarcomponentfrontComponent } from './FrontOffice/navbarcomponentfront/navbarcomponentfront.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { AddEquipmentComponent } from './component/equipment/add-equipment/add-equipment.component';
+import { UpdateEquipmentComponent } from './component/equipment/update-equipment/update-equipment.component';
+import { ListEquipmentComponent } from './component/equipment/list-equipment/list-equipment.component';
+import { ListStaffComponent } from './component/staff/list-staff/list-staff.component';
+import { AddStaffComponent } from './component/staff/add-staff/add-staff.component';
+import { AddSupplierComponent } from './component/supplier/add-supplier/add-supplier.component';
+import { ListSupplierComponent } from './component/supplier/list-supplier/list-supplier.component';
+
+import { UpdateSupplierComponent } from './component/supplier/modify-supplier/update-supplier.component';
+
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -25,13 +39,34 @@ import { NavbarcomponentfrontComponent } from './FrontOffice/navbarcomponentfron
     FooterfrontComponent,
     HeaderfrontComponent,
     HomecomponentfrontComponent,
-    NavbarcomponentfrontComponent
+    NavbarcomponentfrontComponent,
+  
+    AddEquipmentComponent,
+    UpdateEquipmentComponent,
+    ListEquipmentComponent,
+    ListStaffComponent,
+    AddStaffComponent,
+    AddSupplierComponent,
+    ListSupplierComponent,
+   
+    UpdateSupplierComponent,
+ 
+    
+
+
+
+   
+   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
