@@ -1,6 +1,12 @@
-<div class="container mt-5"> <!-- Ajoutez une marge en haut pour l'espace -->
-  <h2 class="text-center">Liste des équipements</h2> <!-- Centre le titre -->
-  <table class="table table-striped mx-auto w-75"> <!-- Centre la table et réduit sa largeur à 75% de la fenêtre -->
+<div class="container mt-5">
+  <h2 class="text-center">Liste des équipements</h2>
+  <div class="search-form">
+    <input [(ngModel)]="id_equipment" placeholder="ID de l'équipement">
+    <input [(ngModel)]="name_equipment" placeholder="Nom de l'équipement">
+    <input [(ngModel)]="etat" placeholder="Etat">
+    <button (click)="searchEquipment()">Rechercher</button>
+  </div>
+  <table class="table table-striped mx-auto w-75">
     <thead>
       <tr>
         <th>Equipment ID</th>
@@ -19,12 +25,11 @@
         <td>
           <button (click)="removeEquipment(equipment)">Delete</button>
           <button class="update-button" routerLink="/admin/updateEquipment/{{equipment.id_equipment}}">Update</button>
- 
         </td>
       </tr>
     </tbody>
   </table>
-  <div class="text-center mt-3"> 
+  <div class="text-center mt-3">
     <button routerLink="/admin/addequipment">Add new equipment</button>
   </div>
 </div>

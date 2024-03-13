@@ -9,6 +9,9 @@ import { EquipmentServiceService } from 'src/app/core/services/EquipmentService/
 })
 export class ListEquipmentComponent implements OnInit {
   equipments: Equipment[] = [];
+  id_equipment: number | null = null;
+  name_equipment: string | null = null;
+  etat: string | null = null;
 
   constructor(private equipmentService: EquipmentServiceService) { }
 
@@ -38,5 +41,16 @@ export class ListEquipmentComponent implements OnInit {
           error: (e) => console.error(e)
         });
     }
+  }
+
+  searchEquipment(): void {
+    this.equipmentService.searchEquipment(this.id_equipment, this.name_equipment, this.etat)
+      .subscribe({
+        next: (data) => {
+          this.equipments = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
   }
 }

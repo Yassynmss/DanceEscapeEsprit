@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Staff } from '../../models/staff/staff';
 
@@ -26,4 +26,20 @@ export class StaffService {
   deleteStaff(id_staff: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/deleteStaff/${id_staff}`);
   }
+ 
+  searchStaff(id_staff: number | null, name: string | null, job: string | null): Observable<Staff[]> {
+    let url = `${this.apiUrl}/searchStaff`;
+    let params = new HttpParams();
+    if (id_staff !== null) {
+      params = params.append('id_staff', id_staff.toString());
+    }
+    if (name !== null) {
+      params = params.append('name', name);
+    }
+    if (job !== null) {
+      params = params.append('job', job);
+    }
+    return this.http.get<Staff[]>(url, { params: params });
+  }
 }
+

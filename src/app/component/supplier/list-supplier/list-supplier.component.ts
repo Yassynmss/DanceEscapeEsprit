@@ -1,4 +1,3 @@
-// list-supplier.component.ts
 import { Component, OnInit } from '@angular/core';
 import { SupplierService } from 'src/app/core/services/SupplierService/supplier-service.service';
 import { Supplier } from 'src/app/core/models/supplier/supplier';
@@ -10,6 +9,8 @@ import { Supplier } from 'src/app/core/models/supplier/supplier';
 })
 export class ListSupplierComponent implements OnInit {
   supplierList: Supplier[] = [];
+  id_supplier: number | null = null;
+  name: string | null = null;
 
   constructor(private supplierService: SupplierService) { }
 
@@ -39,5 +40,16 @@ export class ListSupplierComponent implements OnInit {
           error: (e) => console.error(e)
         });
     }
+  }
+
+  searchSupplier(): void {
+    this.supplierService.searchSupplier(this.id_supplier, this.name)
+      .subscribe({
+        next: (data) => {
+          this.supplierList = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
   }
 }

@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { StaffService } from 'src/app/core/services/StaffService/staff-service.service';
 import { Staff } from 'src/app/core/models/staff/staff';
@@ -10,6 +9,9 @@ import { Staff } from 'src/app/core/models/staff/staff';
 })
 export class ListStaffComponent implements OnInit {
   staffList: Staff[] = [];
+  id_staff: number | null = null;
+  name: string | null = null;
+  job: string | null = null;
 
   constructor(private staffService: StaffService) { }
 
@@ -39,5 +41,16 @@ export class ListStaffComponent implements OnInit {
           error: (e) => console.error(e)
         });
     }
+  }
+
+  searchStaff(): void {
+    this.staffService.searchStaff(this.id_staff, this.name, this.job)
+      .subscribe({
+        next: (data) => {
+          this.staffList = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
   }
 }
