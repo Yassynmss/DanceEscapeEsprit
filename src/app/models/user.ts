@@ -1,4 +1,4 @@
-import {  role } from './role'; // Assurez-vous que l'importation de RoleType est correcte
+/*import {  role } from './role'; // Assurez-vous que l'importation de RoleType est correcte
 
 export class User {
      userId?: number;
@@ -19,4 +19,4 @@ export enum GenderType {
      Male = 'MALE',
      Female = 'FEMALE',
      Other = 'OTHER'
-   }
+   }*/

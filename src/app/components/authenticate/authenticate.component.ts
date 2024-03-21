@@ -46,9 +46,10 @@ export class AuthenticateComponent {
   }
 }*/
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { MfaVerificationResponse } from 'src/app/shared/mfa-verification-response.modal';
 
 @Component({
   selector: 'app-authenticate',
@@ -56,7 +57,57 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./authenticate.component.css']
 })
 export class AuthenticateComponent {
-  loginForm: FormGroup;
+
+  public loginForm!: FormGroup;
+  response!: MfaVerificationResponse;
+  message!: string;
+  constructor(private authenticationClient: AuthenticationService,
+    private authService: AuthService) { 
+      if(this.authService.isLoggedIn())
+        this.authService.navidateToHome();
+
+    }
+
+  ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+    });
+
+  }
+
+  login(){
+    this.authenticationClient.login(this.loginForm.value).subscribe((loginResponse: MfaVerificationResponse) => {
+      this.response = loginResponse;
+      this.message = loginResponse.message;
+        ///this.authService
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* loginForm: FormGroup;
   submitted = false;
 
   constructor(
@@ -104,5 +155,5 @@ export class AuthenticateComponent {
         // Optionally, display an error message to the user
       }
     );
-  }
+  }*/
 }

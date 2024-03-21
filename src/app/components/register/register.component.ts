@@ -73,10 +73,8 @@ export class RegisterComponent {
 
 
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from 'src/app/services/user.service';
-import { GenderType, User } from 'src/app/models/user';
-import { RoleType, role } from 'src/app/models/role'; // Assurez-vous que le chemin d'accès est correct
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -84,7 +82,83 @@ import { RoleType, role } from 'src/app/models/role'; // Assurez-vous que le che
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  registerForm: FormGroup;
+  public registerForm!: FormGroup;
+  mfaRes: any;
+  isLoading = false;
+  
+  roleTypes: string[] = ['ADMIN', 'EVALUATOR', 'DANCER', 'VISITOR'];
+
+  constructor(private authenticationClient: AuthenticationService) { }
+
+  ngOnInit(): void {
+    this.registerForm = new FormGroup({
+      username: new FormControl('', Validators.required),
+      firstname: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      paswd: new FormControl('', Validators.required),
+      role: new FormControl(null, Validators.required), // Assurez-vous que le champ est bien nommé "role"
+      enableMfa: new FormControl('', Validators.required),
+      phonenumber: new FormControl('', Validators.required),
+      podepostal: new FormControl('', Validators.required),
+      commune: new FormControl('', Validators.required),
+      language: new FormControl('', Validators.required),
+      expertise: new FormControl('', Validators.required)
+    });
+    this.mfaRes = null;
+}
+
+
+register() {
+  this.isLoading = true;
+
+  // Récupérer la valeur du champ "role"
+  const selectedRole = this.registerForm.value.role;
+
+  // Créer un objet avec une propriété "name" contenant le rôle sélectionné
+  const rolesObject = { name: selectedRole };
+
+  // Construire l'objet de données à envoyer dans la requête
+  const requestData = {
+    ...this.registerForm.value,
+    roles: [rolesObject] // Envoyer le rôle sous forme de tableau
+  };
+
+  this.authenticationClient.register(requestData)
+    .subscribe((mfaQR: any) => {
+      this.isLoading = false;
+      this.mfaRes = JSON.parse(mfaQR);
+      console.log(this.mfaRes);
+    });
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* registerForm: FormGroup;
   submitted = false;
 
   genderTypes: GenderType[] = [GenderType.Male, GenderType.Female, GenderType.Other];
@@ -143,8 +217,9 @@ export class RegisterComponent {
         // Gérer les erreurs d'inscription, par exemple, afficher un message d'erreur à l'utilisateur
       }
     );
-  }
-}
+  }*/
+  
+
 
 
 

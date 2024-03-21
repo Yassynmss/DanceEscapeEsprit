@@ -17,75 +17,93 @@
 
 
 
-<div class="container">
-    <h2 style="color: rgb(195, 111, 39);">Register</h2>
-    <div class="fullscreen-video">
-      <video autoplay="" loop="" muted="" class="custom-video" poster="">
-        <source src="/assets/FrontOffice/assets/video/pexels-2022395.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" formControlName="firstname" class="form-control" id="firstName" required>
+<div class="container-fluid">
+  <div class="d-flex justify-content-center align-items-center">
+      <div *ngIf="!mfaRes" class="card">
+          <div class="card-header d-flex justify-content-center p-4">
+              <h5 class="card-title">Sign Up</h5>
+          </div>
+          <div class="card-body">
+              <form [formGroup]="registerForm">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="username">Username</span>
+                  <input type="text" class="form-control" formControlName="username"  placeholder="username" aria-label="username" aria-describedby="firstname">
+              </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="firstname">First Name</span>
+                      <input type="text" class="form-control" formControlName="firstname"  placeholder="firstname" aria-label="firstname" aria-describedby="firstname">
+                  </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="lastName">Last Name</span>
+                      <input type="text" class="form-control" formControlName="lastname"  placeholder="Last name" aria-label="Last name" aria-describedby="lastName">
+                  </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="email">E-Mail</span>
+                      <input type="text" class="form-control" formControlName="email"  placeholder="Email" aria-label="Email" aria-describedby="email">
+                  </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="paswd">Password</span>
+                      <input type="paswd" class="form-control" formControlName="paswd"  placeholder="paswd" aria-label="paswd" aria-describedby="password">
+                  </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="phonenumber">Phone Number</span>
+                      <input type="tel" class="form-control" formControlName="phonenumber"  placeholder="Phone Number" aria-label="Phone Number" aria-describedby="phonenumber">
+                  </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="podepostal">Postal Code</span>
+                      <input type="text" class="form-control" formControlName="podepostal"  placeholder="Postal Code" aria-label="Postal Code" aria-describedby="podepostal">
+                  </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="commune">Commune</span>
+                      <input type="text" class="form-control" formControlName="commune"  placeholder="Commune" aria-label="Commune" aria-describedby="commune">
+                  </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="language">Language</span>
+                      <input type="text" class="form-control" formControlName="language"  placeholder="Language" aria-label="Language" aria-describedby="language">
+                  </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="expertise">Expertise</span>
+                      <input type="text" class="form-control" formControlName="expertise"  placeholder="Expertise" aria-label="Expertise" aria-describedby="expertise">
+                  </div>
+                  <div class="form-group">
+                    <label for="role">Role</label>
+                    <select formControlName="role" class="form-control" id="role" required>
+                      <option *ngFor="let role of roleTypes" [value]="role">{{ role }}</option>
+                    </select>
+                  </div>
+                  
+                
+                  <div class="form-check form-switch">
+                      <input class="form-check-input" formControlName="enableMfa"  type="checkbox" role="switch" id="mfa" checked>
+                      <label class="form-check-label" for="mfa">Multi-Factor Authentication</label>
+                  </div>
+                  <div class="d-flex justify-content-center p-2">
+                      <button type="button" [disabled]="!registerForm.valid" class="btn btn-primary" (click)="register()">Register
+                          <div class="spinner-border text-secondary" *ngIf="isLoading" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                          </div>
+                      </button>
+                  </div>
+              </form>
+          </div>
+          <div class="card-footer d-flex justify-content-center p-4">
+              <a routerLink="/login" class="card-link">Already have an account?</a>
+          </div>
       </div>
-    <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" formControlName="lastname" class="form-control" id="lastName" required>
+      <div *ngIf="mfaRes">
+          <app-display-qr  [qrCode]="mfaRes.qrCode" [qrCodeKey]="mfaRes.mfaCode" [username]="this.registerForm.controls['username'].value"></app-display-qr>
       </div>
-      <div class="name-fields">
-      </div>
-      <div class="form-group">
-        <label for="genderType">Gender</label>
-        <select formControlName="genderType" class="form-control" id="genderType" required>
-          <option *ngFor="let gender of genderTypes" [value]="gender">{{ gender }}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" formControlName="email" class="form-control" id="email" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control" id="password" required>
-      </div>
-    <div class="form-group">
-        <label for="phonenumber">Phone Number</label>
-        <input type="tel" formControlName="phonenumber" class="form-control" id="phonenumber">
-      </div>
-    <div class="form-group">
-        <label for="podepostal">Postal Code</label>
-        <input type="text" formControlName="podepostal" class="form-control" id="podepostal">
-      </div>
-      <div class="form-group">
-        <label for="commune">Commune</label>
-        <input type="text" formControlName="commune" class="form-control" id="commune">
-      </div>
-      <div class="form-group">
-        <label for="language">Language</label>
-        <input type="text" formControlName="language" class="form-control" id="language">
-      </div>    
-      <div class="form-group">
-        <label for="expertise">Expertise</label>
-        <input type="text" formControlName="expertise" class="form-control" id="expertise">
-      </div>
-      <div class="form-group">
-        <label for="roles">Role</label>
-        <select formControlName="role" class="form-control" id="roles" required>
-            <option *ngFor="let role of roleTypes" [value]="role">{{ role }}</option>
-        </select>
-    </div>
+  </div>
+</div>
+
+
+
     
     
     
     
       
-  
-      <button type="submit" class="btn btn-primary" class="btn btn-orange"  [disabled]="registerForm.invalid">Register</button>
-    </form>
-</div>
+
 <app-footerfront></app-footerfront>
 
 <!-- Tout les fichiers JavaScript -->

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../models/user';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  private apiUrl = 'http://localhost:8084/api/user'; 
+/*
+*  private apiUrl = 'http://localhost:8084/api/user'; 
 
   constructor(private http: HttpClient) { }
 
@@ -38,6 +38,6 @@ export class UserService {
   // Méthode pour vérifier si un email existe déjà dans la base de données
   checkEmailExists(email: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/exists/${email}`);
-  }
+  }*/
 
 }

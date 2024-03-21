@@ -18,6 +18,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { UserlistComponent } from './components/userlist/userlist.component';
+import { MfaComponent } from './components/authenticate/mfa/mfa.component';
+import { OtherMfaComponent } from './components/authenticate/other-mfa/other-mfa.component';
+import { DisplayQrComponent } from './components/register/display-qr/display-qr.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,10 @@ import { UserlistComponent } from './components/userlist/userlist.component';
     NavbarcomponentfrontComponent,
     RegisterComponent,
     AuthenticateComponent,
-    UserlistComponent
+    UserlistComponent,
+    MfaComponent,
+    OtherMfaComponent,
+    DisplayQrComponent
 
   ],
   imports: [
