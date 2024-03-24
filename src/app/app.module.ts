@@ -21,6 +21,7 @@ import { UserlistComponent } from './components/userlist/userlist.component';
 import { MfaComponent } from './components/authenticate/mfa/mfa.component';
 import { OtherMfaComponent } from './components/authenticate/other-mfa/other-mfa.component';
 import { DisplayQrComponent } from './components/register/display-qr/display-qr.component';
+import { ResetPasswordComponent } from './components/authenticate/reset-password/reset-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { DisplayQrComponent } from './components/register/display-qr/display-qr.
     UserlistComponent,
     MfaComponent,
     OtherMfaComponent,
-    DisplayQrComponent
+    DisplayQrComponent,
+    ResetPasswordComponent
 
   ],
   imports: [

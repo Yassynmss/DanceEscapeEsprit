@@ -41,7 +41,8 @@
           </div>
           <div class="card-footer d-flex justify-content-center p-4">
               <a routerLink="/register" class="card-link">Register</a>
-              <a href="#" class="card-link">Forgot Email/password?</a>
+              <a href="#" class="card-link" (click)="forgotPassword($event)">Forgot password?</a>
+
           </div>
       </div>
       <app-mfa *ngIf="response?.authValid && response?.mfaRequired" [email]="response.email"></app-mfa>
@@ -64,5 +65,3 @@
 <script src="/assets/FrontOffice/assets/js/jquery.sticky.js"></script>
 <script src="/assets/FrontOffice/assets/js/click-scroll.js"></script>
 <script src="/assets/FrontOffice/assets/js/custom.js"></script>
-
-

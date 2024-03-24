@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -11,7 +11,7 @@ import { MfaVerificationResponse } from '../shared/mfa-verification-response.mod
 })
 export class AuthService {
   private tokenKey = 'token';
-  constructor(private authenticationClient: AuthenticationService, private router: Router) { }
+  constructor(private authenticationClient: AuthenticationService, private router: Router, private Http: HttpClient) { }
 
   public login(payload: MfaVerificationResponse): void {
     if(payload.tokenValid && !payload.mfaRequired){
@@ -46,5 +46,21 @@ export class AuthService {
 
   public getToken(): string | null {
     return this.isLoggedIn() ? localStorage.getItem(this.tokenKey) : null;
+  }
+
+  forgotPassword(email: string): Observable<any> {
+    const url = `http://localhost:8080/forgot-password?email=${encodeURIComponent(email)}`;
+    return this.Http.post(url, {});
+  }
+  resetPassword(token: string, newPassword: string): Observable<any> {
+    const url = 'http://localhost:8080/reset-password';
+
+    // Créer les paramètres de la requête
+    let params = new HttpParams();
+    params = params.append('token', token);
+    params = params.append('newPassword', newPassword);
+
+    // Envoyer la requête avec les paramètres dans l'URL
+    return this.Http.post<any>(url, {}, { params });
   }
 }

@@ -87,19 +87,18 @@ export class AuthenticateComponent {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  forgotPassword(event: Event) {
+    event.preventDefault(); // Empêcher le comportement par défaut du lien
+  
+    const email = this.loginForm.get('email')?.value; // Récupérer l'e-mail à partir du formulaire
+    this.authService.forgotPassword(email).subscribe(() => {
+      // Gérer la réponse de succès ici, par exemple afficher un message à l'utilisateur
+      console.log('Email sent successfully');
+    }, (error) => {
+      // Gérer les erreurs ici, par exemple afficher un message d'erreur à l'utilisateur
+      console.error('Error sending email:', error);
+    });
+  }
 
 
 

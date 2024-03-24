@@ -6,6 +6,7 @@ import { AuthenticateComponent } from './components/authenticate/authenticate.co
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './helpers/auth.guard';
 import { MfaComponent } from './components/authenticate/mfa/mfa.component';
+import { ResetPasswordComponent } from './components/authenticate/reset-password/reset-password.component';
 const routes: Routes = [
 
   {
@@ -31,6 +32,9 @@ const routes: Routes = [
   },
   {
     path:'front', component:AlltemplatefrontComponent
+  },
+  {
+    path:'reset-password', component:ResetPasswordComponent
   }
 ];
 
