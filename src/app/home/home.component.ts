@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+   /*import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 
 @Component({
@@ -11,7 +11,8 @@ export class HomeComponent implements OnInit {
   constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
-    this.homeService.getProtectedString().subscribe(s=> this.message =s);
+ this.homeService.getProtectedString().subscribe(s=> this.message =s);
   }
 
 }
+*/

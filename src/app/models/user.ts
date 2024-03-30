@@ -1,22 +1,25 @@
-/*import {  role } from './role'; // Assurez-vous que l'importation de RoleType est correcte
+import { Role } from "./Role";
 
 export class User {
-     userId?: number;
+     id!: number;
+     paswd?: string; 
+     secretKey?: string; 
      firstname?: string;
      lastname?: string;
-     genderType?: GenderType; // Assurez-vous que GenderType est défini dans votre application Angular
-     email?: string;
-     paswd?: string;
-     phonenumber?: number;
-     podepostal?: number;
-     commune?: string;
-     language?: string;
+     email!: string;
+     accountVerified?: boolean;
+     genderType?: GenderType; 
+     phonenumber?: number; 
+     codepostal?: number; 
+     commune?: string; 
+     language?: string; 
      expertise?: string;
-     roles?: role[];
-}
-
-export enum GenderType {
-     Male = 'MALE',
-     Female = 'FEMALE',
-     Other = 'OTHER'
-   }*/
+     roles?: Role[];
+     resetPasswordToken?: string;
+   }
+   
+   export enum GenderType {
+     MALE = 'Male',
+     FEMALE = 'Female'
+   }
+   

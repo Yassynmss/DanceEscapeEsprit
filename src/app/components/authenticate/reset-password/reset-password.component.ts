@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ResetPasswordComponent implements OnInit {
   resetForm!: FormGroup;
   token!: string;
+  public popupMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,12 +37,19 @@ export class ResetPasswordComponent implements OnInit {
       // Utiliser le token extrait de l'URL dans la requête
       this.authService.resetPassword(this.token, newPassword).subscribe(
         () => {
+          this.popupMessage = 'Password reset successfully';
+          setTimeout(() => {
+            this.popupMessage = '';
+          }, 10000);
           console.log('Password reset successfully.');
           this.router.navigate(['/login']); // Rediriger vers une autre page après la réinitialisation du mot de passe
         },
         error => {
           console.error('Failed to reset password:', error);
-          // Afficher un message d'erreur à l'utilisateur
+          this.popupMessage = 'Failed to reset password';
+          setTimeout(() => {
+            this.popupMessage = '';
+          }, 10000);
         }
       );
     }

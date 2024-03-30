@@ -45,6 +45,124 @@ export class AuthenticateComponent {
     );
   }
 }*/
+
+/*import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { MfaVerificationResponse } from 'src/app/shared/mfa-verification-response.modal';
+import { Router } from '@angular/router';
+import { Visiteur } from 'src/app/models/Visiteur';
+import { DancersGroup } from 'src/app/models/DancersGroup';
+import { Evaluator } from 'src/app/models/Evaluator';
+  
+@Component({
+  selector: 'app-authenticate',
+  templateUrl: './authenticate.component.html',
+  styleUrls: ['./authenticate.component.css']
+})
+export class AuthenticateComponent {
+
+  public loginForm!: FormGroup;
+  response!: MfaVerificationResponse;
+  message!: string;
+  current_User?: any;
+
+  constructor(
+    private authenticationClient: AuthenticationService,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    if (this.authService.isLoggedIn())
+      this.authService.navidateToHome();
+  }
+
+  ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+    });
+  }
+
+  login() {
+    this.authenticationClient.login(this.loginForm.value).subscribe((loginResponse: MfaVerificationResponse) => {
+      this.response = loginResponse;
+      this.message = loginResponse.message;
+
+      // Vérifier si la réponse contient des informations sur le rôle de l'utilisateur
+      if (this.response.user && this.response.user.roles && this.response.user.roles.length > 0) {
+        const role = this.response.user.roles[0].name;
+        // Logique de redirection en fonction du rôle de l'utilisateur
+
+        switch (role) {
+          case 'ADMIN':
+            this.router.navigate(['/admin']);
+            break;
+          case 'EVALUATOR':
+            console.log("pskkk");
+            const med: Evaluator = {
+              idEvaluator: this.current_User.idEvaluator,
+              user: this.current_User.user
+            };
+            localStorage.setItem('EVALUATOR', JSON.stringify(med));
+            this.router.navigate(['/']);
+            break;
+          case 'VISITOR':
+            const med1: Visiteur = {
+              idVisiteur: this.current_User.idVisiteur,
+              user: this.current_User.user
+            };
+            localStorage.setItem('VISITOR', JSON.stringify(med1));
+            this.router.navigate(['/']);
+            break;
+          case 'USER':
+            this.router.navigate(['/']);
+            break;
+          case 'DANCER':
+            const pas: DancersGroup = {
+              groupID: this.current_User.groupID,
+              users: this.current_User.user,
+              groupName: this.current_User.groupName,
+              groupDescription: this.current_User.groupDescription,
+              members: this.current_User.members
+            };
+            localStorage.setItem('DANCER', JSON.stringify(pas));
+            this.router.navigate(['/admin']);
+            break;
+          default:
+            this.router.navigate(['/']);
+            break;
+        }
+
+        // Appeler getCurrentUsersWithRole si role est défini
+        if (role) {
+          this.authenticationClient.getCurrentUsersWithRole(this.response.user.id, role).subscribe((userData: any) => {
+            // Traiter les données de l'utilisateur ici selon vos besoins
+            console.log(userData);
+          });
+        } else {
+          console.error("Role is undefined");
+        }
+      } else {
+        // Gérer le cas où les informations sur le rôle de l'utilisateur ne sont pas disponibles
+        console.error("Role information not available in response");
+      }
+    });
+  }
+
+  forgotPassword(event: Event) {
+    event.preventDefault(); // Empêcher le comportement par défaut du lien
+
+    const email = this.loginForm.get('email')?.value; // Récupérer l'e-mail à partir du formulaire
+    this.authService.forgotPassword(email).subscribe(() => {
+      // Gérer la réponse de succès ici, par exemple afficher un message à l'utilisateur
+      console.log('Email sent successfully');
+    }, (error) => {
+      // Gérer les erreurs ici, par exemple afficher un message d'erreur à l'utilisateur
+      console.error('Error sending email:', error);
+    });
+  }
+}*/
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
@@ -84,24 +202,43 @@ export class AuthenticateComponent {
     });
   }
 
+  public popupMessage: string = '';
 
 
 
   forgotPassword(event: Event) {
-    event.preventDefault(); // Empêcher le comportement par défaut du lien
+    event.preventDefault();
   
-    const email = this.loginForm.get('email')?.value; // Récupérer l'e-mail à partir du formulaire
+    const email = this.loginForm.get('email')?.value;
     this.authService.forgotPassword(email).subscribe(() => {
-      // Gérer la réponse de succès ici, par exemple afficher un message à l'utilisateur
-      console.log('Email sent successfully');
+      this.popupMessage = 'Email sent successfully';
+      setTimeout(() => {
+        this.popupMessage = '';
+      }, 10000); // Délai de 6 secondes avant de réinitialiser le message du popup
     }, (error) => {
-      // Gérer les erreurs ici, par exemple afficher un message d'erreur à l'utilisateur
-      console.error('Error sending email:', error);
+      if (error && error.status === 200) {
+        this.popupMessage = 'Email sent successfully';
+        setTimeout(() => {
+          this.popupMessage = '';
+        }, 10000);
+      } else if (error && error.status === 409) {
+        this.popupMessage = 'Email already sent';
+        setTimeout(() => {
+          this.popupMessage = '';
+        }, 10000);
+      } else {
+        this.popupMessage = 'Error sending email. Please try again later.';
+        setTimeout(() => {
+          this.popupMessage = '';
+        }, 10000);
+      }
     });
   }
+  
+}  
 
-
-
+    //  this.roles = this.storageService.getUser().roles;
+      //this.reloadPage();
 
 
 
@@ -154,5 +291,51 @@ export class AuthenticateComponent {
         // Optionally, display an error message to the user
       }
     );
+  }
+
+  if (this.response.user && this.response.user.roles && this.response.user.roles.length > 0) {
+    const role = this.response.user.roles[0].name;
+
+    if (role) {
+      this.userAuthServiceService.setRoles(this.response.user.roles);
+      this.userAuthServiceService.setToken(this.response.jwt);
+
+      if (this.response.user.id) {
+        this.authenticationClient.getCurrentUsersWithRole(this.response.user.id, role).subscribe((userData: any) => {
+          this.current_User = userData;
+
+          switch (role) {
+            case 'ADMIN':
+              this.router.navigateByUrl('/admin');
+              break;
+            case 'EVALUATOR':
+              const evaluator: Evaluator = {
+                idEvaluator: this.current_User.idEvaluator,
+                user: this.current_User.user
+              };
+              localStorage.setItem('EVALUATOR', JSON.stringify(evaluator));
+              this.router.navigateByUrl('/');
+              break;
+            case 'VISITOR':
+              const visitor: Visiteur = {
+                idVisiteur: this.current_User.idVisiteur,
+                user: this.current_User.user
+              };
+              localStorage.setItem('VISITOR', JSON.stringify(visitor));
+              this.router.navigateByUrl('/');
+              break;
+            // Add cases for other roles as needed
+            default:
+              this.router.navigateByUrl('/');
+              break;
+          }
+        });
+      } else {
+        console.error("User ID is undefined");
+      }
+    } else {
+      console.error("Role is undefined");
+    }
+  } else {
+    console.error("User information not available in response");
   }*/
-}

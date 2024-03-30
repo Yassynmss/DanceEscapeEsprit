@@ -7,16 +7,24 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './helpers/auth.guard';
 import { MfaComponent } from './components/authenticate/mfa/mfa.component';
 import { ResetPasswordComponent } from './components/authenticate/reset-password/reset-password.component';
+import { UserComponent } from './user/user.component';
+import { AlltemplatebackComponent } from './BackOffice/alltemplateback/alltemplateback.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { BoardUserComponent } from './components/board/board-user/board-user.component';
+import { BoardModeratorComponent } from './components/board/board-moderator/board-moderator.component';
+import { BoardAdminComponent } from './components/board/board-admin/board-admin.component';
 const routes: Routes = [
 
   {
-    path: '',
-    pathMatch: 'full',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./home/home.module').then((m) => m.HomeModule),
-      
+    path:"forbiden",
+    component:ForbiddenComponent
   },
+ { path:"",
+  component:AlltemplatefrontComponent,
+  children:[
+
+  ]
+ },
   {
     path: 'login',
     component: AuthenticateComponent,
@@ -28,15 +36,36 @@ const routes: Routes = [
   {
     path: 'mfa',
     //canActivate: [AuthGuard],
-    component: MfaComponent,
+    component: MfaComponent, canActivate:[AuthGuard]
   },
   {
     path:'front', component:AlltemplatefrontComponent
   },
   {
     path:'reset-password', component:ResetPasswordComponent
-  }
+  },
+  {
+    path:'use1r',
+    component: UserComponent , canActivate:[AuthGuard],data:{roles:['USER']}
+   },
+   {
+    path: 'admin1',
+    component: AlltemplatebackComponent, canActivate:[AuthGuard],data:{roles:['ADMIN']}
+  },
+  { path: 'user', component: BoardUserComponent },
+  { path: 'mod', component: BoardModeratorComponent },
+  { path: 'admin', component: BoardAdminComponent },
 ];
+/*const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: AuthenticateComponent },
+  { path: 'register', component: RegisterComponent },
+ // { path: 'profile', component: ProfileComponent },
+  { path: 'user', component: BoardUserComponent },
+  { path: 'mod', component: BoardModeratorComponent },
+  { path: 'admin', component: BoardAdminComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
+];*/
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

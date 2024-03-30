@@ -10,7 +10,7 @@ export class HomeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProtectedString(): Observable<string>{
+  /*getProtectedString(): Observable<string>{
     return this.httpClient.get(environment.apiUrl+"/protectedString",{responseType: 'text'});
-  }
+  }*/
 }

@@ -42,7 +42,10 @@
           <div class="card-footer d-flex justify-content-center p-4">
               <a routerLink="/register" class="card-link">Register</a>
               <a href="#" class="card-link" (click)="forgotPassword($event)">Forgot password?</a>
-
+              <div *ngIf="popupMessage" class="popup">
+                <p>{{ popupMessage }}</p>
+              </div>
+              
           </div>
       </div>
       <app-mfa *ngIf="response?.authValid && response?.mfaRequired" [email]="response.email"></app-mfa>

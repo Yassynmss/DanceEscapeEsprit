@@ -22,6 +22,13 @@ import { MfaComponent } from './components/authenticate/mfa/mfa.component';
 import { OtherMfaComponent } from './components/authenticate/other-mfa/other-mfa.component';
 import { DisplayQrComponent } from './components/register/display-qr/display-qr.component';
 import { ResetPasswordComponent } from './components/authenticate/reset-password/reset-password.component';
+import { BoardAdminComponent } from './components/board/board-admin/board-admin.component';
+import { BoardModeratorComponent } from './components/board/board-moderator/board-moderator.component';
+import { BoardUserComponent } from './components/board/board-user/board-user.component';
+import { HomeComponent } from './components/board/home/home.component';
+import { MatDialogModuleComponent } from './mat-dialog-module/mat-dialog-module.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,15 +48,20 @@ import { ResetPasswordComponent } from './components/authenticate/reset-password
     MfaComponent,
     OtherMfaComponent,
     DisplayQrComponent,
-    ResetPasswordComponent
-
+    ResetPasswordComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent,
+    HomeComponent,
+    MatDialogModuleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
