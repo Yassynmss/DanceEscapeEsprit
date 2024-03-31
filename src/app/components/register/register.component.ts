@@ -86,7 +86,7 @@ export class RegisterComponent {
   mfaRes: any;
   isLoading = false;
   
-  roleTypes: string[] = ['ADMIN', 'EVALUATOR', 'DANCER', 'VISITOR'];
+  roleTypes: string[] = ['USER','ADMIN', 'EVALUATOR', 'DANCER', 'VISITOR'];
 
   constructor(private authenticationClient: AuthenticationService) { }
 
@@ -97,7 +97,7 @@ export class RegisterComponent {
       lastname: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       paswd: new FormControl('', Validators.required),
-      role: new FormControl(null, Validators.required), // Assurez-vous que le champ est bien nommé "role"
+      role: new FormControl(null, Validators.required),
       enableMfa: new FormControl('', Validators.required),
       phonenumber: new FormControl('', Validators.required),
       podepostal: new FormControl('', Validators.required),

@@ -1,43 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { User } from '../models/user';
+import { Role } from '../models/Role';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-/*
-*  private apiUrl = 'http://localhost:8084/api/user'; 
+
+  private apiUrl = 'http://localhost:8080'; // Mettez à jour l'URL de votre API
 
   constructor(private http: HttpClient) { }
 
-
-  getUserById(userId: number): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/${userId}`);
+  getUserProfile(): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/profile`);
   }
 
-  createUser(user: User): Observable<User> {
-    return this.http.post<User>(this.apiUrl+"/register", user);
-  }
-  
-  searchUsers(firstName: string, lastName: string): Observable<User[]> {
-    console.log('Searching for:', firstName, lastName);
-    return this.http.get<User[]>(`${this.apiUrl}/search/${firstName}/${lastName}`);
-  }
-  
-  
-
-  updateUser(user: User): Observable<User> {
-    return this.http.put<User>(`${this.apiUrl}/${user.userId}`, user);
+  getRolesFromDatabase(): Observable<Role[]> {
+    return this.http.get<Role[]>(`${this.apiUrl}/roles`);
   }
 
-  deleteUser(userId: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${userId}`);
+  updateUserProfile(updatedUser: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/profile`, updatedUser);
   }
-  // Méthode pour vérifier si un email existe déjà dans la base de données
-  checkEmailExists(email: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/exists/${email}`);
-  }*/
-
+  getRolesStats(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/roles-stats`);
+  }
 }

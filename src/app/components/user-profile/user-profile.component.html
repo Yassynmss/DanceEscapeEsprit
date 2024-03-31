@@ -1,0 +1,23 @@
+<form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+    <div>
+      <label for="firstName">Prénom:</label>
+      <input type="text" id="firstName" formControlName="firstName">
+    </div>
+    <div>
+      <label for="lastName">Nom:</label>
+      <input type="text" id="lastName" formControlName="lastName">
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" [disabled]="true">
+    </div>
+    <div>
+      <label for="roles">Rôles:</label>
+      <select id="roles" formControlName="roles" multiple>
+        <option *ngFor="let role of roles" [ngValue]="role">{{ role.name }}</option>
+      </select>
+    </div>
+    <!-- Autres champs de profil utilisateur -->
+    <button type="submit">Enregistrer</button>
+  </form>
+  
