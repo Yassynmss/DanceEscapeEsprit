@@ -27,9 +27,9 @@ export class AuthService {
   }
   private apiUrl = 'http://localhost:8080'; // Mettez à jour l'URL de votre API
   // Méthode pour vérifier si l'utilisateur est administrateur
-  isAdmin(email: string): Observable<boolean> {
-    return this.Http.get<boolean>(`${this.apiUrl}/isAdmin/${email}`);
-  }
+ // isAdmin(email: string): Observable<boolean> {
+ //   return this.Http.get<boolean>(`${this.apiUrl}/isAdmin/${email}`);
+ // }
   getCurrentUserEmail(): Observable<string> {
     return this.Http.get<string>(`${this.baseUrl}/getCurrentUserEmail`);
   }

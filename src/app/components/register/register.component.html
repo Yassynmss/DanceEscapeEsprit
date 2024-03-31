@@ -73,9 +73,19 @@
                   <input type="text" class="form-control" formControlName="expertise" placeholder="Expertise" aria-label="Expertise" aria-describedby="expertise">
                 </div>
                 <div class="form-group">
+                  <label for="codepostal">Code Postal</label>
+                  <input type="text" class="form-control" formControlName="codepostal" placeholder="codepostal" aria-label="codepostal" aria-describedby="codepostal">
+                </div>
+                <div class="form-group">
                   <label for="role">Role</label>
                   <select formControlName="role" class="form-control" id="role" required>
                     <option *ngFor="let role of roleTypes" [value]="role">{{ role }}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="genderType">Gender</label>
+                  <select formControlName="genderType" class="form-control" id="genderType" required>
+                    <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
                   </select>
                 </div>
                 <div class="form-check form-switch">

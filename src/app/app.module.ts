@@ -28,7 +28,7 @@ import { BoardUserComponent } from './components/board/board-user/board-user.com
 import { HomeComponent } from './components/board/home/home.component';
 import { MatDialogModuleComponent } from './mat-dialog-module/mat-dialog-module.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     BoardUserComponent,
     HomeComponent,
     MatDialogModuleComponent,
-    UserProfileComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

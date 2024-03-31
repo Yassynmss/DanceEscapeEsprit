@@ -14,7 +14,7 @@ export class NavbarcomponentfrontComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn(); // Vérifiez si l'utilisateur est connecté au chargement de la navbar
-    this.checkAdminRole();
+  //  this.checkAdminRole();
   }
 
   logout(): void {
@@ -22,10 +22,10 @@ export class NavbarcomponentfrontComponent implements OnInit {
     this.isLoggedIn = false; // Mettez à jour le statut de connexion
   }
   // Méthode pour vérifier si l'utilisateur est administrateur
-  checkAdminRole(): void {
-    const userEmail = 'yassinemessoaudi22@gmail.com'; // Remplacez ceci par l'e-mail de l'utilisateur actuel
-    this.authService.isAdmin(userEmail).subscribe(isAdmin => {
-      this.isAdmin = isAdmin; // Met à jour le statut isAdmin avec la valeur renvoyée par le service
-    });
-  }
+ // checkAdminRole(): void {
+  //  const userEmail = 'yassinemessoaudi22@gmail.com'; // Remplacez ceci par l'e-mail de l'utilisateur actuel
+ //   this.authService.isAdmin(userEmail).subscribe(isAdmin => {
+ //     this.isAdmin = isAdmin; // Met à jour le statut isAdmin avec la valeur renvoyée par le service
+//    });
+ // }
 }

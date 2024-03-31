@@ -13,8 +13,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { BoardUserComponent } from './components/board/board-user/board-user.component';
 import { BoardModeratorComponent } from './components/board/board-moderator/board-moderator.component';
 import { BoardAdminComponent } from './components/board/board-admin/board-admin.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { StatsComponent } from './stats/stats.component';
+import { ProfileComponent } from './components/profile/profile.component';
 const routes: Routes = [
 
   {
@@ -57,7 +57,7 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
-  {path: 'profile' , component:UserProfileComponent},
+  {path: 'profile' , component:ProfileComponent},
   {
     path:"stats",
     component:StatsComponent 

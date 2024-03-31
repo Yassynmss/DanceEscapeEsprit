@@ -10,7 +10,7 @@ export class User {
      accountVerified?: boolean;
      genderType?: GenderType; 
      phonenumber?: number; 
-     codepostal?: number; 
+     podepostal?: number; 
      commune?: string; 
      language?: string; 
      expertise?: string;
