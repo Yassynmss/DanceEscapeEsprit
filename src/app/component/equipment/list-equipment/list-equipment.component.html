@@ -32,4 +32,16 @@
   <div class="text-center mt-3">
     <button routerLink="/admin/addequipment">Add new equipment</button>
   </div>
+  <div>  <button (click)="downloadExcel()">Download Excel</button></div>
+  
+  <div class="text-center mt-3">
+    <button routerLink="/equipmentchart">Voir le graphique</button>
+
+
+  </div>
+  
+<div class="chart-container">
+  <canvas id="canvas"></canvas>
+</div>
+
 </div>

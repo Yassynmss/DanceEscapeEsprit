@@ -22,9 +22,11 @@ import { AddStaffComponent } from './component/staff/add-staff/add-staff.compone
 import { AddSupplierComponent } from './component/supplier/add-supplier/add-supplier.component';
 import { ListSupplierComponent } from './component/supplier/list-supplier/list-supplier.component';
 
-import { UpdateSupplierComponent } from './component/supplier/modify-supplier/update-supplier.component';
+import { UpdateSupplierComponent } from './component/supplier/update-supplier/update-supplier.component';
 
 import { FormsModule } from '@angular/forms';
+import { UpdateStaffComponent } from './component/staff/update-staff/update-staff.component';
+import { EquipmentChartComponent } from './component/equipment/equipment-chart/equipment-chart.component';
 
 
 @NgModule({
@@ -50,6 +52,8 @@ import { FormsModule } from '@angular/forms';
     ListSupplierComponent,
    
     UpdateSupplierComponent,
+         UpdateStaffComponent,
+         EquipmentChartComponent,
  
     
 

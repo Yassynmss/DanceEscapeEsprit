@@ -10,9 +10,7 @@ import { Equipment } from 'src/app/core/models/equipment/equipment';
   styleUrls: ['./update-equipment.component.css'],
 })
 export class UpdateEquipmentComponent implements OnInit {
-  id_equipment: any;
   equipmentForm!: FormGroup;
-  equipment: Equipment = new Equipment();
 
   constructor(
     private fb: FormBuilder,
@@ -22,35 +20,37 @@ export class UpdateEquipmentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id_equipment = this.activatedRoute.snapshot.params['id_equipment'];
+    const id_equipment = this.activatedRoute.snapshot.params['id_equipment'];
     this.equipmentForm = this.fb.group({
-      name_equipment: [null, [Validators.required]],
+      id_equipment: [id_equipment, [Validators.required]],
+      name_equipment: ['', [Validators.required]],
       quantity: [null, Validators.required],
-      etat: [null, Validators.required],
+      etat: ['', Validators.required],
     });
-    this.getEquipmentById();
+    this.getEquipmentById(id_equipment);
   }
 
-  getEquipmentById() {
-    this.equipmentService.getEquipmentById(this.id_equipment).subscribe((res) => {
-      console.log(res);
+  getEquipmentById(id_equipment: number) {
+    this.equipmentService.getEquipmentById(id_equipment).subscribe((res) => {
       this.equipmentForm.patchValue(res);
     });
   }
 
   updateEquipment() {
     if (this.equipmentForm.valid) {
-      this.equipmentService.updateEquipment(this.id_equipment, this.equipmentForm.value).subscribe(
-        (res: any) => {
-          console.log(res);
+      const id_equipment = this.equipmentForm.get('id_equipment')?.value;
+      this.equipmentService.updateEquipmentwaw(id_equipment, this.equipmentForm.value).subscribe(
+        () => {
+          alert('Update done');
+          this.router.navigate(['/list-equipment']);
         },
         (error) => {
           console.error('Error updating equipment:', error);
+          alert('Update failed');
         }
       );
-      alert('Update done');
     } else {
-      alert('Update failed');
+      alert('Please fill in all required fields');
     }
   }
 }

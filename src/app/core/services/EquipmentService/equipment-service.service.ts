@@ -55,6 +55,10 @@ export class EquipmentServiceService {
     }
     return this.http.get<Equipment[]>(url, { params: params });
   }
+
+  getEquipmentQuantities(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/getEquipmentQuantities`);
+  }
 }
 
 

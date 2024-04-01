@@ -21,4 +21,10 @@
   .table tbody + tbody {
     border-top: 2px solid #dee2e6;
   }
+  .search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
   

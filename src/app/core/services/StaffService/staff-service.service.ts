@@ -22,6 +22,7 @@ export class StaffService {
   updateStaff(id_staff: number, staff: Staff): Observable<Staff> {
     return this.http.put<Staff>(`${this.apiUrl}/updateStaff/${id_staff}`, staff);
   }
+  
 
   deleteStaff(id_staff: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/deleteStaff/${id_staff}`);
@@ -40,6 +41,12 @@ export class StaffService {
       params = params.append('job', job);
     }
     return this.http.get<Staff[]>(url, { params: params });
+  }
+
+
+
+  getStaffById(id_staff:any): Observable<Staff> {
+    return this.http.get<Staff>(`${this.apiUrl}/getStaffById/${id_staff}`);
   }
 }
 

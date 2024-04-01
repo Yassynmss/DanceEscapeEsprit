@@ -25,7 +25,9 @@
         <td>{{ supplier.email }}</td>
         <td>
           <button (click)="removeSupplier(supplier)">Delete</button>
-          <button routerLink="/admin/updatesupplier/{{supplier.id_supplier}}">Update</button>
+          <button routerLink="/admin/updateSupplier/{{supplier.id_supplier}}">Update</button>
+        
+
         </td>
       </tr>
     </tbody>
@@ -33,4 +35,5 @@
   <div class="text-center mt-3">
     <button routerLink="/admin/addsupplier">Add new supplier</button>
   </div>
+  <div>  <button (click)="downloadExcel()">Download Excel</button></div>
 </div>

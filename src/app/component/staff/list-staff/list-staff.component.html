@@ -27,7 +27,7 @@
         <td>{{ staff.email }}</td>
         <td>
           <button (click)="removeStaff(staff)">Delete</button>
-          <button routerLink="/admin/modify-staff/{{staff.id_staff}}">Update</button>
+          <button routerLink="/admin/updateStaff/{{staff.id_staff}}">Update</button>
         </td>
       </tr>
     </tbody>
@@ -35,4 +35,5 @@
   <div class="text-center mt-3">
     <button routerLink="/admin/addstaff">Add Staff</button>
   </div>
+  <div>  <button (click)="downloadExcel()">Download Excel</button></div>
 </div>

@@ -8,12 +8,12 @@ export enum Job {
   }
   
   export interface Staff {
-    id_staff?: number;
+    id_staff: number;
     name: string;
     job: Job;
     DateOfBirth: Date;
     number:number;
     email:string;
-    image:Blob;
+    
   }
   

@@ -1,0 +1,30 @@
+<div class="container"></div>
+<form [formGroup]="staffForm" class="staff-form">
+  <h2>Update Staff</h2>
+  <div>
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name">
+  </div>
+  <div>
+    <label for="job">Job:</label>
+    <select id="job" formControlName="job">
+      <option *ngFor="let job of jobs" [value]="job">{{job}}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="DateOfBirth">Date of Birth</label>
+    <input type="date" id="DateOfBirth" formControlName="DateOfBirth">
+  </div>
+  <div>
+    <label for="number">Number</label>
+    <input type="number" id="number" formControlName="number">
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="email" id="email" formControlName="email">
+  </div>
+ 
+  <div><button (click)="updateStaff()">Update</button></div>
+</form>
+<button routerLink="/admin/liststaff">Retour</button>
