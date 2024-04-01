@@ -9,20 +9,26 @@
   <table class="table table-striped mx-auto w-75">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Name</th>
+        <th class="sort-button" (click)="sortByID()">ID</th>
+<th class="sort-button" (click)="sortByName()">Name</th>
+
+<th class="sort-button" (click)="sortByDateOfBirth()">DateOfBirth</th>
+
+
+      
         <th>Job</th>
-        <th>DateOfBirth</th>
+  
         <th>Number</th>
         <th>Email</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let staff of staffList">
+        
         <td>{{ staff.id_staff }}</td>
         <td>{{ staff.name }}</td>
-        <td>{{ staff.job }}</td>
         <td>{{ staff.DateOfBirth }}</td>
+        <td>{{ staff.job }}</td>
         <td>{{ staff.number }}</td>
         <td>{{ staff.email }}</td>
         <td>
@@ -36,4 +42,10 @@
     <button routerLink="/admin/addstaff">Add Staff</button>
   </div>
   <div>  <button (click)="downloadExcel()">Download Excel</button></div>
+  <div class="text-center mt-3">
+    <button routerLink="/admin/chartstaf">Statistics</button>
+
+
+
+  </div>
 </div>

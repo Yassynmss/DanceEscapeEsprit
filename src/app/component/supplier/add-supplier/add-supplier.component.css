@@ -1,14 +1,13 @@
 /* Sélectionne tous les boutons du formulaire */
 form button {
-    /* Change la couleur du texte en blanc */
-    color: white;
-    /* Change la couleur de fond en bleu foncé */
-    background-color: darkblue;
-    /* Change la bordure en bleu clair */
-    border: 2px solid lightblue;
-    /* Change l'espacement entre les boutons en 10 pixels */
-    margin: 10px;
-    /* Change l'espacement à l'intérieur des boutons en 15 pixels */
-    padding: 15px;
-  }
-  
+  /* Change la couleur du texte en blanc */
+  color: white;
+  /* Change la couleur de fond en bleu foncé */
+  background-color: rgb(6, 6, 144);
+  /* Change la bordure en bleu clair */
+  border: 2px solid lightblue;
+  /* Change l'espacement entre les boutons en 10 pixels */
+  margin: 10px;
+  /* Change l'espacement à l'intérieur des boutons en 15 pixels */
+  padding: 15px;
+}

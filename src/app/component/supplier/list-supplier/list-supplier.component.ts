@@ -30,24 +30,38 @@ export class ListSupplierComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
+
+  sortByID(): void {
+    this.supplierList.sort((a, b) => {
+      if (a.id_supplier && b.id_supplier) {
+        return a.id_supplier - b.id_supplier;
+      } else {
+        return 0;
+      }
+    });
+  }
   
-downloadExcel() {
-  const supplierData = this.supplierList.map(supplier => ({
-    'ID': supplier.id_supplier,
-    'Name': supplier.name,
-    'Contact Info': supplier.contact_info,
-    'Number': supplier.number,
-    'Email': supplier.email
-  }));
 
-  const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(supplierData);
-  const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+  sortByName(): void {
+    this.supplierList.sort((a, b) => a.name.localeCompare(b.name));
+  }
 
-  const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-  const data: Blob = new Blob([excelBuffer], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'});
-  fileSaverSaveAs(data, 'suppliers.xlsx');
-}
+  downloadExcel() {
+    const supplierData = this.supplierList.map(supplier => ({
+      'ID': supplier.id_supplier,
+      'Name': supplier.name,
+      'Contact Info': supplier.contact_info,
+      'Number': supplier.number,
+      'Email': supplier.email
+    }));
 
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(supplierData);
+    const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+
+    const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const data: Blob = new Blob([excelBuffer], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'});
+    fileSaverSaveAs(data, 'suppliers.xlsx');
+  }
 
   removeSupplier(supplier: Supplier): void {
     if (supplier.id_supplier) {
@@ -73,7 +87,3 @@ downloadExcel() {
       });
   }
 }
-function saveAs(blob: Blob, arg1: string) {
-  throw new Error('Function not implemented.');
-}
-

@@ -21,3 +21,13 @@
     justify-content: center;
     align-items: center;
 }
+.sort-button {
+  cursor: pointer;
+  
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sort-button:hover {
+  background-color: grey;
+}

@@ -3,6 +3,10 @@ import { StaffService } from 'src/app/core/services/StaffService/staff-service.s
 import { Staff } from 'src/app/core/models/staff/staff';
 import { saveAs as fileSaverSaveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
+import { Router } from '@angular/router';
+
+
+
 @Component({
   selector: 'app-list-staff',
   templateUrl: './list-staff.component.html',
@@ -14,7 +18,7 @@ export class ListStaffComponent implements OnInit {
   name: string | null = null;
   job: string | null = null;
 
-  constructor(private staffService: StaffService) { }
+  constructor(private staffService: StaffService, private router: Router) { }
 
   ngOnInit(): void {
     this.retrieveStaff();
@@ -54,7 +58,21 @@ export class ListStaffComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
-
+  sortByID(): void {
+    this.staffList.sort((a, b) => a.id_staff - b.id_staff);
+  }
+  
+  sortByName(): void {
+    this.staffList.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  
+  
+  
+  
+  sortByDateOfBirth(): void {
+    this.staffList.sort((a, b) => new Date(a.DateOfBirth).getTime() - new Date(b.DateOfBirth).getTime());
+  }
+  
   downloadExcel() {
     const staffData = this.staffList.map(staff => ({
       'ID': staff.id_staff,
@@ -72,5 +90,7 @@ export class ListStaffComponent implements OnInit {
     const data: Blob = new Blob([excelBuffer], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'});
     fileSaverSaveAs(data, 'staff.xlsx');
   }
-
+  goToChartStaff() {
+    this.router.navigate(['/admin/chartstaff']);
+  }
 }

@@ -15,6 +15,7 @@ import { ListSupplierComponent } from './component/supplier/list-supplier/list-s
 import { UpdateSupplierComponent } from './component/supplier/update-supplier/update-supplier.component';
 import { UpdateStaffComponent } from './component/staff/update-staff/update-staff.component';
 import { EquipmentChartComponent } from './component/equipment/equipment-chart/equipment-chart.component';
+import { ChartStaffComponent } from './component/staff/chart-staff/chart-staff.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,11 @@ const routes: Routes = [
         component:AddStaffComponent
     
         
+      },
+      {
+
+        path:"chartstaf",
+        component:ChartStaffComponent
       }
       ,{
         path:"updateStaff/:id_staff",

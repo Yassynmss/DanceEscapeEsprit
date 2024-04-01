@@ -50,6 +50,18 @@ export class ListEquipmentComponent implements OnInit {
         );
     }
   }
+  sortByID(): void {
+    this.equipments.sort((a, b) => a.id_equipment - b.id_equipment);
+  }
+  
+  sortByName(): void {
+    this.equipments.sort((a, b) => a.name_equipment.localeCompare(b.name_equipment));
+  }
+  
+  sortByQuantity(): void {
+    this.equipments.sort((a, b) => a.quantity - b.quantity);
+  }
+  
 
   searchEquipment(): void {
     this.equipmentService.searchEquipment(this.id_equipment, this.name_equipment, this.etat)
@@ -77,32 +89,6 @@ export class ListEquipmentComponent implements OnInit {
     fileSaverSaveAs(data, 'equipments.xlsx');
   }
 
-  createChart(): void {
-    this.equipmentService.getEquipmentQuantities().subscribe((data: Equipment[]) => {
-      const labels = data.map((equipment: Equipment) => equipment.name_equipment);
-      const quantities = data.map((equipment: Equipment) => equipment.quantity);
   
-      this.chart = new Chart('canvas', {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'Quantity',
-            data: quantities,
-            backgroundColor: 'rgba(0, 123, 255, 0.5)',
-            borderColor: 'rgba(0, 123, 255, 1)',
-            borderWidth: 1
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
-    });
-  }
   
 }
