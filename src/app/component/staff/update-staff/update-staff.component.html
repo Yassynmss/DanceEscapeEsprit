@@ -1,5 +1,5 @@
 <div class="container"></div>
-<form [formGroup]="staffForm" class="staff-form">
+<form [formGroup]="staffForm"  class="mx-auto w-50 p-4 shadow rounded bg-light">
   <h2>Update Staff</h2>
   <div>
     <label for="name">Name</label>
@@ -25,6 +25,16 @@
     <input type="email" id="email" formControlName="email">
   </div>
  
-  <div><button (click)="updateStaff()">Update</button></div>
+ 
+
+  <div class="row">
+   
+    <div class="col-md-6 text-right">
+        <button routerLink="/admin/liststaff">Back</button>
+    </div>
+    <div class="col-md-6 text-left">
+        <button (click)="updateStaff()">Update</button>
+    </div>
+  </div>
 </form>
-<button routerLink="/admin/liststaff">Retour</button>
+
