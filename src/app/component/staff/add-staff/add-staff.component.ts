@@ -1,4 +1,4 @@
-// add-staff.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StaffService } from 'src/app/core/services/StaffService/staff-service.service';
@@ -21,7 +21,6 @@ export class AddStaffComponent implements OnInit {
       DateOfBirth: new FormControl('', Validators.required), 
       number: new FormControl('', [Validators.required, Validators.pattern("^[0-9]{8}$")]), 
       email: new FormControl('', [Validators.required, Validators.email])
-     
     });
   }
 
@@ -31,11 +30,15 @@ export class AddStaffComponent implements OnInit {
         .subscribe({
           next: (res) => {
             console.log(res);
+            alert('Staff member added successfully!');
           },
-          error: (e) => console.error(e)
+          error: (e) => {
+            console.error(e);
+            alert('There was an error adding the staff member. Please check the form for any missing or incorrect information.');
+          }
         });
     } else {
-      console.log('Le formulaire n\'est pas valide');
+      alert('The form is not valid. Please check all fields and try again.');
     }
   }
 }

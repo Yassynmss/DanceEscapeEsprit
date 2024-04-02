@@ -12,7 +12,9 @@
     </div>
     <div class="form-group">
       <label for="etat">Condition:</label>
-      <input type="text" id="etat" formControlName="etat" class="form-control" required>
+      <select id="etat" formControlName="etat" class="form-control">
+        <option *ngFor="let condition of conditions" [value]="condition">{{condition}}</option>
+      </select>
     </div>
     <div class="row">
       <div class="col-md-6 text-left">
@@ -24,5 +26,4 @@
     </div>
   </form>
   
-  </div>
-  
+</div>

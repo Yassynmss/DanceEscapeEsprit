@@ -9,16 +9,16 @@ H1{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40vh; /* Ajustez cette valeur en fonction de vos besoins */
-    width: 60%; /* Ajustez cette valeur en fonction de vos besoins */
-    overflow-x: scroll; /* Permet le défilement horizontal uniquement */
-    margin-left: 300px; /* Augmentez cette valeur pour décaler le contenu vers la droite */
+    height: 40vh; 
+    width: 60%; 
+    overflow-x: scroll; 
+    margin-left: 300px; 
   }
   
   
   
    .button {
-    /* Change la couleur du texte en blanc */
+   
     color: white;
     /* Change la couleur de fond en bleu foncé */
     background-color: #3633CD;

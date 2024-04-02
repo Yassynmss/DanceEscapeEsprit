@@ -1,4 +1,4 @@
-// add-supplier.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SupplierService } from 'src/app/core/services/SupplierService/supplier-service.service';
@@ -30,11 +30,15 @@ export class AddSupplierComponent implements OnInit {
         .subscribe({
           next: (res) => {
             console.log(res);
+            alert('Supplier added successfully!');
           },
-          error: (e) => console.error(e)
+          error: (e) => {
+            console.error(e);
+            alert('There was an error adding the supplier. Please check the form for any missing or incorrect information.');
+          }
         });
     } else {
-      console.log('Le formulaire n\'est pas valide');
+      alert('The form is not valid. Please check all fields and try again.');
     }
   }
 }

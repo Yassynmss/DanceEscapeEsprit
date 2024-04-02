@@ -1,6 +1,6 @@
-// add-equipment.component.ts
+
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms'; // Import Validators
+import { FormGroup, FormControl, Validators } from '@angular/forms'; 
 import { EquipmentServiceService } from 'src/app/core/services/EquipmentService/Equipment-service.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { EquipmentServiceService } from 'src/app/core/services/EquipmentService/
 })
 export class AddEquipmentComponent implements OnInit {
   equipmentForm!: FormGroup;
+  conditions = ['New', 'Like New', 'Good', 'Fair', 'Poor', 'Not Working']; 
 
   constructor(private equipmentService: EquipmentServiceService) { }
 
@@ -17,7 +18,7 @@ export class AddEquipmentComponent implements OnInit {
     this.equipmentForm = new FormGroup({
       name_equipment: new FormControl('', Validators.required), 
       quantity: new FormControl('', Validators.required), 
-      etat: new FormControl('', Validators.required) 
+      etat: new FormControl(this.conditions[0], Validators.required) 
     });
   }
 
@@ -27,11 +28,15 @@ export class AddEquipmentComponent implements OnInit {
         .subscribe({
           next: (res) => {
             console.log(res);
+            alert('Equipment added successfully!');
           },
-          error: (e) => console.error(e)
+          error: (e) => {
+            console.error(e);
+            alert('There was an error adding the equipment. Please check the form for any missing or incorrect information.');
+          }
         });
     } else {
-      console.log('Le formulaire n\'est pas valide');
+      alert('The form is not valid. Please check all fields and try again.');
     }
   }
 }
