@@ -9,6 +9,9 @@ import { VoteComponent } from './vote/vote.component';
 import { AddVoteComponent } from './add-vote/add-vote.component';
 import { FetchpartComponent } from './fetchpart/fetchpart.component';
 import { UpdatevoteComponent } from './updatevote/updatevote.component';
+import { CastvoteComponent } from './castvote/castvote.component';
+import { AppComponent } from './app.component';
+import { PartdetailsComponent } from './partdetails/partdetails.component';
 const routes: Routes = [
   {
     path:"",
@@ -17,6 +20,10 @@ const routes: Routes = [
       path:"",
       component:HomecomponentfrontComponent
     }]
+  },
+  {
+    path:"app",
+    component:AppComponent
   },
   {
     path:"admin",
@@ -40,6 +47,18 @@ component: UpdatevoteComponent},
   component:AddParticipationComponent
 }
 ]
+  },{
+    path:"galaxydance",
+    component:AlltemplatefrontComponent,
+    children:[{
+      path:"vote",
+      component:CastvoteComponent
+    },
+  {
+    path:"participationdet",
+    component:PartdetailsComponent
+  } 
+]
   },
   {
     path:"add",
@@ -62,7 +81,9 @@ component: UpdatevoteComponent},
         ,component: FetchpartComponent
       },
       {path: "updateVote/:id",
-    component: UpdatevoteComponent}
+    component: UpdatevoteComponent},
+    {path: "vote",
+  component: CastvoteComponent}
 
 
 ];

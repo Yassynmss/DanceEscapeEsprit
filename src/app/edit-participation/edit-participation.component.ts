@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Participation } from '../core/particpation';
 import { ParticipationService } from '../Services/participation.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-participation',
@@ -10,39 +11,45 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
   styleUrls: ['./edit-participation.component.css']
 })
 export class EditParticipationComponent {
-participationForm!: FormGroup;
-participation! : Participation;
-constructor(
-  private formBuilder: FormBuilder,
-  private participationService: ParticipationService,
-  private route: ActivatedRoute,
-  private router: Router
-) {
-  this.participationForm = this.formBuilder.group({
-    showtime: ['', Validators.required],
-    participantCode: ['', Validators.required],
-    totalVotes: ['', Validators.required]
-  });
-}
-ngOnInit(): void {
-  const id = this.route.snapshot.params['id']; // Assuming you're passing id through route params
-  this.participationService.getParticipationById(id).subscribe(participation => {
-    this.participation = participation;
-    this.participationForm.patchValue({
-      showtime: participation.showtime,
-      participantCode: participation.participantCode,
-      totalVotes: participation.totalVotes
+  participationForm!: FormGroup;
+  participation!: Participation;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private participationService: ParticipationService,
+    public dialogRef: MatDialogRef<EditParticipationComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.participationForm = this.formBuilder.group({
+      showtime: ['', Validators.required],
+      participantCode: ['', Validators.required],
+      totalVotes: ['', Validators.required]
     });
-  });
-}
-updateParticipation(): void {
-  if (this.participationForm.valid) {
-    const updatedParticipation: Participation = { ...this.participation, ...this.participationForm.value };
-    this.participationService.updateParticipation(updatedParticipation).subscribe(() => {
-      this.router.navigate(['/list']); // Redirect to participation list after successful update
-    });
-  } else {
-    alert('Please fill out all the fields.');
   }
-}
+
+  ngOnInit(): void {
+    this.participationForm.patchValue(this.data.participation);
+  }
+
+  updateParticipation(): void {
+    if (this.participationForm.valid) {
+      const updatedParticipation: Participation = {
+        id_participation: this.data.participation.id_participation, // Include the participation ID
+        ...this.participationForm.value
+      };
+      this.participationService.updateParticipation(updatedParticipation).subscribe({
+        next: () => {
+          alert('Participation updated successfully.');
+          this.dialogRef.close(true); // Close dialog with a success flag
+        },
+        error: (error) => {
+          console.error('Error updating participation:', error);
+          alert('Error updating participation. Please try again.');
+        }
+      });
+    } else {
+      alert('Please fill out all the fields.');
+    }
+  }
+  
 }

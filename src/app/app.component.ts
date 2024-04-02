@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CastvoteComponent } from './castvote/castvote.component';
 
 
 @Component({
@@ -9,4 +11,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'springangular';
   
+constructor(private _dialog: MatDialog){}
+
+openForm(){
+  this._dialog.open(CastvoteComponent);
+}
 }

@@ -22,6 +22,17 @@ import { AddVoteComponent } from './add-vote/add-vote.component';
 import { FetchpartComponent } from './fetchpart/fetchpart.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdatevoteComponent } from './updatevote/updatevote.component';
+import { CastvoteComponent } from './castvote/castvote.component';
+import { MatDialogModule } from "@angular/material/dialog";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatIconModule } from '@angular/material/icon'
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort'; // Import MatSortModule
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { PartdetailsComponent } from './partdetails/partdetails.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +53,9 @@ import { UpdatevoteComponent } from './updatevote/updatevote.component';
     VoteComponent,
     AddVoteComponent,
     FetchpartComponent,
-    UpdatevoteComponent
+    UpdatevoteComponent,
+    CastvoteComponent,
+    PartdetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +63,18 @@ import { UpdatevoteComponent } from './updatevote/updatevote.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
-  ],
+    NgbModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatToolbarModule ,
+    MatIconModule,
+    MatTableModule, 
+    MatPaginatorModule,
+    MatSortModule,
+    MatCardModule,
+    MatFormFieldModule
+
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

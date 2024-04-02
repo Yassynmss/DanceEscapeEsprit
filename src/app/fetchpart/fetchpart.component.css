@@ -47,3 +47,15 @@ button:hover {
 button.router-link-button {
   margin-top: 20px;
 }
+.sort-icon {
+  font-size: 16px; /* Adjust the size as needed */
+  color: #ffffff;
+
+}
+.sort-button {
+  padding: 0; /* Remove default padding */
+  min-width: 0; /* Allow the button to shrink */
+  color: #ffffff;
+  background-color: #ffffff;
+
+}

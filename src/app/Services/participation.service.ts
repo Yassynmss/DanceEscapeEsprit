@@ -15,12 +15,13 @@ export class ParticipationService {
   fetchParticipationList(): Observable<Participation[]> {
     return this.http.get<Participation[]>(this.baseUrl + '/fetchParticipationList');
   }
-  addParticipation(participation: Participation): Observable<Participation> {
-    return this.http.post<Participation>(`${this.baseUrl}/saveParticipation`, participation);
-  }  
+  addParticipationAndAffectUser(participation: Participation, userId: number): Observable<Participation> {
+    return this.http.post<Participation>(`${this.baseUrl}/saveParticipationAndAffect/${userId}`, participation);
+  } 
   updateParticipation(participation: Participation): Observable<Participation> {
     return this.http.put<Participation>(this.baseUrl+`/updateParticipation/${participation.id_participation}`, participation);
   }
+  
   getParticipationById(id: number): Observable<Participation> {
     return this.http.get<Participation>(`${this.baseUrl}/${id}`);
   }
@@ -28,5 +29,9 @@ export class ParticipationService {
   deleteParticipationById(id: number) {
     return this.http.delete<void>(`${this.baseUrl}/deleteParticipationById/${id}`);
   }
+  castVote(fullName: string, email: string, participantCode: number): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/castvote/${fullName}/${email}/${participantCode}`, {});
+  }
+ 
   
 }

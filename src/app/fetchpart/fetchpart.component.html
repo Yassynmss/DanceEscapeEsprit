@@ -1,29 +1,43 @@
 <div>
-    <h2>Participations List</h2>
-    <table>
+  <h2>Participations List</h2>
+  <div class="mat-elevation-z8">
+   Enter Participant Code <input type="text" placeholder="Search by Code" [(ngModel)]="searchParticipantCode" (ngModelChange)="filterParticipations()">
+    <br>
+    <button mat-raised-button (click)="openForm()">Add Participation</button>
+
+   <table>
       <thead>
         <tr>
-          <th>showtime</th>
-          <th>Participant Code </th>
-          <th>Total Votes</th>
+          <th>Showtime</th>
+          <th>Participant Code</th>
+          <th>Total Votes <button mat-icon-button class="sort-button" (click)="toggleSortByTotalVotes()">
+            <mat-icon class="sort-icon" >{{ sortByTotalVotesAsc ? 'arrow_drop_up' : 'arrow_drop_down' }}</mat-icon>
+          </button>
+        </th>
+        
           <th>Update</th>
           <th>Delete</th>
-
         </tr>
       </thead>
       <tbody>
-       <tr *ngFor="let participation of Participations">
+        <tr *ngFor="let participation of filteredParticipations">
           <td>{{ participation.showtime }}</td>
           <td>{{ participation.participantCode }}</td>
-          <td>{{ participation.totalVotes }}</td>
+          <td >{{ participation.totalVotes }}</td>
           <td>
-        <button (click)="editParticipation(participation.id_participation)"> Update </button> 
+            <button (click)="editParticipation(participation)">Update</button>
           </td>
           <td>
-           <button (click)="deleteParticipationById(participation.id_participation)">Delete</button> 
+            <button (click)="deleteParticipation(participation)">Delete</button>
           </td>
-        </tr> 
+        </tr>
       </tbody>
     </table>
+ <!-- Ajout de la pagination -->
+ <mat-paginator [length]="filteredParticipations.length"
+ [pageSizeOptions]="[5, 10, 25, 100]"
+ (page)="onPageChange($event)"
+ showFirstLastButtons>
+</mat-paginator>
   </div>
-  <button routerLink="/admin/add"> Add </button>
+</div>

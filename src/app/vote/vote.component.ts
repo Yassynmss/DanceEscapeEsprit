@@ -3,6 +3,8 @@ import { Vote } from '../core/vote';
 import { VoteService } from '../Services/vote.service';
 import { Participation } from '../core/particpation';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AddVoteComponent } from '../add-vote/add-vote.component';
 
 @Component({
   selector: 'app-vote',
@@ -12,7 +14,7 @@ import { Router } from '@angular/router';
 export class VoteComponent implements OnInit {
 votes : Vote[] = [] ;
 
-constructor(private voteService: VoteService,private router :Router) {}
+constructor(private voteService: VoteService,private router :Router,private _dialog: MatDialog) {}
  
   ngOnInit(): void {
     this.loadVotes();
@@ -30,5 +32,9 @@ constructor(private voteService: VoteService,private router :Router) {}
   deletVoteById(id: number): void {
     this.voteService.deletVoteById(id).subscribe( ()=> {this.loadVotes(); });
   }
-  
+ 
+
+  openForm(){
+    this._dialog.open(AddVoteComponent);
+  }
 }
