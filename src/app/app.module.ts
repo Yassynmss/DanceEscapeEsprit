@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
 import { UpdateStaffComponent } from './component/staff/update-staff/update-staff.component';
 import { EquipmentChartComponent } from './component/equipment/equipment-chart/equipment-chart.component';
 import { ChartStaffComponent } from './component/staff/chart-staff/chart-staff.component';
+import { LogisticComponent } from './Logistic/logistic/logistic.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { ChartStaffComponent } from './component/staff/chart-staff/chart-staff.c
          UpdateStaffComponent,
          EquipmentChartComponent,
          ChartStaffComponent,
+         LogisticComponent,
  
     
 

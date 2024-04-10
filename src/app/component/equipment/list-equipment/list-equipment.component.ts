@@ -5,6 +5,7 @@ import { saveAs as fileSaverSaveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 import { Chart } from 'chart.js';
 import { Router } from '@angular/router';
+import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 @Component({
 
   selector: 'app-list-equipment',
@@ -16,13 +17,40 @@ export class ListEquipmentComponent implements OnInit {
   id_equipment: number | null = null;
   name_equipment: string | null = null;
   etat: string | null = null;
-
+  logistic: string | null = null;
   chart!: Chart; 
 
   constructor(private equipmentService: EquipmentServiceService, private router: Router) { } 
 
-  ngOnInit(): void {
-    this.retrieveEquipments();
+  conditions = ['New', 'Like New', 'Good', 'Fair', 'Poor'];
+  searchTerm$ = new Subject<void>();
+  
+  ngOnInit() {
+    this.searchTerm$.pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    ).subscribe(() => {
+      this.searchEquipment();
+    });
+  
+    // Initiate the search with an empty string or any default value
+    this.searchTerm$.next();
+  }
+  
+  searchEquipment(): void {
+    if (this.etat === '') {
+      // If the selected condition is empty, retrieve all equipments
+      this.retrieveEquipments();
+    } else {
+      this.equipmentService.searchEquipment(this.id_equipment, this.name_equipment, this.etat)
+        .subscribe(
+          data => {
+            this.equipments = data;
+            console.log(data);
+          },
+          error => console.error(error)
+        );
+    }
   }
 
 
@@ -63,16 +91,7 @@ export class ListEquipmentComponent implements OnInit {
   }
   
 
-  searchEquipment(): void {
-    this.equipmentService.searchEquipment(this.id_equipment, this.name_equipment, this.etat)
-      .subscribe(
-        data => {
-          this.equipments = data;
-          console.log(data);
-        },
-        error => console.error(error)
-      );
-  }
+
   downloadExcel() {
     const equipmentData = this.equipments.map(equipment => ({
       'ID': equipment.id_equipment,
@@ -89,6 +108,20 @@ export class ListEquipmentComponent implements OnInit {
     fileSaverSaveAs(data, 'equipments.xlsx');
   }
 
-  
+  // Dans ListEquipmentComponent
+increaseQuantity(equipment: Equipment): void {
+  this.equipmentService.increaseEquipmentQuantity(equipment.id_equipment).subscribe(updatedEquipment => {
+      // Mettez à jour l'équipement dans votre liste d'équipements
+      this.retrieveEquipments();
+  });
+}
+
+decreaseQuantity(equipment: Equipment): void {
+  this.equipmentService.decreaseEquipmentQuantity(equipment.id_equipment).subscribe(updatedEquipment => {
+      // Mettez à jour l'équipement dans votre liste d'équipements
+      this.retrieveEquipments();
+  });
+}
+
   
 }

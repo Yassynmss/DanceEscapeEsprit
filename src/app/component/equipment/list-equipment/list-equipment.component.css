@@ -1,6 +1,7 @@
 .table {
     border-collapse: collapse;
     width: 100%;
+    
   }
   
   th, td {
@@ -30,4 +31,30 @@
 
 .sort-button:hover {
   background-color: grey;
+}
+.btn {
+  font-size: 20px; /* Rend le texte du bouton plus grand */
+  width: 40px; /* Rend le bouton plus large */
+  height: 40px; /* Rend le bouton plus haut */
+}
+.btn-success {
+  background-color: green; /* Rend le bouton d'augmentation vert */
+}
+.btn-danger {
+  background-color: red; /* Rend le bouton de diminution rouge */
+}
+.centered-table {
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.centered-table th,
+.centered-table td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.centered-table tr:nth-child(even) {
+  background-color: #f2f2f2;
 }

@@ -22,7 +22,10 @@ export class StaffService {
   updateStaff(id_staff: number, staff: Staff): Observable<Staff> {
     return this.http.put<Staff>(`${this.apiUrl}/updateStaff/${id_staff}`, staff);
   }
-  
+
+countStaff(): Observable<number> {
+  return this.http.get<number>(`${this.apiUrl}/countStaff`);
+}
 
   deleteStaff(id_staff: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/deleteStaff/${id_staff}`);

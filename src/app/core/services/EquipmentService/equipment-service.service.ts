@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Equipment } from '../../../core/models/equipment/equipment';
+import { Logistic } from '../../models/logistic/logistic';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,9 @@ export class EquipmentServiceService {
   getAllEquipments(): Observable<Equipment[]> {
     return this.http.get<Equipment[]>(`${this.apiUrl}/getAllEquipments`);
   }
-
+  getLogistics(): Observable<Logistic[]> {
+    return this.http.get<Logistic[]>(`${this.apiUrl}/getAllLogistics`);
+  }
   updateEquipment(id_equipment: number, equipment: Equipment): Observable<any> {
     return this.http.put(`${this.apiUrl}/updateEquipment/${id_equipment}`, equipment);
   }
@@ -59,6 +62,17 @@ export class EquipmentServiceService {
   getEquipmentQuantities(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/getEquipmentQuantities`);
   }
+  countEquipment(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/countEquipment`);
+  }
+  increaseEquipmentQuantity(id_equipment: number): Observable<Equipment> {
+    return this.http.post<Equipment>(`${this.apiUrl}/increaseEquipmentQuantity/${id_equipment}`, {}, { responseType: 'json' });
+}
+
+decreaseEquipmentQuantity(id_equipment: number): Observable<Equipment> {
+    return this.http.post<Equipment>(`${this.apiUrl}/decreaseEquipmentQuantity/${id_equipment}`, {}, { responseType: 'json' });
+}
+
 }
 
 

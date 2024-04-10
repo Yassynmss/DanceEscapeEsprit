@@ -4,6 +4,7 @@ import { Staff } from 'src/app/core/models/staff/staff';
 import { saveAs as fileSaverSaveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 import { Router } from '@angular/router';
+import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 
 
 
@@ -20,10 +21,37 @@ export class ListStaffComponent implements OnInit {
 
   constructor(private staffService: StaffService, private router: Router) { }
 
-  ngOnInit(): void {
-    this.retrieveStaff();
-  }
 
+  jobs = ['TECHNICAL_SONG', 'ENGINEER_SONG', 'SECURITY', 'NURSE', 'DOCTOR', 'CLEANER', 'MAKEUP_ARTIST', 'TECHNICAL', 'COACH', 'DANCE_COACH', 'ENGINEER', 'RH', 'DJ', 'ORGANIZER', 'DRIVER', 'CHIEF'];
+  searchTerm$ = new Subject<void>();
+  
+  ngOnInit() {
+    this.searchTerm$.pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    ).subscribe(() => {
+      this.searchStaff();
+    });
+  
+
+    this.searchTerm$.next();
+  }
+  
+  searchStaff(): void {
+    if (this.job === '' && this.name === '') {
+     
+      this.retrieveStaff();
+    } else {
+      this.staffService.searchStaff(this.id_staff, this.name, this.job)
+        .subscribe(
+          data => {
+            this.staffList = data;
+            console.log(data);
+          },
+          error => console.error(error)
+        );
+    }
+  }
   retrieveStaff(): void {
     this.staffService.getAllStaff()
       .subscribe({
@@ -48,16 +76,7 @@ export class ListStaffComponent implements OnInit {
     }
   }
 
-  searchStaff(): void {
-    this.staffService.searchStaff(this.id_staff, this.name, this.job)
-      .subscribe({
-        next: (data) => {
-          this.staffList = data;
-          console.log(data);
-        },
-        error: (e) => console.error(e)
-      });
-  }
+  
   sortByID(): void {
     this.staffList.sort((a, b) => a.id_staff - b.id_staff);
   }

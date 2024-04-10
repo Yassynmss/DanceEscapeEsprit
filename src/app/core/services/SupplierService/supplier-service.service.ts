@@ -20,7 +20,7 @@ export class SupplierService {
   }
 
   updateSupplier(id_supplier: number, supplier: Supplier): Observable<Supplier> {
-    return this.http.put<Supplier>(`${this.apiUrl}/updateSupplier/${id_supplier}`, supplier);
+    return this.http.put<Supplier>(`${this.apiUrl}/updatesupplier/${id_supplier}`, supplier);
   }
 
   deleteSupplier(id_supplier: number): Observable<void> {
@@ -45,6 +45,9 @@ export class SupplierService {
       params = params.append('name', name);
     }
     return this.http.get<Supplier[]>(url, { params: params });
+  }
+  countSupplier(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/countSupplier`);
   }
 }
 

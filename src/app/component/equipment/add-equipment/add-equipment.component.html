@@ -15,7 +15,9 @@
       <select id="etat" formControlName="etat" class="form-control">
         <option *ngFor="let condition of conditions" [value]="condition">{{condition}}</option>
       </select>
-    </div>
+      
+    <!-- ... autres champs ... -->
+ 
     <div class="row">
       <div class="col-md-6 text-left">
         <button routerLink="/admin/listequipment" class="btn btn-secondary mt-2">CANCEL</button>
@@ -23,6 +25,7 @@
       <div class="col-md-6 text-right">
         <button type="submit" class="btn btn-success">ADD</button>
       </div>
+    </div>
     </div>
   </form>
   

@@ -1,8 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'; 
+import { Equipment } from 'src/app/core/models/equipment/equipment';
 import { EquipmentServiceService } from 'src/app/core/services/EquipmentService/Equipment-service.service';
-
+import { Logistic } from 'src/app/core/models/logistic/logistic';
 @Component({
   selector: 'app-add-equipment',
   templateUrl: './add-equipment.component.html',
@@ -13,13 +14,15 @@ export class AddEquipmentComponent implements OnInit {
   conditions = ['New', 'Like New', 'Good', 'Fair', 'Poor', 'Not Working']; 
 
   constructor(private equipmentService: EquipmentServiceService) { }
-
+ 
   ngOnInit(): void {
     this.equipmentForm = new FormGroup({
       name_equipment: new FormControl('', Validators.required), 
       quantity: new FormControl('', Validators.required), 
-      etat: new FormControl(this.conditions[0], Validators.required) 
+      etat: new FormControl(this.conditions[0], Validators.required),
+    
     });
+
   }
 
   saveEquipment(): void {

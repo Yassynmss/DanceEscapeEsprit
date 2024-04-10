@@ -3,6 +3,7 @@ import { SupplierService } from 'src/app/core/services/SupplierService/supplier-
 import { Supplier } from 'src/app/core/models/supplier/supplier';
 import * as XLSX from 'xlsx';
 import { saveAs as fileSaverSaveAs } from 'file-saver';
+import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-list-supplier',
@@ -13,13 +14,29 @@ export class ListSupplierComponent implements OnInit {
   supplierList: Supplier[] = [];
   id_supplier: number | null = null;
   name: string | null = null;
-
+  searchTerm$ = new Subject<string>();
   constructor(private supplierService: SupplierService) { }
-
-  ngOnInit(): void {
-    this.retrieveSuppliers();
+  searchTerm: string = '';
+  
+  
+  ngOnInit() {
+    this.searchTerm$.pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    ).subscribe(term => {
+      this.supplierService.searchSupplier(null, term).subscribe(results => {
+        this.supplierList = results;
+      });
+    });
+  
+    // Initiate the search with an empty string or any default value
+    this.searchTerm$.next(this.searchTerm);
   }
-
+  
+  onSearchTermChange() {
+    this.searchTerm$.next(this.searchTerm);
+  }
+  
   retrieveSuppliers(): void {
     this.supplierService.getAllSuppliers()
       .subscribe({

@@ -1,15 +1,21 @@
 <div class="container mt-5">
   <h2 class="text-center">List of equipments</h2>
-  <div class="search-form">
-    <input [(ngModel)]="id_equipment" placeholder="ID ">
-    <input [(ngModel)]="name_equipment" placeholder="Equipment name">
-    <input [(ngModel)]="etat" placeholder="Condition">
-    <button (click)="searchEquipment()">Search</button>
-  </div>
-  <table class="table table-striped mx-auto w-75">
+  <!-- Dans votre template HTML -->
+<div class="search-form">
+
+  <input [(ngModel)]="name_equipment" (ngModelChange)="searchEquipment()" placeholder="Equipment name">
+ <!-- Dans votre template HTML -->
+<label for="etat">Condition :</label>
+<select id="etat" [(ngModel)]="etat" (ngModelChange)="searchEquipment()">
+  <option value="">All</option>
+  <option *ngFor="let condition of conditions" [value]="condition">{{condition}}</option>
+</select>
+</div>
+
+  <table class="table table-striped mx-auto w-75 centered-table">
     <thead>
       <tr>
-        <th class="sort-button" (click)="sortByID()">Equipment ID</th>
+        
         <th class="sort-button" (click)="sortByName()">Equipment name</th>
         <th class="sort-button" (click)="sortByQuantity()">Quantity</th>
         <th>Condition</th>
@@ -18,13 +24,22 @@
     </thead>
     <tbody>
       <tr *ngFor="let equipment of equipments">
-        <td>{{ equipment.id_equipment }}</td>
+       
         <td>{{ equipment.name_equipment }}</td>
-        <td>{{ equipment.quantity }}</td>
+        <td>
+          
+          <button class="btn btn-success" (click)="increaseQuantity(equipment)">+</button>
+          <span class="mx-3">{{ equipment.quantity }}</span>
+          <button class="btn btn-danger" (click)="decreaseQuantity(equipment)">-</button>
+        </td>
+        
         <td>{{ equipment.etat }}</td>
+       
         <td>
           <button (click)="removeEquipment(equipment)">Delete</button>
           <button class="update-button" routerLink="/admin/updateEquipment/{{equipment.id_equipment}}">Update</button>
+      
+        
         </td>
       </tr>
     </tbody>
