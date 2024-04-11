@@ -29,6 +29,7 @@ import { HomeComponent } from './components/board/home/home.component';
 import { MatDialogModuleComponent } from './mat-dialog-module/mat-dialog-module.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './components/profile/profile.component';
+import { BanUserComponent } from './components/ban-user/ban-user.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     BoardUserComponent,
     HomeComponent,
     MatDialogModuleComponent,
-    ProfileComponent
+    ProfileComponent,
+    BanUserComponent
   ],
   imports: [
     BrowserModule,

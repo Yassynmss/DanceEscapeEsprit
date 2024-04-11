@@ -24,7 +24,19 @@ export class UserService {
   updateUserProfile(updatedUser: User): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}/profile`, updatedUser);
   }
+
   getRolesStats(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/roles-stats`);
+  }
+
+  banUser(email: string, banDurationDays: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/banUser/${email}/${banDurationDays}`, {});
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/all`);
+  }
+  updateBanStatus(email: string, isBanned: boolean): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/banUser/${email}`, { isBanned });
   }
 }

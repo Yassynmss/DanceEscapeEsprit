@@ -14,6 +14,8 @@ export class User {
      commune?: string; 
      language?: string; 
      expertise?: string;
+     banExpirationDate?:number;
+     banned?:boolean;
      roles?: Role[];
      resetPasswordToken?: string;
    }

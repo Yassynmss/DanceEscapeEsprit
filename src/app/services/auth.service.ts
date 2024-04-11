@@ -12,13 +12,13 @@ const API_URL = 'http://localhost:8080/api/test/';
 })
 export class AuthService {
   private tokenKey = 'token';
+  private roleKey = 'userRole';
   constructor(private authenticationClient: AuthenticationService, private router: Router, private Http: HttpClient) { }
   public login(payload: MfaVerificationResponse): void {
-    if(payload.tokenValid && !payload.mfaRequired){
+    if (payload.tokenValid && !payload.mfaRequired) {
       localStorage.clear();
       localStorage.setItem(this.tokenKey, payload.jwt);
-      
-  
+      this.router.navigate(['/home']);
     }
   }
   // Méthode pour récupérer les rôles depuis le backend
@@ -50,6 +50,7 @@ export class AuthService {
 
   public logout() {
     localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem(this.roleKey);
     this.router.navigate(['/login']);
   }
 
@@ -123,4 +124,9 @@ export class AuthService {
   getAdminBoard(): Observable<any> {
     return this.Http.get(API_URL + 'admin', { responseType: 'text' });
   }
+
+  getUserRoleByEmail(email: string): Observable<string> {
+    return this.Http.get<string>(`${this.baseUrl}/role/${email}`);
+  }
+  
 }

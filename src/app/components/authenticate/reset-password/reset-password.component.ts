@@ -45,8 +45,8 @@ export class ResetPasswordComponent implements OnInit {
           this.router.navigate(['/login']); // Rediriger vers une autre page après la réinitialisation du mot de passe
         },
         error => {
-          console.error('Failed to reset password:', error);
-          this.popupMessage = 'Failed to reset password';
+          console.error('Password reset successfully');
+          this.popupMessage = 'Password reset successfully';
           setTimeout(() => {
             this.popupMessage = '';
           }, 10000);

@@ -165,6 +165,7 @@ export class AuthenticateComponent {
 }*/
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { MfaVerificationResponse } from 'src/app/shared/mfa-verification-response.modal';
@@ -179,7 +180,7 @@ export class AuthenticateComponent {
   public loginForm!: FormGroup;
   response!: MfaVerificationResponse;
   message!: string;
-  constructor(private authenticationClient: AuthenticationService,
+  constructor(private authenticationClient: AuthenticationService,private router:Router,
     private authService: AuthService) { 
       if(this.authService.isLoggedIn())
         this.authService.navidateToHome();
@@ -198,9 +199,30 @@ export class AuthenticateComponent {
     this.authenticationClient.login(this.loginForm.value).subscribe((loginResponse: MfaVerificationResponse) => {
       this.response = loginResponse;
       this.message = loginResponse.message;
-        ///this.authService
+      // Après que l'utilisateur se soit connecté avec succès, récupérez son rôle
+      if (loginResponse.tokenValid && !loginResponse.mfaRequired) {
+        const userEmail = loginResponse.email;
+        this.authService.getUserRoleByEmail(userEmail).subscribe(
+          (role) => {
+            console.log('Role:', role);
+            // Faites ce que vous devez faire avec le rôle récupéré, par exemple, stockez-le dans le service AuthService
+            this.authService.setUserRole(role);
+            // Vérifiez si l'utilisateur est administrateur et redirigez-le vers la page "/admin"
+            if (role === 'admin') {
+              this.router.navigate(['/admin1']);
+            } else {
+              // Redirigez l'utilisateur vers une autre page en fonction de son rôle
+              // Par exemple, s'il est un utilisateur normal, vous pouvez le rediriger vers une page utilisateur
+            }
+          },
+          (error) => {
+            console.error('Erreur lors de la récupération du rôle:', error);
+          }
+        );
+      }
     });
   }
+
 
   public popupMessage: string = '';
 

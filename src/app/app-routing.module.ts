@@ -15,6 +15,7 @@ import { BoardModeratorComponent } from './components/board/board-moderator/boar
 import { BoardAdminComponent } from './components/board/board-admin/board-admin.component';
 import { StatsComponent } from './stats/stats.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { BanUserComponent } from './components/ban-user/ban-user.component';
 const routes: Routes = [
 
   {
@@ -56,13 +57,27 @@ const routes: Routes = [
   },
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
-  { path: 'admin', component: BoardAdminComponent },
+  { path: 'admin', component: AlltemplatebackComponent },
   {path: 'profile' , component:ProfileComponent},
   {
     path:"stats",
     component:StatsComponent 
-    }
+    },
+    {path:'banuser' , component:BanUserComponent}
 ];
+
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+
+
+
+
+
 /*const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: AuthenticateComponent },
@@ -73,9 +88,3 @@ const routes: Routes = [
   { path: 'admin', component: BoardAdminComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];*/
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
