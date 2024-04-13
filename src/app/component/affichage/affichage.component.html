@@ -1,0 +1,78 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap">
+<link rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap-icons.css">
+<link rel="stylesheet" href="/assets/FrontOffice/assets/css/templatemo-festava-live.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+
+<app-headerfront></app-headerfront>      
+<app-navbarcomponentfront></app-navbarcomponentfront> 
+
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4 text-left">
+    </div>
+  
+    <div class="col-4 text-center">
+      <h3>List of Feedbacks and Scores</h3>
+    </div>
+    <div class="col-4 text-right">
+      <button class="btn btn-primary" routerLink="/add">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i> Add Feedback
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-100 mb-100">
+    <div class="row">
+        <!-- Loop through feedbacks and display each feedback in a card -->
+        <div class="col-md-12" *ngFor="let feedback of pagedFeedbacks">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <span class="label label-info">State: {{ feedback.state }}</span> 
+                    <span class="action-icons">
+                        <!-- Update button -->
+                        <a class="like-button" [routerLink]="['/update', feedback.id_resandfeed]"><i class="fa fa-pencil"></i> </a>
+                        <!-- Delete button -->
+                        <a class="like-button" (click)="deleteFeedback(feedback.id_resandfeed)"><i class="fa fa-trash"></i> </a>
+                        <!-- Like button -->
+                        <a class="like-button" (click)="likePost(feedback.id_resandfeed)"><i class="fa fa-heart"></i>  ({{ likeCount }})</a>
+                    </span>
+                    <h5 class="card-title">Final Score: <span class="badge badge-danger">{{ feedback.finale_score }}</span></h5>
+                    <h4 class="card-text">Semifinal Score: <span class="badge badge-warning">{{ feedback.semifinal_score }}</span></h4>
+                    <p class="card-text">Technique Score: <span class="badge badge-primary">{{ feedback.technique_score }}</span></p>
+                    <p class="card-text">Creativity Score: <span class="badge badge-secondary">{{ feedback.creative_score }}</span></p>
+                    <p class="card-text">Presentation Score: <span class="badge badge-success">{{ feedback.presentation_score }}</span></p>
+                    <p class="m-b-5 m-t-10">{{ feedback.feedback }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination controls outside the loop -->
+    <div class="row justify-content-center">
+      <div class="col-auto">
+          <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+      </div>
+  </div>
+
+<button class="btn float-right" [routerLink]="['/view']">
+  <i class="fa fa-table" aria-hidden="true"></i> View Feedbacks in Table
+</button>
+</div>
+<br>
+
+<app-footerfront></app-footerfront>
+
+<script src="/assets/FrontOffice/assets/js/jquery.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/bootstrap.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/jquery.sticky.js"></script>
+<script src="/assets/FrontOffice/assets/js/click-scroll.js"></script>
+<script src="/assets/FrontOffice/assets/js/custom.js"></script>

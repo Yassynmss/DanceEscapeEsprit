@@ -15,6 +15,7 @@ export class MfaComponent implements OnInit {
   @Input("email")
   email!: string;
   message!: string;
+  isEvaluator: boolean = false;
   public totpForm!: FormGroup;
   
   constructor(private authenticationClient: AuthenticationService,
@@ -59,7 +60,9 @@ export class MfaComponent implements OnInit {
           // Redirection en fonction du rôle de l'utilisateur
           if (response.roles.some(role => role.name === 'ADMIN')) {
             this.router.navigateByUrl('/admin1');
-          } else {
+          } else if (response.roles.some(role => role.name === 'EVALUATOR')) {
+            this.router.navigateByUrl('/front');
+          }else {
             this.router.navigateByUrl('/');
           }
         }

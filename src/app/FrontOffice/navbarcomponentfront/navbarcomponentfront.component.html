@@ -4,6 +4,8 @@
             Festava Live
         </a>
 
+        <a href="ticket.html" class="btn custom-btn d-lg-none ms-auto me-4">Buy Ticket</a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -19,8 +21,9 @@
                     <a class="nav-link click-scroll" href="#section_2">About</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_3">Artists</a>
+                <!-- Display the "FeedBack And Result" link only if the user is logged in and has the role of evaluator -->
+                <li class="nav-item" *ngIf="isLoggedIn && isEvaluator">
+                    <a class="nav-link click-scroll" href="#section_3" routerLink="/affichage">FeedBack And Result</a>
                 </li>
 
                 <li class="nav-item">
@@ -34,19 +37,18 @@
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="#section_6">Contact</a>
                 </li>
-                
-               <!-- Display only if the user is an admin -->
-<!-- Display only if the user is an admin -->
-<li class="nav-item" *ngIf="isAdmin">
-    <a class="nav-link click-scroll" href="admin">ADMIN</a>
-</li>
 
-
+                <!-- Display only if the user is an admin -->
+                <li class="nav-item" *ngIf="isAdmin">
+                    <a class="nav-link click-scroll" href="admin">ADMIN</a>
+                </li>
             </ul>
 
-            <!-- Afficher le bouton de déconnexion uniquement si l'utilisateur est connecté -->
+            <!-- Display the login and sign up buttons only if the user is not logged in -->
             <a *ngIf="!isLoggedIn" href="login" class="btn custom-btn d-lg-block d-none">Login</a>
             <a *ngIf="!isLoggedIn" href="register" class="btn custom-btn d-lg-block d-none">Sign up</a>
+
+            <!-- Display the logout button only if the user is logged in -->
             <button *ngIf="isLoggedIn" class="btn custom-btn d-lg-block d-none" (click)="logout()">Logout</button>
         </div>
     </div>

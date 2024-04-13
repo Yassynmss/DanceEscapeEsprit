@@ -16,6 +16,10 @@ import { BoardAdminComponent } from './components/board/board-admin/board-admin.
 import { StatsComponent } from './stats/stats.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BanUserComponent } from './components/ban-user/ban-user.component';
+import { AffichageComponent } from './component/affichage/affichage.component';
+import { PostFeedbackComponent } from './component/post-feedback/post-feedback.component';
+import { UpdateFeedbackComponent } from './component/update-feedback/update-feedback.component';
+import { AllFeedbackComponent } from './component/all-feedback/all-feedback.component';
 const routes: Routes = [
 
   {
@@ -63,7 +67,29 @@ const routes: Routes = [
     path:"stats",
     component:StatsComponent 
     },
-    {path:'banuser' , component:BanUserComponent}
+    {path:'banuser' , component:BanUserComponent},
+    {
+      path:"affichage",
+      component:AffichageComponent
+   
+     },
+     {
+      path:"add",
+      component:PostFeedbackComponent
+    },
+    {
+      path:"update/:id_resandfeed",
+      component:UpdateFeedbackComponent
+    },
+    {
+      path:"addfeedbackandresult",
+      component:PostFeedbackComponent
+    },
+    {
+      path:"view",
+      component:AllFeedbackComponent
+    }
+
 ];
 
 
@@ -71,6 +97,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
 
 

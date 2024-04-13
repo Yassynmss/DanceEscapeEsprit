@@ -3,9 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MfaVerificationResponse } from '../shared/mfa-verification-response.modal';
-
 import { MfaVerificationRequest } from '../shared/mfa-verification-request.model';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { UserAuthServiceService } from './auth/user-auth-service.service';
 import { Router } from '@angular/router';
 @Injectable({

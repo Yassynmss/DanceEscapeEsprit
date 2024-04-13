@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedbacks</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/FrontOffice/assets/css/templatemo-festava-live.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+
+</head>
+<body>
+
+<!-- Header and Navbar -->
+<app-headerfront></app-headerfront>      
+<app-navbarcomponentfront></app-navbarcomponentfront> 
+
+<br>
+<div class="text-center">
+  <h2>List of Feedbacks and Scores</h2>
+</div>
+
+<!-- Search Form -->
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="container mt-4">
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <input type="number" formControlName="techniqueScore" id="techniqueScore" class="form-control form-control-sm" placeholder="Technique">
+    </div>
+    <div class="form-group col-md-2">
+      <input type="number" formControlName="creativeScore" id="creativeScore" class="form-control form-control-sm" placeholder="Creative">
+    </div>
+    <div class="form-group col-md-2">
+      <input type="number" formControlName="presentationScore" id="presentationScore" class="form-control form-control-sm" placeholder="Presentation">
+    </div>
+    <div class="form-group col-md-2">
+      <input type="number" formControlName="finaleScore" id="finaleScore" class="form-control form-control-sm" placeholder="Finale">
+    </div>
+    <div class="form-group col-md-2">
+      <input type="number" formControlName="semifinalScore" id="semifinalScore" class="form-control form-control-sm" placeholder="Semifinal">
+    </div>
+    
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <input type="text" formControlName="feedback" id="feedback" class="form-control form-control-sm" placeholder="Feedback">
+    </div>
+    <div class="form-group col-md-4">
+      <select formControlName="state" id="state" class="form-control form-control-sm">
+        <option value="">Select State</option>
+        <option value="PENDING">PENDING</option>
+        <option value="REJECTED">REJECTED</option>
+        <option value="APPROVED">APPROVED</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4 d-flex align-items-center">
+      <button type="submit" class="btn btn-primary btn-sm">
+        <i class="fa fa-search" aria-hidden="true"></i> 
+      </button>
+    </div>
+  </div>
+</form>
+
+<!-- Table -->
+<div class="container mt-4">
+  <table class="table feedback-table" id="table-data" >
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Technique</th>
+        <th scope="col">Creativity</th>
+        <th scope="col">Presentation</th>
+        <th scope="col">Semi final Score</th>
+        <th scope="col">Final Score</th>
+        <th scope="col" width="230">Feedback</th>
+        <th scope="col">State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of ExcelData">
+        <td>{{ data.technique_score }}</td>
+        <td>{{ data.creative_score }}</td>
+        <td>{{ data.presentation_score }}</td>
+        <td>{{ data.semifinal_score }}</td>
+        <td>{{ data.finale_score }}</td>
+        <td>{{ data.feedback }}</td>
+
+        <td><span class="badge badge-info">{{ data.state }}</span></td> 
+
+      </tr>
+      <tr *ngFor="let feedback of top3Feedbacks">    
+        <td>{{ feedback.technique_score }}</td>
+        <td>{{ feedback.creative_score }}</td>
+        <td>{{ feedback.presentation_score }}</td>
+        <td>{{ feedback.semifinal_score }}</td>
+        <td>{{ feedback.finale_score }}</td>
+        <td>{{ feedback.feedback }}</td>
+        <td><span class="badge badge-info">{{ feedback.state }}</span></td> </tr>
+
+
+    
+      <tr *ngFor="let feedback of feedbacks">
+        <td>{{ feedback.technique_score }}</td>
+        <td>{{ feedback.creative_score }}</td>
+        <td>{{ feedback.presentation_score }}</td>
+        <td>{{ feedback.semifinal_score }}</td>
+        <td>{{ feedback.finale_score }}</td>
+        <td>{{ feedback.feedback }}</td>
+        <td><span class="badge badge-info">{{ feedback.state }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+
+
+
+<!-- File input and buttons -->
+<div class="container mt-4">
+  <input type="file" (change)="ReadExcel($event)"accept="*">
+  <button (click)="excelExport()" class="btn btn-primary">
+    <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel Export
+  </button>
+  <button (click)="generatePDF()" class="btn btn-danger">
+    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Generate PDF
+  </button>
+</div>
+
+<!-- Top feedbacks buttons -->
+<div class="container mt-4">
+  <button class="btn btn-primary top-feedbacks-button mr-2" (click)="loadTop10Feedbacks()">
+    <i class="fa fa-star" aria-hidden="true"></i> Top 10 Feedbacks
+  </button>
+  <button class="btn btn-primary top-feedbacks-button" (click)="loadTop3Feedbacks()">
+    <i class="fa fa-star" aria-hidden="true"></i> Top 3 Feedbacks
+  </button>
+</div>
+
+<!-- Footer -->
+<app-footerfront></app-footerfront>
+
+<!-- JavaScript -->
+<script src="/assets/FrontOffice/assets/js/jquery.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/bootstrap.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/jquery.sticky.js"></script>
+<script src="/assets/FrontOffice/assets/js/click-scroll.js"></script>
+<script src="/assets/FrontOffice/assets/js/custom.js"></script>
+
+</body>
+</html>

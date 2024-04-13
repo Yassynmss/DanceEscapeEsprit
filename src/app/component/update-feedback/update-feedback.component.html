@@ -1,0 +1,71 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap">
+<link rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap-icons.css">
+<link rel="stylesheet" href="/assets/FrontOffice/assets/css/templatemo-festava-live.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+<app-headerfront></app-headerfront>      
+<app-navbarcomponentfront></app-navbarcomponentfront> 
+
+<div class="container" [formGroup]="validateForm">
+  <h2>Update Feedback</h2>
+  <!-- Formulaire de saisie des scores et des commentaires -->
+  <div>
+      <label for="technique_score">Technique Score:</label>
+      <input type="number" id="technique_score" formControlName="technique_score">
+      
+  </div>
+
+  <div>
+      <label for="creative_score">Creative Score:</label>
+      <input type="number" id="creative_score" formControlName="creative_score">
+  </div>
+
+  <div>
+      <label for="presentation_score">Presentation Score:</label>
+      <input type="number" id="presentation_score" formControlName="presentation_score">
+  </div>
+
+  <div>
+    <label for="finale_score">Final Score:</label>
+    <input type="number" id="finale_score" formControlName="finale_score">
+</div>  
+
+  <div>
+      <label for="semifinal_score">Semifinal Score:</label>
+      <input type="number" id="semifinal_score" formControlName="semifinal_score">
+  </div>
+
+  <div>
+      <label for="feedback">Feedback:</label>
+      <input type="text" id="feedback" formControlName="feedback">
+  </div>
+
+  <div>
+      <label for="state">State:</label>
+      <select id="state" formControlName="state">
+          <option value="">Select a state</option>
+          <option value="PENDING">PENDING</option>
+          <option value="REJECTED">REJECTED</option>
+          <option value="APPROVED">APPROVED</option>
+      </select>
+  </div>
+  
+  <!-- Champs supplémentaires pour l'ID de la participation et l'ID du jury -->
+  
+  <button (click)="updateFeedback()" class="btn custom-btn  ms-auto me-4">Update Feedback</button>
+
+</div>
+<br>
+<app-footerfront></app-footerfront>
+</body>
+<script src="/assets/FrontOffice/assets/js/jquery.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/bootstrap.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/jquery.sticky.js"></script>
+<script src="/assets/FrontOffice/assets/js/click-scroll.js"></script>
+<script src="/assets/FrontOffice/assets/js/custom.js"></script>
