@@ -82,7 +82,7 @@
                 <span>
                   <i class="ti ti-login"></i>
                 </span>
-                <a href="login" class="btn custom-btn d-lg-block d-none">Login</a>
+                <a *ngIf="!isLoggedIn" href="login" class="btn custom-btn d-lg-block d-none">Login</a>
                
               </a>
             </li>
@@ -92,8 +92,9 @@
                   <i class="ti ti-user-plus"></i>
                 </span>
               
-            <a href="register" class="btn custom-btn d-lg-block d-none">Sign up</a>
+                <a *ngIf="!isLoggedIn" href="register" class="btn custom-btn d-lg-block d-none">Sign up</a>
               </a>
+              <button *ngIf="isLoggedIn" class="btn custom-btn d-lg-block d-none" (click)="logout()">Logout</button>
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
