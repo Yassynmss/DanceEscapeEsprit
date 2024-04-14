@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { StaffService } from 'src/app/core/services/StaffService/staff-service.service';
-import { Staff } from 'src/app/core/models/staff/staff';
-
-
+import { Staff, Job } from 'src/app/core/models/staff/staff';
 import { Chart, BarController, BarElement, LinearScale, CategoryScale } from 'chart.js';
 Chart.register(BarController, BarElement, LinearScale, CategoryScale);
 
@@ -19,18 +16,20 @@ export class ChartStaffComponent implements OnInit {
 
   ngOnInit(): void {
     this.staffService.getAllStaff().subscribe(data => {
-      const labels = data.map((staff: Staff) => staff.name);
-      const ages = data.map((staff: Staff) => this.calculateAge(staff.DateOfBirth.toString()));
+      const jobs = Object.values(Job).filter(value => isNaN(Number(value)));
 
+      const jobCounts = jobs.map(job => data.filter((staff: Staff) => staff.job === job).length);
+
+      const backgroundColors = jobs.map(() => `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.5)`); // Generate a random color for each job
 
       this.chart = new Chart('canvas', {
         type: 'bar',
         data: {
-          labels: labels,
+          labels: jobs,
           datasets: [{
-            label: 'Age',
-            data: ages,
-            backgroundColor: 'rgba(0, 123, 255, 0.5)',
+            label: 'Job',
+            data: jobCounts,
+            backgroundColor: backgroundColors,
             borderColor: 'rgba(0, 123, 255, 1)',
             borderWidth: 1
           }]
@@ -38,19 +37,16 @@ export class ChartStaffComponent implements OnInit {
         options: {
           scales: {
             y: {
-              beginAtZero: true
+              beginAtZero: true,
+              ticks: {
+                callback: function(value, index, values) {
+                  return value.toLocaleString(); // Format the value to a string with a thousands separator
+                }
+              }
             }
           }
         }
       });
     });
   }
-  calculateAge(dateOfBirth: string): number {
-    const birthDate = new Date(dateOfBirth);
-    const ageDiffMs = Date.now() - birthDate.getTime();
-    const ageDate = new Date(ageDiffMs);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-  }
-  
-  
 }

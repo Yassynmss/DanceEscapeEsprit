@@ -15,4 +15,7 @@ export class LogisticServiceService {
     return this.http.get<Logistic[]>(`${this.apiUrl}/getAllLogistics`);
   }
 
+  getLogisticById(id_logistic:any): Observable<Logistic> {
+    return this.http.get<Logistic>(`${this.apiUrl}/getLogisticById/${id_logistic}`);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Equipment } from 'src/app/core/models/equipment/equipment';
 import { EquipmentServiceService } from 'src/app/core/services/EquipmentService/Equipment-service.service';
 import { saveAs as fileSaverSaveAs } from 'file-saver';
@@ -6,25 +6,22 @@ import * as XLSX from 'xlsx';
 import { Chart } from 'chart.js';
 import { Router } from '@angular/router';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
-@Component({
 
+@Component({
   selector: 'app-list-equipment',
   templateUrl: './list-equipment.component.html',
   styleUrls: ['./list-equipment.component.css']
 })
 export class ListEquipmentComponent implements OnInit {
-  equipments: Equipment[] = [];
-  id_equipment: number | null = null;
+  equipments: any[] = [];
+  conditions: string[] = ['New', 'Like New', 'Good', 'Fair', 'Poor'];
   name_equipment: string | null = null;
   etat: string | null = null;
-  logistic: string | null = null;
-  chart!: Chart; 
-
-  constructor(private equipmentService: EquipmentServiceService, private router: Router) { } 
-
-  conditions = ['New', 'Like New', 'Good', 'Fair', 'Poor'];
+  id_equipment: number | null = null;
   searchTerm$ = new Subject<void>();
-  
+
+  constructor(private equipmentService: EquipmentServiceService) { }
+
   ngOnInit() {
     this.searchTerm$.pipe(
       debounceTime(400),
@@ -32,17 +29,15 @@ export class ListEquipmentComponent implements OnInit {
     ).subscribe(() => {
       this.searchEquipment();
     });
-  
-    // Initiate the search with an empty string or any default value
     this.searchTerm$.next();
   }
-  
+
   searchEquipment(): void {
-    if (this.etat === '') {
-      // If the selected condition is empty, retrieve all equipments
+    if (this.etat === '' && this.name_equipment === '' && this.id_equipment === null) {
       this.retrieveEquipments();
     } else {
       this.equipmentService.searchEquipment(this.id_equipment, this.name_equipment, this.etat)
+
         .subscribe(
           data => {
             this.equipments = data;
@@ -53,14 +48,12 @@ export class ListEquipmentComponent implements OnInit {
     }
   }
 
-
   retrieveEquipments(): void {
     this.equipmentService.getAllEquipments()
       .subscribe(
         data => {
           this.equipments = data;
           console.log(data);
-    
         },
         error => console.error(error)
       );
@@ -90,8 +83,6 @@ export class ListEquipmentComponent implements OnInit {
     this.equipments.sort((a, b) => a.quantity - b.quantity);
   }
   
-
-
   downloadExcel() {
     const equipmentData = this.equipments.map(equipment => ({
       'ID': equipment.id_equipment,
@@ -108,20 +99,19 @@ export class ListEquipmentComponent implements OnInit {
     fileSaverSaveAs(data, 'equipments.xlsx');
   }
 
-  // Dans ListEquipmentComponent
-increaseQuantity(equipment: Equipment): void {
-  this.equipmentService.increaseEquipmentQuantity(equipment.id_equipment).subscribe(updatedEquipment => {
-      // Mettez à jour l'équipement dans votre liste d'équipements
+  increaseQuantity(equipment: Equipment): void {
+    this.equipmentService.increaseEquipmentQuantity(equipment.id_equipment).subscribe(updatedEquipment => {
       this.retrieveEquipments();
-  });
-}
+    });
+  }
 
-decreaseQuantity(equipment: Equipment): void {
-  this.equipmentService.decreaseEquipmentQuantity(equipment.id_equipment).subscribe(updatedEquipment => {
-      // Mettez à jour l'équipement dans votre liste d'équipements
-      this.retrieveEquipments();
-  });
-}
-
-  
+  decreaseQuantity(equipment: Equipment): void {
+    if (equipment.quantity > 0) {
+      this.equipmentService.decreaseEquipmentQuantity(equipment.id_equipment).subscribe(updatedEquipment => {
+        this.retrieveEquipments();
+      });
+    } else {
+      console.log('La quantité ne peut pas être inférieure à zéro');
+    }
+  }
 }
