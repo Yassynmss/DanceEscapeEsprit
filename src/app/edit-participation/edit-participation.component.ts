@@ -4,6 +4,7 @@ import { Participation } from '../core/particpation';
 import { ParticipationService } from '../Services/participation.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
 
 @Component({
   selector: 'app-edit-participation',

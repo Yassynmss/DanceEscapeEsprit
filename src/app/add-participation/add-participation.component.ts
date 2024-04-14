@@ -19,6 +19,7 @@ export class AddParticipationComponent {
   constructor(private formBuilder: FormBuilder , private participationService : ParticipationService,private dialogRef: MatDialogRef<AddParticipationComponent>) {
     this.participationForm =this.formBuilder.group({
       userId: ['', [Validators.required, Validators.pattern('[0-9]+')]], // Add userId field to the form
+      eventId: ['', [Validators.required, Validators.pattern('[0-9]+')]],
       showtime: ['', Validators.required],
       totalVotes: ['', [Validators.required, Validators.pattern('[0-9]+')]]
     });
@@ -27,7 +28,8 @@ export class AddParticipationComponent {
     if (this.participationForm.valid) {
       const newParticipation: Participation = this.participationForm.value as Participation;
       const userId: number = this.participationForm.get('userId')?.value; // Get userId from the form
-      this.participationService.addParticipationAndAffectUser(newParticipation, userId).subscribe(() => {
+      const eventId: number = this.participationForm.get('eventId')?.value; 
+      this.participationService.addParticipationAndAffectUser(newParticipation,eventId, userId).subscribe(() => {
         this.participationAdded.emit();
         this.participationForm.reset();
         alert('Participation Added Successfully.');

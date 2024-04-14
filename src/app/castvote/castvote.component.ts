@@ -26,7 +26,7 @@ export class CastvoteComponent {
       const { fullName, email, pc } = this.voteF.value;
       this.participationService.castVote(fullName, email, pc).subscribe({
         next: (value) => {
-          alert('Vote submitted successfully!');
+          alert('Vote submitted successfully! Thank Your For your Collaboration.');
           // Optionally, you can reset the form after successful submission
           this.voteF.reset();
         },

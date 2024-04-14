@@ -11,7 +11,7 @@ import { FetchpartComponent } from './fetchpart/fetchpart.component';
 import { UpdatevoteComponent } from './updatevote/updatevote.component';
 import { CastvoteComponent } from './castvote/castvote.component';
 import { AppComponent } from './app.component';
-import { PartdetailsComponent } from './partdetails/partdetails.component';
+import { EventparticipationsComponent } from './eventparticipations/eventparticipations.component';
 const routes: Routes = [
   {
     path:"",
@@ -36,6 +36,10 @@ const routes: Routes = [
     path:"list",
     component:FetchpartComponent
   },
+  {
+    path:"eventparticipations",
+    component:EventparticipationsComponent
+  },
 {path:"edit-participation/:id",
 component:EditParticipationComponent},
 {path:"votes",
@@ -53,11 +57,7 @@ component: UpdatevoteComponent},
     children:[{
       path:"vote",
       component:CastvoteComponent
-    },
-  {
-    path:"participationdet",
-    component:PartdetailsComponent
-  } 
+    }
 ]
   },
   {

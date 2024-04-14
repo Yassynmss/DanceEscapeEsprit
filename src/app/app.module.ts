@@ -32,7 +32,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort'; // Import MatSortModule
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { PartdetailsComponent } from './partdetails/partdetails.component';
+ import { EventparticipationsComponent } from './eventparticipations/eventparticipations.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ import { PartdetailsComponent } from './partdetails/partdetails.component';
     FetchpartComponent,
     UpdatevoteComponent,
     CastvoteComponent,
-    PartdetailsComponent
+    EventparticipationsComponent
   ],
   imports: [
     BrowserModule,

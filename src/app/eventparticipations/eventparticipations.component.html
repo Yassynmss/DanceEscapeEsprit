@@ -1,0 +1,21 @@
+
+<div>
+    <button (click)="onFetchParticipations()">Fetch Participations</button>
+  </div>
+  
+  <div *ngIf="participations.length > 0">
+    <h2>Participations for Event ID: {{ eventId }}</h2>
+    <ul>
+      <li *ngFor="let participation of participations">
+        <p>Showtime: {{ participation.showtime }}</p>
+        <p>Participant Code: {{ participation.participantCode }}</p>
+        <p>Total Votes: {{ participation.totalVotes }}</p>
+       <!-- <p>User First Name: {{ participation.userInfos.firstName }}</p>
+        <p>User Last Name: {{ participation.userInfos.lastName }}</p>
+        <p>User Email: {{ participation.userInfos.email }}</p>
+        <p>User Phone Number: {{ participation.userInfos.phoneNumber }}</p> -->
+        <hr>
+      </li>
+    </ul>
+  </div>
+  
