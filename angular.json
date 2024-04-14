@@ -22,6 +22,7 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+<<<<<<< HEAD
               "src/assets",
               "src/manifest.webmanifest",
               "src/manifest.webmanifest",
@@ -36,12 +37,23 @@
             "scripts": [],
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
+=======
+              "src/assets"
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+            "scripts": []
+>>>>>>> Participation
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
+<<<<<<< HEAD
                   "maximumWarning": "1000kb",
                   "maximumError": "3mb"
                 },
@@ -49,6 +61,15 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "1000kb",
                   "maximumError": "1000kb"
+=======
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+>>>>>>> Participation
                 }
               ],
               "outputHashing": "all"
@@ -59,6 +80,7 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
+<<<<<<< HEAD
               "namedChunks": true,
               "fileReplacements": [
                 {
@@ -66,6 +88,9 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+=======
+              "namedChunks": true
+>>>>>>> Participation
             }
           },
           "defaultConfiguration": "production"
@@ -98,20 +123,28 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
+<<<<<<< HEAD
               "src/assets",
               "src/manifest.webmanifest",
               "src/manifest.webmanifest",
               "src/manifest.webmanifest",
               "src/manifest.webmanifest"
+=======
+              "src/assets"
+>>>>>>> Participation
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
+<<<<<<< HEAD
             "scripts": [
               "node_modules/chart.js/dist/chart.min.js"
 
             ]
+=======
+            "scripts": []
+>>>>>>> Participation
           }
         }
       }

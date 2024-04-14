@@ -1,3 +1,26 @@
 button{
     background-color: #3633CD;
 }
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.sidebar {
+    width: 20%;
+    height: 100%;
+    float: left;
+    background-color: #f0f0f0; /* Light gray */
+}
+.backoffice {
+    width: 80%;
+    height: 100%;
+    float: left;
+    background-color: #e0e0e0; /* Lighter gray */
+}
+/* Clearfix to contain floated elements */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}

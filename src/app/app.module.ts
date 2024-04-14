@@ -1,7 +1,5 @@
-
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlltemplatebackComponent } from './BackOffice/alltemplateback/alltemplateback.component';
@@ -37,6 +35,24 @@ import { from } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AffichageComponent } from './component/affichage/affichage.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatDialogModule } from "@angular/material/dialog";
+import { BackofficeLayoutComponent } from './BackOffice/backoffice-layout/backoffice-layout.component';
+import { AddParticipationComponent } from './add-participation/add-participation.component';
+import { EditParticipationComponent } from './edit-participation/edit-participation.component';
+import { VoteComponent } from './vote/vote.component';
+import { AddVoteComponent } from './add-vote/add-vote.component';
+import { FetchpartComponent } from './fetchpart/fetchpart.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UpdatevoteComponent } from './updatevote/updatevote.component';
+import { CastvoteComponent } from './castvote/castvote.component';
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatIconModule } from '@angular/material/icon'
+import {MatTableModule} from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort'; // Import MatSortModule
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+ import { EventparticipationsComponent } from './eventparticipations/eventparticipations.component';
+ import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +83,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PostFeedbackComponent,
     UpdateFeedbackComponent,
     AffichageComponent,
+    BackofficeLayoutComponent,
+    AddParticipationComponent,
+    EditParticipationComponent,
+    VoteComponent,
+    AddVoteComponent,
+    FetchpartComponent,
+    UpdatevoteComponent,
+    CastvoteComponent,
+    EventparticipationsComponent
   ],
   imports: [
     BrowserModule,
@@ -78,17 +103,32 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatToolbarModule ,
+    MatIconModule,
+    MatTableModule, 
+    MatPaginatorModule,
+    MatSortModule,
+    MatCardModule,
+    MatFormFieldModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
+  
     }),
     BrowserAnimationsModule,
     NgxPaginationModule
 
   
   ],
+
+
+    
   providers: [],
   bootstrap: [AppComponent]
 })

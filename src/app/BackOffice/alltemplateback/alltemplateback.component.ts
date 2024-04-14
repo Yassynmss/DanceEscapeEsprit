@@ -2,6 +2,8 @@
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
+
+
 @Component({
   selector: 'app-alltemplateback',
   templateUrl: './alltemplateback.component.html',
@@ -47,4 +49,5 @@ export class AlltemplatebackComponent implements OnInit{
       }
     });
   }
+
 }

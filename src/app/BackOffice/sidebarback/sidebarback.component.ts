@@ -1,5 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-sidebarback',
@@ -14,9 +17,16 @@ export class SidebarbackComponent implements OnInit {
     }
   }
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService , private router: Router) { }
   logout(): void {
     this.authService.logout(); // Déconnectez l'utilisateur
     this.isLoggedIn = false; // Mettez à jour le statut de connexion
   }
+  showparticipation()
+  {
+    this.router.navigate(['/participations' ]);
+
+  }
+
 }
+

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
+import { MatDialog } from '@angular/material/dialog';
+import { CastvoteComponent } from './castvote/castvote.component';
+
 
 @Component({
   selector: 'app-root',
@@ -8,7 +11,7 @@ import { SwUpdate } from '@angular/service-worker';
 })
 export class AppComponent {
   title = 'springangular';
-  constructor(private swUpdate: SwUpdate) {
+  constructor(private swUpdate: SwUpdate , private _dialog: MatDialog) {
     this.checkForNewVersion();
     
     // Check for new version every minute
@@ -36,4 +39,7 @@ checkForNewVersion = async () => {
     window.location.reload();
   }
 };
+openForm(){
+  this._dialog.open(CastvoteComponent);
+}
 }

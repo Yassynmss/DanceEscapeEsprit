@@ -1,0 +1,44 @@
+/* Style for the form container */
+.form-container {
+    max-width: 400px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add some padding around the form */
+    border: 1px solid #ccc; /* Add a border for clarity */
+    border-radius: 8px; /* Add rounded corners */
+  }
+  
+  /* Style for form groups */
+  .form-group {
+    margin-bottom: 20px; /* Add some spacing between form groups */
+  }
+  
+  /* Style for labels */
+  label {
+    font-weight: bold; /* Make labels bold */
+  }
+  
+  /* Style for input fields */
+  input[type="number"],
+  input[type="datetime-local"] {
+    width: 100%; /* Make input fields full width */
+    padding: 8px; /* Add some padding */
+    box-sizing: border-box; /* Include padding in the width */
+  }
+  
+  /* Style for submit button */
+  button[type="submit"] {
+    width: 100%; /* Make button full width */
+    padding: 10px; /* Add padding */
+    box-sizing: border-box; /* Include padding in the width */
+    background-color: #28a745; /* Green background color */
+    color: #fff; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Add rounded corners */
+    cursor: pointer; /* Add pointer cursor on hover */
+  }
+  
+  /* Hover effect for the submit button */
+  button[type="submit"]:hover {
+    background-color: #218838; /* Darker green color on hover */
+  }
+  
