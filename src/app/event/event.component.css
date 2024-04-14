@@ -1,0 +1,28 @@
+.table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+
+  .table-container {
+    margin-left: 30px; /* Ajustez la valeur selon vos besoins */
+  }
+  
+
+  /*//////*/
+  .table-container {
+    max-width: 80%; /* Vous pouvez ajuster la valeur selon vos besoins */
+    margin:auto; /* Centrer le tableau horizontalement */
+    margin-right: 20px;
+    overflow-x: auto; /* Ajouter une barre de défilement horizontale si nécessaire */
+  }
+  

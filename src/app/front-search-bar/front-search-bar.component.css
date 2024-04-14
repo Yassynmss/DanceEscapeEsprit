@@ -1,0 +1,19 @@
+.search-section {
+    background-color: black;
+    color: orange;
+    padding: 40px 0; /* Ajoute un peu d'espace autour du formulaire */
+}
+
+
+
+.mat-input, .mat-select, .mat-checkbox-label, .mat-button {
+    color: orange !important; /* Force la couleur orange pour les éléments du formulaire */
+}
+
+.mat-input, .mat-select, .mat-checkbox-label, .mat-button {
+    color: orange !important; /* Force la couleur orange pour les éléments du formulaire */
+    margin-right: 10px; /* Ajoute une marge à droite pour éloigner les icônes */
+    margin-left: 10px; /* Ajoute une marge à gauche pour éloigner les icônes */
+    
+}
+

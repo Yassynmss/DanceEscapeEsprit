@@ -1,0 +1,52 @@
+<div class="container mt-5"> <!-- Ajoutez une marge en haut pour l'espace -->
+    <form [formGroup]="eventForm" (ngSubmit)="editingEvent ? updateEvent() : createEvent()" class="mx-auto w-75 p-4 shadow rounded bg-light">
+      <div class="form-group">
+        <label for="name_event">Name:</label>
+        <input type="text" id="name_event" formControlName="name_event" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="date_event">Date:</label>
+        <input type="date" id="date_event" formControlName="date_event" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="location_event">Location:</label>
+        <input type="text" id="location_event" formControlName="location_event" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="theme_event">Theme:</label>
+        <input type="text" id="theme_event" formControlName="theme_event" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="regulations">Regulations:</label>
+        <input type="text" id="regulations" formControlName="regulations" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="nb_competitions">Number of Competitions:</label>
+        <input type="number" id="nb_competitions" formControlName="nb_competitions" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="sales_counters_event">Sales Counters:</label>
+        <input type="text" id="sales_counters_event" formControlName="sales_counters_event" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="public_capacity">Public Capacity:</label>
+        <input type="number" id="public_capacity" formControlName="public_capacity" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="sound_system_event">Sound System:</label>
+        <input type="text" id="sound_system_event" formControlName="sound_system_event" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="typeevent">Type:</label>
+        <input type="text" id="typeevent" formControlName="typeevent" class="form-control" required>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" id="kids" formControlName="kids" class="form-check-input">
+        <label class="form-check-label" for="kids">Kids Allowed</label>
+      </div>
+      <button type="submit" class="btn btn-success">{{editingEvent ? 'Edit':'Add'}}</button>
+      <button type="submit" [disabled]="eventForm.invalid" class="btn btn-primary ml-2">Submit</button> <!-- Ajoutez une marge à gauche -->
+      
+    </form>
+  </div>
+  

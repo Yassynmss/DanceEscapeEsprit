@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- tout les fichiers .css -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap">
+  <link rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap-icons.css">
+  <link rel="stylesheet" href="/assets/FrontOffice/assets/css/templatemo-festava-live.css">
+</head>
+<body>
+
+  
+  <app-headerfront></app-headerfront>      
+  <app-navbarcomponentfront></app-navbarcomponentfront> 
+
+  <section class="schedule-section section-padding" id="section_4">
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div *ngIf="schedule.length > 0" class="d-flex justify-content-center">
+            <div class="table-container">
+              <table class="table table-striped table-dark"> <!-- Ajout de la classe table-dark pour le fond noir -->
+                <thead>
+                  <tr>
+                    <th>PANNING ACTIVITIES FOR THIS EVENT</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let activity of schedule">
+                    <td>{{ activity }}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn btn-dark"><a href="http://localhost:4200/reservation" class="text-white">Get your ticket</a></button>
+              -- 
+              <button class="btn btn-dark"><a href="http://localhost:4200/welcome/all" class="text-white">Back</a></button>
+
+            </div>
+          </div>
+          <div *ngIf="schedule.length === 0" class="d-flex justify-content-center">
+            <div class="table-container">
+              <p>Aucun planning disponible pour le moment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-footerfront></app-footerfront>
+
+  <!-- tout les fichiers javaScript mawjoudon houni -->
+  <script src="/assets/FrontOffice/assets/js/jquery.min.js"></script>
+  <script src="/assets/FrontOffice/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/FrontOffice/assets/js/jquery.sticky.js"></script>
+  <script src="/assets/FrontOffice/assets/js/click-scroll.js"></script>
+  <script src="/assets/FrontOffice/assets/js/custom.js"></script>
+</body>
+</html>

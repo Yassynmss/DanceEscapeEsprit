@@ -1,0 +1,44 @@
+<section class="schedule-section section-padding" id="section_4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h2 class="text-white mb-4">Event Schedule</h2>
+          <div class="table-responsive">
+            <table class="schedule-table table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Event Name</th>
+                  <th scope="col">Theme</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Sales Counters</th>
+                  <th scope="col">Public Capacity</th>
+                  <th scope="col">Kids Allowed</th>
+                  <th scope="col">Actions</th> <!-- Colonne pour le bouton -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let event of events">
+                  <td scope="row" class="col-1">{{ event.date_event }}</td>
+                  <td class="col-1">{{ event.name_event }}</td>
+                  <td class="col-1">{{ event.theme_event }}</td>
+                  <td class="col-1">{{ event.location_event }}</td>
+                  <td class="col-1">{{ event.sales_counters_event }}</td>
+                  <td class="col-1">{{ event.public_capacity }}</td>
+                  <td class="col-1">{{ event.kids ? 'Yes' : 'No' }}</td>
+                  <td class="col-1">
+                    <button (click)="displayTimeRemaining(event.id_event)" class="btn btn-dark">Time Remaining</button>
+                    <button class="btn btn-dark">
+                      <a href="http://localhost:4200/view" target="_blank" class="text-white">Voir</a>
+                    </button>
+                    
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

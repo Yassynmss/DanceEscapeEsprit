@@ -1,0 +1,68 @@
+<link rel="shortcut icon" type="image/png" href="/assets/BackOffice/images/logos/favicon.png" />
+<link rel="stylesheet" href="/assets/BackOffice/css/styles.min.css" />
+
+<div class="layout-wrapper layout-content-navbar">
+<div class="layout-container">
+
+
+
+<div class="container" [formGroup]="eventForm">
+    <h2>Modifier l'événement</h2>
+    <div>
+      <label for="name_event">Nom de l'événement:</label>
+      <input type="text" id="name_event" formControlName="name_event">
+    </div>
+    <div>
+      <label for="date_event">Date de l'événement:</label>
+      <input type="date" id="date_event" formControlName="date_event">
+    </div>
+    <div>
+      <label for="location_event">Lieu de l'événement:</label>
+      <input type="text" id="location_event" formControlName="location_event">
+    </div>
+    <div>
+      <label for="theme_event">Thème de l'événement:</label>
+      <input type="text" id="theme_event" formControlName="theme_event">
+    </div>
+    <div>
+      <label for="regulations">Règlements:</label>
+      <input type="text" id="regulations" formControlName="regulations">
+    </div>
+    <div>
+      <label for="nb_competitions">Nombre de compétitions:</label>
+      <input type="number" id="nb_competitions" formControlName="nb_competitions">
+    </div>
+    <div>
+      <label for="sales_counters_event">Compteurs de ventes:</label>
+      <input type="number" id="sales_counters_event" formControlName="sales_counters_event">
+    </div>
+    <div>
+      <label for="public_capacity">Capacité publique:</label>
+      <input type="number" id="public_capacity" formControlName="public_capacity">
+    </div>
+    <div>
+      <label for="sound_system_event">Système sonore:</label>
+      <input type="text" id="sound_system_event" formControlName="sound_system_event">
+    </div>
+    <div>
+      <label for="typeevent">Type d'événement:</label>
+      <input type="text" id="typeevent" formControlName="typeevent">
+    </div>
+    <div> 
+      <label for="kids">Événement pour enfants:</label>
+      <input type="checkbox" id="kids" formControlName="kids">
+    </div>
+    <button (click)="updateEvent()">Mettre à jour l'événement</button>
+  </div>
+
+
+  
+
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/sidebarmenu.js"></script>
+<script src="../assets/js/app.min.js"></script>
+<script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+<script src="../assets/js/dashboard.js"></script>
+  

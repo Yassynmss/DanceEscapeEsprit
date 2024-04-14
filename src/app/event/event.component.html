@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="table-container">
+    <table class="table table-striped">
+      <!-- En-têtes du tableau -->
+      <thead>
+        <tr>
+          <th>Nom de l'événement</th>
+          <th>Date</th>
+          <th>Lieu</th>
+          <th>Thème</th>
+          <th>Règlements</th>
+          <th>Nombre de compétitions</th>
+          <th>Compteurs de ventes</th>
+          <th>Capacité publique</th>
+          <th>Système sonore</th>
+          <th>Type d'événement</th>
+          <th>Événement pour enfants</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <!-- Corps du tableau -->
+      <tbody>
+        <tr *ngFor="let event of events">
+          <!-- Données de chaque événement -->
+          <td>{{ event.name_event }}</td>
+          <td>{{ event.date_event | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ event.location_event }}</td>
+          <td>{{ event.theme_event }}</td>
+          <td>{{ event.regulations }}</td>
+          <td>{{ event.nb_competitions }}</td>
+          <td>{{ event.sales_counters_event }}</td>
+          <td>{{ event.public_capacity }}</td>
+          <td>{{ event.sound_system_event }}</td>
+          <td>{{ event.typeevent }}</td>
+          <td>{{ event.kids ? 'Yes' : 'No' }}</td>
+          <!-- Boutons d'action -->
+          <td>
+            <button class="update-button" [routerLink]="['/event', event.id_event]" class="btn btn-primary">Update</button>
+            <button (click)="deleteEvent(event.id_event)" class="btn btn-primary">Delete</button>
+            <button (click)="displayTimeRemaining(event.id_event)" class="btn btn-primary">Time Remaining</button>
+          </td> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
