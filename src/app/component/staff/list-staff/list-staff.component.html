@@ -1,0 +1,64 @@
+<div class="container mt-5">
+  <h2 class="text-center">Staff List</h2>
+ 
+<div class="search-form">
+  <input [(ngModel)]="name" (ngModelChange)="searchStaff()" placeholder="Staff Name">
+
+<label for="job">Job :</label>
+<select id="job" [(ngModel)]="job" (ngModelChange)="searchStaff()">
+  <option value="">All</option>
+  <option *ngFor="let job of jobs" [value]="job">{{job}}</option>
+</select>
+
+
+</div>
+
+  <table class="table table-striped mx-auto w-75 centered-table">
+
+    <thead>
+      <tr>
+   
+<th class="sort-button" (click)="sortByName()">Name</th>
+
+<th class="sort-button" (click)="sortByDateOfBirth()">DateOfBirth</th>
+
+
+      
+        <th>Job</th>
+  
+        <th>Number</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let staff of staffList">
+        
+       
+        <td>{{ staff.name }}</td>
+        <td>{{ staff.DateOfBirth }}</td>
+        <td>{{ staff.job }}</td>
+        <td>{{ staff.number }}</td>
+        <td>{{ staff.email }}</td>
+        <td>
+          <button (click)="removeStaff(staff)">Delete</button>
+          <button routerLink="/admin/updateStaff/{{staff.id_staff}}">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-center mt-3">
+    <button routerLink="/admin/addstaff">Add Staff</button>
+  </div>
+ 
+  <div class="text-center mt-3">
+    <button routerLink="/admin/chartstaf">Statistics</button>
+<br><br>
+<div>  <button (click)="downloadExcel()">Download Excel</button></div>
+
+
+  </div>
+  
+  <div class="text-center mt-3">
+    <button class="action-btn back-btn" routerLink="/admin/logistic">Back</button>
+  </div>
+</div>

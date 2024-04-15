@@ -5,11 +5,13 @@ import Chart from 'chart.js/auto';
 
 
 
+
 @Component({
   selector: 'app-alltemplateback',
   templateUrl: './alltemplateback.component.html',
   styleUrls: ['./alltemplateback.component.css']
 })
+
 export class AlltemplatebackComponent implements OnInit{
   chart: any;
   rolesData: any[] = [];
@@ -50,5 +52,6 @@ export class AlltemplatebackComponent implements OnInit{
       }
     });
   }
+
 
 }

@@ -6,10 +6,12 @@
       <!-- Sidebar scroll-->
       <div>
 
+
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
 
             <img src="../assets/images/profile/logo.png width=" />
+
 
 
           </a>
@@ -45,14 +47,15 @@
                   <i class="ti ti-article"></i>
                 </span>
 
-                <a  href="stats" class="btn custom-btn d-lg-block d-none">Statstique</a>
+
+                <a  href="/admin/stats" class="btn custom-btn d-lg-block d-none">Statstique</a>
           
               </a>
             </li>
             <li class="sidebar-item">
             
             <li class="sidebar-item">
-              <a class="sidebar-link" [routerLink]="['/list']" aria-expanded="false">
+              <a class="sidebar-link" [routerLink]="['/admin/list']" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
@@ -67,10 +70,18 @@
                 <span class="hide-menu">Votes</span>
               </a>
             </li>
-            
+            <li class="sidebar-item">
+              <a class="sidebar-link" [routerLink]="['/admin/logistic']" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Logestic</span>
+              </a>
+            </li>
           
 
             <li class="sidebar-item">
+
 
 
               <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
@@ -79,7 +90,8 @@
                 </span>
 
 
-                <a  href="banuser" class="btn custom-btn d-lg-block d-none">Ban User</a>
+
+                <a  href="/admin/banuser" class="btn custom-btn d-lg-block d-none">Ban User</a>
 
                 
 
@@ -124,6 +136,7 @@
                   <i class="ti ti-article"></i>
                 </span>
                 <span class="hide-menu">Search Event</span>
+
               </a>
             </li>
             <li class="sidebar-item">
@@ -149,6 +162,7 @@
                
 
 
+
               </a>
             </li>
             <li class="sidebar-item">
@@ -157,10 +171,12 @@
                   <i class="ti ti-user-plus"></i>
                 </span>
 
+
               
                 <a *ngIf="!isLoggedIn" href="register" class="btn custom-btn d-lg-block d-none">Sign up</a>
               </a>
               <button *ngIf="isLoggedIn" class="btn custom-btn d-lg-block d-none" (click)="logout()">Logout</button>
+
 
 
             </li>
@@ -185,7 +201,6 @@
               </a>
             </li>
           </ul>
-
           <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
             <div class="d-flex">
               <div class="unlimited-access-title me-3">
@@ -199,9 +214,11 @@
           </div>
 
 
+
         </nav>
         <!-- End Sidebar navigation -->
       </div>
+
 
       <!-- End Sidebar scroll-->
     </aside>

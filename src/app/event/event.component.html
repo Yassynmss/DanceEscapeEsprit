@@ -38,6 +38,9 @@
             <button class="update-button" [routerLink]="['/event', event.id_event]" class="btn btn-primary">Update</button>
             <button (click)="deleteEvent(event.id_event)" class="btn btn-primary">Delete</button>
             <button (click)="displayTimeRemaining(event.id_event)" class="btn btn-primary">Time Remaining</button>
+            <button (click)="showParticipations(event.id_event)" class="btn btn-primary">Show Participations</button>
+            <button (click)="showAddParticipationDialog(event.id_event)" class="btn btn-primary">Add Participation</button>
+
           </td> 
         </tr>
       </tbody>

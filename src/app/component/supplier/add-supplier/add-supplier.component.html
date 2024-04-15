@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <h2 class="text-center">Add new supplier</h2> 
+    
+    <form [formGroup]="supplierForm" (ngSubmit)="saveSupplier()" class="mx-auto w-75 p-4 shadow rounded bg-light">
+      <div class="form-group">
+        <label for="name">Name :</label>
+        <input id="name" type="text" formControlName="name" class="form-control" required>
+      </div>
+    
+      <div class="form-group">
+        <label for="contact_info">Informations  :</label>
+        <input id="contact_info" type="text" formControlName="contact_info" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="number">Number:</label>
+        <input id="number" type="number" formControlName="number" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input id="email" type="email" formControlName="email" class="form-control" required>
+      </div>
+    
+     
+    
+      <button routerLink="/admin/listsupplier" class="btn btn-secondary mt-2">CANCEL </button>
+      
+      <button type="submit" class="btn btn-success">ADD</button>
+    </form>
+    
+    </div>
+    

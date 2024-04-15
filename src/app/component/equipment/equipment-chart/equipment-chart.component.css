@@ -1,0 +1,35 @@
+H1{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh; 
+    width: 60%; 
+    overflow-x: scroll; 
+    margin-left: 300px; 
+  }
+  
+  
+  
+   .button {
+   
+    color: white;
+    /* Change la couleur de fond en bleu foncé */
+    background-color: #3633CD;
+    /* Change la bordure en bleu clair */
+    border: 2px solid lightblue;
+    /* Change l'espacement entre les boutons en 10 pixels */
+    margin: 10px;
+    /* Change l'espacement à l'intérieur des boutons en 15 pixels */
+    padding: 15px;
+  }
+  button{
+    background-color: #3633CD;
+}
+  

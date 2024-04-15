@@ -1,0 +1,34 @@
+<div class="container"></div>
+<form [formGroup]="supplierForm"  class="mx-auto w-50 p-4 shadow rounded bg-light">
+  <h2>Update Supplier</h2>
+  <div>
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name">
+  </div>
+  <div>
+    <label for="contact_info">Contact Info</label>
+    <input type="text" id="contact_info" formControlName="contact_info">
+  </div>
+  <div>
+    <label for="number">Number</label>
+    <input type="number" id="number" formControlName="number">
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="email" id="email" formControlName="email">
+  </div>
+ 
+
+  <div class="row">
+   
+    <div class="col-md-6 text-right">
+      <button routerLink="/admin/listsupplier">Back</button>
+    </div>
+    <div class="col-md-6 text-left">
+      <button (click)="updateSupplier()">Update</button>
+    </div>
+  </div>
+
+
+</form>
+

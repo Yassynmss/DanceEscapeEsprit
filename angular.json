@@ -23,6 +23,7 @@
             "assets": [
               "src/favicon.ico",
 
+
               "src/assets",
               "src/manifest.webmanifest",
               "src/manifest.webmanifest",
@@ -38,12 +39,14 @@
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
 
+
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
+
 
                   "maximumWarning": "1000kb",
                   "maximumError": "3mb"
@@ -52,6 +55,7 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "1000kb",
                   "maximumError": "1000kb"
+
 
                 }
               ],
@@ -64,6 +68,7 @@
               "extractLicenses": false,
               "sourceMap": true,
 
+
               "namedChunks": true,
               "fileReplacements": [
                 {
@@ -71,6 +76,9 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+
+
+            
 
             }
           },
@@ -104,6 +112,7 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
+
               "src/assets",
               "src/manifest.webmanifest",
               "src/manifest.webmanifest",
@@ -121,6 +130,7 @@
 
             ]
 
+
           }
         }
       }
@@ -129,4 +139,7 @@
   "cli": {
     "analytics": "91759202-676c-404d-b0bb-661328c35d6a"
   }
+
 }
+
+

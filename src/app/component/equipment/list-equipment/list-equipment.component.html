@@ -1,0 +1,62 @@
+<div class="container mt-5">
+  <h2 class="text-center">List of Equipments</h2>
+  
+  <div class="search-form">
+    <input [(ngModel)]="name_equipment" (ngModelChange)="searchTerm$.next()" placeholder="Equipment name">
+    <label for="etat">Condition:</label>
+    <select id="etat" [(ngModel)]="etat" (ngModelChange)="searchTerm$.next()">
+      <option value="">All</option>
+      <option *ngFor="let condition of conditions" [value]="condition">{{condition}}</option>
+    </select>
+  </div>
+
+  <div class="table-container">
+    <table class="table centered-table">
+      <thead>
+        <tr>
+          <th class="sort-button" (click)="sortByName()">Equipment Name</th>
+          <th class="sort-button" (click)="sortByQuantity()">Quantity</th>
+          <th>Condition</th>
+          <th>Actions</th>
+          <th></th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let equipment of equipments" 
+            [class.low]="equipment.quantity === 0" 
+            [class.medium]="equipment.quantity > 0 && equipment.quantity < 10">
+          <td>{{ equipment.name_equipment }}</td>
+          <td>
+            <button class="btn increase-btn" (click)="increaseQuantity(equipment)">+</button>
+            <span class="mx-3">{{ equipment.quantity }}</span>
+            <button class="btn decrease-btn" (click)="decreaseQuantity(equipment)">-</button>
+          </td>
+          <td>{{ equipment.etat }}</td>
+          <td>
+            <button class="action-btn delete-btn" (click)="removeEquipment(equipment)">Delete</button>
+            <button class="action-btn update-btn" routerLink="/admin/updateEquipment/{{equipment.id_equipment}}">Update</button>
+          </td>
+          <td> <!-- New column for status messages -->
+            <span *ngIf="equipment.quantity === 0">Out of Stock</span>
+            <span *ngIf="equipment.quantity > 0 && equipment.quantity < 10">See your stock</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-center mt-3">
+    <button class="action-btn add-btn" routerLink="/admin/addequipment">Add New Equipment</button>
+  </div>
+
+  <div class="text-center mt-3">
+    <button class="action-btn stats-btn" routerLink="/admin/equipmentchart">Statistics</button>
+    <div class="mt-3">
+      <button class="action-btn download-btn" (click)="downloadExcel()">Download Excel</button>
+    </div>
+  </div>
+
+  <div class="text-center mt-3">
+    <button class="action-btn back-btn" routerLink="/admin/logistic">Back</button>
+  </div>
+</div>

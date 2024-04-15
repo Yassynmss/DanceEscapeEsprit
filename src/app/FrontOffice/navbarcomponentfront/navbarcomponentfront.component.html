@@ -9,6 +9,7 @@
 
        
 
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -18,7 +19,9 @@
             <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
                 <li class="nav-item">
 
+
                     <a class="nav-link click-scroll" href="front">Home</a>
+
 
 
                 </li>
@@ -26,6 +29,7 @@
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="#section_2">About</a>
                 </li>
+
 
                 <!-- Display the "FeedBack And Result" link only if the user is logged in and has the role of evaluator -->
                 <li class="nav-item" *ngIf="isLoggedIn">
@@ -37,9 +41,8 @@
                     
                     <span class="hide-menu">Vote Now</span>
                   </a>
-                <li class="nav-item" *ngIf="isLoggedIn">
-                    <a class="nav-link" href="#section_participant_dashboard">Participation
-                    </a>
+             
+
 
 
                 <li class="nav-item">
@@ -53,6 +56,7 @@
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="#section_6">Contact</a>
                 </li>
+
 
 
                 <!-- Display only if the user is an admin -->
@@ -70,4 +74,5 @@
         </div>
     </div>
 </nav>
+
 

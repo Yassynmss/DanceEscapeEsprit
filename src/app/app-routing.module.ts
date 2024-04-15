@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AlltemplatefrontComponent } from './FrontOffice/alltemplatefront/alltemplatefront.component';
+
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './helpers/auth.guard';
@@ -37,6 +38,18 @@ import { EventupdateComponent } from './eventupdate/eventupdate.component';
 import { DancecategorieComponent } from './dancecategorie/dancecategorie.component';
 import { DanceaddComponent } from './danceadd/danceadd.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { UpdateSupplierComponent } from './component/supplier/update-supplier/update-supplier.component';
+import { ListSupplierComponent } from './component/supplier/list-supplier/list-supplier.component';
+import { AddSupplierComponent } from './component/supplier/add-supplier/add-supplier.component';
+import { UpdateStaffComponent } from './component/staff/update-staff/update-staff.component';
+import { ChartStaffComponent } from './component/staff/chart-staff/chart-staff.component';
+import { AddStaffComponent } from './component/staff/add-staff/add-staff.component';
+import { ListStaffComponent } from './component/staff/list-staff/list-staff.component';
+import { EquipmentChartComponent } from './component/equipment/equipment-chart/equipment-chart.component';
+import { UpdateEquipmentComponent } from './component/equipment/update-equipment/update-equipment.component';
+import { AddEquipmentComponent } from './component/equipment/add-equipment/add-equipment.component';
+import { LogisticComponent } from './Logistic/logistic/logistic.component';
+import { ListEquipmentComponent } from './component/equipment/list-equipment/list-equipment.component';
 const routes: Routes = [
 
   {
@@ -78,13 +91,9 @@ const routes: Routes = [
   },
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
-  { path: 'admin', component: AlltemplatebackComponent },
+  { path: 'admin111', component: AlltemplatebackComponent },
   {path: 'profile' , component:ProfileComponent},
-  {
-    path:"stats",
-    component:StatsComponent 
-    },
-    {path:'banuser' , component:BanUserComponent},
+ 
     {
       path:"affichage",
       component:AffichageComponent
@@ -117,12 +126,24 @@ const routes: Routes = [
         path:"addVote",
         component:AddVoteComponent
       },
+      {path:'banuser' , component:BanUserComponent},
+      {
+        path:"listequipment",
+        component:ListEquipmentComponent
+    
+        
+      },
+      {
+        path:"stats",
+        component:StatsComponent 
+        },
+     
     {
       path:"list",
       component:FetchpartComponent
     },
     {
-      path:"eventparticipations",
+      path:"eventparticipations/:eventId",
       component:EventparticipationsComponent
     },
   {path:"edit-participation/:id",
@@ -159,6 +180,76 @@ const routes: Routes = [
   },{
     path:"view",
     component:ViewSheduleComponent
+  }, 
+      
+  { path:"logistic",
+  component:LogisticComponent},
+  
+  
+  {
+    path:"addequipment",
+    component:AddEquipmentComponent
+
+    
+  },
+  {
+    path:"updateEquipment/:id_equipment",
+    component:UpdateEquipmentComponent
+
+    
+  },
+  { path: "equipmentchart", 
+  component:EquipmentChartComponent
+
+}
+  ,
+  
+  {
+    path:"liststaff",
+    component:ListStaffComponent
+
+    
+  },
+  
+  {
+    path:"addstaff",
+    component:AddStaffComponent
+
+    
+  },
+  {
+
+    path:"chartstaf",
+    component:ChartStaffComponent
+  }
+  ,{
+    path:"updateStaff/:id_staff",
+    component:UpdateStaffComponent
+
+    
+  }
+  ,
+  
+  {
+    path:"addsupplier",
+    component:AddSupplierComponent
+
+    
+  }
+  ,
+  
+  {
+    path:"listsupplier",
+    component:ListSupplierComponent
+
+    
+  }
+  ,
+  {
+    path:"updatesupplier/:id_supplier",
+    component:UpdateSupplierComponent
+
+    
   }
   ]
     },{
@@ -186,10 +277,7 @@ const routes: Routes = [
           path:"addVote",
           component:AddVoteComponent
         },
-        {
-          path:"list"
-          ,component: FetchpartComponent
-        },
+        
         {path: "updateVote/:id",
       component: UpdatevoteComponent},
       {path: "vote",
@@ -209,7 +297,7 @@ const routes: Routes = [
       },{
         path:"view1",
         component:ViewSheduleComponent
-      },
+      }
     
     ]
     },{

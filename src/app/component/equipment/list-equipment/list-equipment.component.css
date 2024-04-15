@@ -1,0 +1,103 @@
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  margin-left: auto; /* Align the table to the right */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sort-button {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sort-button:hover {
+  background-color: #ddd;
+}
+
+.btn {
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  color: white;
+}
+
+.increase-btn {
+  background-color: #4CAF50;
+}
+
+.decrease-btn {
+  background-color: #f44336;
+}
+
+.action-btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.add-btn {
+  background-color: #4CAF50;
+}
+
+.delete-btn {
+  background-color: #f44336;
+}
+
+.update-btn {
+  background-color: #008CBA;
+}
+
+.stats-btn {
+  background-color: #e7e7e7;
+  color: black;
+}
+
+.download-btn {
+  background-color: #f44336;
+}
+
+.centered-table th,
+.centered-table td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.centered-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.centered-table tr.low {
+  background-color: #f6dcd6; /* A more artistic shade of red */
+}
+
+.centered-table tr.medium {
+  background-color: #fff3cd; /* A more artistic shade of yellow */
+}
+.table-container {
+  margin-left: 100px; /* Align the table to the right */
+}
+
+.action-btn.back-btn {
+  background-color: #555; /* Or any color you prefer */
+}

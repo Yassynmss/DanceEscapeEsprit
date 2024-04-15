@@ -4,12 +4,12 @@ import { AuthService } from 'src/app/services/auth.service';
 
 
 
-
 @Component({
   selector: 'app-navbarcomponentfront',
   templateUrl: './navbarcomponentfront.component.html',
   styleUrls: ['./navbarcomponentfront.component.css']
 })
+
 export class NavbarcomponentfrontComponent implements OnInit {
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
@@ -59,6 +59,4 @@ export class NavbarcomponentfrontComponent implements OnInit {
       });
     }
   }
-
-
 }

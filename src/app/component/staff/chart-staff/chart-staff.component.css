@@ -1,0 +1,35 @@
+H1{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh; /* Ajustez cette valeur en fonction de vos besoins */
+    width: 60%; /* Ajustez cette valeur en fonction de vos besoins */
+    overflow-x: scroll; /* Permet le défilement horizontal uniquement */
+    margin-left: 300px; /* Augmentez cette valeur pour décaler le contenu vers la droite */
+  }
+  
+  
+  
+   .button {
+    /* Change la couleur du texte en blanc */
+    color: white;
+    /* Change la couleur de fond en bleu foncé */
+    background-color: #3633CD;
+    /* Change la bordure en bleu clair */
+    border: 2px solid lightblue;
+    /* Change l'espacement entre les boutons en 10 pixels */
+    margin: 10px;
+    /* Change l'espacement à l'intérieur des boutons en 15 pixels */
+    padding: 15px;
+  }
+  button{
+    background-color: #3633CD;
+}
+  

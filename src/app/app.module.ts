@@ -1,6 +1,9 @@
 
 import { NgModule, isDevMode } from '@angular/core';
+
+import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlltemplatebackComponent } from './BackOffice/alltemplateback/alltemplateback.component';
@@ -12,6 +15,7 @@ import { FooterfrontComponent } from './FrontOffice/footerfront/footerfront.comp
 import { HeaderfrontComponent } from './FrontOffice/headerfront/headerfront.component';
 import { HomecomponentfrontComponent } from './FrontOffice/homecomponentfront/homecomponentfront.component';
 import { NavbarcomponentfrontComponent } from './FrontOffice/navbarcomponentfront/navbarcomponentfront.component';
+
 import { RegisterComponent } from './components/register/register.component';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { UserlistComponent } from './components/userlist/userlist.component';
@@ -71,6 +75,18 @@ import { ViewSheduleComponent } from './view-shedule/view-shedule.component';
 import { DisplayTimeEventComponent } from './display-time-event/display-time-event.component';
 import { DisplayTimeEventPopUpComponent } from './display-time-event-pop-up/display-time-event-pop-up.component';
 import { AdminStartPageAzizComponent } from './admin-start-page-aziz/admin-start-page-aziz.component';
+import { AddEquipmentComponent } from './component/equipment/add-equipment/add-equipment.component';
+import { UpdateEquipmentComponent } from './component/equipment/update-equipment/update-equipment.component';
+import { ListEquipmentComponent } from './component/equipment/list-equipment/list-equipment.component';
+import { ListStaffComponent } from './component/staff/list-staff/list-staff.component';
+import { AddStaffComponent } from './component/staff/add-staff/add-staff.component';
+import { AddSupplierComponent } from './component/supplier/add-supplier/add-supplier.component';
+import { ListSupplierComponent } from './component/supplier/list-supplier/list-supplier.component';
+import { UpdateSupplierComponent } from './component/supplier/update-supplier/update-supplier.component';
+import { UpdateStaffComponent } from './component/staff/update-staff/update-staff.component';
+import { EquipmentChartComponent } from './component/equipment/equipment-chart/equipment-chart.component';
+import { ChartStaffComponent } from './component/staff/chart-staff/chart-staff.component';
+import { LogisticComponent } from './Logistic/logistic/logistic.component';
 
 
 
@@ -131,11 +147,26 @@ import { AdminStartPageAzizComponent } from './admin-start-page-aziz/admin-start
     ViewSheduleComponent,
     DisplayTimeEventComponent,
     DisplayTimeEventPopUpComponent,
-    AdminStartPageAzizComponent
+    AdminStartPageAzizComponent,
+    AddEquipmentComponent,
+    UpdateEquipmentComponent,
+    ListEquipmentComponent,
+    ListStaffComponent,
+    AddStaffComponent,
+    AddSupplierComponent,
+    ListSupplierComponent,
+   
+    UpdateSupplierComponent,
+         UpdateStaffComponent,
+         EquipmentChartComponent,
+         ChartStaffComponent,
+         LogisticComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -159,7 +190,9 @@ import { AdminStartPageAzizComponent } from './admin-start-page-aziz/admin-start
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDialogModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'
@@ -170,10 +203,9 @@ import { AdminStartPageAzizComponent } from './admin-start-page-aziz/admin-start
 
   
   ],
-
-
-
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class AppModule { }

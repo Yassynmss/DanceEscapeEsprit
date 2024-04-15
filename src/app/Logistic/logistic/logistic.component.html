@@ -1,0 +1,33 @@
+<div class="container"  class="mx-auto w-75 p-5 shadow rounded bg-light">
+    <h1 class="text-center">Logistic Management</h1>
+    <div class="row">
+      <div class="col-md-4" >
+        <div class="card" >
+          <div class="card-body">
+            <h5 class="card-title">Staff</h5>
+            <p class="card-text">{{ staffCount }}</p>
+            <a routerLink="/admin/liststaff" class="btn btn-primary">Manage Staff</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Equipment</h5>
+            <p class="card-text">{{ equipmentCount }}</p>
+            <a routerLink="/admin/listequipment" class="btn btn-primary">Manage Equipment</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Supplier</h5>
+            <p class="card-text">{{ supplierCount }}</p>
+            <a routerLink="/admin/listsupplier" class="btn btn-primary">Manage Supplier</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

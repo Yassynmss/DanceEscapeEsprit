@@ -10,7 +10,7 @@ import { Time } from '@angular/common';
   providedIn: 'root'
 })
 export class EventService {
-  private baseURL = "http://localhost:8081/";
+  private baseURL = "http://localhost:8080/";
 
   constructor(private http: HttpClient) {}
 
