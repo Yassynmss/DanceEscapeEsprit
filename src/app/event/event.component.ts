@@ -5,6 +5,8 @@ import { EventaddComponent } from '../eventadd/eventadd.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DisplayTimeEventPopUpComponent } from '../display-time-event-pop-up/display-time-event-pop-up.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { AddParticipationComponent } from '../add-participation/add-participation.component';
 
 
 
@@ -23,7 +25,7 @@ export class EventComponent {
   eventForm!: FormGroup;
   
 
-  constructor(private eventService: EventService, private dialog: MatDialog) { }
+  constructor(private eventService: EventService, private dialog: MatDialog, private router: Router) { }
 
   
 
@@ -41,10 +43,13 @@ export class EventComponent {
         // Handle errors
       }
     );
-    
+  
     
   }
-
+  showParticipations(eventId: number): void {
+    // Navigate to EventparticipationsComponent with the eventId
+    this.router.navigate(['/eventparticipations', eventId]);
+  }
   
   deleteEvent(id: number): void {
     this.eventService.deleteEvent(id)
@@ -128,7 +133,17 @@ export class EventComponent {
             });
           }
           
-
+          showAddParticipationDialog(eventId: number): void {
+            const dialogRef = this.dialog.open(AddParticipationComponent, {
+              data: { eventId }, // Pass eventId to the dialog
+              width: '400px' // Set dialog width if needed
+            });
+        
+            dialogRef.afterClosed().subscribe(() => {
+              // You can perform any action after dialog is closed, like refreshing data
+              console.log('Add participation dialog closed.');
+            });
+          }
           
          
 

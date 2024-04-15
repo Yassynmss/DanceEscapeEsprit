@@ -122,7 +122,7 @@ const routes: Routes = [
       component:FetchpartComponent
     },
     {
-      path:"eventparticipations",
+       path: "eventparticipations/:eventId",
       component:EventparticipationsComponent
     },
   {path:"edit-participation/:id",

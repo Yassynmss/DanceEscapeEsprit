@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Participation } from '../core/particpation';
 import { ParticipationService } from '../Services/participation.service';
 import { Subscription } from 'rxjs';
+import { EventComponent } from '../event/event.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-eventparticipations',
@@ -13,12 +15,15 @@ export class EventparticipationsComponent   {
   eventId: number = 1;
   private subscription: Subscription | undefined;
 
-  constructor(private participationService: ParticipationService) { }
+  constructor(private route: ActivatedRoute,private participationService: ParticipationService) { }
 
 
   ngOnInit(): void {
     // Initial fetch of participations for the default event ID (can be changed later)
-    this.fetchParticipations();
+    this.route.params.subscribe(params => {
+      this.eventId = +params['eventId'];
+      this.fetchParticipations();
+    });
   }
   
   fetchParticipations(): void {
