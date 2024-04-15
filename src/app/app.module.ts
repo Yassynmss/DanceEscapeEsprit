@@ -1,3 +1,4 @@
+
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -53,9 +54,31 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
  import { EventparticipationsComponent } from './eventparticipations/eventparticipations.component';
  import { MatPaginatorModule } from '@angular/material/paginator';
+import { EventComponent } from './event/event.component';
+import { EventaddComponent } from './eventadd/eventadd.component';
+import { EventupdateComponent } from './eventupdate/eventupdate.component';
+import { DancecategorieComponent } from './dancecategorie/dancecategorie.component';
+import { DanceaddComponent } from './danceadd/danceadd.component';
+import { DanceupdateComponent } from './danceupdate/danceupdate.component';
+import { DancesearcheComponent } from './dancesearche/dancesearche.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
+import { SearchResultDialogEventComponent } from './search-result-dialog-event/search-result-dialog-event.component';
+import { IndexEventComponent } from './index-event/index-event.component';
+import { IndexDanceCategoriesComponent } from './index-dance-categories/index-dance-categories.component';
+import { AddNewDanceCategorieFrontComponent } from './add-new-dance-categorie-front/add-new-dance-categorie-front.component';
+import { FrontSearchBarComponent } from './front-search-bar/front-search-bar.component';
+import { ViewSheduleComponent } from './view-shedule/view-shedule.component';
+import { DisplayTimeEventComponent } from './display-time-event/display-time-event.component';
+import { DisplayTimeEventPopUpComponent } from './display-time-event-pop-up/display-time-event-pop-up.component';
+import { AdminStartPageAzizComponent } from './admin-start-page-aziz/admin-start-page-aziz.component';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
+
     AlltemplatebackComponent,
     FooterbackComponent,
     NavbarbackComponent,
@@ -91,7 +114,24 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FetchpartComponent,
     UpdatevoteComponent,
     CastvoteComponent,
-    EventparticipationsComponent
+    EventparticipationsComponent,
+    EventComponent,
+    EventaddComponent,
+    EventupdateComponent,
+    DancecategorieComponent,
+    DanceaddComponent,
+    DanceupdateComponent,
+    DancesearcheComponent,
+    SearchbarComponent,
+    SearchResultDialogEventComponent,
+    IndexEventComponent,
+    IndexDanceCategoriesComponent,
+    AddNewDanceCategorieFrontComponent,
+    FrontSearchBarComponent,
+    ViewSheduleComponent,
+    DisplayTimeEventComponent,
+    DisplayTimeEventPopUpComponent,
+    AdminStartPageAzizComponent
   ],
   imports: [
     BrowserModule,
@@ -116,6 +156,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'
@@ -128,7 +172,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   ],
 
 
-    
+
   providers: [],
   bootstrap: [AppComponent]
 })

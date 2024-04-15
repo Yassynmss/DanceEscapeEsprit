@@ -1,0 +1,53 @@
+/* Style du tableau */
+.search-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px; /* Contours arrondis */
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  }
+
+  /* Dans votre fichier CSS ou SCSS */
+.search-table {
+   /* Définit l'opacité initiale à 0 */
+  transition: opacity 0.5s ease; /* Définit une transition de l'opacité sur une durée de 0.5 seconde avec une accélération */
+}
+
+.search-table.show {
+  opacity: 1; /* Lorsque la classe .show est ajoutée, l'opacité est définie à 1, ce qui déclenche l'animation de fondu */
+}
+
+  
+  /* Style de l'en-tête du tableau */
+  .search-table th {
+    background-color: #f5f5f5; /* Couleur de fond */
+    padding: 12px 15px; /* Espacement interne */
+    text-align: left;
+  }
+  
+  /* Style des cellules du tableau */
+  .search-table td {
+    padding: 10px 15px; /* Espacement interne */
+    border-bottom: 1px solid #e0e0e0; /* Bordure inférieure */
+  }
+  
+  /* Style des lignes impaires du tableau */
+  .search-table tbody tr:nth-child(odd) {
+    background-color: #fafafa; /* Couleur de fond */
+  }
+  
+  /* Style des boutons */
+  .mat-button {
+    background-color: #007bff; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    padding: 8px 20px; /* Espacement interne */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Contours arrondis */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition fluide */
+  }
+  
+  .mat-button:hover {
+    background-color: #0056b3; /* Couleur de fond au survol */
+  }
+  

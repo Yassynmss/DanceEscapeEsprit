@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 
 
+
 @Component({
   selector: 'app-navbarcomponentfront',
   templateUrl: './navbarcomponentfront.component.html',
@@ -58,5 +59,6 @@ export class NavbarcomponentfrontComponent implements OnInit {
       });
     }
   }
+
 
 }

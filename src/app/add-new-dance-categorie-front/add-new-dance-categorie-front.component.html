@@ -1,0 +1,65 @@
+<!-- tout les fichiers .css -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap">
+
+<link  rel="stylesheet"  href="/assets/FrontOffice/assets/css/bootstrap.min.css">
+
+<link  rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap-icons.css">
+
+<link  rel="stylesheet" href="/assets/FrontOffice/assets/css/templatemo-festava-live.css">
+
+
+
+
+
+
+<!-- votre-component.component.html -->
+
+<section class="contact-section section-padding" id="section_6">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12 mx-auto">
+                <h2 class="text-center mb-4">Add Your Caegorie Dance !</h2>
+                <form [formGroup]="danceForm" (ngSubmit)="submitForm()" class="custom-form contact-form mb-5 mb-lg-0">
+                    <div class="contact-form-body">
+                        <div class="form-group">
+                            <label>Description de la danse:</label>
+                            <input type="text" formControlName="description_dance" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Titre de la musique:</label>
+                            <input type="text" formControlName="music_title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Nom de la danse:</label>
+                            <input type="text" formControlName="name_dance_creation" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Date de création:</label>
+                            <input type="date" formControlName="creation_date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Style de danse:</label>
+                            <input type="text" formControlName="dancestyle" class="form-control">
+                        </div>
+                        <a href="http://localhost:4200/" class="btn btn-primary">Ajouter</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- tout les fichiers javaScript mawjoudon houni -->
+
+<script src="/assets/FrontOffice/assets/js/jquery.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/bootstrap.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/jquery.sticky.js"></script>
+<script src="/assets/FrontOffice/assets/js/click-scroll.js"></script>
+<script src="/assets/FrontOffice/assets/js/custom.js"></script>
+

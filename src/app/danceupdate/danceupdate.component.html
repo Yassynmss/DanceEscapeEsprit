@@ -1,0 +1,26 @@
+<div class="container" [formGroup]="danceForm">
+    <h2>Update Dance Categorie</h2>
+    <div>
+      <label for="creation_date">Date de création:</label>
+      <input type="date" id="creation_date" formControlName="creation_date">
+    </div>
+    <div>
+      <label for="description_dance">Description:</label>
+      <input type="text" id="description_dance" formControlName="description_dance">
+    </div>
+    <div>
+      <label for="music_title">Titre de la musique:</label>
+      <input type="text" id="music_title" formControlName="music_title">
+    </div>
+    <div>
+      <label for="name_dance_creation">Nom de la danse:</label>
+      <input type="text" id="name_dance_creation" formControlName="name_dance_creation">
+    </div>
+    <div>
+      <label for="dancestyle">Style de danse:</label>
+      <input type="text" id="dancestyle" formControlName="dancestyle">
+    </div>
+    <button (click)="updateDance()">Mettre à jour la danse</button>
+  </div>
+  
+  

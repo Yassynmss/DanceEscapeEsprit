@@ -4,12 +4,10 @@
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "types": [
-<<<<<<< HEAD
-      "jasmine"
-=======
+
       "jasmine",
       "@angular/localize"
->>>>>>> Participation
+
     ]
   },
   "include": [

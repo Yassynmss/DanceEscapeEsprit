@@ -1,0 +1,38 @@
+<!-- votre-component.component.html -->
+
+<section class="about-section section-padding" id="section_2">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-12 mb-4 mb-lg-0 d-flex align-items-center">
+            <h2 class="text-white mb-4">DANCE CATEGORIES</h2>
+          <div class="services-info text-center"> <!-- Ajout de la classe text-center pour centrer le titre -->
+            
+  
+            <div *ngIf="danceCategories.length > 0">
+              <div *ngFor="let category of danceCategories" class="mb-4">
+                <p class="text-white"><strong></strong> <span class="description-text">{{ category.description_dance }}</span></p>
+                <p class="text-white"> {{ category.creation_date | date }}</p>
+                <p class="text-white">Titre de la musique: {{ category.music_title }}</p>
+                <p class="text-white"><strong>Creation Name</strong> {{ category.name_dance_creation }}</p>
+                <p class="text-white">Style de danse: {{ category.dancestyle }}</p>
+                <button class="btn btn-dark custom-button mb-3 fw-bold">Use it !</button> <!-- Bouton "Use it" pour chaque catégorie -->
+                <hr class="category-line"> <!-- Ligne entre les catégories avec une classe personnalisée -->
+              </div>
+            </div>
+  
+            <p *ngIf="danceCategories.length == 0" class="text-white">Aucune catégorie de danse disponible.</p>
+          </div>
+        </div>
+  
+        <div class="col-lg-6 col-12">
+          <div class="about-text-wrap d-flex justify-content-center align-items-center" style="height: 100%;"> <!-- Ajout de classes pour aligner verticalement -->
+            <img src="/assets/FrontOffice/assets/images/pexels-alexander-suhorucov-6457579.jpg" class="about-image img-fluid mb-3" style="max-width: 80%; height: auto;"> <!-- Réduction de la taille de l'image avec max-width: 80% -->
+            <div class="button-container text-start"> <!-- Ajout de la classe text-start -->
+                <a href="http://localhost:4200/addDanceCategorieforuser" class="btn btn-dark">Creat Yours!</a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,39 @@
+/* Dans votre fichier CSS ou SCSS */
+
+/* Définir la taille de la police et le style de la police pour le titre */
+.text-uppercase {
+    font-size: 2.5em; /* Taille de la police */
+    font-style: italic; /* Style de la police */
+}
+
+/* Définir la taille de la police pour le texte principal */
+.big-text {
+    font-size: 2em; /* Taille de la police */
+}
+
+/* Animation pour le titre */
+.text-uppercase {
+    animation: fadeInUp 1.5s ease-in-out; /* Nom de l'animation, durée et type d'interpolation */
+}
+
+/* Définition de l'animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dans votre fichier CSS ou SCSS */
+.bg-black {
+    background-color: black; /* Fond noir */
+    padding: 20px; /* Espace intérieur */
+}
+
+.text-white {
+    color: white; /* Texte blanc */
+}

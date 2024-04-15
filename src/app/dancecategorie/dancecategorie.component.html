@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+    <div class="table-container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date de création</th>
+            <th>Description</th>
+            <th>Titre de la musique</th>
+            <th>Nom de la danse</th>
+            <th>Style de danse</th>
+            <th>Action</th> <!-- Nouvelle colonne pour l'action -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of danceCategories">
+            <td>{{ category.id_dance_categorie }}</td>
+            <td>{{ category.creation_date }}</td>
+            <td>{{ category.description_dance }}</td>
+            <td>{{ category.music_title }}</td>
+            <td>{{ category.name_dance_creation }}</td>
+            <td>{{ category.dancestyle }}</td>
+            <td>
+              <button routerLink="/danceCategories/{{ category.id_dance_categorie }}" class="btn btn-primary update-button">Update</button>
+              <button (click)="deleteDanceCategory(category.id_dance_categorie)" class="btn btn-primary">Supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div *ngIf="danceCategories.length === 0" class="text-center">
+    <p>Aucune catégorie de danse trouvée.</p>
+  </div>
+  

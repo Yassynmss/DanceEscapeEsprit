@@ -1,0 +1,63 @@
+<!-- tout les fichiers .css -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap">
+
+<link  rel="stylesheet"  href="/assets/FrontOffice/assets/css/bootstrap.min.css">
+
+<link  rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap-icons.css">
+
+<link  rel="stylesheet" href="/assets/FrontOffice/assets/css/templatemo-festava-live.css">
+
+
+<h2 mat-dialog-title>Results</h2>
+<div mat-dialog-content>
+  <div *ngIf="data.events.length === 0">Aucun résultat trouvé.</div>
+  <table class="search-table" *ngIf="data.events.length > 0">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Nom</th>
+        <th>Thème</th>
+        <th>Emplacement</th>
+        <th>Réglementations</th>
+        <th>Nombre de compétitions</th>
+        <th>Ventes</th>
+        <th>Capacité publique</th>
+        <th>Système audio</th>
+        <th>Type d'événement</th>
+        <th>Enfants autorisés</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of data.events">
+        <td>{{ event.date_event }}</td>
+        <td>{{ event.name_event }}</td>
+        <td>{{ event.theme_event }}</td>
+        <td>{{ event.location_event }}</td>
+        <td>{{ event.regulations }}</td>
+        <td>{{ event.nb_competitions }}</td>
+        <td>{{ event.sales_counters_event }}</td>
+        <td>{{ event.public_capacity }}</td>
+        <td>{{ event.sound_system_event }}</td>
+        <td>{{ event.typeevent }}</td>
+        <td>{{ event.kids ? 'Oui' : 'Non' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Fermer</button>
+</div>
+
+<!-- tout les fichiers javaScript mawjoudon houni -->
+
+<script src="/assets/FrontOffice/assets/js/jquery.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/bootstrap.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/jquery.sticky.js"></script>
+<script src="/assets/FrontOffice/assets/js/click-scroll.js"></script>
+<script src="/assets/FrontOffice/assets/js/custom.js"></script>
+

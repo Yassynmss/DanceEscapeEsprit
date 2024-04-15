@@ -1,0 +1,26 @@
+<div class="container">
+  <h2 class="text-center">Ajouter une nouvelle catégorie de danse</h2>
+  <form [formGroup]="danceForm" (ngSubmit)="submitForm()" class="mx-auto w-50">
+    <div class="form-group">
+      <label>Description de la danse:</label>
+      <input type="text" formControlName="description_dance" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Titre de la musique:</label>
+      <input type="text" formControlName="music_title" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Nom de la danse:</label>
+      <input type="text" formControlName="name_dance_creation" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Date de création:</label>
+      <input type="date" formControlName="creation_date" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Style de danse:</label>
+      <input type="text" formControlName="dancestyle" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Ajouter</button>
+  </form>
+</div>

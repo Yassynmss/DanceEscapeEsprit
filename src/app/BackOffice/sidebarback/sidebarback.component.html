@@ -5,10 +5,12 @@
     <aside class="left-sidebar">
       <!-- Sidebar scroll-->
       <div>
+
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
 
             <img src="../assets/images/profile/logo.png width=" />
+
 
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -17,10 +19,12 @@
         </div>
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">Home</span>
+
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="./index.html" aria-expanded="false">
@@ -30,7 +34,6 @@
                 <span class="hide-menu">Dashboard</span>
               </a>
             </li>
-
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">UI COMPONENTS</span>
@@ -41,6 +44,7 @@
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
+
                 <a  href="stats" class="btn custom-btn d-lg-block d-none">Statstique</a>
           
               </a>
@@ -68,31 +72,58 @@
 
             <li class="sidebar-item">
 
+
               <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
+
 
                 <a  href="banuser" class="btn custom-btn d-lg-block d-none">Ban User</a>
 
                 
 
               </a>
+              
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+              <a class="sidebar-link" [routerLink]="['/admin/addEventBack']" aria-expanded="false">
                 <span>
-                  <i class="ti ti-cards"></i>
+                  <i class="ti ti-article"></i>
                 </span>
-                <span class="hide-menu">Card</span>
+                <span class="hide-menu">Add Event</span>
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+              <a class="sidebar-link" [routerLink]="['/admin/indexeventback']" aria-expanded="false">
                 <span>
-                  <i class="ti ti-file-description"></i>
+                  <i class="ti ti-article"></i>
                 </span>
-                <span class="hide-menu">Forms</span>
+                <span class="hide-menu">Events</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" [routerLink]="['/admin/addDanceBack']" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Add Dance Categories</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" [routerLink]="['/admin/indexDanceBack']" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Dance Categories</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" [routerLink]="['/admin/searcheventback']" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Search Event</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -113,8 +144,10 @@
                   <i class="ti ti-login"></i>
                 </span>
 
+
                 <a *ngIf="!isLoggedIn" href="login" class="btn custom-btn d-lg-block d-none">Login</a>
                
+
 
               </a>
             </li>
@@ -123,10 +156,12 @@
                 <span>
                   <i class="ti ti-user-plus"></i>
                 </span>
+
               
                 <a *ngIf="!isLoggedIn" href="register" class="btn custom-btn d-lg-block d-none">Sign up</a>
               </a>
               <button *ngIf="isLoggedIn" class="btn custom-btn d-lg-block d-none" (click)="logout()">Logout</button>
+
 
             </li>
             <li class="nav-small-cap">
@@ -163,8 +198,10 @@
             </div>
           </div>
 
+
         </nav>
         <!-- End Sidebar navigation -->
       </div>
+
       <!-- End Sidebar scroll-->
     </aside>

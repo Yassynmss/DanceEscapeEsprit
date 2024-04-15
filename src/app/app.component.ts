@@ -3,7 +3,6 @@ import { SwUpdate } from '@angular/service-worker';
 import { MatDialog } from '@angular/material/dialog';
 import { CastvoteComponent } from './castvote/castvote.component';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
