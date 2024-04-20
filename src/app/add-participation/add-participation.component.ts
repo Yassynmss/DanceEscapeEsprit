@@ -13,14 +13,13 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class AddParticipationComponent {
   participationForm! : FormGroup;
   showtime!: Date; 
-  @Input() eventId!: number; // Input to receive eventId from parent component
+  eventId: number=7; 
   @Output() participationAdded: EventEmitter<void> = new EventEmitter<void>();
-
+  Id:number= this.eventId;
 
   constructor(private formBuilder: FormBuilder , private participationService : ParticipationService,private dialogRef: MatDialogRef<AddParticipationComponent>) {
     this.participationForm =this.formBuilder.group({
-      userId: ['', [Validators.required, Validators.pattern('[0-9]+')]], // Add userId field to the form
-      eventId: ['', [Validators.required, Validators.pattern('[0-9]+')]],
+      userId: ['', [Validators.required, Validators.pattern('[0-9]+')]], 
       showtime: ['', Validators.required],
       totalVotes: ['', [Validators.required, Validators.pattern('[0-9]+')]]
     });

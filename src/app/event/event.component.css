@@ -1,6 +1,7 @@
 .table {
     border-collapse: collapse;
     width: 100%;
+    background-color: #ffffff;
   }
   
   th, td {
@@ -9,13 +10,12 @@
     text-align: left;
   }
   
-  th {
-    background-color: #f2f2f2;
-  }
 
   .table-container {
-    margin-left: 30px; /* Ajustez la valeur selon vos besoins */
-  }
+    margin-left: auto; /* Décale le tableau vers la droite */
+    margin-right: 1px; /* Ajustez la marge droite selon vos besoins */
+}
+
   
 
   /*//////*/
@@ -25,4 +25,10 @@
     margin-right: 20px;
     overflow-x: auto; /* Ajouter une barre de défilement horizontale si nécessaire */
   }
+
+
+  .th {
+    background-color: #ffffff; /* Changer la couleur de fond en blanc */
+}
+
   

@@ -1,6 +1,8 @@
+
+
 <div class="form-container">
-  <h2>Add Participation</h2>
-  <form [formGroup]="participationForm" (ngSubmit)="addPart()">
+    <h2>Add Participation for Event ID: {{ Id }}</h2>
+    <form [formGroup]="participationForm" (ngSubmit)="addPart()">
       <div>
           <label for="userId">User ID:</label>
           <input type="number" id="userId" formControlName="userId" required>
@@ -15,7 +17,6 @@
       <input type="number" formControlName="totalVotes" class="form-control">
   </div>
   <button type="submit" class ="btn btn-success">Confirm </button>
-  <!-- <button type="button" (click)="cancel()" *ngIf="editingPart" class ="btn btn-secondary">Cancel </button> -->
   
   </form>
   </div>

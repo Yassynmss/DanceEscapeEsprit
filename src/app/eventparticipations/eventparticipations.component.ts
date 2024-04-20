@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Participation } from '../core/particpation';
 import { ParticipationService } from '../Services/participation.service';
 import { Subscription } from 'rxjs';
@@ -12,8 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EventparticipationsComponent   {
   participations: Participation[] = [];
-  eventId: number = 1;
   private subscription: Subscription | undefined;
+  eventId: number=7; // Input to receive eventId from parent component
 
   constructor(private route: ActivatedRoute,private participationService: ParticipationService) { }
 

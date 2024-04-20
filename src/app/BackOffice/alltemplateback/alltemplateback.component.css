@@ -16,7 +16,7 @@ body, html {
     width: 80%;
     height: 100%;
     float: left;
-    background-color: #e0e0e0; /* Lighter gray */
+    background-color: #ffffff;/* Lighter gray */
 }
 /* Clearfix to contain floated elements */
 .clearfix::after {

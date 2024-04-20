@@ -50,6 +50,7 @@ import { UpdateEquipmentComponent } from './component/equipment/update-equipment
 import { AddEquipmentComponent } from './component/equipment/add-equipment/add-equipment.component';
 import { LogisticComponent } from './Logistic/logistic/logistic.component';
 import { ListEquipmentComponent } from './component/equipment/list-equipment/list-equipment.component';
+import { NavbarcomponentbackComponent } from './BackOffice/navbarcomponentback/navbarcomponentback.component';
 const routes: Routes = [
 
   {
@@ -126,6 +127,7 @@ const routes: Routes = [
         path:"addVote",
         component:AddVoteComponent
       },
+      {path:'', component:NavbarcomponentbackComponent},
       {path:'banuser' , component:BanUserComponent},
       {
         path:"listequipment",
@@ -143,7 +145,9 @@ const routes: Routes = [
       component:FetchpartComponent
     },
     {
+
       path:"eventparticipations/:eventId",
+
       component:EventparticipationsComponent
     },
   {path:"edit-participation/:id",
@@ -153,7 +157,7 @@ const routes: Routes = [
   {path:"updateVote/:id",
   component: UpdatevoteComponent},
   {
-    path:"add",
+    path:"add/:eventId",
     component:AddParticipationComponent
   },{
     path:"indexeventback",

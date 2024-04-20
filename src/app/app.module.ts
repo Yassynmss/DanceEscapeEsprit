@@ -87,6 +87,7 @@ import { UpdateStaffComponent } from './component/staff/update-staff/update-staf
 import { EquipmentChartComponent } from './component/equipment/equipment-chart/equipment-chart.component';
 import { ChartStaffComponent } from './component/staff/chart-staff/chart-staff.component';
 import { LogisticComponent } from './Logistic/logistic/logistic.component';
+import { NavbarcomponentbackComponent } from './BackOffice/navbarcomponentback/navbarcomponentback.component';
 
 
 
@@ -160,7 +161,8 @@ import { LogisticComponent } from './Logistic/logistic/logistic.component';
          UpdateStaffComponent,
          EquipmentChartComponent,
          ChartStaffComponent,
-         LogisticComponent
+         LogisticComponent,
+         NavbarcomponentbackComponent
 
   ],
   imports: [
