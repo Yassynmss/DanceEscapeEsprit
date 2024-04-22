@@ -11,6 +11,10 @@ import { DanceaddComponent } from './danceadd/danceadd.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { AddNewDanceCategorieFrontComponent } from './add-new-dance-categorie-front/add-new-dance-categorie-front.component';
 import { ViewSheduleComponent } from './view-shedule/view-shedule.component';
+import { VenueAdminAzizComponent } from './venue-admin-aziz/venue-admin-aziz.component';
+import { VenueAddAdminComponent } from './venue-add-admin/venue-add-admin.component';
+import { VenueIndexFrontComponent } from './venue-index-front/venue-index-front.component';
+import { VenueUpdateAdminComponent } from './venue-update-admin/venue-update-admin.component';
 
 const routes: Routes = [
   {
@@ -28,6 +32,9 @@ const routes: Routes = [
     },{
       path:"view",
       component:ViewSheduleComponent
+    },{
+      path:"venueindex",
+      component:VenueIndexFrontComponent
     }]
   },
   {
@@ -58,7 +65,13 @@ const routes: Routes = [
     },{
       path:"view",
       component:ViewSheduleComponent
-    }]
+    },{
+      path:"venueadmin",
+      component:VenueAdminAzizComponent
+    },{
+      path:"venueAdd",
+      component:VenueAddAdminComponent
+    }, ]
   },
 
   {
@@ -90,6 +103,10 @@ const routes: Routes = [
   },{
     path:"addDanceCategorieforuser",
     component:AddNewDanceCategorieFrontComponent
+  },
+  {
+    path: 'venues/update/:id_venue',
+    component: VenueUpdateAdminComponent
   }
 
 

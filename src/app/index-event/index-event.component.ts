@@ -4,6 +4,7 @@ import { EventService } from '../Services/event.service';
 import { Event } from '../core/event';
 import { DisplayTimeEventPopUpComponent } from '../display-time-event-pop-up/display-time-event-pop-up.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-index-event',
@@ -14,7 +15,7 @@ export class IndexEventComponent implements OnInit {
 
   events: Event[] = [];
 
-  constructor(private eventService: EventService, private dialog: MatDialog) { }
+  constructor(private eventService: EventService, private dialog: MatDialog, private router:Router) { }
 
   ngOnInit(): void {
     this.getAllEvents();
@@ -49,6 +50,8 @@ export class IndexEventComponent implements OnInit {
       data: { eventId } // Passage de l'ID de l'événement à la boîte de dialogue via la propriété 'data'
     });
   }
+
+  
 
   
 

@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+    <div class="table-container">
+      <table class="table table-striped">
+        <!-- En-têtes du tableau -->
+        <thead>
+          <tr>
+            <th>Nom du lieu</th>
+            <th>Adresse</th>
+            <th>Capacité</th>
+            <th>Description</th>
+            <th>Longitude</th>
+            <th>Altitude</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <!-- Corps du tableau -->
+        <tbody>
+          <tr *ngFor="let venue of venues">
+            <!-- Données de chaque lieu -->
+            <td>{{ venue.name }}</td>
+            <td>{{ venue.address }}</td>
+            <td>{{ venue.capacity }}</td>
+            <td>{{ venue.description }}</td>
+            <td>{{ venue.longitude }}</td>
+            <td>{{ venue.altitude }}</td>
+            <!-- Boutons d'action -->
+            <td>
+                <button [routerLink]="['/venues/update', venue.id_venue]" class="btn btn-primary">Edit</button>
+
+              <button (click)="deleteVenue(venue.id_venue)" class="btn btn-primary">Supprimer</button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

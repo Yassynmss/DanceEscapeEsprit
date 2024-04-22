@@ -1,0 +1,11 @@
+.table-container-black {
+    background-color: rgb(53, 51, 51); /* Définir la couleur de fond en noir */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre */
+  }
+
+  .table-container-black th,
+.table-container-black td {
+  color: white; /* Définir la couleur du texte en blanc */
+}

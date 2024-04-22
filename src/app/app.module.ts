@@ -33,6 +33,11 @@ import { ViewSheduleComponent } from './view-shedule/view-shedule.component';
 import { DisplayTimeEventComponent } from './display-time-event/display-time-event.component';
 import { DisplayTimeEventPopUpComponent } from './display-time-event-pop-up/display-time-event-pop-up.component';
 import { AdminStartPageAzizComponent } from './admin-start-page-aziz/admin-start-page-aziz.component';
+import { VenueAdminAzizComponent } from './venue-admin-aziz/venue-admin-aziz.component';
+import { VenueAddAdminComponent } from './venue-add-admin/venue-add-admin.component';
+import { VenueUpdateAdminComponent } from './venue-update-admin/venue-update-admin.component';
+import { VenueIndexFrontComponent } from './venue-index-front/venue-index-front.component';
+import { VenueIndexByIdComponent } from './venue-index-by-id/venue-index-by-id.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +68,12 @@ import { AdminStartPageAzizComponent } from './admin-start-page-aziz/admin-start
     ViewSheduleComponent,
     DisplayTimeEventComponent,
     DisplayTimeEventPopUpComponent,
-    AdminStartPageAzizComponent
+    AdminStartPageAzizComponent,
+    VenueAdminAzizComponent,
+    VenueAddAdminComponent,
+    VenueUpdateAdminComponent,
+    VenueIndexFrontComponent,
+    VenueIndexByIdComponent
   ],
   imports: [
     BrowserModule,

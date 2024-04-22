@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Tout les fichiers .css -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap">
+  <link rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap-icons.css">
+  <link rel="stylesheet" href="/assets/FrontOffice/assets/css/templatemo-festava-live.css">
+
+
+</head>
+
+<body>
+  <section style="background-image: url('/assets/FrontOffice/assets/images/edward-unsplash-blur.jpg');">
+    <div class="d-flex justify-content-center">
+      <div class="table-container-black"> <!-- Ajout de la classe table-container-black -->
+        <table class="table table-striped">
+          <!-- En-têtes du tableau -->
+          <thead>
+            <tr>
+              <th>Nom du lieu</th>
+              <th>Adresse</th>
+              <th>Capacité</th>
+              <th>Description</th>
+              <!-- Boutons d'action -->
+
+            </tr>
+          </thead>
+          <!-- Corps du tableau -->
+          <tbody>
+            <tr *ngFor="let venue of venues">
+              <!-- Données de chaque lieu -->
+              <td>{{ venue.name }}</td>
+              <td>{{ venue.address }}</td>
+              <td>{{ venue.capacity }}</td>
+              <td>{{ venue.description }}</td>
+              <!-- Boutons d'action -->
+              <td>
+                <!-- Ajoutez ici les boutons d'action si nécessaire -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Tout les fichiers JavaScript -->
+  <script src="/assets/FrontOffice/assets/js/jquery.min.js"></script>
+  <script src="/assets/FrontOffice/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/FrontOffice/assets/js/jquery.sticky.js"></script>
+  <script src="/assets/FrontOffice/assets/js/click-scroll.js"></script>
+  <script src="/assets/FrontOffice/assets/js/custom.js"></script>
+</body>
+
+</html>
