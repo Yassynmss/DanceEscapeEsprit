@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <h2 class="text-center">List of Vihicules</h2>
+  
+    <div class="table-container">
+      <table class="table centered-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Matricule</th>
+            <th>Type</th>
+            <th>Etat</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vehicule of vehicules">
+            <td>{{ vehicule.name_vehicule }}</td>
+            <td>{{ vehicule.matricule }}</td>
+            <td>{{ vehicule.type }}</td>
+            <td>{{ vehicule.etat }}</td>
+            <td>
+              <button class="action-btn delete-btn" (click)="removeVehicule(vehicule)">Delete</button>
+              <button routerLink="/admin/updatevehicule/{{vehicule.id_vehicule}}">Update</button>
+            </td>
+          </tr>
+          <tr *ngIf="!vehicules || vehicules.length === 0">
+            <td colspan="5" class="text-center">No vehicules found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="text-center mt-3">
+      <button class="action-btn add-btn" routerLink="/admin/addvehicule">Add New Equipment</button>
+    </div>
+  
+    <div class="text-center mt-3">
+      <button class="action-btn back-btn" routerLink="/admin/logistic">Back</button>
+    </div>
+  </div>
+  

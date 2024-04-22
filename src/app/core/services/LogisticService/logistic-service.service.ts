@@ -1,21 +1,33 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Logistic } from '../../models/logistic/logistic';
-import { HttpClient, HttpParams } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
-export class LogisticServiceService {
-
-  private apiUrl = 'http://localhost:8081';
+export class LogisticService {
+  private apiUrl = 'http://localhost:8081/logistics';
 
   constructor(private http: HttpClient) { }
 
-  getLogistics(): Observable<Logistic[]> {
+  addLogistic(logistic: Logistic, id_event: number): Observable<Logistic> {
+    return this.http.post<Logistic>(`${this.apiUrl}/add/${id_event}`, logistic);
+  }
+
+  getAllLogistics(): Observable<Logistic[]> {
     return this.http.get<Logistic[]>(`${this.apiUrl}/getAllLogistics`);
   }
 
-  getLogisticById(id_logistic:any): Observable<Logistic> {
-    return this.http.get<Logistic>(`${this.apiUrl}/getLogisticById/${id_logistic}`);
+  getLogisticByEvent(id_event: number): Observable<Logistic> {
+    return this.http.get<Logistic>(`${this.apiUrl}/event/${id_event}`);
+  }
+
+  deleteLogistic(id_logistic: number): Observable<string> {
+    return this.http.delete<string>(`${this.apiUrl}/delete/${id_logistic}`);
+  }
+
+  getLogisticById(id_logistic: number): Observable<Logistic> {
+    return this.http.get<Logistic>(`${this.apiUrl}/${id_logistic}`);
   }
 }

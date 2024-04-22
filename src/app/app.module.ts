@@ -31,6 +31,9 @@ import { ChartStaffComponent } from './component/staff/chart-staff/chart-staff.c
 import { LogisticComponent } from './Logistic/logistic/logistic.component';
 
 
+import { AddVehiculeComponent } from './component/vehicule/add-vehicule/add-vehicule.component';
+import { ListVehiculeComponent } from './component/vehicule/list-vehicule/list-vehicule.component';
+import { UpdateVehiculeComponent } from './component/vehicule/update-vehicule/update-vehicule.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +61,11 @@ import { LogisticComponent } from './Logistic/logistic/logistic.component';
          EquipmentChartComponent,
          ChartStaffComponent,
          LogisticComponent,
- 
+
+
+ AddVehiculeComponent,
+ ListVehiculeComponent,
+ UpdateVehiculeComponent
     
 
 

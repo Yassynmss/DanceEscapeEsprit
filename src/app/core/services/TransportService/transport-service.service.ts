@@ -1,0 +1,33 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Transport } from '../../models/transport/transport';
+import { Logistic } from '../../models/logistic/logistic';
+@Injectable({
+  providedIn: 'root'
+})
+export class TransportService {
+  private apiUrl = 'http://localhost:8081';
+
+  constructor(private http: HttpClient) { }
+
+  addTransport(transport: Transport): Observable<Transport> {
+    return this.http.post<Transport>(`${this.apiUrl}/addTransport`, transport);
+  }
+
+  getAllTransports(): Observable<Transport[]> {
+    return this.http.get<Transport[]>(`${this.apiUrl}/getAllTransports`);
+  }
+
+  updateTransport(id_transport: number, transport: Transport): Observable<Transport> {
+    return this.http.put<Transport>(`${this.apiUrl}/updateTransport/${id_transport}`, transport);
+  }
+
+  deleteTransport(id_transport: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/deleteTransport/${id_transport}`);
+  }
+
+  getTransportById(id_transport: number): Observable<Transport> {
+    return this.http.get<Transport>(`${this.apiUrl}/getTransportById/${id_transport}`);
+  }
+}

@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>Route</th>
+      <th>Description</th>
+      <th>Start Location</th>
+      <th>End Location</th>
+      <th>Logistic</th>
+      <th>Vehicules</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let transport of transports">
+      <td>{{ transport.route }}</td>
+      <td>{{ transport.description }}</td>
+      <td>{{ transport.startLocation }}</td>
+      <td>{{ transport.endLocation }}</td>
+      <td>{{ transport.logistic.id_logistic }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let vehicule of transport.id_transport">{{ vehicule }}</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
