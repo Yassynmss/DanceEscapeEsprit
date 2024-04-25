@@ -5,5 +5,5 @@ export class Equipment {
     name_equipment!: string;
     quantity!: number;
     etat!: string;
-    logistic!: Logistic;
+    id_logistic!: number;
 }

@@ -38,6 +38,10 @@ export class VehiculeService {
   getVehiculeById(id_vehicule: number): Observable<Vehicule> {
     return this.http.get<Vehicule>(`${this.apiUrl}/getVehiculeById/${id_vehicule}`);
   }
-
+  countVehicule(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/countVehicule `);}
   
+    assignTransportToVehicule(id_vehicule: number, id_transport: number): Observable<void> {
+      return this.http.put<void>(`${this.apiUrl}/vehicule/${id_vehicule}/transport/${id_transport}`, {}); // Ajoutez un corps de requête vide
+    }
 }

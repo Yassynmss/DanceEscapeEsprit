@@ -10,8 +10,8 @@ export class Vehicule {
     id_vehicule !: number;
     name_vehicule!: string;
     matricule!: string;
-    type!: type_vehicule;  // Vous pouvez changer le type en fonction de vos besoins
+    type!: type_vehicule;  
     etat!: string;
-  image!: string;
-    transport!: Transport;
+  
+    id_transport !:number;
 }

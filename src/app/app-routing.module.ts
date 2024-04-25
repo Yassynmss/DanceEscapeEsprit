@@ -18,11 +18,12 @@ import { EquipmentChartComponent } from './component/equipment/equipment-chart/e
 import { ChartStaffComponent } from './component/staff/chart-staff/chart-staff.component';
 import { LogisticComponent } from './Logistic/logistic/logistic.component';
 import { ListTransportComponent } from './component/transport/list-transport/list-transport.component';
-
+import { UpdateTransportComponent } from './component/transport/update-transport/update-transport.component';
 import { ListVehiculeComponent} from './component/vehicule/list-vehicule/list-vehicule.component';
 import { AddVehiculeComponent } from './component/vehicule/add-vehicule/add-vehicule.component';
 import { UpdateVehiculeComponent } from './component/vehicule/update-vehicule/update-vehicule.component';
-
+import { AddTransportComponent } from './component/transport/add-transport/add-transport.component';
+import { MlogisticComponent } from './Logistic/mlogistic/mlogistic.component';
 
 const routes: Routes = [
   {
@@ -44,8 +45,17 @@ const routes: Routes = [
         
       }, 
       
+      
+
+
       { path:"logistic",
-      component:LogisticComponent},
+      component:LogisticComponent}, 
+      
+      
+
+
+      { path:"mlogistic",
+      component:MlogisticComponent},
       
       
       {
@@ -133,11 +143,27 @@ const routes: Routes = [
         component:AddVehiculeComponent
       }
     
-
+      
+    
     
   , {path:"listtransport",
     component:ListTransportComponent
- } ]},
+ } 
+ ,
+      {
+    
+        path:"addtransport",
+        component:AddTransportComponent
+      }
+      ,
+      {
+    
+        path:"updatetransport/:id_transport",
+        component:UpdateTransportComponent
+      }
+
+
+]},
   
  
  

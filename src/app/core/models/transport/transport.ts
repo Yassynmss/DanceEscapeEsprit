@@ -1,12 +1,13 @@
-import { Logistic } from "../logistic/logistic";
-import { Vehicule } from "../vehicule/vehicule";
+
 
 export class Transport {
     id_transport !: number;
     route!: string;
     description!: string;
-    startLocation!: string;
-    endLocation!: string;
-    logistic!: Logistic;
-    vehiculeList!: Vehicule[];
+    startLocation_longitude!: string;
+    startLocation_latitude!: string;
+    endLocation_longitude!: string;
+    endLocation_latitude!: string;
+    id_logistic!:number;
+    
 }

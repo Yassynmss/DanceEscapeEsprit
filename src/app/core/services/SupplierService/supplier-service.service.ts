@@ -11,9 +11,11 @@ export class SupplierService {
 
   constructor(private http: HttpClient) { }
 
-  addSupplier(supplier: Supplier): Observable<Supplier> {
-    return this.http.post<Supplier>(`${this.apiUrl}/addSupplier`, supplier);
+  addSupplier(supplier: Supplier, id_logistic: number): Observable<Supplier> {
+    const url = `${this.apiUrl}/addSupplier/${id_logistic}`;
+    return this.http.post<Supplier>(url, supplier);
   }
+
 
   getAllSuppliers(): Observable<Supplier[]> {
     return this.http.get<Supplier[]>(`${this.apiUrl}/getAllSuppliers`);
@@ -48,6 +50,12 @@ export class SupplierService {
   }
   countSupplier(): Observable<number> {
     return this.http.get<number>(`${this.apiUrl}/countSupplier`);
+  }
+
+
+  
+  assignLogisticToSupplier(id_supplier: number, id_logistic: number): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/supplier/${id_supplier}/logistic/${id_logistic}`, {}); // Ajoutez un corps de requête vide
   }
 }
 

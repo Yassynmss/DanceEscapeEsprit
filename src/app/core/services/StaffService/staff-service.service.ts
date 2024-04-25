@@ -51,5 +51,14 @@ countStaff(): Observable<number> {
   getStaffById(id_staff:any): Observable<Staff> {
     return this.http.get<Staff>(`${this.apiUrl}/getStaffById/${id_staff}`);
   }
+
+
+  assignLogisticToStaff(id_staff: number, id_logistic: number): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/staff/${id_staff}/logistic/${id_logistic}`, {}); // Ajoutez un corps de requête vide
+  }
+  addStafff(staff: Staff, id_logistic: number): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/addStafff/${id_logistic}`, staff);
+  }
+  
 }
 

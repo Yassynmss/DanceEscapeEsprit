@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { VehiculeService } from 'src/app/core/services/VehiculeService/vehicule-service.service';
 import { type_vehicule } from 'src/app/core/models/vehicule/vehicule';
+import { Transport } from 'src/app/core/models/transport/transport';
 
 @Component({
   selector: 'app-add-vehicule',
@@ -13,7 +14,7 @@ import { type_vehicule } from 'src/app/core/models/vehicule/vehicule';
 export class AddVehiculeComponent implements OnInit {
   vehiculeForm!: FormGroup;
   types = Object.values(type_vehicule); 
-
+ 
   constructor(private vehiculeService: VehiculeService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -21,7 +22,8 @@ export class AddVehiculeComponent implements OnInit {
       name_vehicule: ['', Validators.required], 
       matricule: ['', Validators.required], 
       type: ['', Validators.required],
-      etat: ['', Validators.required]
+      etat: ['', Validators.required],
+     
     });
   }
 

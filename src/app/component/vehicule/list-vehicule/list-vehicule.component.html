@@ -9,6 +9,7 @@
             <th>Matricule</th>
             <th>Type</th>
             <th>Etat</th>
+            
             <th>Actions</th>
           </tr>
         </thead>
@@ -18,10 +19,22 @@
             <td>{{ vehicule.matricule }}</td>
             <td>{{ vehicule.type }}</td>
             <td>{{ vehicule.etat }}</td>
-            <td>
+          
+          
               <button class="action-btn delete-btn" (click)="removeVehicule(vehicule)">Delete</button>
               <button routerLink="/admin/updatevehicule/{{vehicule.id_vehicule}}">Update</button>
-            </td>
+
+
+
+
+              <label for="vehiculeSelect">Select Transport :</label>
+              <select id="vehiculeSelect" [(ngModel)]="vehicule.id_transport">
+                <option *ngFor="let transport of transports" [value]="transport.id_transport">{{transport.route}}</option>
+              </select>
+              
+              
+                <button (click)="assignToTransport(vehicule, vehicule.id_transport)">Affect</button>
+            
           </tr>
           <tr *ngIf="!vehicules || vehicules.length === 0">
             <td colspan="5" class="text-center">No vehicules found</td>

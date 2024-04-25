@@ -5,7 +5,8 @@ import { saveAs as fileSaverSaveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 import { Router } from '@angular/router';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
-
+import { Logistic } from 'src/app/core/models/logistic/logistic';
+import { LogisticService } from 'src/app/core/services/LogisticService/logistic-service.service';
 
 
 @Component({
@@ -18,14 +19,18 @@ export class ListStaffComponent implements OnInit {
   id_staff: number | null = null;
   name: string | null = null;
   job: string | null = null;
-
-  constructor(private staffService: StaffService, private router: Router) { }
+  logistics: Logistic[] = [];
+  constructor(private staffService: StaffService,  private logisticService: LogisticService,private router: Router) { }
 
 
   jobs = ['TECHNICAL_SONG', 'ENGINEER_SONG', 'SECURITY', 'NURSE', 'DOCTOR', 'CLEANER', 'MAKEUP_ARTIST', 'TECHNICAL', 'COACH', 'DANCE_COACH', 'ENGINEER', 'RH', 'DJ', 'ORGANIZER', 'DRIVER', 'CHIEF'];
   searchTerm$ = new Subject<void>();
   
   ngOnInit() {
+    this.logisticService.getAllLogistics().subscribe(logistics => {
+      this.logistics = logistics;
+    });
+  
     this.searchTerm$.pipe(
       debounceTime(400),
       distinctUntilChanged()
@@ -112,4 +117,16 @@ export class ListStaffComponent implements OnInit {
   goToChartStaff() {
     this.router.navigate(['/admin/chartstaff']);
   }
+
+  assignToLogistic(staff: Staff, id_logistic: number): void {
+    this.staffService.assignLogisticToStaff(staff.id_staff, id_logistic)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.retrieveStaff();
+        },
+        error: (e) => console.error(e)
+      });
+  }
+  
 }

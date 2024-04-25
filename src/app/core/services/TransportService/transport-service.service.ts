@@ -11,8 +11,8 @@ export class TransportService {
 
   constructor(private http: HttpClient) { }
 
-  addTransport(transport: Transport): Observable<Transport> {
-    return this.http.post<Transport>(`${this.apiUrl}/addTransport`, transport);
+  addTransport(transport: Transport, id_logistic: number): Observable<Transport> {
+    return this.http.post<Transport>(`${this.apiUrl}/addTransport${id_logistic}`, transport);
   }
 
   getAllTransports(): Observable<Transport[]> {
@@ -29,5 +29,13 @@ export class TransportService {
 
   getTransportById(id_transport: number): Observable<Transport> {
     return this.http.get<Transport>(`${this.apiUrl}/getTransportById/${id_transport}`);
+  }
+
+  countTransport(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/countTransport`);
+  }
+
+  assignLogisticToTransport(id_transport: number, id_logistic: number): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/transport/${id_transport}/logistic/${id_logistic}`, {}); // Ajoutez un corps de requête vide
   }
 }

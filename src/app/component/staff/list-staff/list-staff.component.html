@@ -42,6 +42,15 @@
         <td>
           <button (click)="removeStaff(staff)">Delete</button>
           <button routerLink="/admin/updateStaff/{{staff.id_staff}}">Update</button>
+          <label for="logisticSelect">Sélectionnez une logistique :</label>
+          <select id="logisticSelect" [(ngModel)]="staff.id_logistic">
+            <option *ngFor="let logistic of logistics" [value]="logistic.id_logistic">{{logistic.id_logistic}}</option>
+          </select>
+          
+          
+            <button (click)="assignToLogistic(staff, staff.id_logistic)">Affecter à la logistique</button>
+          
+          
         </td>
       </tr>
     </tbody>

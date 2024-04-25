@@ -14,6 +14,6 @@ export enum Job {
     DateOfBirth: Date;
     number:number;
     email:string;
-    
+    id_logistic:number;
   }
   

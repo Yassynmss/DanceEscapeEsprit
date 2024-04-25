@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { VehiculeService } from 'src/app/core/services/VehiculeService/vehicule-service.service';
 import { Vehicule } from 'src/app/core/models/vehicule/vehicule';
-
+import { Transport } from 'src/app/core/models/transport/transport';
+import { TransportService } from 'src/app/core/services/TransportService/transport-service.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-list-vehicule',
   templateUrl: './list-vehicule.component.html',
@@ -10,12 +12,18 @@ import { Vehicule } from 'src/app/core/models/vehicule/vehicule';
 export class ListVehiculeComponent implements OnInit {
 [x: string]: any;
   vehicules: Vehicule[] = [];
+  transports: Transport[] = [];
+  
+  constructor(private vehiculeService: VehiculeService , private transportService: TransportService,private router: Router) { }
 
-  constructor(private vehiculeService: VehiculeService) { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    this.transportService.getAllTransports().subscribe((transports: Transport[]) => {
+      this.transports = transports;
+    });
+    
     this.retrieveVehicules();
   }
+  
 
   retrieveVehicules(): void {
     this.vehiculeService.getAllVehicules()
@@ -48,4 +56,17 @@ export class ListVehiculeComponent implements OnInit {
   sortByName(): void {
     this.vehicules.sort((a, b) => a.name_vehicule.localeCompare(b.name_vehicule));
   }
+
+  assignToTransport(vehicle: Vehicule, id_transport: number): void {
+    this.vehiculeService.assignTransportToVehicule(vehicle.id_vehicule, id_transport)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.retrieveVehicules();
+        },
+        error: (e) => console.error(e)
+      });
+  }
+  
+  
 }

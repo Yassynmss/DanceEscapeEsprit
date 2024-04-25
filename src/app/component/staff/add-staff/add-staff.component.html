@@ -30,6 +30,12 @@
   </div>
 
   
+
+  <label for="logisticSelect">Sélectionnez une logistique :</label>
+  <select id="logisticSelect" formControlName="id_logistic">
+    <option *ngFor="let logistic of logistics" [value]="logistic.id_logistic">{{logistic.id_logistic}}</option>
+  </select>
+  
   
   <button routerLink="/admin/liststaff"class="btn btn-secondary mt-2" >Cancel</button>
   <button type="submit" class="btn btn-success">Add</button>

@@ -30,7 +30,14 @@
           <button (click)="removeSupplier(supplier)">Delete</button>
           <button routerLink="/admin/updatesupplier/{{supplier.id_supplier}}">Update</button>
         
-
+          <label for="logisticSelect">Sélectionnez une logistique :</label>
+          <select id="logisticSelect" [(ngModel)]="supplier.id_logistic">
+            <option *ngFor="let logistic of logistics" [value]="logistic.id_logistic">{{logistic.id_logistic}}</option>
+          </select>
+          
+          
+            <button (click)="assignToLogistic(supplier, supplier.id_logistic)">Affecter à la logistique</button>
+          
         </td>
       </tr>
     </tbody>

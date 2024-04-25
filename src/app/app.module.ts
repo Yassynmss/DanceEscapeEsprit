@@ -13,6 +13,8 @@ import { HeaderfrontComponent } from './FrontOffice/headerfront/headerfront.comp
 import { HomecomponentfrontComponent } from './FrontOffice/homecomponentfront/homecomponentfront.component';
 import { NavbarcomponentfrontComponent } from './FrontOffice/navbarcomponentfront/navbarcomponentfront.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 import { AddEquipmentComponent } from './component/equipment/add-equipment/add-equipment.component';
 import { UpdateEquipmentComponent } from './component/equipment/update-equipment/update-equipment.component';
@@ -29,11 +31,14 @@ import { UpdateStaffComponent } from './component/staff/update-staff/update-staf
 import { EquipmentChartComponent } from './component/equipment/equipment-chart/equipment-chart.component';
 import { ChartStaffComponent } from './component/staff/chart-staff/chart-staff.component';
 import { LogisticComponent } from './Logistic/logistic/logistic.component';
-
-
+import { AddTransportComponent } from './component/transport/add-transport/add-transport.component';
+import { ListTransportComponent } from './component/transport/list-transport/list-transport.component';
 import { AddVehiculeComponent } from './component/vehicule/add-vehicule/add-vehicule.component';
 import { ListVehiculeComponent } from './component/vehicule/list-vehicule/list-vehicule.component';
 import { UpdateVehiculeComponent } from './component/vehicule/update-vehicule/update-vehicule.component';
+import { UpdateTransportComponent } from './component/transport/update-transport/update-transport.component';
+import { MlogisticComponent } from './Logistic/mlogistic/mlogistic.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +70,12 @@ import { UpdateVehiculeComponent } from './component/vehicule/update-vehicule/up
 
  AddVehiculeComponent,
  ListVehiculeComponent,
- UpdateVehiculeComponent
+ UpdateVehiculeComponent,
+ AddTransportComponent,
+ ListTransportComponent,
+ UpdateTransportComponent,
+ MlogisticComponent,
+
     
 
 
@@ -78,7 +88,9 @@ import { UpdateVehiculeComponent } from './component/vehicule/update-vehicule/up
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

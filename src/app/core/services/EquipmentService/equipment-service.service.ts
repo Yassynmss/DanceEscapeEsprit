@@ -12,8 +12,9 @@ export class EquipmentServiceService {
 
   constructor(private http: HttpClient) { }
 
-  addEquipment(equipment: Equipment): Observable<Equipment> {
-    return this.http.post<Equipment>(`${this.apiUrl}/addEquipment`, equipment);
+  addEquipment(equipment: Equipment, id_logistic: number): Observable<Equipment> {
+    const url = `${this.apiUrl}/addEquipment/${id_logistic}`;
+    return this.http.post<Equipment>(url, equipment);
   }
 
   getAllEquipments(): Observable<Equipment[]> {
@@ -72,7 +73,9 @@ export class EquipmentServiceService {
 decreaseEquipmentQuantity(id_equipment: number): Observable<Equipment> {
     return this.http.post<Equipment>(`${this.apiUrl}/decreaseEquipmentQuantity/${id_equipment}`, {}, { responseType: 'json' });
 }
-
+assignLogisticToEquipment(id_equipment: number, id_logistic: number): Observable<void> {
+  return this.http.put<void>(`${this.apiUrl}/equipment/${id_equipment}/logistic/${id_logistic}`, {}); // Ajoutez un corps de requête vide
+}
 }
 
 

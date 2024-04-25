@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Transport } from 'src/app/core/models/transport/transport';
 import { TransportService } from 'src/app/core/services/TransportService/transport-service.service';
-import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Transport } from 'src/app/core/models/transport/transport';
 
 @Component({
   selector: 'app-list-transport',
@@ -14,18 +12,31 @@ export class ListTransportComponent implements OnInit {
 
   constructor(private transportService: TransportService) { }
 
-  ngOnInit(): void {
-    this.loadTransports();
+  ngOnInit() {
+    this.retrieveTransports();
   }
 
-  loadTransports() {
-    this.transportService.getAllTransports().subscribe(
-      (data: Transport[]) => {
-        this.transports = data;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  retrieveTransports(): void {
+    this.transportService.getAllTransports()
+      .subscribe(
+        data => {
+          this.transports = data;
+          console.log(data);
+        },
+        error => console.error(error)
+      );
+  }
+
+  removeTransport(transport: Transport): void {
+    if (transport.id_transport) {
+      this.transportService.deleteTransport(transport.id_transport)
+        .subscribe(
+          () => {
+            console.log('Transport deleted successfully');
+            this.retrieveTransports();
+          },
+          error => console.error(error)
+        );
+    }
   }
 }
