@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Add Transport</h2>
-  <form [formGroup]="transportForm" (ngSubmit)="addTransport()">
+  <form [formGroup]="transportForm" (ngSubmit)="addTransport()"class="mx-auto w-75 p-4 shadow rounded bg-light">
     <div class="form-group">
       <label for="route">Route:</label>
       <input type="text" class="form-control" id="route" formControlName="route" required>
@@ -34,7 +34,8 @@
         <option *ngFor="let logistic of logistics" [value]="logistic.id_logistic">{{logistic.id_logistic}}</option>
       </select>
      </div>
-    
+     <div id="map" style="height: 440px;"></div>
+
      
       <div class="row">
       <div class="col-md-6 text-left">

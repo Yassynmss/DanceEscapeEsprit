@@ -7,10 +7,7 @@
         <tr>
           <th>Route</th>
           <th>Description</th>
-          <th>Start Location longitude</th>
-          <th>Start Location latitude</th>
-          <th>End Location longitude</th>
-          <th>End Location latitude</th>
+          <th>Map</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -18,11 +15,9 @@
         <tr *ngFor="let transport of transports">
           <td>{{ transport.route }}</td>
           <td>{{ transport.description }}</td>
-          <td>{{ transport.startLocation_longitude }}</td>
-          <td>{{ transport.startLocation_latitude }}</td>
-
-          <td>{{ transport.endLocation_longitude }}</td>
-          <td>{{ transport.endLocation_latitude }}</td>
+          <td>
+            <div id="map-{{transport.id_transport}}" style="height: 180px;"></div>
+          </td>
           <td>
             <button class="action-btn delete-btn" (click)="removeTransport(transport)">Delete</button>
             <button routerLink="/admin/updatetransport/{{transport.id_transport}}">Update</button>
