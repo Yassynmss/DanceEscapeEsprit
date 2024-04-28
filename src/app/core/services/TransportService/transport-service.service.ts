@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Transport } from '../../models/transport/transport';
 import { Logistic } from '../../models/logistic/logistic';
+import { Staff } from '../../models/staff/staff';
 @Injectable({
   providedIn: 'root'
 })
@@ -38,4 +39,10 @@ export class TransportService {
   assignLogisticToTransport(id_transport: number, id_logistic: number): Observable<void> {
     return this.http.put<void>(`${this.apiUrl}/transport/${id_transport}/logistic/${id_logistic}`, {}); // Ajoutez un corps de requête vide
   }
+
+  assignDriverToTransport(id_transport: number, id_staff: number): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/transport/${id_transport}/staff/${id_staff}`, {});
+  }
+ 
+  
 }

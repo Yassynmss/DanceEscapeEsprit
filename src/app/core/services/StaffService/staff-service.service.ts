@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Staff } from '../../models/staff/staff';
-
+import { Staff ,Job} from '../../models/staff/staff';
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -59,6 +59,14 @@ countStaff(): Observable<number> {
   addStafff(staff: Staff, id_logistic: number): Observable<void> {
     return this.http.post<void>(`${this.apiUrl}/addStafff/${id_logistic}`, staff);
   }
-  
+
+  getAllDrivers(): Observable<Staff[]> {
+    return this.http.get<Staff[]>(`${this.apiUrl}/getAllDrivers`)
+
+    
+  }
+  getDriverById(id_staff: number): Observable<Staff> {
+    return this.http.get<Staff>(`${this.apiUrl}/getDriverById/${id_staff}`);
+  }
 }
 

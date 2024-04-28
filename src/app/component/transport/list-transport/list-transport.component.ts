@@ -3,8 +3,9 @@ import { TransportService } from 'src/app/core/services/TransportService/transpo
 import { Transport } from 'src/app/core/models/transport/transport';
 import * as L from 'leaflet';
 import 'leaflet-routing-machine';
-import 'leaflet-control-geocoder';
-
+import { Staff } from 'src/app/core/models/staff/staff';
+import { StaffService } from 'src/app/core/services/StaffService/staff-service.service';
+import { Job } from 'src/app/core/models/staff/staff';
 @Component({
   selector: 'app-list-transport',
   templateUrl: './list-transport.component.html',
@@ -12,12 +13,60 @@ import 'leaflet-control-geocoder';
 })
 export class ListTransportComponent implements OnInit, AfterViewInit {
   transports: Transport[] = [];
+  staffs: Staff[] = [];
+  id_staff: number | null = null;
+  selectedStaff = {id_staff: ''};
 
-  constructor(private transportService: TransportService) { }
+  constructor(private transportService: TransportService, private staffService: StaffService) { }
 
   ngOnInit() {
+    this.staffService.getAllDrivers().subscribe(staffs => {
+      this.staffs = staffs;
+    });
+
+
+   /* this.retrieveDrivers(); */
     this.retrieveTransports();
   }
+/*
+  retrieveDrivers(): void {
+    this.staffService.getAllDrivers()
+      .subscribe(
+        (data: Staff[]) => {
+          this.staffs = data; 
+        },
+        error => console.error(error)
+      );
+  }
+ */
+
+
+
+
+
+ 
+
+  assignDriverToTransport(transport: Transport, id_staff: number): void { // Suppression de l'argument id_staff
+    if (this.id_staff) { // Vérification si un conducteur est sélectionné
+      this.transportService.assignDriverToTransport(transport.id_transport, this.id_staff)
+        .subscribe(
+          () => {
+            console.log('Driver assigned successfully');
+            this.retrieveTransports();
+          },
+          error => console.error(error)
+        );
+    } else {
+      console.error('No driver selected');
+    }
+  }
+
+
+
+
+
+
+
 
   ngAfterViewInit(): void {
     this.initializeMaps();
@@ -28,33 +77,99 @@ export class ListTransportComponent implements OnInit, AfterViewInit {
       .subscribe(
         data => {
           this.transports = data;
-          console.log(data);
-          this.initializeMaps(); // Initialize maps after retrieving transports
         },
         error => console.error(error)
       );
   }
 
-  initializeMaps(): void {
-    this.transports.forEach(transport => {
-      const map = L.map(`map-${transport.id_transport}`).setView(
-        [parseFloat(transport.startLocation_latitude), parseFloat(transport.startLocation_longitude)],
-        13
-      );
+  async initializeMaps(): Promise<void> {
+    try {
+      for (const transport of this.transports) {
+        const latitudeDeparture = parseFloat(transport.startLocation_latitude);
+        const longitudeDeparture = parseFloat(transport.startLocation_longitude);
+        const latitudeDestination = parseFloat(transport.endLocation_latitude);
+        const longitudeDestination = parseFloat(transport.endLocation_longitude);
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-      }).addTo(map);
+        // Check if the coordinates are valid numbers
+        if (isNaN(latitudeDeparture) || isNaN(longitudeDeparture) || isNaN(latitudeDestination) || isNaN(longitudeDestination)) {
+          console.error('Invalid coordinates for transport:', transport.id_transport);
+          continue;  // Skip this transport and continue with the next one
+        }
 
-      L.Routing.control({
-        waypoints: [
-          L.latLng(parseFloat(transport.startLocation_latitude), parseFloat(transport.startLocation_longitude)),
-          L.latLng(parseFloat(transport.endLocation_latitude), parseFloat(transport.endLocation_longitude))
-        ],
-        routeWhileDragging: true
-      }).addTo(map);
-    });
+        const mapId = 'map-' + transport.id_transport;
+        const map = L.map(mapId, {
+          center: [latitudeDeparture, longitudeDeparture],
+          zoom: 15
+        });
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Fetch location names asynchronously
+        const departureLocation = L.latLng(latitudeDeparture, longitudeDeparture);
+        const destinationLocation = L.latLng(latitudeDestination, longitudeDestination);
+
+        const departureName = await this.getLocationName(departureLocation);
+        const destinationName = await this.getLocationName(destinationLocation);
+
+        // Create custom icons for departure and destination markers
+        const depIcon = L.icon({
+          iconUrl: '/assets/backOffice/img/dep.png',
+          iconSize: [32, 32],
+          iconAnchor: [16, 16],
+          popupAnchor: [0, -16]
+        });
+
+        const destIcon = L.icon({
+          iconUrl: '/assets/backOffice/img/dest.png',
+          iconSize: [32, 32],
+          iconAnchor: [16, 16],
+          popupAnchor: [0, -16]
+        });
+
+        // Add markers with custom icons and tooltips
+        L.marker([latitudeDeparture, longitudeDeparture], { icon: depIcon })
+          .addTo(map)
+          .bindPopup('Departure Location')
+          .bindTooltip(departureName, { direction: 'top', permanent: true })
+          .openTooltip();
+
+        // Add destination marker with custom icon and tooltip
+        L.marker([latitudeDestination, longitudeDestination], { icon: destIcon })
+          .addTo(map)
+          .bindPopup('Destination Location')
+          .bindTooltip(destinationName, { direction: 'top', permanent: true })  // Ensure destination name is bound
+          .openTooltip();
+
+        // Create a routing control
+        const routingControl = L.Routing.control({
+          waypoints: [
+            L.latLng(latitudeDeparture, longitudeDeparture),
+            L.latLng(latitudeDestination, longitudeDestination)
+          ],
+          routeWhileDragging: false,
+          geocoder: (<any>L.Control).Geocoder.nominatim(),
+          router: new L.Routing.OSRMv1({
+            serviceUrl: 'https://router.project-osrm.org/route/v1'
+          }),
+          formatter: new L.Routing.Formatter(),
+          addWaypoints: false
+        });
+
+        // Add the routing control to the map
+        routingControl.addTo(map);
+
+        // Hide the route instructions control from the map
+        const routeInstructionsContainer = routingControl.getContainer();
+        if (routeInstructionsContainer) {
+          routeInstructionsContainer.style.display = 'none';
+        }
+      }
+    } catch (error) {
+      console.error('Error initializing maps:', error);
+    }
   }
 
   removeTransport(transport: Transport): void {
@@ -69,4 +184,23 @@ export class ListTransportComponent implements OnInit, AfterViewInit {
         );
     }
   }
+
+  private async getLocationName(location: L.LatLng): Promise<string> {
+    try {
+      const url = `https://nominatim.openstreetmap.org/reverse?lat=${location.lat}&lon=${location.lng}&format=json`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.display_name) {
+        return data.display_name;
+      } else {
+        return 'Location Name Not Found';
+      }
+    } catch (error) {
+      console.error('Error fetching location name:', error);
+      throw error;
+    }
+  }
+
+  
 }

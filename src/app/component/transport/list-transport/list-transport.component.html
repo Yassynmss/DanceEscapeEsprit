@@ -8,6 +8,7 @@
           <th>Route</th>
           <th>Description</th>
           <th>Map</th>
+          <th>Driver</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -17,6 +18,17 @@
           <td>{{ transport.description }}</td>
           <td>
             <div id="map-{{transport.id_transport}}" style="height: 180px;"></div>
+          </td>
+          <td>
+            
+            <select id="selectedstaff" [(ngModel)]="id_staff">
+              <option *ngFor="let staff of staffs" [value]="staff.id_staff">{{staff.name}}</option>
+            </select>
+          
+          
+          <button (click)="assignDriverToTransport(transport , transport.id_staff )">Affect</button>
+
+            
           </td>
           <td>
             <button class="action-btn delete-btn" (click)="removeTransport(transport)">Delete</button>
