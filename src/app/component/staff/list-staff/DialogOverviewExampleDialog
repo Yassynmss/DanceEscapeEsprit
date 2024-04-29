@@ -1,0 +1,36 @@
+import {Component, Inject} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Logistic } from 'src/app/core/models/logistic/logistic';
+
+export interface DialogData {
+  logistics: Logistic[];
+  selectedLogistic: Logistic;
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  template: `
+    <h1 mat-dialog-title>Affecter à la logistique</h1>
+    <div mat-dialog-content>
+      <p>Sélectionnez une logistique :</p>
+      <mat-select [(value)]="data.selectedLogistic">
+        <mat-option *ngFor="let logistic of data.logistics" [value]="logistic">{{logistic.id_logistic}}</mat-option>
+      </mat-select>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Annuler</button>
+      <button mat-button [mat-dialog-close]="data.selectedLogistic" cdkFocusInitial>Assigner</button>
+    </div>
+  `,
+})
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}

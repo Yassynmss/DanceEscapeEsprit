@@ -1,5 +1,6 @@
-<div class="container">
-  <h2>Add Transport</h2>
+
+<div class="container mt-5">
+  <h2  class="text-center">Add Transport</h2>
   <form [formGroup]="transportForm" (ngSubmit)="addTransport()"class="mx-auto w-75 p-4 shadow rounded bg-light">
     <div class="form-group">
       <label for="route">Route:</label>
@@ -9,6 +10,9 @@
       <label for="description">Description:</label>
       <input type="text" class="form-control" id="description" formControlName="description" required>
     </div>
+    
+    
+
     <div class="form-group">
       <label for="startLocation_longitude">Start Location longitude :</label>
       <input type="text" class="form-control" id="startLocation_longitude" formControlName="startLocation_longitude" required>
@@ -46,3 +50,5 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+
+

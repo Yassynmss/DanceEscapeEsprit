@@ -1,3 +1,6 @@
+
+import { Equipment } from "../equipment/equipment";
+
 export class Transport {
     id_transport !: number;
     route!: string;
@@ -8,4 +11,14 @@ export class Transport {
     endLocation_latitude!: string;
     id_logistic!: number;
     id_staff!: number; 
+
+    equipments!: Equipment[];
 }
+
+
+
+
+
+
+
+

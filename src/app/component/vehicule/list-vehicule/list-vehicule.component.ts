@@ -4,6 +4,7 @@ import { Vehicule } from 'src/app/core/models/vehicule/vehicule';
 import { Transport } from 'src/app/core/models/transport/transport';
 import { TransportService } from 'src/app/core/services/TransportService/transport-service.service';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs/internal/Subject';
 @Component({
   selector: 'app-list-vehicule',
   templateUrl: './list-vehicule.component.html',
@@ -13,7 +14,12 @@ export class ListVehiculeComponent implements OnInit {
 [x: string]: any;
   vehicules: Vehicule[] = [];
   transports: Transport[] = [];
-  
+  searchTerm$ = new Subject<void>();
+  name_vehicule : string | null = null;
+  etat: string | null = null;
+  matricule: string | null = null;
+  selectedType: string | null = null; 
+  type: string[] = ['BUS', 'TRACK', 'CAR', 'MOTORBIKE'];
   constructor(private vehiculeService: VehiculeService , private transportService: TransportService,private router: Router) { }
 
   ngOnInit(): void {
@@ -22,6 +28,25 @@ export class ListVehiculeComponent implements OnInit {
     });
     
     this.retrieveVehicules();
+
+
+    this.searchTerm$.pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    ).subscribe(() => {
+      this.searchVehicule();
+    });
+    this.searchTerm$.next();
+  }
+  searchVehicule(): void {
+    this.vehiculeService.searchVehicule(this.name_vehicule || undefined, this.etat || undefined, this.matricule || undefined, this.selectedType || undefined)
+      .subscribe(
+        data => {
+          this.vehicules = data;
+          console.log(data);
+        },
+        error => console.error(error)
+      );
   }
   
 
@@ -70,3 +95,11 @@ export class ListVehiculeComponent implements OnInit {
   
   
 }
+function debounceTime(arg0: number): import("rxjs").OperatorFunction<void, unknown> {
+  throw new Error('Function not implemented.');
+}
+
+function distinctUntilChanged(): import("rxjs").OperatorFunction<unknown, unknown> {
+  throw new Error('Function not implemented.');
+}
+

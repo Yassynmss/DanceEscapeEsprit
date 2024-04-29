@@ -36,19 +36,14 @@
             <button class="action-btn delete-btn" (click)="removeEquipment(equipment)">Delete</button>
             <button class="action-btn update-btn" routerLink="/admin/updateEquipment/{{equipment.id_equipment}}">Update</button>
 
-            <label for="logisticSelect">Logistic :</label>
-            <select id="logisticSelect" [(ngModel)]="equipment.id_logistic">
-              <option *ngFor="let logistic of logistics" [value]="logistic.id_logistic">{{logistic.id_logistic}}</option>
-            </select>
-            
-            
-              <button (click)="assignToLogistic(equipment, equipment.id_logistic)">Affect</button>
+           
             
           </td>
-          <td> <!-- New column for status messages -->
+          <td> 
             <span *ngIf="equipment.quantity === 0">Out of Stock</span>
             <span *ngIf="equipment.quantity > 0 && equipment.quantity < 10">See your stock</span>
-          </td>
+            <span *ngIf="equipment.quantity === 0">  <br><button class="action-btn add-btn" routerLink="/admin/listtransport">To order</button>
+            </span></td>
         </tr>
       </tbody>
     </table>
@@ -69,3 +64,4 @@
     <button class="action-btn back-btn" routerLink="/admin/logistic">Back</button>
   </div>
 </div>
+

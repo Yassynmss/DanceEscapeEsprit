@@ -38,7 +38,7 @@ import { ListVehiculeComponent } from './component/vehicule/list-vehicule/list-v
 import { UpdateVehiculeComponent } from './component/vehicule/update-vehicule/update-vehicule.component';
 import { UpdateTransportComponent } from './component/transport/update-transport/update-transport.component';
 import { MlogisticComponent } from './Logistic/mlogistic/mlogistic.component';
-
+import { AddEquipmentDialogComponent } from './component/transport/add-equipment-dialog/add-equipment-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +75,7 @@ import { MlogisticComponent } from './Logistic/mlogistic/mlogistic.component';
  ListTransportComponent,
  UpdateTransportComponent,
  MlogisticComponent,
+ AddEquipmentDialogComponent
 
     
 

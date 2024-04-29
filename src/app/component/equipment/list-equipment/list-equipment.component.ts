@@ -1,3 +1,17 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Equipment } from 'src/app/core/models/equipment/equipment';
 import { EquipmentServiceService } from 'src/app/core/services/EquipmentService/Equipment-service.service';
@@ -131,3 +145,7 @@ export class ListEquipmentComponent implements OnInit {
       });
   }
 }
+
+     
+
+

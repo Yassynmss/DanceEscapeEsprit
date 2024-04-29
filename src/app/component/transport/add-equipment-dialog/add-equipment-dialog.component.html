@@ -1,0 +1,19 @@
+
+
+<div class="container mt-5">
+  <h2  class="text-center">Add Equipments</h2>
+<div class="form-group"class="mx-auto w-75 p-4 shadow rounded bg-light">
+  <label for="availableEquipments">Available Equipments:</label>
+  <ul id="availableEquipments">
+    <li *ngFor="let equipment of availableEquipments" (dblclick)="addToSelected(equipment)">{{equipment.name_equipment}}</li>
+  </ul>
+</div>
+
+<div class="form-group "class="mx-auto w-75 p-4 shadow rounded bg-light">
+  <label for="selectedEquipments">Selected Equipments:</label>
+  <ul id="selectedEquipments">
+    <li *ngFor="let equipment of selectedEquipments" (dblclick)="removeFromSelected(equipment)">{{equipment.name_equipment}}</li>
+  </ul>
+
+<button (click)="confirmSelection()">Confirm</button>
+</div></div>

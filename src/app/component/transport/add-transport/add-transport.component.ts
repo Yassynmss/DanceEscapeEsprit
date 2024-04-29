@@ -1,3 +1,5 @@
+
+
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TransportService } from 'src/app/core/services/TransportService/transport-service.service';
@@ -6,6 +8,9 @@ import { Logistic } from 'src/app/core/models/logistic/logistic';
 import { LogisticService } from 'src/app/core/services/LogisticService/logistic-service.service';
 import * as L from 'leaflet';
 import 'leaflet-search';
+import { EquipmentServiceService } from 'src/app/core/services/EquipmentService/Equipment-service.service';
+import { Equipment } from 'src/app/core/models/equipment/equipment';
+import { mergeMap } from 'rxjs/operators';
 @Component({
   selector: 'app-add-transport',
   templateUrl: './add-transport.component.html',
@@ -18,13 +23,18 @@ export class AddTransportComponent implements OnInit, AfterViewInit {
   startMarker!: L.Marker;
   endMarker!: L.Marker;
   thirdMarker!: L.Marker;
-
-  constructor(private transportService: TransportService, private formBuilder: FormBuilder, private logisticService: LogisticService) { }
+  availableEquipments: Equipment[] = [];
+  selectedEquipments: Equipment[] = [];
+  constructor(private transportService: TransportService, private formBuilder: FormBuilder, private logisticService: LogisticService,private equipmentService:EquipmentServiceService) { }
 
   ngOnInit(): void {
     this.logisticService.getAllLogistics().subscribe(logistics => {
       this.logistics = logistics;
-    });
+      }); 
+      this.equipmentService.getAllEquipments().subscribe(equipments => {
+        this.availableEquipments = equipments;
+  });
+   
 
     this.transportForm = this.formBuilder.group({
       route: ['', Validators.required],
@@ -33,9 +43,31 @@ export class AddTransportComponent implements OnInit, AfterViewInit {
       startLocation_latitude: ['', Validators.required],
       endLocation_longitude: ['', Validators.required],
       endLocation_latitude: ['', Validators.required],
-      id_logistic: ['', Validators.required]
+      id_logistic: ['', Validators.required],
+      equipments: this.formBuilder.array([])
     });
   }
+  addToSelected(equipment: Equipment): void {
+    this.selectedEquipments.push(equipment);
+    this.availableEquipments = this.availableEquipments.filter(e => e !== equipment);
+    this.updateEquipmentsFormValue();
+  }
+
+  removeFromSelected(equipment: Equipment): void {
+    this.availableEquipments.push(equipment);
+    this.selectedEquipments = this.selectedEquipments.filter(e => e !== equipment);
+    this.updateEquipmentsFormValue();
+  }
+
+  private updateEquipmentsFormValue(): void {
+    const equipmentsControl = this.transportForm.get('equipments');
+    if (equipmentsControl) {
+      equipmentsControl.setValue(this.selectedEquipments.map(equipment => equipment.id_equipment));
+    } else {
+      console.error('The form control "equipments" does not exist.');
+    }
+  }
+  
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -69,24 +101,30 @@ export class AddTransportComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
   addTransport(): void {
     if (this.transportForm.valid) {
-      this.transportService.addTransport(this.transportForm.value , this.transportForm.value.id_logistic)
-        .subscribe({
-          next: (res: Transport) => {
+      this.transportService.addTransport(this.transportForm.value, this.transportForm.value.id_logistic)
+        .pipe(
+          mergeMap((res: Transport) => {
             console.log(res);
             alert('Transport added successfully!');
+            // After adding the transport, add the equipments
+            return this.transportService.addEquipmentsToTransport(res.id_transport, this.transportForm.value.equipments);
+          })
+        )
+        .subscribe({
+          next: () => {
+            console.log('Equipments added successfully');
             this.transportForm.reset(); // Reset the form after successful addition
           },
           error: (e) => {
             console.error(e);
-            alert('There was an error adding the transport. Please check the form for any missing or incorrect information.');
+            alert('There was an error adding the transport or the equipments. Please check the form for any missing or incorrect information.');
           }
         });
     } else {
       alert('The form is not valid. Please check all fields and try again.');
     }
-  }
-  
-}
+  }}
+
+

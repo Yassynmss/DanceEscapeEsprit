@@ -1,3 +1,4 @@
+
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TransportService } from 'src/app/core/services/TransportService/transport-service.service';
 import { Transport } from 'src/app/core/models/transport/transport';
@@ -6,6 +7,12 @@ import 'leaflet-routing-machine';
 import { Staff } from 'src/app/core/models/staff/staff';
 import { StaffService } from 'src/app/core/services/StaffService/staff-service.service';
 import { Job } from 'src/app/core/models/staff/staff';
+
+import { Equipment } from 'src/app/core/models/equipment/equipment';
+import { EquipmentServiceService } from 'src/app/core/services/EquipmentService/Equipment-service.service';
+import { Router } from '@angular/router';
+import { AddEquipmentDialogComponent } from '../add-equipment-dialog/add-equipment-dialog.component';
+import { jsPDF } from 'jspdf';
 @Component({
   selector: 'app-list-transport',
   templateUrl: './list-transport.component.html',
@@ -16,18 +23,80 @@ export class ListTransportComponent implements OnInit, AfterViewInit {
   staffs: Staff[] = [];
   id_staff: number | null = null;
   selectedStaff = {id_staff: ''};
+  unassignedDrivers: Staff[] = [];
+  availableEquipments: Equipment[] = [];
+  selectedEquipments: Equipment[] = [];
 
-  constructor(private transportService: TransportService, private staffService: StaffService) { }
+  staffsById: { [id_staff: number]: Staff } = {};
+  equipmentsById: { [id_transport: number]: Equipment[] } = {};
+
+  constructor(private transportService: TransportService, private staffService: StaffService,private router: Router,private equipmentService:EquipmentServiceService) { }
 
   ngOnInit() {
+
+    this.staffService.getUnassignedDrivers().subscribe(unassignedDrivers => {
+      this.unassignedDrivers = unassignedDrivers;
+
+    })
+    
+    
+    
+    ;
+    
+
     this.staffService.getAllDrivers().subscribe(staffs => {
       this.staffs = staffs;
-    });
+    })
+    
+    ;
+    
+    this.transportService.getAllTransports().subscribe(transports => {
+      this.transports = transports;
 
+      for (const transport of this.transports) {
+        this.transportService.getEquipmentsForTransport(transport.id_transport).subscribe(equipments => {
+          this.equipmentsById[transport.id_transport] = equipments;
+        });
+      }
+    });
 
    /* this.retrieveDrivers(); */
     this.retrieveTransports();
+
+    this.equipmentService.getAllEquipments().subscribe(equipments => {
+      this.availableEquipments = equipments;
+    });
   }
+
+
+  downloadTransport(transport: Transport): void {
+    const doc = new jsPDF();
+
+    doc.text(`Transport ID: ${transport.id_transport}`, 10, 10);
+    doc.text(`Route: ${transport.route}`, 10, 20);
+    doc.text(`Description: ${transport.description}`, 10, 30);
+    doc.text(`Start Location: ${transport.startLocation_latitude}, ${transport.startLocation_longitude}`, 10, 40);
+    doc.text(`End Location: ${transport.endLocation_latitude}, ${transport.endLocation_longitude}`, 10, 50);
+    if (transport.id_staff ) {
+      doc.text(`Driver: ${this.staffs}`, 10, 60);
+    }
+
+    // Add equipment information
+    if (transport.equipments && transport.equipments.length > 0) {
+      let y = 70;
+      for (const equipment of transport.equipments) {
+        doc.text(`Equipment: ${equipment.name_equipment}, Quantity: ${equipment.quantity}`, 10, y);
+        y += 10;
+      }
+    }
+
+    doc.save(`transport_${transport.id_transport}.pdf`);
+  }
+
+  goToAddEquipmentPage(transports: Transport): void {
+    this.router.navigate(['/add-equipment/', transports.id_transport]);
+  }
+  
 /*
   retrieveDrivers(): void {
     this.staffService.getAllDrivers()
@@ -45,21 +114,23 @@ export class ListTransportComponent implements OnInit, AfterViewInit {
 
 
  
-
-  assignDriverToTransport(transport: Transport, id_staff: number): void { // Suppression de l'argument id_staff
-    if (this.id_staff) { // Vérification si un conducteur est sélectionné
-      this.transportService.assignDriverToTransport(transport.id_transport, this.id_staff)
-        .subscribe(
-          () => {
-            console.log('Driver assigned successfully');
-            this.retrieveTransports();
-          },
-          error => console.error(error)
-        );
-    } else {
-      console.error('No driver selected');
-    }
+assignDriverToTransport(transport: Transport, id_staff: number): void {
+  if (this.id_staff) {
+    this.transportService.assignDriverToTransport(transport.id_transport, this.id_staff)
+      .subscribe(
+        () => {
+          console.log('Driver assigned successfully');
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/admin/listtransport']); // Naviguer à nouveau vers le même composant
+          }); 
+        },
+        error => console.error(error)
+      );
+  } else {
+    console.error('No driver selected');
   }
+}
+  
 
 
 

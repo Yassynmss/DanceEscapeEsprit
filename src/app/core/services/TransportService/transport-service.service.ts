@@ -1,9 +1,11 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Transport } from '../../models/transport/transport';
 import { Logistic } from '../../models/logistic/logistic';
 import { Staff } from '../../models/staff/staff';
+import { Equipment } from '../../models/equipment/equipment';
 @Injectable({
   providedIn: 'root'
 })
@@ -43,6 +45,16 @@ export class TransportService {
   assignDriverToTransport(id_transport: number, id_staff: number): Observable<void> {
     return this.http.put<void>(`${this.apiUrl}/transport/${id_transport}/staff/${id_staff}`, {});
   }
- 
   
+  addEquipmentsToTransport(id_transport: number, id_equipments: number[]): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/addEquipmentsToTransport/${id_transport}/equipments`, id_equipments);
 }
+getEquipmentsForTransport(id_transport: number): Observable<Equipment[]> {
+  return this.http.get<Equipment[]>(`${this.apiUrl}/getEquipmentsForTransport/${id_transport}/equipments`);
+}
+}
+
+
+
+
+

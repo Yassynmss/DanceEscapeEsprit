@@ -24,6 +24,7 @@ import { AddVehiculeComponent } from './component/vehicule/add-vehicule/add-vehi
 import { UpdateVehiculeComponent } from './component/vehicule/update-vehicule/update-vehicule.component';
 import { AddTransportComponent } from './component/transport/add-transport/add-transport.component';
 import { MlogisticComponent } from './Logistic/mlogistic/mlogistic.component';
+import { AddEquipmentDialogComponent } from './component/transport/add-equipment-dialog/add-equipment-dialog.component';
 
 const routes: Routes = [
   {
@@ -148,8 +149,9 @@ const routes: Routes = [
     
   , {path:"listtransport",
     component:ListTransportComponent
- } 
- ,
+ } ,
+ { path: 'addequipmentss/:id_transport', component: AddEquipmentDialogComponent },
+ 
       {
     
         path:"addtransport",

@@ -1,14 +1,41 @@
+
 <div class="container mt-5">
   <h2 class="text-center">List of Transports</h2>
 
   <div class="table-container">
-    <table class="table centered-table">
+    <table class="table centered-table  mx-auto w-75 centered-table" >
+      <thead>
+        <tr>
+          <th>Free driver</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="unassignedDrivers.length; else noDriver">
+          <tr *ngFor="let driver of unassignedDrivers">
+            <td>{{ driver.name }}</td>
+          </tr>
+        </ng-container>
+        <ng-template #noDriver>
+          <tr>
+            <td class="text-center">...there is no driver free</td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <br>
+
+  <div class="table-container">
+    <table class="table centered-table  mx-auto w-75 centered-table" >
       <thead>
         <tr>
           <th>Route</th>
           <th>Description</th>
+          <th>Equipments</th>
           <th>Map</th>
           <th>Driver</th>
+          <th>Equipments</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -16,9 +43,21 @@
         <tr *ngFor="let transport of transports">
           <td>{{ transport.route }}</td>
           <td>{{ transport.description }}</td>
+          
+          <td>
+
+            <ul>
+              <li *ngFor="let equipment of equipmentsById[transport.id_transport]">{{ equipment.name_equipment }}</li>
+            </ul>
+
+
+          </td>
+           
+          
           <td>
             <div id="map-{{transport.id_transport}}" style="height: 180px;"></div>
           </td>
+          <br>
           <td>
             
             <select id="selectedstaff" [(ngModel)]="id_staff">
@@ -31,8 +70,14 @@
             
           </td>
           <td>
+        
+            <button routerLink="/admin/addequipmentss/{{transport.id_transport}}">Add Equipments</button>
+          </td>
+          
+          <td>
             <button class="action-btn delete-btn" (click)="removeTransport(transport)">Delete</button>
             <button routerLink="/admin/updatetransport/{{transport.id_transport}}">Update</button>
+            <button (click)="downloadTransport(transport)">Download Transport Information</button>
           </td>
         </tr>
         <tr *ngIf="!transports || transports.length === 0">
@@ -50,3 +95,6 @@
     <button class="action-btn back-btn" routerLink="/admin/logistic">Back</button>
   </div>
 </div>
+
+
+

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Vehicule } from '../../models/vehicule/vehicule';
 
@@ -44,4 +44,24 @@ export class VehiculeService {
     assignTransportToVehicule(id_vehicule: number, id_transport: number): Observable<void> {
       return this.http.put<void>(`${this.apiUrl}/vehicule/${id_vehicule}/transport/${id_transport}`, {}); // Ajoutez un corps de requête vide
     }
-}
+
+    searchVehicule(name_vehicule?: string, etat?: string, matricule?: string, type?: string): Observable<Vehicule[]> {
+      let params = new HttpParams();
+      if (name_vehicule) {
+        params = params.append('name_vehicule', name_vehicule);
+      }
+      if (etat) {
+        params = params.append('etat', etat);
+      }
+      if (matricule) {
+        params = params.append('matricule', matricule);
+      }
+      if (type) {
+        params = params.append('type', type);
+      }
+  
+      return this.http.get<Vehicule[]>(`${this.apiUrl}/searchVehicule`, { params });
+    }
+  }
+  
+

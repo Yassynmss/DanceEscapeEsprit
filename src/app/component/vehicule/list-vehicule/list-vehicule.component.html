@@ -1,6 +1,16 @@
 <div class="container mt-5">
     <h2 class="text-center">List of Vihicules</h2>
-  
+    <div class="search-form">
+      <input [(ngModel)]="name_vehicule" (ngModelChange)="searchTerm$.next()" placeholder="Vehicule name">
+      <input [(ngModel)]="matricule" (ngModelChange)="searchTerm$.next()" placeholder="Matricule">
+      <input [(ngModel)]="etat" (ngModelChange)="searchTerm$.next()" placeholder="Etat">
+      <select id="type" [(ngModel)]="selectedType" (ngModelChange)="searchTerm$.next()">
+        <option value="">All</option>
+        <option *ngFor="let t of type" [value]="t">{{t}}</option>
+      </select>
+      
+    </div>
+    
     <div class="table-container">
       <table class="table centered-table">
         <thead>

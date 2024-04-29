@@ -1,3 +1,6 @@
+
+
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -68,5 +71,12 @@ countStaff(): Observable<number> {
   getDriverById(id_staff: number): Observable<Staff> {
     return this.http.get<Staff>(`${this.apiUrl}/getDriverById/${id_staff}`);
   }
+
+  getUnassignedDrivers(): Observable<Staff[]> {
+    return this.http.get<Staff[]>(`${this.apiUrl}/getUnassignedDrivers`);
 }
+
+}
+
+
 
