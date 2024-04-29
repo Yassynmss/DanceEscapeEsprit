@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AlltemplatefrontComponent } from './FrontOffice/alltemplatefront/alltemplatefront.component';
 
@@ -51,6 +51,13 @@ import { AddEquipmentComponent } from './component/equipment/add-equipment/add-e
 import { LogisticComponent } from './Logistic/logistic/logistic.component';
 import { ListEquipmentComponent } from './component/equipment/list-equipment/list-equipment.component';
 import { NavbarcomponentbackComponent } from './BackOffice/navbarcomponentback/navbarcomponentback.component';
+import { CreateDGComponent } from './CROWN/create-dg/create-dg.component';
+import { DeleteDGComponent } from './CROWN/delete-dg/delete-dg.component';
+import { OneDGComponent } from './CROWN/one-dg/one-dg.component';
+import { UpdateDGComponent } from './CROWN/update-dg/update-dg.component';
+import { AllDGComponent } from './CROWN/all-dg/all-dg.component';
+import { StatsDGComponent } from './CROWN/stats-dg/stats-dg.component';
+import { DancersGroupsDashboardComponent } from './CROWN/dancers-groups-dashboard/dancers-groups-dashboard.component';
 const routes: Routes = [
 
   {
@@ -126,7 +133,13 @@ const routes: Routes = [
       children:[{
         path:"addVote",
         component:AddVoteComponent
-      },
+      },{path:'createdg', component:CreateDGComponent},
+      { path: 'dashboarddg', component: DancersGroupsDashboardComponent },
+      {path:'statsdg', component:StatsDGComponent},
+      {path:'deletedg', component:DeleteDGComponent},
+      {path:'onedg', component:OneDGComponent},
+      {path:'updatedg', component:UpdateDGComponent},
+      {path:'alldg', component:AllDGComponent},
       {path:'', component:NavbarcomponentbackComponent},
       {path:'banuser' , component:BanUserComponent},
       {

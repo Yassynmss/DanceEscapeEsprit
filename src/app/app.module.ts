@@ -88,6 +88,14 @@ import { EquipmentChartComponent } from './component/equipment/equipment-chart/e
 import { ChartStaffComponent } from './component/staff/chart-staff/chart-staff.component';
 import { LogisticComponent } from './Logistic/logistic/logistic.component';
 import { NavbarcomponentbackComponent } from './BackOffice/navbarcomponentback/navbarcomponentback.component';
+import { CreateDGComponent } from './CROWN/create-dg/create-dg.component';
+import { UpdateDGComponent } from './CROWN/update-dg/update-dg.component';
+import { DeleteDGComponent } from './CROWN/delete-dg/delete-dg.component';
+import { AllDGComponent } from './CROWN/all-dg/all-dg.component';
+import { OneDGComponent } from './CROWN/one-dg/one-dg.component';
+import { StatsDGComponent } from './CROWN/stats-dg/stats-dg.component';
+import { TranslatorComponent } from './CROWN/translator/translator.component';
+import { DancersGroupsDashboardComponent } from './CROWN/dancers-groups-dashboard/dancers-groups-dashboard.component';
 
 
 
@@ -162,7 +170,15 @@ import { NavbarcomponentbackComponent } from './BackOffice/navbarcomponentback/n
          EquipmentChartComponent,
          ChartStaffComponent,
          LogisticComponent,
-         NavbarcomponentbackComponent
+         NavbarcomponentbackComponent,
+         CreateDGComponent,
+         UpdateDGComponent,
+         DeleteDGComponent,
+         AllDGComponent,
+         OneDGComponent,
+         StatsDGComponent,
+         TranslatorComponent,
+         DancersGroupsDashboardComponent
 
   ],
   imports: [

@@ -1,0 +1,73 @@
+/* delete-dg.component.css */
+.delete-container {
+    background-color: #f9f9f9; /* Gris très clair */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.delete-heading {
+    color: #333; /* Noir */
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333; /* Noir */
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Gris clair */
+    border-radius: 5px;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.delete-button {
+    background-color: #cc0000; /* Rouge */
+    color: #fff; /* Blanc */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #a60000; /* Rouge plus foncé au survol */
+}
+/* delete-dg.component.css */
+.back-button {
+    background-color: #cccccc; /* Couleur de fond */
+    color: #333333; /* Couleur du texte */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-right: 10px; /* Marge à droite pour l'espacement */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition fluide */
+}
+
+.back-button:hover {
+    background-color: #b3b3b3; /* Couleur de fond au survol */
+}
+.form-container {
+    /* Autres styles */
+    text-align: center; /* Centrage horizontal */
+  }
+  
+  .form-title {
+    margin-bottom: 20px; /* Espacement vers le bas */
+  }
+  

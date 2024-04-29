@@ -1,0 +1,30 @@
+/* one-dg.component.css */
+.container {
+    background-color: #f0f0f0; /* Gris clair */
+    padding: 20px;
+}
+
+.btn {
+    background-color: #333; /* Gris foncé */
+    color: #fff; /* Texte blanc */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.group-details {
+    background-color: #fff; /* Blanc */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.group-details p {
+    margin-bottom: 10px;
+}
+
+.group-details p strong {
+    font-weight: bold;
+}

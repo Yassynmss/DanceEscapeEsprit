@@ -1,0 +1,73 @@
+/* Dans ton fichier CSS correspondant */
+
+/* Style pour le tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  /* Style pour les cellules de l'en-tête */
+  th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  /* Style pour les lignes impaires */
+  tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Style pour les cellules de données */
+  td {
+    padding: 10px;
+  }
+  
+  /* Style pour les cellules de données lorsque la souris est dessus */
+  tbody tr:hover td {
+    background-color: #e6e6e6;
+  }
+  /* Dans ton fichier CSS correspondant */
+
+.export-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .export-button:hover {
+    background-color: #0056b3;
+  }
+  .back-button {
+    background-color: #cccccc;
+    color: #333333;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  } 
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Espacement en haut */
+  }
+  
+  .title {
+    margin-bottom: 20px; /* Espacement en bas du titre */
+  }
+  
+  .buttons {
+    margin-top: 20px; /* Espacement en haut des boutons */
+  }
+  
+  /* Styles pour les boutons et le titre comme mentionné dans les réponses précédentes */
+  

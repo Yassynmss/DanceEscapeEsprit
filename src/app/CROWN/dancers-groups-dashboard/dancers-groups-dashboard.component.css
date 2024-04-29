@@ -1,0 +1,27 @@
+/* dancers-groups-dashboard.component.css */
+.dashboard-container {
+    background-color: #f7f7f7; /* Couleur de fond */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre douce */
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    background-color: #4caf50; /* Couleur de fond des boutons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition fluide */
+}
+
+button:hover {
+    background-color: #45a049; /* Couleur de fond des boutons au survol */
+}

@@ -21,12 +21,15 @@
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
     "@angular/service-worker": "^15.2.10",
+    "@google-cloud/translate": "^8.2.0",
     "@ng-bootstrap/ng-bootstrap": "^14.2.0",
     "angular-animate": "^1.8.3",
     "angular-aria": "^1.8.3",
     "angular-material": "^1.2.5",
     "bootstrap": "^5.3.3",
+    "cache": "^3.0.0",
     "chart.js": "^4.4.2",
+    "clean": "^4.0.2",
     "file-saver": "^2.0.5",
     "flag-icon-css": "^4.1.7",
     "jspdf": "^2.5.1",
@@ -35,6 +38,7 @@
     "ng-chartjs": "^0.2.8",
     "ngx-cookie-service": "^17.1.0",
     "ngx-pagination": "^6.0.3",
+    "ngx-translate": "^0.0.1-security",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
@@ -55,6 +59,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~4.9.4"
+    "typescript": "^4.8.2"
   }
 }

@@ -1,0 +1,11 @@
+<!-- one-dg.component.html -->
+<div class="container">
+  <input type="text" [(ngModel)]="groupName">
+  <button class="btn" (click)="getGroupById()">Get Group</button>
+</div>
+
+<div *ngIf="dancersGroup" class="group-details">
+  <p><strong>Group Name:</strong> {{ dancersGroup.groupName }}</p>
+  <p><strong>Group Description:</strong> {{ dancersGroup.groupDescription }}</p>
+  <p><strong>Group Members:</strong> {{ dancersGroup.members }}</p>
+</div>

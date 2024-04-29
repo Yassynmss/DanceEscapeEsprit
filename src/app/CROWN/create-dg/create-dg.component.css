@@ -1,0 +1,255 @@
+/* create-dg.component.css */
+.form-container {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  textarea {
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .members-container {
+    margin-bottom: 20px;
+  }
+  
+  .member-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .member-input {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .remove-button {
+    background-color: #dc3545;
+  }
+  /* delete-dg.component.css */
+.back-button {
+  background-color: #cccccc; /* Couleur de fond */
+  color: #333333; /* Couleur du texte */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px; /* Marge à droite pour l'espacement */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transition fluide */
+}
+
+.back-button:hover {
+  background-color: #b3b3b3; /* Couleur de fond au survol */
+}
+
+
+.form-title {
+  margin-bottom: 20px; /* Espacement vers le bas */
+}
+/* create-dg.component.css */
+
+.form-container {
+  background-color: #f5f5f5; /* Couleur de fond gris clair */
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center; /* Centrage horizontal */
+}
+
+
+
+
+
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.members-container {
+  margin-bottom: 20px;
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.member-input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.remove-button {
+  background-color: #dc3545;
+}
+
+.back-button {
+  background-color: #cccccc;
+  color: #333333;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #b3b3b3;
+}
+
+
+
+
+
+
+.form-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajoute une légère ombre */
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+textarea {
+  width: calc(100% - 20px); /* Ajuste la largeur pour inclure la marge */
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.back-button {
+  background-color: #cccccc;
+  color: #333333;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #b3b3b3;
+}
+/* create-dg.component.css */
+
+/* Stylisation du formulaire */
+.form-container {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  width: 70%; /* Ajustez la largeur selon vos besoins */
+  margin: 0 auto;
+}
+
+/* Stylisation des éléments de formulaire */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Stylisation des boutons */
+.back-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn-primary {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Stylisation des boutons au survol */
+.back-button:hover, .btn-primary:hover {
+  background-color: #0056b3;
+}
