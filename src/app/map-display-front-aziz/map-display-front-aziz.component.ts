@@ -18,6 +18,7 @@ import 'leaflet-control-geocoder'; // Import the geocoder control
 })
 export class MapDisplayFrontAzizComponent implements  AfterViewInit {
   private map: any;
+  
 
   title = "leaf-let";
 
@@ -26,7 +27,7 @@ export class MapDisplayFrontAzizComponent implements  AfterViewInit {
   }
 
   private initMap(): void {
-    this.map = L.map("map").setView([14.094167, -87.206667], 15);
+    this.map = L.map("map").setView([36.797095, 10.178130], 15);
 
     const tiles = L.tileLayer(
       "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
