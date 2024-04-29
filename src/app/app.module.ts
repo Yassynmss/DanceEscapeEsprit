@@ -13,7 +13,6 @@ import { HeaderfrontComponent } from './FrontOffice/headerfront/headerfront.comp
 import { HomecomponentfrontComponent } from './FrontOffice/homecomponentfront/homecomponentfront.component';
 import { NavbarcomponentfrontComponent } from './FrontOffice/navbarcomponentfront/navbarcomponentfront.component';
 import { HttpClientModule } from "@angular/common/http";
-import { BackofficeLayoutComponent } from './BackOffice/backoffice-layout/backoffice-layout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddParticipationComponent } from './add-participation/add-participation.component';
 import { EditParticipationComponent } from './edit-participation/edit-participation.component';
@@ -33,6 +32,7 @@ import { MatSortModule } from '@angular/material/sort'; // Import MatSortModule
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
  import { EventparticipationsComponent } from './eventparticipations/eventparticipations.component';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -47,8 +47,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HeaderfrontComponent,
     HomecomponentfrontComponent,
     NavbarcomponentfrontComponent,
-    BackofficeLayoutComponent,
-    AddParticipationComponent,
+     AddParticipationComponent,
     EditParticipationComponent,
     VoteComponent,
     AddVoteComponent,
@@ -72,7 +71,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatStepperModule
 
     ],
   providers: [],

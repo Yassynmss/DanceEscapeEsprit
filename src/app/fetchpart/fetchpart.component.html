@@ -8,8 +8,11 @@
    <table>
       <thead>
         <tr>
+          <th>Status</th>
+          <th>Expiration Date</th>
           <th>Showtime</th>
           <th>Participant Code</th>
+          <th>Notes</th>
           <th>Total Votes <button mat-icon-button class="sort-button" (click)="toggleSortByTotalVotes()">
             <mat-icon class="sort-icon" >{{ sortByTotalVotesAsc ? 'arrow_drop_up' : 'arrow_drop_down' }}</mat-icon>
           </button>
@@ -21,9 +24,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let participation of filteredParticipations">
-          <td>{{ participation.showtime }}</td>
-          <td>{{ participation.participantCode }}</td>
-          <td >{{ participation.totalVotes }}</td>
+          <td>{{ participation.status }}</td>
+          <td>{{ participation.expirationDate}}</td>
+          <td>{{ participation.showtime ? (participation.showtime | date) : '-' }}</td>
+          <td>{{ participation.participantCode || '-' }}</td>
+          <td>{{ participation.notes || '-'  }}</td>
+          <td>{{ participation.totalVotes || '-'}}</td>
           <td>
             <button (click)="editParticipation(participation)">Update</button>
           </td>
@@ -33,11 +39,11 @@
         </tr>
       </tbody>
     </table>
- <!-- Ajout de la pagination -->
- <mat-paginator [length]="filteredParticipations.length"
- [pageSizeOptions]="[5, 10, 25, 100]"
- (page)="onPageChange($event)"
- showFirstLastButtons>
-</mat-paginator>
+
+    <mat-paginator [length]="filteredParticipations.length"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 (page)="onPageChange($event)">
+  </mat-paginator>
   </div>
 </div>

@@ -6,8 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddParticipationComponent } from '../add-participation/add-participation.component';
 import { DialogRef } from '@angular/cdk/dialog';
 import {MatPaginator} from '@angular/material/paginator';
-import { UpdatevoteComponent } from '../updatevote/updatevote.component';
-import { MatTableDataSource } from '@angular/material/table';
+ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { EditParticipationComponent } from '../edit-participation/edit-participation.component';
 import { PageEvent } from '@angular/material/paginator';
@@ -28,7 +27,7 @@ export class FetchpartComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  @ViewChild(MatSort) sort! : MatSort;
+ // @ViewChild(MatSort) sort! : MatSort;
 
 constructor(private participationService: ParticipationService, private router: Router,private _dialog: MatDialog) {}
 ngOnInit(): void {
@@ -36,23 +35,19 @@ ngOnInit(): void {
 
 }
 
-ngAfterViewInit(): void {
+/*ngAfterViewInit(): void {
   this.dataSource.paginator = this.paginator;
   this.dataSource.sort = this.sort;
-}
+}*/
 
 loadParticipations() {
   this.participationService.fetchParticipationList().subscribe(participations => {
     this.Participations = participations;
     this.filteredParticipations = participations;
     this.dataSource = new MatTableDataSource(participations);
-    if (this.paginator) {
-      this.dataSource.paginator = this.paginator; // Set paginator here
-      this.paginator.length = this.Participations.length; // Set the length initially
-    }
-    if (this.sort) {
-      this.dataSource.sort = this.sort;
-    }
+    this.dataSource.paginator = this.paginator;
+    this.paginator.length = participations.length; // Update paginator's length property
+
   });
 }
 
@@ -94,24 +89,18 @@ openForm(){
   });
 
 }
-filterParticipations() {
+filterParticipations(): void {
   this.filteredParticipations = this.Participations.filter(participation =>
-    participation.participantCode.toString().includes(this.searchParticipantCode)
+    participation.participantCode != null && participation.participantCode.toString().includes(this.searchParticipantCode)
   );
-  if (this.paginator) {
-    this.paginator.firstPage();
-    this.paginator.length = this.filteredParticipations.length; // Update the paginator's length
-  }
+  this.paginator.firstPage();
+  this.paginator.length = this.filteredParticipations.length; // Update paginator's length property
 }
 
 
-
-onPageChange(event: PageEvent) {
+onPageChange(event: PageEvent): void {
   const startIndex = event.pageIndex * event.pageSize;
   const endIndex = Math.min(startIndex + event.pageSize, this.filteredParticipations.length);
-  this.paginator.pageIndex = event.pageIndex;
-  this.paginator.pageSize = event.pageSize; // Update the paginator's pageSize property
-  this.paginator.length = this.filteredParticipations.length; // Update the paginator's length property
   this.filteredParticipations = this.filteredParticipations.slice(startIndex, endIndex);
 }
 
@@ -122,10 +111,10 @@ onPageChange(event: PageEvent) {
 sortParticipationsByTotalVotes() {
   this.Participations.sort((a, b) => b.totalVotes - a.totalVotes);
   this.filteredParticipations = this.Participations.slice(); // Make a copy of the sorted array
-  if (this.paginator) {
+  /*if (this.paginator) {
     this.paginator.firstPage();
     this.paginator.length = this.filteredParticipations.length;
-  }
+  }*/
 }
 sortByTotalVotesAsc: boolean = false;
 
@@ -137,10 +126,10 @@ toggleSortByTotalVotes() {
     this.Participations.sort((a, b) => b.totalVotes - a.totalVotes);
   }
   this.filteredParticipations = this.Participations.slice(); // Make a copy of the sorted array
-  if (this.paginator) {
+ /* if (this.paginator) {
     this.paginator.firstPage();
     this.paginator.length = this.filteredParticipations.length;
-  }
+  }*/
 }
 
 
