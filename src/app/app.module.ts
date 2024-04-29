@@ -38,6 +38,9 @@ import { VenueAddAdminComponent } from './venue-add-admin/venue-add-admin.compon
 import { VenueUpdateAdminComponent } from './venue-update-admin/venue-update-admin.component';
 import { VenueIndexFrontComponent } from './venue-index-front/venue-index-front.component';
 import { VenueIndexByIdComponent } from './venue-index-by-id/venue-index-by-id.component';
+import { MapDisplayFrontAzizComponent } from './map-display-front-aziz/map-display-front-aziz.component';
+
+
 
 @NgModule({
   declarations: [
@@ -73,7 +76,8 @@ import { VenueIndexByIdComponent } from './venue-index-by-id/venue-index-by-id.c
     VenueAddAdminComponent,
     VenueUpdateAdminComponent,
     VenueIndexFrontComponent,
-    VenueIndexByIdComponent
+    VenueIndexByIdComponent,
+    MapDisplayFrontAzizComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +85,9 @@ import { VenueIndexByIdComponent } from './venue-index-by-id/venue-index-by-id.c
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

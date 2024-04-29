@@ -15,6 +15,7 @@ import { VenueAdminAzizComponent } from './venue-admin-aziz/venue-admin-aziz.com
 import { VenueAddAdminComponent } from './venue-add-admin/venue-add-admin.component';
 import { VenueIndexFrontComponent } from './venue-index-front/venue-index-front.component';
 import { VenueUpdateAdminComponent } from './venue-update-admin/venue-update-admin.component';
+import { MapDisplayFrontAzizComponent } from './map-display-front-aziz/map-display-front-aziz.component';
 
 const routes: Routes = [
   {
@@ -71,7 +72,10 @@ const routes: Routes = [
     },{
       path:"venueAdd",
       component:VenueAddAdminComponent
-    }, ]
+    },{
+      path:"mapTest",
+      component:MapDisplayFrontAzizComponent
+    } ]
   },
 
   {
@@ -94,7 +98,7 @@ const routes: Routes = [
   },{
     path:"event/:id_event",
     component:EventupdateComponent
-  },{
+  },{ 
     path:"danceCategories/:id_dance_categorie",
     component:DancecategorieComponent
   },{
@@ -107,6 +111,9 @@ const routes: Routes = [
   {
     path: 'venues/update/:id_venue',
     component: VenueUpdateAdminComponent
+  },{
+    path:"map",
+    component:MapDisplayFrontAzizComponent
   }
 
 

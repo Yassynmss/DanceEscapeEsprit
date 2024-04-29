@@ -34,4 +34,10 @@ export class VenueService {
     const url = `${this.baseURL}/${id}`;
     return this.http.delete<void>(url);
   }
+
+  isEventFull(id: number): Observable<string> {
+    const url = `${this.baseURL}/${id}/eventfull`;
+    return this.http.get<string>(url);
+  }
+  
 }

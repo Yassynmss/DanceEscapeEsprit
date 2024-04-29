@@ -4,11 +4,11 @@
 <div class="layout-wrapper layout-content-navbar">
 <div class="layout-container">
 
-
+<app-sidebarback></app-sidebarback>
 
 
 <div class="container">
-    <h2 class="text-center">{{ editingVenue ? 'Modifier' : 'Ajouter un nouveau' }} lieu</h2>
+    <h2 class="text-center">{{ editingVenue ? 'Edit' : 'Add' }} Location</h2>
     <form [formGroup]="updateVenueForm" (ngSubmit)="updateVenue()" class="mx-auto w-50">
       <div class="form-group">
         <label>Nom du lieu:</label>

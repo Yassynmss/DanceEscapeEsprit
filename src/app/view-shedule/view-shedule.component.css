@@ -1,0 +1,24 @@
+.max-width-table {
+    max-width: 100px; /* Définissez la largeur maximale souhaitée */
+    width: 100%;
+    margin: auto;
+  }
+  
+  /* Ajoutez ces styles à votre fichier CSS */
+app-venue-index-front {
+  margin-bottom: 0; /* Réduire la marge inférieure */
+}
+
+app-map-display-front-aziz {
+  margin-top: 0; /* Réduire la marge supérieure */
+}
+
+
+.map-title {
+  font-family: 'Outfit', sans-serif; /* Utilisez la police de style Outfit */
+  font-weight: 700; /* Définissez le poids de la police */
+  font-size: 46px; /* Définissez la taille de la police */
+  color: #333; /* Définissez la couleur du texte */
+  margin-bottom: 10px;
+  margin-bottom: 10px; /* Ajoutez un espace en bas du titre */
+}

@@ -1,16 +1,16 @@
 <div class="d-flex justify-content-center">
     <div class="table-container">
-      <table class="table table-striped">
+      <table class="table table-striped table-sm"> <!-- Ajout de la classe table-sm pour un tableau plus compact -->
         <!-- En-têtes du tableau -->
         <thead>
           <tr>
-            <th>Nom du lieu</th>
-            <th>Adresse</th>
-            <th>Capacité</th>
-            <th>Description</th>
-            <th>Longitude</th>
-            <th>Altitude</th>
-            <th>Actions</th>
+            <th style="width: 10%;">Nom du lieu</th> <!-- Utilisation de l'attribut style pour définir une largeur fixe -->
+            <th style="width: 15%;">Adresse</th>
+            <th style="width: 10%;">Capacité</th>
+            <th style="width: 25%;">Description</th>
+            <th style="width: 15%;">Longitude</th>
+            <th style="width: 15%;">Altitude</th>
+            <th style="width: 10%;">Actions</th>
           </tr>
         </thead>
         <!-- Corps du tableau -->
@@ -26,13 +26,10 @@
             <!-- Boutons d'action -->
             <td>
                 <button [routerLink]="['/venues/update', venue.id_venue]" class="btn btn-primary">Edit</button>
-
               <button (click)="deleteVenue(venue.id_venue)" class="btn btn-primary">Supprimer</button>
-
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-  
