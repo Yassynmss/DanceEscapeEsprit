@@ -6,6 +6,8 @@ import { AuthenticationService } from './authentication.service';
 import { Router } from '@angular/router';
 import { MfaVerificationRequest } from '../shared/mfa-verification-request.model';
 import { MfaVerificationResponse } from '../shared/mfa-verification-response.modal';
+import { User } from '../models/user';
+import { CookieService } from 'ngx-cookie-service';
 const API_URL = 'http://localhost:8080/api/test/';
 @Injectable({
   providedIn: 'root'
@@ -13,13 +15,22 @@ const API_URL = 'http://localhost:8080/api/test/';
 export class AuthService {
   private tokenKey = 'token';
   private roleKey = 'userRole';
-  constructor(private authenticationClient: AuthenticationService, private router: Router, private Http: HttpClient) { }
+  constructor(private authenticationClient: AuthenticationService, 
+    private router: Router, 
+    private Http: HttpClient,
+    private cookieService: CookieService) { }
+
   public login(payload: MfaVerificationResponse): void {
     if (payload.tokenValid && !payload.mfaRequired) {
-      localStorage.clear();
-      localStorage.setItem(this.tokenKey, payload.jwt);
+      this.cookieService.delete(this.tokenKey); 
+      this.cookieService.set(this.tokenKey, payload.jwt); 
       this.router.navigate(['/home']);
     }
+  }
+  
+  getCurrentUser(): Observable<User> {
+    // Envoyez une requête HTTP pour obtenir les informations sur l'utilisateur actuellement connecté
+    return this.Http.get<User>(`${this.apiUrl}/current`);
   }
   // Méthode pour récupérer les rôles depuis le backend
   getRolesFromDatabase(): Observable<any[]> {
@@ -30,9 +41,10 @@ export class AuthService {
  // isAdmin(email: string): Observable<boolean> {
  //   return this.Http.get<boolean>(`${this.apiUrl}/isAdmin/${email}`);
  // }
-  getCurrentUserEmail(): Observable<string> {
-    return this.Http.get<string>(`${this.baseUrl}/getCurrentUserEmail`);
-  }
+ getCurrentUserEmail(): Observable<string> {
+  // Envoyez une requête HTTP pour obtenir l'email de l'utilisateur actuellement connecté
+  return this.Http.get<string>(`${this.apiUrl}/getCurrentUserEmail`);
+}
 
   public navidateToHome(): void {
     this.router.navigate(['/']);
@@ -49,21 +61,20 @@ export class AuthService {
   }
 
   public logout() {
-    localStorage.removeItem(this.tokenKey);
-    localStorage.removeItem(this.roleKey);
+    this.cookieService.delete(this.tokenKey);
+    this.cookieService.delete(this.roleKey);
     this.router.navigate(['/login']);
   }
-
-
-
+  
   public isLoggedIn(): boolean {
-    let token = localStorage.getItem(this.tokenKey);
+    let token = this.cookieService.get(this.tokenKey);
     return token != null && token.length > 0;
   }
-
+  
   public getToken(): string | null {
-    return this.isLoggedIn() ? localStorage.getItem(this.tokenKey) : null;
+    return this.isLoggedIn() ? this.cookieService.get(this.tokenKey) : null;
   }
+  
 
   forgotPassword(email: string): Observable<any> {
     const url = `http://localhost:8080/forgot-password?email=${encodeURIComponent(email)}`;
@@ -128,5 +139,8 @@ export class AuthService {
   getUserRoleByEmail(email: string): Observable<string> {
     return this.Http.get<string>(`${this.baseUrl}/role/${email}`);
   }
-  
+  getLoggedInUser(): Observable<User> {
+    // Implémentez la logique pour récupérer les informations sur l'utilisateur connecté depuis votre API
+    return this.Http.get<User>(`${this.apiUrl}/user`);
+  }
 }
