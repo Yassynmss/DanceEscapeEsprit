@@ -1,9 +1,7 @@
 
 import { NgModule, isDevMode } from '@angular/core';
-
 import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlltemplatebackComponent } from './BackOffice/alltemplateback/alltemplateback.component';
@@ -15,7 +13,6 @@ import { FooterfrontComponent } from './FrontOffice/footerfront/footerfront.comp
 import { HeaderfrontComponent } from './FrontOffice/headerfront/headerfront.component';
 import { HomecomponentfrontComponent } from './FrontOffice/homecomponentfront/homecomponentfront.component';
 import { NavbarcomponentfrontComponent } from './FrontOffice/navbarcomponentfront/navbarcomponentfront.component';
-
 import { RegisterComponent } from './components/register/register.component';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { UserlistComponent } from './components/userlist/userlist.component';
@@ -96,6 +93,8 @@ import { OneDGComponent } from './CROWN/one-dg/one-dg.component';
 import { StatsDGComponent } from './CROWN/stats-dg/stats-dg.component';
 import { TranslatorComponent } from './CROWN/translator/translator.component';
 import { DancersGroupsDashboardComponent } from './CROWN/dancers-groups-dashboard/dancers-groups-dashboard.component';
+import { AppComponentComponent } from './CROWN/app-component/app-component.component';
+
 
 
 
@@ -178,7 +177,9 @@ import { DancersGroupsDashboardComponent } from './CROWN/dancers-groups-dashboar
          OneDGComponent,
          StatsDGComponent,
          TranslatorComponent,
-         DancersGroupsDashboardComponent
+         DancersGroupsDashboardComponent,
+         AppComponentComponent
+        
 
   ],
   imports: [

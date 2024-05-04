@@ -68,8 +68,18 @@ const routes: Routes = [
   component:AlltemplatefrontComponent,
   children:[
 
+
   ]
+  
  },
+ { path:"front", 
+ component:AlltemplatefrontComponent,
+ children:[
+
+  
+ ]
+ 
+},
   {
     path: 'login',
     component: AuthenticateComponent,
@@ -84,22 +94,18 @@ const routes: Routes = [
     component: MfaComponent, canActivate:[AuthGuard]
   },
   {
-    path:'front', component:AlltemplatefrontComponent
+    path:'front', component:AlltemplatefrontComponent 
   },
   {
     path:'reset-password', component:ResetPasswordComponent
   },
   {
     path:'use1r',
-    component: UserComponent , canActivate:[AuthGuard],data:{roles:['USER']}
+    component: UserComponent 
    },
-   {
-    path: 'admin1',
-    component: AlltemplatebackComponent, canActivate:[AuthGuard],data:{roles:['ADMIN']}
-  },
+   
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
-  { path: 'admin111', component: AlltemplatebackComponent },
   {path: 'profile' , component:ProfileComponent},
  
     {

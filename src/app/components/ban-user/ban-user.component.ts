@@ -9,15 +9,20 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class BanUserComponent implements OnInit {
   users: User[] = [];
-  banDuration: { [key: number]: number } = {}; // Utilisation de l'objet banDuration pour stocker la durée du bannissement pour chaque utilisateur
+  banDurations: { userId: number; duration: number }[] = [];
   popupMessage: string = '';
   showPopup: boolean = false;
   constructor(private userService: UserService) {}
+
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe(
       (users) => {
         this.users = users;
+        // Initialiser les durées de bannissement pour chaque utilisateur
+        this.users.forEach(user => {
+          this.banDurations.push({ userId: user.id, duration: 0 });
+        });
       },
       (error) => {
         console.error(error);

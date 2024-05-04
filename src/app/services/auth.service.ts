@@ -27,7 +27,9 @@ export class AuthService {
       this.router.navigate(['/home']);
     }
   }
-  
+  getUserRoles(): Observable<string[]> {
+    return this.Http.get<string[]>('/roles');
+  }
   getCurrentUser(): Observable<User> {
     // Envoyez une requête HTTP pour obtenir les informations sur l'utilisateur actuellement connecté
     return this.Http.get<User>(`${this.apiUrl}/current`);

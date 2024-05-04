@@ -59,7 +59,7 @@ export class MfaComponent implements OnInit {
           this.authService.login(response);
           // Redirection en fonction du rôle de l'utilisateur
           if (response.roles.some(role => role.name === 'ADMIN')) {
-            this.router.navigateByUrl('/admin1');
+            this.router.navigateByUrl('/admin');
           } else if (response.roles.some(role => role.name === 'EVALUATOR')) {
             this.router.navigateByUrl('/front');
           }else {

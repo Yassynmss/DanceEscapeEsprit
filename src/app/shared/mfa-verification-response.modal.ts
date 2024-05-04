@@ -10,7 +10,7 @@ export class MfaVerificationResponse {
   message!: string;
   user!: User;
   roles!: Role[];
-
+  currentUser!: User;
   constructor(
     email: string,
     jwt: string,
