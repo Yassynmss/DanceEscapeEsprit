@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap'; // Importez NgbModal
 import { Route, Router } from '@angular/router';
+import { ErrorModalComponent, SuccessModalComponent } from '../create-dg/create-dg.component';
 
 @Component({
   selector: 'app-delete-dg',
@@ -41,7 +42,8 @@ export class DeleteDGComponent implements OnInit {
       response => {
         console.log('Groupe supprimé avec succès !');
         this.openSuccessModal();
-       
+        // Rafraîchir la liste des noms de groupe après la suppression
+        this.fetchGroupNames();
       },
       error => {
         console.error('Une erreur s\'est produite lors de la suppression du groupe : ', error);
@@ -59,40 +61,4 @@ export class DeleteDGComponent implements OnInit {
     const modalRef = this.modalService.open(ErrorModalComponent);
     modalRef.componentInstance.message = 'Une erreur s\'est produite lors de la suppression du groupe.';
   }
-}
-@Component({
-  selector: 'success-modal',
-  template: `
-    <div class="modal-header">
-      <h4 class="modal-title">Succès</h4>
-    </div>
-    <div class="modal-body">
-      {{ message }}
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Fermer</button>
-    </div>
-  `
-})
-export class ErrorModalComponent {
-  message?: string;
-  constructor(public modal: NgbActiveModal) { }
-}
-@Component({
-  selector: 'error-modal',
-  template: `
-    <div class="modal-header">
-      <h4 class="modal-title">Erreur</h4>
-    </div>
-    <div class="modal-body">
-      {{ message }}
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Fermer</button>
-    </div>
-  `
-})
-export class SuccessModalComponent {
-  message?: string;
-  constructor(public modal: NgbActiveModal) { }
 }

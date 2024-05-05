@@ -1,13 +1,17 @@
 <div class="form-container">
   <h2 class="form-title">Create a new dancers group</h2>
-  <form (submit)="createGroup()">
+  <form [formGroup]="createGroupForm" (submit)="createGroup()">
     <div>
       <label for="groupName">Group Name:</label>
-      <input type="text" id="groupName" name="groupName" [(ngModel)]="groupName" required>
+      <input type="text" id="groupName" name="groupName" formControlName="groupName">
+      <div *ngIf="createGroupForm?.get('groupName')?.value === null && createGroupForm?.get('groupName')?.touched" class="text-danger">Group Name is required</div>
     </div>
     <div class="form-group">
       <label for="groupDescription">Group Description (max 150 characters):</label>
-      <textarea class="form-control" id="groupDescription" name="groupDescription" [(ngModel)]="groupDescription" required maxlength="150"></textarea>
+      <textarea id="groupDescription" name="groupDescription" formControlName="groupDescription"></textarea>
+      <div *ngIf="createGroupForm?.get('groupDescription')?.value === null && createGroupForm?.get('groupDescription')?.touched" class="text-danger">Group Description is required</div>
+
+      <div *ngIf="createGroupForm?.get('groupDescription')?.errors?.['maxlength'] && createGroupForm?.get('groupDescription')?.touched" class="text-danger">Maximum length exceeded (150 characters)</div>
     </div>
     <div class="form-group">
       <label for="members">Group Members:</label>

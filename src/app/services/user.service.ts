@@ -9,8 +9,7 @@ import { Role } from '../models/Role';
 })
 export class UserService {
 
-  private apiUrl = 'http://localhost:8080'; // Mettez à jour l'URL de votre API
-
+  private apiUrl = 'http://localhost:8080'; 
   constructor(private http: HttpClient) { }
 
   getUserProfile(): Observable<User> {
@@ -39,6 +38,9 @@ export class UserService {
 
   getDancerUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/dancers`);
+  }
+  getUserById(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/SS`);
   }
 
   updateBanStatus(email: string, isBanned: boolean): Observable<any> {

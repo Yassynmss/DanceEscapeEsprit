@@ -94,6 +94,7 @@ import { StatsDGComponent } from './CROWN/stats-dg/stats-dg.component';
 import { TranslatorComponent } from './CROWN/translator/translator.component';
 import { DancersGroupsDashboardComponent } from './CROWN/dancers-groups-dashboard/dancers-groups-dashboard.component';
 import { AppComponentComponent } from './CROWN/app-component/app-component.component';
+import { UpdateUserComponent } from './CROWN/update-user/update-user.component';
 
 
 
@@ -178,7 +179,8 @@ import { AppComponentComponent } from './CROWN/app-component/app-component.compo
          StatsDGComponent,
          TranslatorComponent,
          DancersGroupsDashboardComponent,
-         AppComponentComponent
+         AppComponentComponent,
+         UpdateUserComponent
         
 
   ],
