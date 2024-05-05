@@ -95,6 +95,12 @@ import { TranslatorComponent } from './CROWN/translator/translator.component';
 import { DancersGroupsDashboardComponent } from './CROWN/dancers-groups-dashboard/dancers-groups-dashboard.component';
 import { AppComponentComponent } from './CROWN/app-component/app-component.component';
 import { UpdateUserComponent } from './CROWN/update-user/update-user.component';
+import { VenueAddAdminComponent } from './venue-add-admin/venue-add-admin.component';
+import { VenueAdminAzizComponent } from './venue-admin-aziz/venue-admin-aziz.component';
+import { VenueIndexByIdComponent } from './venue-index-by-id/venue-index-by-id.component';
+import { VenueIndexFrontComponent } from './venue-index-front/venue-index-front.component';
+import { VenueUpdateAdminComponent } from './venue-update-admin/venue-update-admin.component';
+import { MapDisplayFrontAzizComponent } from './map-display-front-aziz/map-display-front-aziz.component';
 
 
 
@@ -164,7 +170,7 @@ import { UpdateUserComponent } from './CROWN/update-user/update-user.component';
     AddStaffComponent,
     AddSupplierComponent,
     ListSupplierComponent,
-   
+    
     UpdateSupplierComponent,
          UpdateStaffComponent,
          EquipmentChartComponent,
@@ -180,7 +186,14 @@ import { UpdateUserComponent } from './CROWN/update-user/update-user.component';
          TranslatorComponent,
          DancersGroupsDashboardComponent,
          AppComponentComponent,
-         UpdateUserComponent
+         UpdateUserComponent,
+         VenueAddAdminComponent,
+         VenueAdminAzizComponent,
+         VenueIndexByIdComponent,
+         VenueIndexFrontComponent,
+         VenueUpdateAdminComponent,
+         ViewSheduleComponent,
+         MapDisplayFrontAzizComponent
         
 
   ],

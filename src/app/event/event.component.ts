@@ -13,6 +13,7 @@ import { AddParticipationComponent } from '../add-participation/add-participatio
 
 
 
+
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
@@ -25,7 +26,9 @@ export class EventComponent {
   eventForm!: FormGroup;
   
 
+
   constructor(private eventService: EventService, private dialog: MatDialog, private router: Router) { }
+
 
   
 
@@ -43,13 +46,15 @@ export class EventComponent {
         // Handle errors
       }
     );
-  
+
+
     
   }
   showParticipations(eventId: number): void {
     // Navigate to EventparticipationsComponent with the eventId
     this.router.navigate(['/eventparticipations', eventId]);
   }
+
   
   deleteEvent(id: number): void {
     this.eventService.deleteEvent(id)
@@ -132,7 +137,7 @@ export class EventComponent {
               data: { timeRemaining }
             });
           }
-          
+
           showAddParticipationDialog(eventId: number): void {
             const dialogRef = this.dialog.open(AddParticipationComponent, {
               data: { eventId }, // Pass eventId to the dialog
@@ -144,7 +149,7 @@ export class EventComponent {
               console.log('Add participation dialog closed.');
             });
           }
-          
+
          
 
 

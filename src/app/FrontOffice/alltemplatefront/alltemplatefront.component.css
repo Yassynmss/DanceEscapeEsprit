@@ -1,8 +1,4 @@
 
-button{
-    background-color: #3633CD;
-}
-
 /* styles.css */
 
 .custom-button {
@@ -14,5 +10,4 @@ button{
     background-color: #E94560; /* Couleur orangé magma au survol */
     border-color: #E94560; /* Couleur de bordure au survol */
   }
-  
 

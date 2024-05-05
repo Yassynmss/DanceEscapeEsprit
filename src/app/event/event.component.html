@@ -1,21 +1,23 @@
 <div class="d-flex justify-content-center">
-  <div class="container mt-5">
+
+  <div class="table-container">
     <table class="table table-striped">
       <!-- En-têtes du tableau -->
-      <thead class="thead-dark">
+      <thead>
         <tr>
-          <th scope="col">Nom de l'événement</th>
-          <th scope="col">Date</th>
-          <th scope="col">Lieu</th>
-          <th scope="col">Thème</th>
-          <th scope="col">Règlements</th>
-          <th scope="col">Nombre de compétitions</th>
-          <th scope="col">Compteurs de ventes</th>
-          <th scope="col">Capacité publique</th>
-          <th scope="col">Système sonore</th>
-          <th scope="col">Type d'événement</th>
-          <th scope="col">Événement pour enfants</th>
-          <th scope="col">Actions</th>
+          <th>Nom de l'événement</th>
+          <th>Date</th>
+          <th>Lieu</th>
+          <th>Thème</th>
+          <th>Règlements</th>
+          <th>Nombre de compétitions</th>
+          <th>Compteurs de ventes</th>
+          <th>Capacité publique</th>
+          <th>Système sonore</th>
+          <th>Type d'événement</th>
+          <th>Événement pour enfants</th>
+          <th>Actions</th>
+
         </tr>
       </thead>
       <!-- Corps du tableau -->
@@ -32,17 +34,14 @@
           <td>{{ event.public_capacity }}</td>
           <td>{{ event.sound_system_event }}</td>
           <td>{{ event.typeevent }}</td>
-          <td>{{ event.kids ? 'Oui' : 'Non' }}</td>
+
+          <td>{{ event.kids ? 'Yes' : 'No' }}</td>
           <!-- Boutons d'action -->
           <td>
-            <div class="btn-group" role="group" aria-label="Actions">
-              <button [routerLink]="['/event', event.id_event]" class="btn btn-info">Modifier</button>
-              <button (click)="deleteEvent(event.id_event)" class="btn btn-info">Supprimer</button>
-              <button (click)="displayTimeRemaining(event.id_event)" class="btn btn-info">Temps Restant</button>
-              <button (click)="showParticipations(event.id_event)" class="btn btn-info">Afficher Participations</button>
-              <button (click)="showAddParticipationDialog(event.id_event)" class="btn btn-info">Ajouter Participation</button>
-            </div>
-          </td>
+            <button class="update-button" [routerLink]="['/event', event.id_event]" class="btn btn-primary">Update</button>
+            <button (click)="deleteEvent(event.id_event)" class="btn btn-primary">Delete</button>
+            <button (click)="displayTimeRemaining(event.id_event)" class="btn btn-primary">Time Remaining</button>
+          </td> 
         </tr>
       </tbody>
     </table>

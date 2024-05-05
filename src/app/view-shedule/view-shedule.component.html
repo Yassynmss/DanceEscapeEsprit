@@ -11,24 +11,46 @@
   <link rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap-icons.css">
   <link rel="stylesheet" href="/assets/FrontOffice/assets/css/templatemo-festava-live.css">
+  <link rel="stylesheet" href="/assets/leaflet/dist/leaflet.css">
+
 </head>
 <body>
 
   
-  <app-headerfront></app-headerfront>      
   <app-navbarcomponentfront></app-navbarcomponentfront> 
 
+  
+  
+
+
+  
+
   <section class="schedule-section section-padding" id="section_4">
-    
+    <div class="text-center"> <!-- Ajoutez cette classe pour centrer le contenu -->
+      <h2 class="map-title bg-black textt text-white">Event Details</h2> <!-- Titre centré -->
+    </div>
+    <app-venue-index-front></app-venue-index-front>
+    <app-map-display-front-aziz></app-map-display-front-aziz>
+
     <div class="container">
+      
       <div class="row">
+    
         <div class="col-12 text-center">
+          <div>
+            <!-- Autres éléments du template -->
+          
+            <p *ngIf="isEventFull">{{ isEventFull }}</p>
+          </div>
           <div *ngIf="schedule.length > 0" class="d-flex justify-content-center">
             <div class="table-container">
-              <table class="table table-striped table-dark"> <!-- Ajout de la classe table-dark pour le fond noir -->
+              <table class="table table-striped table-dark table-responsive w-100"> <!-- Ajout de la classe w-100 -->
+                
                 <thead>
                   <tr>
-                    <th>PANNING ACTIVITIES FOR THIS EVENT</th>
+                    
+                    <th>EVENT PLANNING</th>
+
                   </tr>
                 </thead>
                 <tbody>
@@ -52,6 +74,7 @@
       </div>
     </div>
   </section>
+
 
   <app-footerfront></app-footerfront>
 

@@ -5,11 +5,13 @@ import { Router } from '@angular/router';
 
 
 
+
 @Component({
   selector: 'app-sidebarback',
   templateUrl: './sidebarback.component.html',
   styleUrls: ['./sidebarback.component.css']
 })
+
 
 
 export class SidebarbackComponent implements OnInit {
@@ -32,6 +34,7 @@ export class SidebarbackComponent implements OnInit {
   }
 
 }
+
 
 
 

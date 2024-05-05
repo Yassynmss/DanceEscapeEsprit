@@ -1,0 +1,11 @@
+.table-container-black {
+  background-color: rgb(53, 51, 51);
+  padding: 60px; /* Augmenter la taille du padding pour agrandir davantage le tableau */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-container-black th,
+.table-container-black td {
+  color: white;
+}

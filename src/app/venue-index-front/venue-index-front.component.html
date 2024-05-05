@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+</head>
+
+<body>
+  <section style="background-color: black;">
+    <div class="d-flex justify-content-center">
+      <div class="table-container-black"> <!-- Ajout de la classe table-container-black -->
+        <table class="table table-striped">
+          <!-- En-têtes du tableau -->
+          <thead>
+            <tr>
+              <th>Location</th>
+              <th>Adress</th>
+              
+              <th>Description</th>
+              <!-- Boutons d'action -->
+
+            </tr>
+          </thead>
+          <!-- Corps du tableau -->
+          <tbody>
+            <tr *ngFor="let venue of venues" class="centrer">
+              <!-- Données de chaque lieu -->
+              <td>{{ venue.name }}</td>
+              <td>{{ venue.address }}</td>
+              <td>{{ venue.description }}</td>
+              <!-- Boutons d'action -->
+              <td>
+                <!-- Ajoutez ici les boutons d'action si nécessaire -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+</body>
+
+</html>
