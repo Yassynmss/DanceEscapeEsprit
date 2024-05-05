@@ -64,6 +64,9 @@ import { VenueAdminAzizComponent } from './venue-admin-aziz/venue-admin-aziz.com
 import { VenueUpdateAdminComponent } from './venue-update-admin/venue-update-admin.component';
 import { MapDisplayFrontAzizComponent } from './map-display-front-aziz/map-display-front-aziz.component';
 import { EventComponent } from './event/event.component';
+import { LiveComponent } from './live/live.component';
+import { ResultsComponent } from './results/results.component';
+import { PartdetailsComponent } from './partdetails/partdetails.component';
 const routes: Routes = [
 
   {
@@ -210,7 +213,7 @@ const routes: Routes = [
     },
     {
 
-      path:"eventparticipations/:eventId",
+      path:"eventparticipations",
 
       component:EventparticipationsComponent
     },
@@ -400,12 +403,33 @@ const routes: Routes = [
       path:"addDanceCategorieforuser",
       component:AddNewDanceCategorieFrontComponent
     },
+    {
+      path:"galaxydance",
+      component:AlltemplatefrontComponent,
+      children:[{
+        path:"vote",
+        component:CastvoteComponent
+      },
+      {
+        path:"details",
+        component:PartdetailsComponent
+      },
+      {
+        path:"results",
+        component:ResultsComponent
+      }
+  ]
+    },
   
+    
 
 
 {
   path: 'venues/update/:id_venue',
   component: VenueUpdateAdminComponent
+},
+{path: "live",
+component: LiveComponent
 }
 ];
 

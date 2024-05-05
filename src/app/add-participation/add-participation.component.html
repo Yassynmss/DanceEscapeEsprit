@@ -1,22 +1,22 @@
 
-
 <div class="form-container">
-    <h2>Add Participation for Event ID: {{ Id }}</h2>
-    <form [formGroup]="participationForm" (ngSubmit)="addPart()">
+<h2>Add Participation</h2>
+<form [formGroup]="participationForm" (ngSubmit)="addPart()">
+    <div>
+        <label for="userId">User ID:</label>
+        <input type="number" id="userId" formControlName="userId" required>
+      </div>
       <div>
-          <label for="userId">User ID:</label>
-          <input type="number" id="userId" formControlName="userId" required>
-        </div>
-  <div class="form-group">
-      <label>ShowTime :</label>
-      <input type="datetime-local" formControlName="showtime" class="form-control">
-  </div>
-  
-  <div class="form-group">
-      <label>Total Votes :</label>
-      <input type="number" formControlName="totalVotes" class="form-control">
-  </div>
-  <button type="submit" class ="btn btn-success">Confirm </button>
-  
-  </form>
-  </div>
+        <label for="eventId">Event ID:</label>
+        <input type="number" id="eventId" formControlName="eventId" required>
+      </div>
+
+<div class="form-group">
+    <label>Total Votes :</label>
+    <input type="number" formControlName="totalVotes" class="form-control">
+</div>
+<button type="submit" class ="btn btn-success">Confirm </button>
+<!-- <button type="button" (click)="cancel()" *ngIf="editingPart" class ="btn btn-secondary">Cancel </button> -->
+
+</form>
+</div>

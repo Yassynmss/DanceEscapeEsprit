@@ -1,0 +1,34 @@
+<section class="schedule-section section-padding" id="section_4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h2 class="text-white mb-4">Participant Details</h2>
+          <div class="table-responsive">
+            <table class="schedule-table table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Status</th>
+                  <th scope="col">Expiration Date</th>
+                  <th scope="col">Notes</th>
+                  <th scope="col">Showtime</th>
+                  <th scope="col">Participant Code</th>
+                  <th scope="col">Total Votes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let participant of participations">
+                  <td>{{ participant.status }}</td>
+                  <td>{{ participant.expirationDate | date }}</td>
+                  <td>{{ participant.notes }}</td>
+                  <td>{{ participant.showtime | date: 'medium' }}</td>
+                  <td>{{ participant.participantCode }}</td>
+                  <td>{{ participant.totalVotes }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

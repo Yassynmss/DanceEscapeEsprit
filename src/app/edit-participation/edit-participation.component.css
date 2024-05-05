@@ -41,4 +41,22 @@
   button[type="submit"]:hover {
     background-color: #218838; /* Darker green color on hover */
   }
-  
+
+  /* Additional CSS for styling */
+.form-container {
+  max-width: 400px; /* Adjust as needed */
+  margin: auto;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.confirmation-message {
+  margin-top: 10px;
+  color: red;
+}
+
+/* Optional: Add any additional styling here */
+

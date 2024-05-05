@@ -8,7 +8,7 @@ import { Participation } from '../core/particpation';
 })
 
 export class ParticipationService {
-  private baseUrl : string='http://localhost:8080/participations';
+  private baseUrl : string='http://localhost:8082/participations';
   
   constructor(private http : HttpClient) { }
 
@@ -37,4 +37,8 @@ export class ParticipationService {
     return this.http.get<Participation[]>(`${this.baseUrl}/getParticipationsByEventId/${eventId}`);
   }
 
+  getParticipationsByUserId(userID: number): Observable<Participation[]>{
+    return this.http.get<Participation[]>(`${this.baseUrl}/getParticipationsByUserID/${userID}`);
+
+  }
 }

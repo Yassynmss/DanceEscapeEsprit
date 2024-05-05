@@ -34,10 +34,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { from } from 'rxjs';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AffichageComponent } from './component/affichage/affichage.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { MatDialogModule } from "@angular/material/dialog";
 import { BackofficeLayoutComponent } from './BackOffice/backoffice-layout/backoffice-layout.component';
 import { AddParticipationComponent } from './add-participation/add-participation.component';
 import { EditParticipationComponent } from './edit-participation/edit-participation.component';
@@ -47,6 +45,9 @@ import { FetchpartComponent } from './fetchpart/fetchpart.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdatevoteComponent } from './updatevote/updatevote.component';
 import { CastvoteComponent } from './castvote/castvote.component';
+
+import { MatDialogModule } from "@angular/material/dialog";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon'
 import {MatTableModule} from '@angular/material/table';
@@ -101,15 +102,15 @@ import { VenueIndexByIdComponent } from './venue-index-by-id/venue-index-by-id.c
 import { VenueIndexFrontComponent } from './venue-index-front/venue-index-front.component';
 import { VenueUpdateAdminComponent } from './venue-update-admin/venue-update-admin.component';
 import { MapDisplayFrontAzizComponent } from './map-display-front-aziz/map-display-front-aziz.component';
-
-
-
+import { MatStepperModule } from '@angular/material/stepper';
+import { LiveComponent } from './live/live.component';
+import { PartdetailsComponent } from './partdetails/partdetails.component';
+import { ResultsComponent } from './results/results.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
     AlltemplatebackComponent,
     FooterbackComponent,
     NavbarbackComponent,
@@ -139,6 +140,7 @@ import { MapDisplayFrontAzizComponent } from './map-display-front-aziz/map-displ
     AffichageComponent,
     BackofficeLayoutComponent,
     AddParticipationComponent,
+     AddParticipationComponent,
     EditParticipationComponent,
     VoteComponent,
     AddVoteComponent,
@@ -170,7 +172,6 @@ import { MapDisplayFrontAzizComponent } from './map-display-front-aziz/map-displ
     AddStaffComponent,
     AddSupplierComponent,
     ListSupplierComponent,
-    
     UpdateSupplierComponent,
          UpdateStaffComponent,
          EquipmentChartComponent,
@@ -193,14 +194,18 @@ import { MapDisplayFrontAzizComponent } from './map-display-front-aziz/map-displ
          VenueIndexFrontComponent,
          VenueUpdateAdminComponent,
          ViewSheduleComponent,
-         MapDisplayFrontAzizComponent
-        
+         MapDisplayFrontAzizComponent,
+         EventparticipationsComponent,
+         LiveComponent,
+         PartdetailsComponent,
+         ResultsComponent
+
 
   ],
   imports: [
+    MatStepperModule,
     BrowserModule,
     AppRoutingModule,
-
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -234,9 +239,11 @@ import { MapDisplayFrontAzizComponent } from './map-display-front-aziz/map-displ
     }),
     BrowserAnimationsModule,
     NgxPaginationModule
-
+    
   
   ],
+    
+
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

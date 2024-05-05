@@ -9,6 +9,7 @@ import { Vote } from '../core/vote';
 export class VoteService {
   private baseUrl : string='http://localhost:8080/votes';
 
+
   constructor(private http : HttpClient) { }
 
   fetchVoteList(): Observable<Vote[]>{

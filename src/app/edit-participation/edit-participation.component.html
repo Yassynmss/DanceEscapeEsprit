@@ -1,19 +1,39 @@
 <div class="form-container">
- 
-<h2>Edit Participation</h2>
-<form [formGroup]="participationForm" (ngSubmit)="updateParticipation()">
-  <div class="form-group">
-    <label>ShowTime :</label>
-    <input type="datetime-local" formControlName="showtime" class="form-control">
-  </div>
-  <div class="form-group">
-    <label>Participant Code :</label>
-    <input type="number" formControlName="participantCode" class="form-control">
-  </div>
-  <div class="form-group">
-    <label>Total Votes :</label>
-    <input type="number" formControlName="totalVotes" class="form-control">
-  </div>
-  <button type="submit" class="btn btn-success">Confirm</button>
-</form>
+
+  <h2>Edit Participation</h2>
+    <!-- Message for selecting status -->
+    <div class="status-message">
+      Please select a status to proceed.
+    </div>
+  <mat-vertical-stepper linear #stepper>
+    <!-- Step 1 -->
+    <mat-step [stepControl]="participationForm">
+      <form [formGroup]="participationForm" (ngSubmit)="nextStep()">
+        <div class="form-group">
+          <label>Status:</label>
+          <select formControlName="status" class="form-control">
+            <option value="APPROVED">Approved</option>
+            <option value="CANCELLED">Cancelled</option>
+            <option value="REJECTED">Rejected</option>
+          </select>
+        </div>
+        <!-- Removed Next button as status change triggers step change -->
+      </form>
+    </mat-step>
+    <!-- Step 2 -->
+    <mat-step>
+      <form [formGroup]="participationForm" (ngSubmit)="updateParticipation()">
+        <div class="form-group">
+          <label>ShowTime :</label>
+          <input *ngIf="participationForm.get('status')?.value === 'APPROVED'" type="datetime-local" formControlName="showtime" class="form-control">
+          <!-- Show a message if status is not 'APPROVED' -->
+          <div *ngIf="participationForm.get('status')?.value !== 'APPROVED'" class="confirmation-message">
+            Are you sure you want to delete the participation?
+          </div>
+        </div>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-success">Confirm</button>
+      </form>
+    </mat-step>
+  </mat-vertical-stepper>
 </div>

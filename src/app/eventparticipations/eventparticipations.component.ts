@@ -1,9 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Participation } from '../core/particpation';
 import { ParticipationService } from '../Services/participation.service';
 import { Subscription } from 'rxjs';
-import { EventComponent } from '../event/event.component';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-eventparticipations',
@@ -12,18 +10,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EventparticipationsComponent   {
   participations: Participation[] = [];
-  private subscription: Subscription | undefined;
-  eventId: number=7; // Input to receive eventId from parent component
+/////////////Get the event ID 
 
-  constructor(private route: ActivatedRoute,private participationService: ParticipationService) { }
+  eventId: number = 1;
+/////////////////////////////////
+////////////////////
+
+  private subscription: Subscription | undefined;
+
+  constructor(private participationService: ParticipationService) { }
 
 
   ngOnInit(): void {
     // Initial fetch of participations for the default event ID (can be changed later)
-    this.route.params.subscribe(params => {
-      this.eventId = +params['eventId'];
-      this.fetchParticipations();
-    });
+    this.fetchParticipations();
   }
   
   fetchParticipations(): void {
