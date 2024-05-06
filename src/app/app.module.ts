@@ -116,6 +116,10 @@ import { UpdateTransportComponent } from './component/transport/update-transport
 import { MlogisticComponent } from './Logistic/mlogistic/mlogistic.component';
 import { AddEquipmentDialogComponent } from './component/transport/add-equipment-dialog/add-equipment-dialog.component';
 import { ListTransportComponent } from './component/transport/listtransport/listtransport.component';
+import { TicketAddComponent } from './component/ticket-add/ticket-add.component';
+import { TicketComponent } from './component/ticket/ticket.component';
+import { TicketUpdateComponent } from './component/ticket-update/ticket-update.component';
+import { TicketbookComponent } from './component/ticketbook/ticketbook.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -214,7 +218,11 @@ import { ListTransportComponent } from './component/transport/listtransport/list
  UpdateTransportComponent,
  MlogisticComponent,
  AddEquipmentDialogComponent,
- ListTransportComponent
+ ListTransportComponent,
+ TicketAddComponent,
+ TicketComponent,
+ TicketUpdateComponent,
+ TicketbookComponent
 
   ],
   imports: [

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedbacks</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/FrontOffice/assets/css/templatemo-festava-live.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+
+</head>
+<body>
+
+<!-- Header and Navbar -->
+<app-headerfront></app-headerfront>      
+<app-navbarcomponentfront></app-navbarcomponentfront> 
+
+<br>
+<div class="ticket-form">
+  <h2>Ticket Booking</h2>
+  <form>
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" [(ngModel)]="quantity" (ngModelChange)="calculatePrice()" required>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="ticketType">Ticket Type:</label>
+      <select id="ticketType" name="ticketType" [(ngModel)]="ticketType" (ngModelChange)="calculatePrice()" required>
+        <option value="VIP">VIP</option>
+        <option value="SIMPLE">Simple</option>
+      </select>
+    </div>
+    <br> 
+    <label *ngIf="price">Price: {{ price }}</label>
+    <div *ngIf="price">
+    <button (click)="pay(price)">Proceed to Payment {{price}}DT </button>
+  </div>
+
+  </form>
+</div>
+
+<!-- Footer -->
+<app-footerfront></app-footerfront>
+
+<!-- JavaScript -->
+<script src="/assets/FrontOffice/assets/js/jquery.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/bootstrap.min.js"></script>
+<script src="/assets/FrontOffice/assets/js/jquery.sticky.js"></script>
+<script src="/assets/FrontOffice/assets/js/click-scroll.js"></script>
+<script src="/assets/FrontOffice/assets/js/custom.js"></script>
+
+</body>
+</html>

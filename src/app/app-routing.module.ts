@@ -76,6 +76,10 @@ import { AddTransportComponent } from './component/transport/add-transport/add-t
 import { MlogisticComponent } from './Logistic/mlogistic/mlogistic.component';
 import { AddEquipmentDialogComponent } from './component/transport/add-equipment-dialog/add-equipment-dialog.component';
 import { ListTransportComponent } from './component/transport/listtransport/listtransport.component';
+import { TicketComponent } from './component/ticket/ticket.component';
+import { TicketbookComponent } from './component/ticketbook/ticketbook.component';
+import { TicketAddComponent } from './component/ticket-add/ticket-add.component';
+import { TicketUpdateComponent } from './component/ticket-update/ticket-update.component';
 const routes: Routes = [
 
   {
@@ -125,7 +129,10 @@ const routes: Routes = [
     path:'use1r',
     component: UserComponent 
    },
-   
+   {
+    path:"book-ticket/:id_event",
+    component:TicketbookComponent
+  },
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   {path: 'profile' , component:ProfileComponent},
@@ -159,6 +166,20 @@ const routes: Routes = [
       path:"admin",
       component:AlltemplatebackComponent,
       children:[
+      {path:"aff-ticket",
+        component:TicketComponent
+      },
+     
+      {
+        path:"add-ticket",
+        component:TicketAddComponent
+      },
+      {
+        path:"updateT/:id_ticket",
+        component:TicketUpdateComponent
+      },
+     
+
         { path: 'addequipmentss/:id_transport', component: AddEquipmentDialogComponent },
  
         {

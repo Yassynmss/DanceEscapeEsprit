@@ -1,0 +1,30 @@
+<form [formGroup]="validateForm" (ngSubmit)="submitForm()" class="text-center">
+  <div>
+    <label>Title:</label>
+    <input type="text" formControlName="title" placeholder="Enter the title">
+  </div>
+  <br>
+
+  <div>
+    <label>Price:</label>
+    <input type="number" formControlName="price" placeholder="Enter the price">
+  </div>
+  <br>
+
+  <div>
+    <label for="eventId">Event:</label>
+    <select formControlName="eventId">
+      <option value="">Select an event</option>
+      <option *ngFor="let event of events" [value]="event.id_event">{{ event.id_event }}</option>
+    </select>
+  </div>
+  <br>
+
+  <img *ngIf="qrCodeData" [src]="qrCodeData" alt="QR Code">
+
+  <br>
+  <button type="submit" [disabled]="!validateForm.valid">Add Ticket</button>
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+</form>

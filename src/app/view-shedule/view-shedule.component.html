@@ -59,7 +59,9 @@
                   </tr>
                 </tbody>
               </table>
-              <button class="btn btn-dark"><a href="http://localhost:4200/reservation" class="text-white">Get your ticket</a></button>
+              
+              <button *ngFor="let singleEvent of event" [routerLink]="['/book-ticket', singleEvent.id_event]" class="btn btn-dark">Get your Ticket!</button>
+
               -- 
               <button class="btn btn-dark"><a href="http://localhost:4200/welcome/all" class="text-white">Back</a></button>
 

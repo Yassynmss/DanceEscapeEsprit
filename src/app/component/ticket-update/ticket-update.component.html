@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backoffice</title>
+  <link rel="shortcut icon" type="image/png" href="/assets/BackOffice/images/logos/favicon.png" />
+  <link rel="stylesheet" href="/assets/BackOffice/css/styles.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container clearfix">
+      <div class="sidebar">
+        <!-- Content for sidebar goes here -->
+        <app-navbarback></app-navbarback>
+      </div>
+      <div class="backoffice">
+        <!-- Content for backoffice layout goes here -->
+        <app-headerfront></app-headerfront>
+        <app-admin-start-page-aziz></app-admin-start-page-aziz>
+        <div class="container" [formGroup]="validateForm">
+          <h2 class="text-center">Add Ticket</h2> <!-- Add text-center class to center the title -->
+          <form [formGroup]="validateForm"  class="text-center"> <!-- Add text-center class to center the form -->
+            <div>
+              <label>Title:</label>
+              <input type="text" formControlName="title" placeholder="Enter the title">
+            </div>
+            <br>
+
+            <div>
+              <label>Price:</label>
+              <input type="number" formControlName="price" placeholder="Enter the price">
+            </div>
+            <br>
+            <div>
+              <label for="ticketType">Ticket Type:</label>
+              <select id="ticketType" formControlName="ticketType">
+                <option value="">Select a type</option>
+                <option value="SIMPLE">SIMPLE</option>
+                <option value="VIP">VIP</option>
+              </select>
+            </div>
+            <br>
+            <button (click)="updateTicket()" [disabled]="!validateForm.valid">Update Ticket</button>
+            <div *ngIf="updateSuccess" class="alert alert-success" role="alert">
+              Ticket updated successfully!
+            </div>
+            
+          </form>
+        </div>
+        <router-outlet></router-outlet>
+        <app-backoffice-layout></app-backoffice-layout>
+      </div>
+    </div>
+  </div>
+  <app-footerback></app-footerback>
+
+  <script src="/assets/BackOffice/libs/jquery/dist/jquery.min.js"></script>
+  <script src="/assets/BackOffice/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/BackOffice/js/sidebarmenu.js"></script>
+  <script src="/assets/BackOffice/js/app.min.js"></script>
+  <script src="/assets/BackOffice/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="/assets/BackOffice/libs/simplebar/dist/simplebar.js"></script>
+  <script src="/assets/BackOffice/js/dashboard.js"></script>
+
+</body>
+
+</html>

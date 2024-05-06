@@ -4,6 +4,7 @@ import { EventService } from '../Services/event.service';
 import { MapDisplayFrontAzizComponent } from '../map-display-front-aziz/map-display-front-aziz.component';
 import { VenueService } from '../Services/venueManagement/venue.service';
 import { Venue } from '../core/venue';
+import { Event } from '../core/event';
 
 @Component({
   selector: 'app-view-shedule',
@@ -12,7 +13,7 @@ import { Venue } from '../core/venue';
 })
 
 export class ViewSheduleComponent implements OnInit {
-
+  event: Event[] = [];
   schedule: string[] = [];   
   map: any;
   isEventFull: string = '';
