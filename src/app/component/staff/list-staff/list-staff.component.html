@@ -21,11 +21,8 @@
 <th class="sort-button" (click)="sortByName()">Name</th>
 
 <th class="sort-button" (click)="sortByDateOfBirth()">DateOfBirth</th>
-
-
-      
-        <th>Job</th>
   
+        <th>Job</th>
         <th>Number</th>
         <th>Email</th>
       </tr>
@@ -33,7 +30,6 @@
     <tbody>
       <tr *ngFor="let staff of staffList">
         
-       
         <td>{{ staff.name }}</td>
         <td>{{ staff.DateOfBirth }}</td>
         <td>{{ staff.job }}</td>
@@ -42,6 +38,7 @@
         <td>
           <button (click)="removeStaff(staff)">Delete</button>
           <button routerLink="/admin/updateStaff/{{staff.id_staff}}">Update</button>
+         
         </td>
       </tr>
     </tbody>

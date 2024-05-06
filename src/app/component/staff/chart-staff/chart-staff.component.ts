@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StaffService } from 'src/app/core/services/StaffService/staff-service.service';
+import { StaffService } from 'src/app/Services/staff.service';
 import { Staff, Job } from 'src/app/core/models/staff/staff';
 import { Chart, BarController, BarElement, LinearScale, CategoryScale } from 'chart.js';
 Chart.register(BarController, BarElement, LinearScale, CategoryScale);

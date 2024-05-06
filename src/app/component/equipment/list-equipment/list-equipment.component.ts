@@ -1,11 +1,13 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Equipment } from 'src/app/core/models/equipment/equipment';
-import { EquipmentServiceService } from 'src/app/core/services/EquipmentService/Equipment-service.service';
+import { EquipmentService } from 'src/app/Services/equipment.service';
 import { saveAs as fileSaverSaveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 import { Chart } from 'chart.js';
 import { Router } from '@angular/router';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { Logistic } from 'src/app/core/models/logistic/logistic';
+import { LogisticService } from 'src/app/Services/logistic.service';
 
 @Component({
   selector: 'app-list-equipment',
@@ -19,10 +21,14 @@ export class ListEquipmentComponent implements OnInit {
   etat: string | null = null;
   id_equipment: number | null = null;
   searchTerm$ = new Subject<void>();
-
-  constructor(private equipmentService: EquipmentServiceService) { }
+  logistics: Logistic[] = [];
+  constructor(private equipmentService: EquipmentService,  private logisticService: LogisticService) { }
 
   ngOnInit() {
+    this.logisticService.getAllLogistics().subscribe(logistics => {
+      this.logistics = logistics;
+    });
+    
     this.searchTerm$.pipe(
       debounceTime(400),
       distinctUntilChanged()
@@ -113,5 +119,15 @@ export class ListEquipmentComponent implements OnInit {
     } else {
       console.log('La quantité ne peut pas être inférieure à zéro');
     }
+  }
+  assignToLogistic(equipment: Equipment, id_logistic: number): void {
+    this.equipmentService.assignLogisticToEquipment(equipment.id_equipment, id_logistic)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.retrieveEquipments();
+        },
+        error: (e) => console.error(e)
+      });
   }
 }

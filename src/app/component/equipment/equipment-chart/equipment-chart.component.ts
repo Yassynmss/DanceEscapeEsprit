@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
-import { EquipmentServiceService } from 'src/app/core/services/EquipmentService/Equipment-service.service';
-
+import { EquipmentService } from 'src/app/Services/equipment.service';
 @Component({
   selector: 'app-equipment-chart',
   templateUrl: './equipment-chart.component.html',
@@ -10,7 +9,7 @@ import { EquipmentServiceService } from 'src/app/core/services/EquipmentService/
 export class EquipmentChartComponent implements OnInit {
   chart!: Chart;
 
-  constructor(private equipmentService: EquipmentServiceService) { }
+  constructor(private equipmentService: EquipmentService) { }
 
   ngOnInit(): void {
     this.equipmentService.getAllEquipments().subscribe(data => {

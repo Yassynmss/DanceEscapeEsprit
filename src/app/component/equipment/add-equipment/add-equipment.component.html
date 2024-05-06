@@ -15,7 +15,13 @@
       <select id="etat" formControlName="etat" class="form-control">
         <option *ngFor="let condition of conditions" [value]="condition">{{condition}}</option>
       </select>
-      
+
+      <div>
+        <label for="logisticSelect">Sélectionnez une logistique :</label>
+        <select id="logisticSelect" formControlName="id_logistic">
+          <option *ngFor="let logistic of logistics" [value]="logistic.id_logistic">{{logistic.id_logistic}}</option>
+        </select>
+       </div>
     <!-- ... autres champs ... -->
  
     <div class="row">

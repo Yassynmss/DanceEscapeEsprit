@@ -36,10 +36,11 @@
             <button class="action-btn delete-btn" (click)="removeEquipment(equipment)">Delete</button>
             <button class="action-btn update-btn" routerLink="/admin/updateEquipment/{{equipment.id_equipment}}">Update</button>
           </td>
-          <td> <!-- New column for status messages -->
+          <td> 
             <span *ngIf="equipment.quantity === 0">Out of Stock</span>
             <span *ngIf="equipment.quantity > 0 && equipment.quantity < 10">See your stock</span>
-          </td>
+            <span *ngIf="equipment.quantity === 0">  <br><button class="action-btn add-btn" routerLink="/admin/listtransport">To order</button>
+            </span></td>
         </tr>
       </tbody>
     </table>
@@ -60,3 +61,5 @@
     <button class="action-btn back-btn" routerLink="/admin/logistic">Back</button>
   </div>
 </div>
+
+Write to Med Amine Lahmer

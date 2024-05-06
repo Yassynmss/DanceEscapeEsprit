@@ -1,6 +1,6 @@
 
-import { NgModule, isDevMode } from '@angular/core';
-import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { isDevMode } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,7 +31,6 @@ import { AllFeedbackComponent } from './component/all-feedback/all-feedback.comp
 import { PostFeedbackComponent } from './component/post-feedback/post-feedback.component';
 import { UpdateFeedbackComponent } from './component/update-feedback/update-feedback.component';
 import {HttpClientModule} from '@angular/common/http';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { from } from 'rxjs';
 import { AffichageComponent } from './component/affichage/affichage.component';
@@ -73,18 +72,6 @@ import { ViewSheduleComponent } from './view-shedule/view-shedule.component';
 import { DisplayTimeEventComponent } from './display-time-event/display-time-event.component';
 import { DisplayTimeEventPopUpComponent } from './display-time-event-pop-up/display-time-event-pop-up.component';
 import { AdminStartPageAzizComponent } from './admin-start-page-aziz/admin-start-page-aziz.component';
-import { AddEquipmentComponent } from './component/equipment/add-equipment/add-equipment.component';
-import { UpdateEquipmentComponent } from './component/equipment/update-equipment/update-equipment.component';
-import { ListEquipmentComponent } from './component/equipment/list-equipment/list-equipment.component';
-import { ListStaffComponent } from './component/staff/list-staff/list-staff.component';
-import { AddStaffComponent } from './component/staff/add-staff/add-staff.component';
-import { AddSupplierComponent } from './component/supplier/add-supplier/add-supplier.component';
-import { ListSupplierComponent } from './component/supplier/list-supplier/list-supplier.component';
-import { UpdateSupplierComponent } from './component/supplier/update-supplier/update-supplier.component';
-import { UpdateStaffComponent } from './component/staff/update-staff/update-staff.component';
-import { EquipmentChartComponent } from './component/equipment/equipment-chart/equipment-chart.component';
-import { ChartStaffComponent } from './component/staff/chart-staff/chart-staff.component';
-import { LogisticComponent } from './Logistic/logistic/logistic.component';
 import { NavbarcomponentbackComponent } from './BackOffice/navbarcomponentback/navbarcomponentback.component';
 import { CreateDGComponent } from './CROWN/create-dg/create-dg.component';
 import { UpdateDGComponent } from './CROWN/update-dg/update-dg.component';
@@ -106,8 +93,29 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { LiveComponent } from './live/live.component';
 import { PartdetailsComponent } from './partdetails/partdetails.component';
 import { ResultsComponent } from './results/results.component';
-
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { AddEquipmentComponent } from './component/equipment/add-equipment/add-equipment.component';
+import { UpdateEquipmentComponent } from './component/equipment/update-equipment/update-equipment.component';
+import { ListEquipmentComponent } from './component/equipment/list-equipment/list-equipment.component';
+import { ListStaffComponent } from './component/staff/list-staff/list-staff.component';
+import { AddStaffComponent } from './component/staff/add-staff/add-staff.component';
+import { AddSupplierComponent } from './component/supplier/add-supplier/add-supplier.component';
+import { ListSupplierComponent } from './component/supplier/list-supplier/list-supplier.component';
+import { UpdateSupplierComponent } from './component/supplier/update-supplier/update-supplier.component';
+import { FormsModule } from '@angular/forms';
+import { UpdateStaffComponent } from './component/staff/update-staff/update-staff.component';
+import { EquipmentChartComponent } from './component/equipment/equipment-chart/equipment-chart.component';
+import { ChartStaffComponent } from './component/staff/chart-staff/chart-staff.component';
+import { LogisticComponent } from './Logistic/logistic/logistic.component';
+import { AddTransportComponent } from './component/transport/add-transport/add-transport.component';
+import { AddVehiculeComponent } from './component/vehicule/add-vehicule/add-vehicule.component';
+import { ListVehiculeComponent } from './component/vehicule/list-vehicule/list-vehicule.component';
+import { UpdateVehiculeComponent } from './component/vehicule/update-vehicule/update-vehicule.component';
+import { UpdateTransportComponent } from './component/transport/update-transport/update-transport.component';
+import { MlogisticComponent } from './Logistic/mlogistic/mlogistic.component';
+import { AddEquipmentDialogComponent } from './component/transport/add-equipment-dialog/add-equipment-dialog.component';
+import { ListTransportComponent } from './component/transport/listtransport/listtransport.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -198,8 +206,15 @@ import { ResultsComponent } from './results/results.component';
          EventparticipationsComponent,
          LiveComponent,
          PartdetailsComponent,
-         ResultsComponent
-
+         ResultsComponent,
+ AddVehiculeComponent,
+ ListVehiculeComponent,
+ UpdateVehiculeComponent,
+ AddTransportComponent,
+ UpdateTransportComponent,
+ MlogisticComponent,
+ AddEquipmentDialogComponent,
+ ListTransportComponent
 
   ],
   imports: [
@@ -238,15 +253,16 @@ import { ResultsComponent } from './results/results.component';
   
     }),
     BrowserAnimationsModule,
-    NgxPaginationModule
-    
-  
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    CommonModule
   ],
     
 
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
-
 })
 export class AppModule { }

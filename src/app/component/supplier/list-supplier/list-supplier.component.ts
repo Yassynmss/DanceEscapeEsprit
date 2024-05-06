@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { SupplierService } from 'src/app/core/services/SupplierService/supplier-service.service';
+import { SupplierService } from 'src/app/Services/supplier.service';
 import { Supplier } from 'src/app/core/models/supplier/supplier';
 import * as XLSX from 'xlsx';
 import { saveAs as fileSaverSaveAs } from 'file-saver';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
-
+import { Logistic } from 'src/app/core/models/logistic/logistic';
+import { LogisticService } from 'src/app/Services/logistic.service';
 @Component({
   selector: 'app-list-supplier',
   templateUrl: './list-supplier.component.html',
@@ -15,11 +16,17 @@ export class ListSupplierComponent implements OnInit {
   id_supplier: number | null = null;
   name: string | null = null;
   searchTerm$ = new Subject<string>();
-  constructor(private supplierService: SupplierService) { }
+
+  logistics: Logistic[] = [];
+  constructor(private supplierService: SupplierService ,  private logisticService: LogisticService) { }
   searchTerm: string = '';
-  
+ 
   
   ngOnInit() {
+
+    this.logisticService.getAllLogistics().subscribe(logistics => {
+      this.logistics = logistics;
+    });
     this.searchTerm$.pipe(
       debounceTime(400),
       distinctUntilChanged()
@@ -99,6 +106,17 @@ export class ListSupplierComponent implements OnInit {
         next: (data) => {
           this.supplierList = data;
           console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  assignToLogistic(supplier: Supplier, id_logistic: number): void {
+    this.supplierService.assignLogisticToSupplier(supplier.id_supplier, id_logistic)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.retrieveSuppliers();
         },
         error: (e) => console.error(e)
       });

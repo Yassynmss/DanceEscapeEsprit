@@ -1,0 +1,64 @@
+<div class="container mt-5">
+    <h2 class="text-center">List of Vihicules</h2>
+    <div class="search-form">
+      <input [(ngModel)]="name_vehicule" (ngModelChange)="searchTerm$.next()" placeholder="Vehicule name">
+      <input [(ngModel)]="matricule" (ngModelChange)="searchTerm$.next()" placeholder="Matricule">
+      <input [(ngModel)]="etat" (ngModelChange)="searchTerm$.next()" placeholder="Etat">
+      <select id="type" [(ngModel)]="selectedType" (ngModelChange)="searchTerm$.next()">
+        <option value="">All</option>
+        <option *ngFor="let t of type" [value]="t">{{t}}</option>
+      </select>
+      
+    </div>
+    
+    <div class="table-container">
+      <table class="table centered-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Matricule</th>
+            <th>Type</th>
+            <th>Etat</th>
+            
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vehicule of vehicules">
+            <td>{{ vehicule.name_vehicule }}</td>
+            <td>{{ vehicule.matricule }}</td>
+            <td>{{ vehicule.type }}</td>
+            <td>{{ vehicule.etat }}</td>
+          
+          
+              <button class="action-btn delete-btn" (click)="removeVehicule(vehicule)">Delete</button>
+              <button routerLink="/admin/updatevehicule/{{vehicule.id_vehicule}}">Update</button>
+
+
+
+
+              <label for="vehiculeSelect">Select Transport :</label>
+              <select id="vehiculeSelect" [(ngModel)]="vehicule.id_transport">
+                <option *ngFor="let transport of transports" [value]="transport.id_transport">{{transport.route}}</option>
+              </select>
+              
+              
+                <button (click)="assignToTransport(vehicule, vehicule.id_transport)">Affect</button>
+            
+          </tr>
+          <tr *ngIf="!vehicules || vehicules.length === 0">
+            <td colspan="5" class="text-center">No vehicules found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="text-center mt-3">
+      <button class="action-btn add-btn" routerLink="/admin/addvehicule">Add New Vehicule</button>
+    </div>
+  
+    <div class="text-center mt-3">
+      <button class="action-btn back-btn" routerLink="/admin/logistic">Back</button>
+    </div>
+  </div>
+  

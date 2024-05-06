@@ -67,6 +67,15 @@ import { EventComponent } from './event/event.component';
 import { LiveComponent } from './live/live.component';
 import { ResultsComponent } from './results/results.component';
 import { PartdetailsComponent } from './partdetails/partdetails.component';
+import { FormsModule } from '@angular/forms';
+import { UpdateTransportComponent } from './component/transport/update-transport/update-transport.component';
+import { ListVehiculeComponent} from './component/vehicule/list-vehicule/list-vehicule.component';
+import { AddVehiculeComponent } from './component/vehicule/add-vehicule/add-vehicule.component';
+import { UpdateVehiculeComponent } from './component/vehicule/update-vehicule/update-vehicule.component';
+import { AddTransportComponent } from './component/transport/add-transport/add-transport.component';
+import { MlogisticComponent } from './Logistic/mlogistic/mlogistic.component';
+import { AddEquipmentDialogComponent } from './component/transport/add-equipment-dialog/add-equipment-dialog.component';
+import { ListTransportComponent } from './component/transport/listtransport/listtransport.component';
 const routes: Routes = [
 
   {
@@ -149,7 +158,36 @@ const routes: Routes = [
     {
       path:"admin",
       component:AlltemplatebackComponent,
-      children:[{
+      children:[
+        { path: 'addequipmentss/:id_transport', component: AddEquipmentDialogComponent },
+ 
+        {
+      
+          path:"addtransport",
+          component:AddTransportComponent
+        }
+        ,
+        {
+      
+          path:"updatetransport/:id_transport",
+          component:UpdateTransportComponent
+        }
+  
+,
+
+           {path:"listtransport", component:ListTransportComponent } ,
+        { path:"mlogistic",
+        component:MlogisticComponent},
+        {
+    
+          path:"addvehicule",
+          component:AddVehiculeComponent
+        },
+          {
+    
+          path:"listvehicule",
+          component:ListVehiculeComponent
+        },{
         path:"addVote",
         component:AddVoteComponent
       },
@@ -199,8 +237,7 @@ const routes: Routes = [
       {
         path:"listequipment",
         component:ListEquipmentComponent
-    
-        
+
       },
       {
         path:"stats",
@@ -431,10 +468,110 @@ const routes: Routes = [
 {path: "live",
 component: LiveComponent
 }
+      , 
+      
+      
+
+
+      { path:"logistic",
+      component:LogisticComponent}, 
+      
+      
+
+
+     
+      
+      
+      {
+        path:"addequipment",
+        component:AddEquipmentComponent
+    
+        
+      },
+      {
+        path:"updateEquipment/:id_equipment",
+        component:UpdateEquipmentComponent
+    
+        
+      },
+      { path: "equipmentchart", 
+      component:EquipmentChartComponent
+    
+    }
+      ,
+      
+      {
+        path:"liststaff",
+        component:ListStaffComponent
+    
+        
+      },
+      
+      {
+        path:"addstaff",
+        component:AddStaffComponent
+    
+        
+      },
+      {
+
+        path:"chartstaf",
+        component:ChartStaffComponent
+      }
+      ,{
+        path:"updateStaff/:id_staff",
+        component:UpdateStaffComponent
+    
+        
+      }
+      ,
+      
+      {
+        path:"addsupplier",
+        component:AddSupplierComponent
+    
+        
+      }
+      ,
+      
+      {
+        path:"listsupplier",
+        component:ListSupplierComponent
+    
+        
+      }
+      ,
+      {
+        path:"updatesupplier/:id_supplier",
+        component:UpdateSupplierComponent
+    
+        
+      },
+      {
+        path:"updatevehicule/:id_vehicule",
+        component:UpdateVehiculeComponent
+    
+        
+      }
+      
+      
+  
+      
+    
+      
+    
+    
+  
+
+ 
+
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)
+  , FormsModule
+  ],
   exports: [RouterModule]
 })
 

@@ -1,0 +1,24 @@
+<!-- logistic.component.html -->
+<div>
+    <h2>Add Logistic</h2>
+    
+    <input [(ngModel)]="id_event" placeholder="Event ID">
+    <button (click)="addLogistic()">Add Logistic</button>
+  </div>
+  
+  <h2>All Logistics</h2>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let logistic of logistics">
+      <td>{{ logistic.id_logistic }}</td>
+     
+      <td>
+        <button (click)="deleteLogistic(logistic.id_logistic)">Delete</button>
+      </td>
+    </tr>
+  </table>
+  

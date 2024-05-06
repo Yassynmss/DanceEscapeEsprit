@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StaffService } from 'src/app/core/services/StaffService/staff-service.service';
+import { StaffService } from 'src/app/Services/staff.service';
 import { Staff } from 'src/app/core/models/staff/staff';
 import { Job } from 'src/app/core/models/staff/staff';
 

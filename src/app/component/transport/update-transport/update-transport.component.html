@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <h2 class="text-center">Update Transport</h2>
+    
+    <form [formGroup]="transportForm" (ngSubmit)="saveTransport()" class="mx-auto w-75 p-4 shadow rounded bg-light">
+      <div class="form-group">
+        <label for="route">Route</label>
+        <input type="text" id="route" formControlName="route" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" id="description" formControlName="description" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="startLocation_longitude">Start Location longitude :</label>
+        <input type="text"  id="startLocation_longitude" formControlName="startLocation_longitude" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="startLocation_latitude">Start Location latitude :</label>
+        <input type="text"  id="startLocation_latitude" formControlName="startLocation_latitude" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="endLocation_longitude">End Location longitude:</label>
+        <input type="text"  id="endLocation_longitude" formControlName="endLocation_longitude" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="endLocation_latitude">End Location latitude:</label>
+        <input type="text"  id="endLocation_latitude" formControlName="endLocation_latitude" class="form-control" required>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6 text-left">
+          <button routerLink="/admin/listtransport" class="btn btn-secondary mt-2">CANCEL</button>
+        </div>
+        <div class="col-md-6 text-right">
+          <button type="submit" class="btn btn-success">UPDATE</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

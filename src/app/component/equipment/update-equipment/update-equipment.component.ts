@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EquipmentServiceService } from 'src/app/core/services/EquipmentService/Equipment-service.service';
+import { EquipmentService } from 'src/app/Services/equipment.service';
 import { Equipment } from 'src/app/core/models/equipment/equipment';
 
 @Component({
@@ -14,7 +14,7 @@ export class UpdateEquipmentComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private equipmentService: EquipmentServiceService,
+    private equipmentService: EquipmentService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
