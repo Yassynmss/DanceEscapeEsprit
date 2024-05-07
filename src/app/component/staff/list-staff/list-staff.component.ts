@@ -30,6 +30,7 @@ export class ListStaffComponent implements OnInit {
     this.logisticService.getAllLogistics().subscribe(logistics => {
       this.logistics = logistics;
     });
+  
     this.searchTerm$.pipe(
       debounceTime(400),
       distinctUntilChanged()
@@ -127,4 +128,5 @@ export class ListStaffComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
+  
 }

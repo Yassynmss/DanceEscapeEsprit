@@ -1,6 +1,20 @@
-
-<!-- results.component.html -->
-<ng-template #chartTemplate let-id="id">
-    <canvas [id]="id" width="200" height="200"></canvas>
-  </ng-template>
+<section class="contact-section section-padding" id="section_6" style="background-image: url('assets/FrontOffice/assets/images/491a8bd7-7bde-4a7a-8d2d-6aef1a453ac0.jpg'); background-size: cover; background-position: center;">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-12 mx-auto">
+              <h2 class="text-center mb-4 text-white">Here are the results for now.</h2>
+              <p class="text-center text-white">The clock is ticking! Vote for your favorite performance!</p>
+          </div>
+      </div>
+  </div>
+  <div class="chart-container">
+    <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartData.labels"
+            [type]="'pie'"
+            [options]="pieChartOptions"
+            [legend]="true">
   
+    </canvas>
+  </div>
+</section>

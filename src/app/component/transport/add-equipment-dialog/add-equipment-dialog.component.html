@@ -1,19 +1,26 @@
-
-
 <div class="container mt-5">
-  <h2  class="text-center">Add Equipments</h2>
-<div class="form-group"class="mx-auto w-75 p-4 shadow rounded bg-light">
-  <label for="availableEquipments">Available Equipments:</label>
-  <ul id="availableEquipments">
-    <li *ngFor="let equipment of availableEquipments" (dblclick)="addToSelected(equipment)">{{equipment.name_equipment}}</li>
-  </ul>
+  <h2 class="text-center">Add Equipments</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-5 offset-md-1">
+      <div class="form-group mx-auto p-4 shadow rounded bg-light">
+        <label for="availableEquipments">Available Equipments:</label>
+        <ul class="list-group" id="availableEquipments">
+          <li class="list-group-item" *ngFor="let equipment of availableEquipments" (dblclick)="addToSelected(equipment)">
+            {{ equipment.name_equipment }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group mx-auto p-4 shadow rounded bg-light">
+        <label for="selectedEquipments">Selected Equipments:</label>
+        <ul class="list-group" id="selectedEquipments">
+          <li class="list-group-item" *ngFor="let equipment of selectedEquipments" (dblclick)="removeFromSelected(equipment)">
+            {{ equipment.name_equipment }}
+          </li>
+        </ul>
+        <button class="btn btn-primary mt-3" (click)="confirmSelection()">Confirm</button>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="form-group "class="mx-auto w-75 p-4 shadow rounded bg-light">
-  <label for="selectedEquipments">Selected Equipments:</label>
-  <ul id="selectedEquipments">
-    <li *ngFor="let equipment of selectedEquipments" (dblclick)="removeFromSelected(equipment)">{{equipment.name_equipment}}</li>
-  </ul>
-
-<button (click)="confirmSelection()">Confirm</button>
-</div></div>

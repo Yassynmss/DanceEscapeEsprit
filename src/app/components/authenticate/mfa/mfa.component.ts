@@ -63,7 +63,7 @@ export class MfaComponent implements OnInit {
           } else if (response.roles.some(role => role.name === 'EVALUATOR')) {
             this.router.navigateByUrl('/front');
           }else {
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/front');
           }
         }
       });

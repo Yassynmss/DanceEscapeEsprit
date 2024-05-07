@@ -20,9 +20,9 @@ export class TicketAddComponent implements OnInit {
 
     this.validateForm = this.fb.group({
       title: ['', [Validators.required]],
-      imageUrl: [],
-      price: ['', Validators.required],
-      eventId: [null, Validators.required] // Add validation for eventId
+      price: ['', Validators.required,Validators.min(0)],
+      quantity:['', Validators.required,Validators.min(0)],
+      eventId: [Validators.required] // Add validation for eventId
     });
   }
   ngOnInit(): void {
@@ -41,9 +41,8 @@ export class TicketAddComponent implements OnInit {
       const formData = this.validateForm.value;
       const idEvent = formData.eventId;
   
-      this.ticketservice.generateTicket(idEvent, formData).subscribe(response => {
+      this.ticketservice.addOrUpdateTicketWithEvent(idEvent, formData).subscribe(response => {
         console.log('Ticket successfully added:', response);
-        this.qrCodeData = 'data:image/png;base64,' + response.qrCode; // Assuming response.qrCode holds the QR code data
         this.successMessage = 'Ticket successfully added.';
         this.validateForm.reset();
       }, error => {
@@ -52,5 +51,5 @@ export class TicketAddComponent implements OnInit {
     } else {
       console.error('The form is invalid.');
     }
-  }
+}
 }

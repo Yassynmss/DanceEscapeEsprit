@@ -10,13 +10,13 @@ body, html {
     width: 20%;
     height: 100%;
     float: left;
-    background-color: #f0f0f0; /* Light gray */
+    background-color: white;
 }
 .backoffice {
     width: 80%;
     height: 100%;
     float: left;
-    background-color: #ffffff;/* Lighter gray */
+    background-color: white;
 }
 /* Clearfix to contain floated elements */
 .clearfix::after {
@@ -33,13 +33,13 @@ body, html {
     width: 20%;
     height: 100%;
     float: left;
-    background-color: #f0f0f0; /* Light gray */
+    background-color: white;
 }
 .backoffice {
     width: 80%;
     height: 100%;
     float: left;
-    background-color: #e0e0e0; /* Lighter gray */
+    background-color: white;
 }
 /* Clearfix to contain floated elements */
 .clearfix::after {

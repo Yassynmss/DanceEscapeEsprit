@@ -1,7 +1,14 @@
 <div class="container">
-    <h2 class="title">All Dancers Groups</h2>
+  <h2 class="title">All Dancers Groups</h2>
 
-<table>
+  <div class="search-container">
+    <input type="text" placeholder="Search by Group Name" [(ngModel)]="searchName" (input)="filterGroups()">
+    <input type="text" placeholder="Search by Group Description" [(ngModel)]="searchDescription" (input)="filterGroups()">
+    <button class="black-button" (click)="filterGroups()">Search</button>
+  </div>
+  
+  
+  <table>
     <thead>
       <tr>
         <th>Group Name</th>
@@ -10,19 +17,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let group of groups | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: totalItems }">
+      <tr *ngFor="let group of filteredGroups | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: totalItems }">
         <td>{{ group.groupName }}</td>
         <td>{{ group.groupDescription }}</td>
         <td>{{ group.members }}</td>
       </tr>
     </tbody>
   </table>
+  
   <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="onPageChange($event)">
   </mat-paginator>
+
   <div class="buttons">
     <button routerLink="/admin/dashboarddg" class="back-button">Back to Dashboard</button>
     <button class="export-button" (click)="exportToExcel()">Export to Excel</button>
+    <app-group-stats></app-group-stats>
   </div>
 </div>
-
-  

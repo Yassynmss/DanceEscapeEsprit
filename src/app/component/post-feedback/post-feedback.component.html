@@ -1,21 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feedbacks</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <!-- Font Awesome CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/assets/FrontOffice/assets/css/templatemo-festava-live.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
-
-</head>
-<body>
-<app-headerfront></app-headerfront>      
-<app-navbarcomponentfront></app-navbarcomponentfront> 
 
 <div class="container" [formGroup]="validateForm">
     <h2>Add Feedback</h2>
@@ -36,11 +18,7 @@
     </div>
   
    
-  
-    <div>
-        <label for="semifinal_score">Semifinal Score (Optional):</label>
-        <input type="number" id="semifinal_score" formControlName="semifinal_score">
-    </div>
+
     <div *ngIf="finale_score !== null" style="text-align: center;">
         <h3>Final Score: {{ finale_score }}</h3>
       </div>
@@ -66,7 +44,7 @@
   <br>
   
 <br>
-<app-footerfront></app-footerfront>
+
 <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -80,13 +58,4 @@
       });
     }
   </script>
-<!-- JavaScript -->
-<script src="/assets/FrontOffice/assets/js/jquery.min.js"></script>
-<script src="/assets/FrontOffice/assets/js/bootstrap.min.js"></script>
-<script src="/assets/FrontOffice/assets/js/jquery.sticky.js"></script>
-<script src="/assets/FrontOffice/assets/js/click-scroll.js"></script>
-<script src="/assets/FrontOffice/assets/js/custom.js"></script>
 
-
-</body>
-</html>

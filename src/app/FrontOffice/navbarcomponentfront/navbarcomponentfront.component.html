@@ -3,7 +3,7 @@
 
         <a class="navbar-brand">
 
-            Festava Live
+            Galaxy Dance
         </a>
 
        
@@ -32,13 +32,18 @@
 
 
                 <!-- Display the "FeedBack And Result" link only if the user is logged in and has the role of evaluator -->
-                <li class="nav-item" *ngIf="isLoggedIn && isDancer">
-                    <a class="nav-link click-scroll" href="#section_3" routerLink="/affichage">FeedBack And Result</a>
+                <li class="nav-item" *ngIf="isLoggedIn">
+                    <a class="nav-link click-scroll" href="#section_3" routerLink="/front/affichage">FeedBack And Result</a>
                   </li>
-                  
+                  <li class="nav-item" *ngIf="isLoggedIn">
+                    <a class="nav-link click-scroll" href="#section_3" routerLink="/front/details">My Participation</a>
+                </li>
+                
+                  <li class="nav-item" *ngIf="isLoggedIn">
+                    <a class="nav-link click-scroll" href="#section_3" routerLink="/front/results">Results</a>
+                  </li>
 
-
-                <a class="nav-item" *ngIf="isLoggedIn" [routerLink]="['/galaxydance/vote']" aria-expanded="false">
+                <a class="nav-item"  [routerLink]="['/front/vote']" aria-expanded="false" *ngIf="isLoggedIn">
                     
                     <span class="hide-menu">Vote Now</span>
                   </a>
@@ -48,17 +53,18 @@
 
 
 
-                <li class="nav-item">
+                  <li class="nav-item" *ngIf="!isLoggedIn">
                     <a class="nav-link click-scroll" href="#section_4">Schedule</a>
                 </li>
-
-                <li class="nav-item">
+                
+                <li class="nav-item" *ngIf="!isLoggedIn">
                     <a class="nav-link click-scroll" href="#section_5">Pricing</a>
                 </li>
-
-                <li class="nav-item">
+                
+                <li class="nav-item" *ngIf="!isLoggedIn">
                     <a class="nav-link click-scroll" href="#section_6">Contact</a>
                 </li>
+                
 
 
 

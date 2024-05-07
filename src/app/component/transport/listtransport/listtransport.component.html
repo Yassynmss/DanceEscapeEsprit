@@ -1,100 +1,98 @@
 <div class="container mt-5">
-    <div class="row justify-content-end">
-      <div class="col-md-10">
-        <h2 class="text-center">List of Transports</h2>
-  <br><br><br>
-        <!-- Tableau des chauffeurs non affectés -->
-        <div class="table-container text-right">
-          <br>
-          <h3>Free Drivers</h3>
-          <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
+  <div class="row justify-content-end">
+    <div class="col-md-12">
+      <h2 class="text-center">List of Transports</h2>
+<br><br><br>
+      <!-- Tableau des chauffeurs non affectés -->
+      <div class="table-container text-right">
+        <br>
+        <h3>Free Drivers</h3>
+        <table class="table table-striped table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th>Driver Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="unassignedDrivers.length; else noDriver">
+              <tr *ngFor="let driver of unassignedDrivers">
+                <td>{{ driver.name }}</td>
+              </tr>
+            </ng-container>
+            <ng-template #noDriver>
               <tr>
-                <th>Driver Name</th>
+                <td>No free drivers available</td>
               </tr>
-            </thead>
-            <tbody>
-              <ng-container *ngIf="unassignedDrivers.length; else noDriver">
-                <tr *ngFor="let driver of unassignedDrivers">
-                  <td>{{ driver.name }}</td>
-                </tr>
-              </ng-container>
-              <ng-template #noDriver>
-                <tr>
-                  <td>No free drivers available</td>
-                </tr>
-              </ng-template>
-            </tbody>
-          </table>
-        </div>
-  
-        <hr>
-  
-        <!-- Tableau des transports -->
-        <div class="table-container text-right">
-          <table class="table table-bordered">
-            <thead class="thead-dark">
-              <tr>
-                <th>Route</th>
-                <th>Description</th>
-                <th>Driver Name</th>
-                <th>Equipments</th>
-                <th>Map</th>
-                <th>Driver</th>
-                <th>Equipments</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let transport of transports">
-                <td>{{ transport.route }}</td>
-                <td>{{ transport.description }}</td>
-                <td>{{ transport.driver?.name || 'No driver' }}</td>
-                <td>
-                  <ul>
-                    <li *ngFor="let equipment of equipmentsById[transport.id_transport]">
-                      <div class="d-flex align-items-center">
-                        <span>{{ equipment.name_equipment }}</span>
-                        <button class="btn btn-sm btn-danger ml-2" (click)="removeEquipmentFromTransport(transport, equipment)">Delete</button>
-                      </div>
-                    </li>
-                  </ul>
-                  <br>
-                </td>
-                
-                
-                
-                <td>
-                  <div id="map-{{ transport.id_transport }}" style="height: 145px; width:200px;"></div>
-                </td>
-                <td>
-                  <select id="selectedstaff" [(ngModel)]="id_staff">
-                    <option *ngFor="let staff of staffs" [value]="staff.id_staff">{{staff.name}}</option>
-                  </select>
-                  <button *ngIf="id_staff !== null" class="btn btn-primary btn-sm" (click)="assignDriverToTransport(transport, id_staff)">Affect</button>
-                </td>
-                <td>
-                  <button class="btn btn-primary btn-sm" routerLink="/admin/addequipmentss/{{transport.id_transport}}">Add Equipments</button>
-                </td>
-                <td>
-                  <button class="btn btn-danger btn-sm mr-1" (click)="removeTransport(transport)">Delete</button>
-                  <button class="btn btn-primary btn-sm mr-1" routerLink="/admin/updatetransport/{{transport.id_transport}}">Update</button>
-                  <button class="btn btn-success btn-sm" (click)="downloadTransport(transport, equipmentsById[transport.id_transport], transport.driver?.name || 'No driver')">Download</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-  
-        <!-- Boutons pour ajouter un nouveau transport et revenir en arrière -->
-        <div class="text-center mt-3">
-          <button class="btn btn-primary mr-2" routerLink="/admin/addtransport">Add New Transport</button>
-         
-        </div>
-        <div class="text-center mt-3">
-          <button class="action-btn back-btn" routerLink="/admin/logistic">Back</button>
-        </div>
-    </div>
+            </ng-template>
+          </tbody>
+        </table>
+      </div>
+
+      <hr>
+
+      <!-- Tableau des transports -->
+      <div class="table-container text-right">
+        <table class="table table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th>Route</th>
+              <th>Description</th>
+              <th>Driver Name</th>
+              <th>Equipments</th>
+              <th>Map</th>
+              <th>Driver</th>
+              <th>Equipments</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let transport of transports">
+              <td>{{ transport.route }}</td>
+              <td>{{ transport.description }}</td>
+              <td>{{ transport.driver?.name || 'No driver' }}</td>
+              <td>
+                <ul>
+                  <li *ngFor="let equipment of equipmentsById[transport.id_transport]">
+                    <div class="d-flex align-items-center">
+                      <span>{{ equipment.name_equipment }}</span>
+                      <button class="btn btn-sm btn-danger ml-2" (click)="removeEquipmentFromTransport(transport, equipment)">Delete</button>
+                    </div>
+                  </li>
+                </ul>
+                <br>
+              </td>
+              
+              
+              
+              <td>
+                <div id="map-{{ transport.id_transport }}" style="height: 145px; width:200px;"></div>
+              </td>
+              <td>
+                <select id="selectedstaff" [(ngModel)]="id_staff">
+                  <option *ngFor="let staff of staffs" [value]="staff.id_staff">{{staff.name}}</option>
+                </select>
+                <button *ngIf="id_staff !== null" class="btn btn-primary btn-sm" (click)="assignDriverToTransport(transport, id_staff)">Affect</button>
+              </td>
+              <td>
+                <button class="btn btn-primary btn-sm" routerLink="/admin/addequipmentss/{{transport.id_transport}}">Add Equipments</button>
+              </td>
+              <td>
+                <button class="btn btn-danger btn-sm mr-1" (click)="removeTransport(transport)">Delete</button>
+                <button class="btn btn-primary btn-sm mr-1" routerLink="/admin/updatetransport/{{transport.id_transport}}">Update</button>
+                <button class="btn btn-success btn-sm" (click)="downloadTransport(transport, equipmentsById[transport.id_transport], transport.driver?.name || 'No driver')">Download</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Boutons pour ajouter un nouveau transport et revenir en arrière -->
+      <div class="text-center mt-3">
+        <button class="btn btn-primary mr-2" routerLink="/admin/addtransport">Add New Transport</button>
+       
+      </div>
+      <div class="text-center mt-3">
+        <button class="action-btn back-btn" routerLink="/admin/logistic">Back</button>
+      </div>
   </div>
-  Write to Med Amine Lahmer
-  
+</div>

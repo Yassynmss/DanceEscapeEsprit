@@ -1,0 +1,8 @@
+<!-- group-stats.component.html -->
+<div class="container">
+    <h2>Group Creation Statistics</h2>
+    <div *ngFor="let stat of groupStats" class="stat-item">
+      <p>{{ stat.date }}: {{ stat.count }}</p>
+    </div>
+  </div>
+  

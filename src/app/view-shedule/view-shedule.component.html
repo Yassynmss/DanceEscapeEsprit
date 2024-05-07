@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="/assets/FrontOffice/assets/css/bootstrap-icons.css">
   <link rel="stylesheet" href="/assets/FrontOffice/assets/css/templatemo-festava-live.css">
   <link rel="stylesheet" href="/assets/leaflet/dist/leaflet.css">
-
 </head>
 <body>
 
@@ -50,20 +49,19 @@
                   <tr>
                     
                     <th>EVENT PLANNING</th>
-
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let activity of schedule">
                     <td>{{ activity }}</td>
+
                   </tr>
                 </tbody>
               </table>
-              
-              <button *ngFor="let singleEvent of event" [routerLink]="['/book-ticket', singleEvent.id_event]" class="btn btn-dark">Get your Ticket!</button>
-
+              <button class="btn btn-dark"><a href="http://localhost:4200/reservation" class="text-white">Get your ticket</a></button>
               -- 
-              <button class="btn btn-dark"><a href="http://localhost:4200/welcome/all" class="text-white">Back</a></button>
+              <button class="btn btn-dark"><a href="http://localhost:4200/front" class="text-white">Back</a></button>
+              <button class="btn btn-dark" (click)="addParticipation()">Participate</button>
 
             </div>
           </div>
@@ -76,6 +74,11 @@
       </div>
     </div>
   </section>
+  
+  
+  
+
+
 
 
   <app-footerfront></app-footerfront>

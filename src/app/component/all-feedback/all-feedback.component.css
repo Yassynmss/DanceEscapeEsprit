@@ -3,6 +3,25 @@
 body {
     font-family: 'Calibri', sans-serif !important;
 }
+.circle-button {
+    border-radius: 50%; /* Pour arrondir le bouton et le rendre circulaire */
+    width: 40px; /* Ajustez la taille selon vos besoins */
+    height: 40px; /* Ajustez la taille selon vos besoins */
+    border: none; /* Pour supprimer les bordures */
+    cursor: pointer; /* Pour montrer qu'il s'agit d'un élément cliquable */
+    background-color: #3633CD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .arrow-icon {
+    color: white; /* Couleur de l'icône de la flèche */
+  }
+  
+  .circle-button i {
+    margin-top: 10px; /* Ajustez la position verticale de l'icône si nécessaire */
+    margin-left: 5px; /* Ajustez la position horizontale de l'icône si nécessaire */
+  }
 
 .card-no-border .card {
     border: 0px;

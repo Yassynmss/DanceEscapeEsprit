@@ -20,7 +20,7 @@
         <input id="email" type="email" formControlName="email" class="form-control" required>
       </div>
     <div>
-      <label for="logisticSelect">Sélectionnez une logistique :</label>
+      <label for="logisticSelect">Select logistic : :</label>
       <select id="logisticSelect" formControlName="id_logistic">
         <option *ngFor="let logistic of logistics" [value]="logistic.id_logistic">{{logistic.id_logistic}}</option>
       </select>

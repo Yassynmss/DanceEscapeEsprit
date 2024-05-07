@@ -11,9 +11,57 @@
 }
 
 .mat-input, .mat-select, .mat-checkbox-label, .mat-button {
-    color: orange !important; /* Force la couleur orange pour les éléments du formulaire */
+    color: rgb(255, 255, 255) !important; /* Force la couleur orange pour les éléments du formulaire */
     margin-right: 10px; /* Ajoute une marge à droite pour éloigner les icônes */
     margin-left: 10px; /* Ajoute une marge à gauche pour éloigner les icônes */
     
-}
+}/* styles.css (ou votre fichier de styles CSS) */
+
+.search-section {
+    background-color: #000; /* Fond noir */
+    color: #fff; /* Texte blanc */
+    padding: 50px 0; /* Espacement autour du formulaire */
+  }
+  
+  .container {
+    max-width: 800px; /* Largeur maximale du formulaire */
+    margin: 0 auto; /* Centrer le formulaire horizontalement */
+  }
+  
+  .search-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .mat-input,
+  .mat-select,
+  .mat-checkbox-label {
+    margin-bottom: 20px; /* Espacement entre les champs */
+  }
+  
+  .mat-button {
+    background-color: #333; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte du bouton */
+    border: none; /* Supprimer les bordures */
+    padding: 10px 20px; /* Espacement à l'intérieur du bouton */
+    cursor: pointer; /* Curseur de type main */
+    transition: background-color 0.3s ease; /* Animation de transition */
+  }
+  
+  .mat-button:hover {
+    background-color: #555; /* Couleur de fond du bouton au survol */
+  }
+  
+  .mat-checkbox {
+    margin-right: 10px; /* Espacement à droite de la case à cocher */
+  }
+  
+  /* Style pour les options de sélection déroulante */
+  .mat-select {
+    width: calc(50% - 10px); /* Largeur de la moitié moins les marges */
+  }
+  
+  /* Ajoutez des styles supplémentaires selon vos besoins */
+  
 

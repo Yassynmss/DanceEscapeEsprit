@@ -69,5 +69,32 @@ table {
     margin-top: 20px; /* Espacement en haut des boutons */
   }
   
-  /* Styles pour les boutons et le titre comme mentionné dans les réponses précédentes */
+  .black-button {
+    background-color: #000;
+    color: #fff;
+    padding: 4px 14px; /* Ajustez les valeurs de marge intérieure pour réduire la taille */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .black-button:hover {
+    background-color: #333;
+  }
+  
+
+  .sort-icon {
+    font-size: 12px;
+    vertical-align: middle;
+    margin-left: 5px;
+  }
+  
+  .sort-icon.asc:after {
+    content: "▲";
+  }
+  
+  .sort-icon.desc:after {
+    content: "▼";
+  }
   

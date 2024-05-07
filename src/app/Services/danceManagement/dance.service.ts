@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DanceService {
-  private baseURL = "http://localhost:8081/";
+  private baseURL = "http://localhost:8080/";
 
   constructor(private http: HttpClient) { }
 

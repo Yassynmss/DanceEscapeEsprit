@@ -12,6 +12,5 @@ export class Event{
     public_capacity!:number;
     sound_system_event!:string;
     typeevent!: Type_event
-
     kids!:boolean;
 }

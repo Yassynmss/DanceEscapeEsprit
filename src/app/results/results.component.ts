@@ -1,89 +1,50 @@
-import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, TemplateRef, ViewContainerRef  } from '@angular/core';
-import Chart from 'chart.js/auto';
-import { Participation } from '../core/particpation';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ParticipationService } from '../Services/participation.service';
-import { ChangeDetectionStrategy } from '@angular/core';
-import { Observer } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { ChartType, ChartOptions, ChartData } from 'chart.js';
+import { TooltipLabelStyle } from 'chart.js/auto'; // Corrected import statement
+import { Participation } from '../core/particpation';
+import { NgChartsConfiguration } from 'ng2-charts';
+
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
-  styleUrls: ['./results.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
   participations: Participation[] = [];
-  @ViewChild('chartsContainer') chartsContainer!: ElementRef<HTMLDivElement>;
-  @ViewChild('chartTemplate') chartTemplate!: TemplateRef<any>;
+  pieChartData: ChartData = {
+    labels: [],
+    datasets: [{
+      data: [],
+      label: 'Total Votes'
+    }]
+  };
+  pieChartOptions = {
+    responsive: true
+  };
 
-  constructor(
-    private participationService: ParticipationService,
-    private changeDetectorRef: ChangeDetectorRef,
-    private viewContainerRef: ViewContainerRef
-  ) {}
+  constructor(private participationService: ParticipationService) { }
 
-  ngOnInit() {
-    this.fetchParticipationData();
+  ngOnInit(): void {
+    this.loadParticipations();
   }
 
-  fetchParticipationData() {
-    const participationObserver: Observer<Participation[]> = {
-      next: (participations: Participation[]) => {
-        this.participations = participations;
-        this.createCharts();
-      },
-      error: (error: any) => {
-        console.error('Error fetching participation data:', error);
-      },
-      complete: () => {
-        // This is an empty complete callback to satisfy the deprecation warning
-      }
-    };
-  
-    this.participationService.fetchParticipationList().subscribe(participationObserver);
-  }
-  
-  
-  createCharts() {
-    // Clear previous canvas elements
-    this.chartsContainer.nativeElement.innerHTML = '';
+  loadParticipations() {
+    this.participationService.fetchParticipationList().subscribe(participations => {
+      this.participations = participations;
 
-    this.participations.forEach(participation => {
-      const context = { id: 'chart_' + participation.id_participation };
-      const viewRef = this.viewContainerRef.createEmbeddedView(this.chartTemplate, context);
-      const canvas = viewRef.rootNodes[0] as HTMLCanvasElement;
-      
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        new Chart(ctx, {
-          type: 'doughnut',
-          data: {
-            labels: ['Votes', 'Remaining'],
-            datasets: [{
-              data: [participation.totalVotes || 0, 100 - (participation.totalVotes || 0)],
-              backgroundColor: [
-                'rgba(54, 162, 235, 0.5)',
-                'rgba(255, 99, 132, 0.5)'
-              ],
-              borderColor: [
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 99, 132, 1)'
-              ],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            cutout: 80,
-            responsive: true,
-            maintainAspectRatio: false
-          }
-        });
-      } else {
-        console.error('Failed to get 2D context for canvas:', 'chart_' + participation.id_participation);
-      }
+      // Process data for chart
+      const totalVotes = this.participations.map(participation => participation.totalVotes);
+      const totalVotesSum = totalVotes.reduce((acc, votes) => acc + votes, 0);
+
+      // Assign datasets to pieChartData.datasets
+      this.pieChartData.datasets[0].data = totalVotes.map(votes => (votes / totalVotesSum) * 100);
+
+      // Assign labels to pieChartData.labels
+      this.pieChartData.labels = this.participations.map(participation => `Participant ${participation.participantCode}`);
     });
-
-    // Trigger change detection
-    this.changeDetectorRef.detectChanges();
   }
 }

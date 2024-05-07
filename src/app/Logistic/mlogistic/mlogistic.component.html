@@ -1,24 +1,43 @@
-<!-- logistic.component.html -->
-<div>
-    <h2>Add Logistic</h2>
-    
-    <input [(ngModel)]="id_event" placeholder="Event ID">
-    <button (click)="addLogistic()">Add Logistic</button>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2>Add Logistic</h2>
+          <div class="form-group">
+            <label for="eventId">Event ID:</label>
+            <input type="text" class="form-control" id="eventId" [(ngModel)]="id_event" placeholder="Enter Event ID">
+          </div>
+          <button class="btn btn-primary" (click)="addLogistic()">Add Logistic</button>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <h2>All Logistics</h2>
-  <table>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Actions</th>
-    </tr>
-    <tr *ngFor="let logistic of logistics">
-      <td>{{ logistic.id_logistic }}</td>
-     
-      <td>
-        <button (click)="deleteLogistic(logistic.id_logistic)">Delete</button>
-      </td>
-    </tr>
-  </table>
-  
+  <div class="row mt-3 justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h2>All Logistics</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let logistic of logistics">
+                <td>{{ logistic.id_logistic }}</td>
+                
+                <td>
+                  <button class="btn btn-danger" (click)="deleteLogistic(logistic.id_logistic)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

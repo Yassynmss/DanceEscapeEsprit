@@ -1,28 +1,26 @@
-Med Amine Lahmer
 /* Styles pour le conteneur de la carte */
 #map {
-    height: 400px; /* Définissez la hauteur de la carte selon vos besoins */
-    width: 100%; /* Assurez-vous que la carte occupe toute la largeur disponible */
-    border: 1px solid #ccc; /* Ajoutez une bordure pour un aspect visuel */
-    border-radius: 5px; /* Ajoutez un peu de style avec un bord arrondi */
-  }
-  
-  /* Ajustements supplémentaires si nécessaire */
-  .centered-table {
-    margin: 0 auto; /* Centrez la table des transports horizontalement */
-  }
-  
-  .table-container {
-    overflow-x: auto; /* Ajoutez une barre de défilement horizontale si nécessaire */
-  }
-  .action-btn {
-    padding: 10px 24px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-  }
-  .action-btn.back-btn {
-    background-color: #555; /* Or any color you prefer */
-  }
-  
+  height: 400px; /* Définissez la hauteur de la carte selon vos besoins */
+  width: 100%; /* Assurez-vous que la carte occupe toute la largeur disponible */
+  border: 1px solid #ccc; /* Ajoutez une bordure pour un aspect visuel */
+  border-radius: 5px; /* Ajoutez un peu de style avec un bord arrondi */
+}
+
+/* Ajustements supplémentaires si nécessaire */
+.centered-table {
+  margin: 0 auto; /* Centrez la table des transports horizontalement */
+}
+
+.table-container {
+  overflow-x: auto; /* Ajoutez une barre de défilement horizontale si nécessaire */
+}
+.action-btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+.action-btn.back-btn {
+  background-color: #555; /* Or any color you prefer */
+}

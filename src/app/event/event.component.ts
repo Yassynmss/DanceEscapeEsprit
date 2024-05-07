@@ -50,10 +50,7 @@ export class EventComponent {
 
     
   }
-  showParticipations(eventId: number): void {
-    // Navigate to EventparticipationsComponent with the eventId
-    this.router.navigate(['/eventparticipations', eventId]);
-  }
+  
 
   
   deleteEvent(id: number): void {

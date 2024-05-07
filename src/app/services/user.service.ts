@@ -46,4 +46,16 @@ export class UserService {
   updateBanStatus(email: string, isBanned: boolean): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/banUser/${email}`, { isBanned });
   }
+
+
+
+
+  private baseUrl = 'http://localhost:8080/DancersGroup';
+
+  getDancerGroups(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/alldg`);
+  }
+
+
+
 }

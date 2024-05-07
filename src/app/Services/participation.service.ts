@@ -8,7 +8,7 @@ import { Participation } from '../core/particpation';
 })
 
 export class ParticipationService {
-  private baseUrl : string='http://localhost:8082/participations';
+  private baseUrl : string='http://localhost:8080/participations';
   
   constructor(private http : HttpClient) { }
 

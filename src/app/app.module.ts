@@ -120,6 +120,14 @@ import { TicketAddComponent } from './component/ticket-add/ticket-add.component'
 import { TicketComponent } from './component/ticket/ticket.component';
 import { TicketUpdateComponent } from './component/ticket-update/ticket-update.component';
 import { TicketbookComponent } from './component/ticketbook/ticketbook.component';
+import { GroupStatsComponent } from './CROWN/group-stats/group-stats.component';
+import { FooterfrontEVAComponent } from './FrontOfficeEVALUATOR/footerfront-eva/footerfront-eva.component';
+import { AlltemplatefrontEVAComponent } from './FrontOfficeEVALUATOR/alltemplatefront-eva/alltemplatefront-eva.component';
+import { HeaderfrontEVAComponent } from './FrontOfficeEVALUATOR/headerfront-eva/headerfront-eva.component';
+import { HomecomponentevaComponent } from './FrontOfficeEVALUATOR/homecomponenteva/homecomponenteva.component';
+import { NavbarEVAComponent } from './FrontOfficeEVALUATOR/navbar-eva/navbar-eva.component';
+import { NgChartsConfiguration } from 'ng2-charts';
+import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -222,7 +230,13 @@ import { TicketbookComponent } from './component/ticketbook/ticketbook.component
  TicketAddComponent,
  TicketComponent,
  TicketUpdateComponent,
- TicketbookComponent
+ TicketbookComponent,
+ GroupStatsComponent,
+ FooterfrontEVAComponent,
+ AlltemplatefrontEVAComponent,
+ HeaderfrontEVAComponent,
+ HomecomponentevaComponent,
+ NavbarEVAComponent
 
   ],
   imports: [
@@ -265,7 +279,8 @@ import { TicketbookComponent } from './component/ticketbook/ticketbook.component
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    NgChartsModule
   ],
     
 

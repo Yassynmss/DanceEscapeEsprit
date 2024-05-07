@@ -1,64 +1,73 @@
 <div class="container mt-5">
-    <h2 class="text-center">List of Vihicules</h2>
-    <div class="search-form">
-      <input [(ngModel)]="name_vehicule" (ngModelChange)="searchTerm$.next()" placeholder="Vehicule name">
-      <input [(ngModel)]="matricule" (ngModelChange)="searchTerm$.next()" placeholder="Matricule">
-      <input [(ngModel)]="etat" (ngModelChange)="searchTerm$.next()" placeholder="Etat">
-      <select id="type" [(ngModel)]="selectedType" (ngModelChange)="searchTerm$.next()">
-        <option value="">All</option>
-        <option *ngFor="let t of type" [value]="t">{{t}}</option>
-      </select>
-      
-    </div>
+  <h2 class="text-center">List of Vehicles</h2>
+  
+  <!-- Barre de recherche -->
+  <div class="search-form mb-3">
+    <input [(ngModel)]="name_vehicule" (ngModelChange)="searchTerm$.next($event)" placeholder="Vehicle name">
+    <input [(ngModel)]="matricule" (ngModelChange)="searchTerm$.next($event)" placeholder="Matricule">
     
-    <div class="table-container">
-      <table class="table centered-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Matricule</th>
-            <th>Type</th>
-            <th>Etat</th>
-            
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+    <!-- Ajout du libellé "Condition" -->
+   
+    <input id="etat" [(ngModel)]="etat" (ngModelChange)="searchTerm$.next($event)" placeholder="Condition">
+    <label for="type" class="mr-2">Type vehicule :</label>
+    <select id="type" [(ngModel)]="selectedType" (ngModelChange)="searchTerm$.next($event)">
+      <option value="">All</option>
+      <option *ngFor="let t of type" [value]="t">{{ t }}</option>
+    </select>
+  </div>
+
+  <!-- Tableau des véhicules -->
+  <div class="table-container">
+    <table class="table centered-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Matricule</th>
+          <th>Type vehicule </th>
+          <th>Etat</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Affichage des véhicules -->
+        <ng-container *ngIf="vehicules && vehicules.length > 0; else noVehicles">
           <tr *ngFor="let vehicule of vehicules">
             <td>{{ vehicule.name_vehicule }}</td>
             <td>{{ vehicule.matricule }}</td>
             <td>{{ vehicule.type }}</td>
             <td>{{ vehicule.etat }}</td>
-          
-          
-              <button class="action-btn delete-btn" (click)="removeVehicule(vehicule)">Delete</button>
-              <button routerLink="/admin/updatevehicule/{{vehicule.id_vehicule}}">Update</button>
-
-
-
-
-              <label for="vehiculeSelect">Select Transport :</label>
+            <td>
+              <!-- Bouton de suppression -->
+              <button class="action-btn delete-btn mr-2" (click)="removeVehicule(vehicule)">Delete</button>
+              <!-- Sélecteur de transport -->
+              <label for="vehiculeSelect" class="mr-2">Select Transport :</label>
               <select id="vehiculeSelect" [(ngModel)]="vehicule.id_transport">
-                <option *ngFor="let transport of transports" [value]="transport.id_transport">{{transport.route}}</option>
+                <option *ngFor="let transport of transports" [value]="transport.id_transport">{{ transport.route }}</option>
               </select>
-              
-              
-                <button (click)="assignToTransport(vehicule, vehicule.id_transport)">Affect</button>
-            
+              <!-- Bouton d'affectation -->
+              <button class="action-btn affect-btn colored-btn mr-2" (click)="assignToTransport(vehicule, vehicule.id_transport)">Affect</button>
+              <!-- Bouton de mise à jour -->
+              <button class="action-btn update-btn colored-btn" routerLink="/admin/updatevehicule/{{ vehicule.id_vehicule }}">Update</button>
+           </td>
           </tr>
-          <tr *ngIf="!vehicules || vehicules.length === 0">
-            <td colspan="5" class="text-center">No vehicules found</td>
+        </ng-container>
+        <!-- Aucun véhicule trouvé -->
+        <ng-template #noVehicles>
+          <tr>
+            <td colspan="5" class="text-center">No vehicles found</td>
           </tr>
-        </tbody>
-      </table>
-    </div>
-  
-    <div class="text-center mt-3">
-      <button class="action-btn add-btn" routerLink="/admin/addvehicule">Add New Vehicule</button>
-    </div>
-  
-    <div class="text-center mt-3">
-      <button class="action-btn back-btn" routerLink="/admin/logistic">Back</button>
-    </div>
+        </ng-template>
+      </tbody>
+    </table>
   </div>
-  
+
+  <!-- Bouton pour ajouter un nouveau véhicule -->
+  <div class="text-center mt-3">
+    <button class="action-btn add-btn" routerLink="/admin/addvehicule">Add New Vehicle</button>
+  </div>
+
+  <!-- Bouton pour retourner à la page précédente -->
+  <div class="text-center mt-3">
+    <button class="action-btn back-btn" routerLink="/admin/logistic">Back</button>
+  </div>
+</div>

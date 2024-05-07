@@ -1,54 +1,75 @@
+/* Table styles */
 .table {
-    width: 100%;
-    margin-bottom: 1rem;
-    color: #212529;
-    border-collapse: collapse;
-  }
-  
-  .table th,
-  .table td {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
-  }
-  
-  .table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
-    border-color: gray; /* Colorer la bordure des titres en gris */
-  }
-  
-  .table tbody + tbody {
-    border-top: 2px solid #dee2e6;
-  }
-  .search-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.sort-button {
-  cursor: pointer;
-  
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.sort-button:hover {
-  background-color: grey;
-}
-
-.centered-table {
   border-collapse: collapse;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  width: 100%;
 }
 
-.centered-table th,
-.centered-table td {
-  text-align: center;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
 }
 
-.centered-table tr:nth-child(even) {
+th {
   background-color: #f2f2f2;
+}
+
+/* Search form styles */
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Button styles */
+.action-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  margin-right: 10px;
+}
+
+.add-btn {
+  background-color: #4CAF50;
+}
+
+.delete-btn {
+  background-color: #f44336;
+}
+
+.update-btn {
+  background-color: #008CBA;
+}
+
+.back-btn {
+  background-color: #555;
+}
+
+/* Center the table */
+.table-container {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+/* Hover effect on buttons */
+.action-btn:hover {
+  opacity: 0.8;
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+  .table {
+    width: 100%;
+  }
+}
+
+/* Highlight alternate rows */
+.table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.download-btn {
+  background-color: #f44336;
 }

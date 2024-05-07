@@ -1,47 +1,37 @@
 <div class="container mt-5">
   <h2 class="text-center">List of suppliers</h2>
   <div class="search-form">
-    
-  
-<input type="text" [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChange()" placeholder="Search Supplier Name...">
-
+    <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChange()" placeholder="Search Supplier Name...">
   </div>
-  <table class="table table-striped mx-auto w-75 centered-table">
-
-    <thead>
-      <tr>
-    
-        <th class="sort-button" (click)="sortByName()">Name</th>
-        
-        <th>Contact Info</th>
-        <th>Number</th>
-        <th>Email</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let supplier of supplierList">
-     
-        <td>{{ supplier.name }}</td>
-        <td>{{ supplier.contact_info }}</td>
-        <td>{{ supplier.number }}</td>
-        <td>{{ supplier.email }}</td>
-        <td>
-          <button (click)="removeSupplier(supplier)">Delete</button>
-          <button routerLink="/admin/updatesupplier/{{supplier.id_supplier}}">Update</button>
-        
-          
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table class="table table-striped mx-auto w-75 centered-table">
+      <thead>
+        <tr>
+          <th class="sort-button" (click)="sortByName()">Name</th>
+          <th>Contact Info</th>
+          <th>Number</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let supplier of supplierList">
+          <td>{{ supplier.name }}</td>
+          <td>{{ supplier.contact_info }}</td>
+          <td>{{ supplier.number }}</td>
+          <td>{{ supplier.email }}</td>
+          <td>
+            <button class="action-btn delete-btn" (click)="removeSupplier(supplier)">Delete</button>
+            <button class="action-btn update-btn" routerLink="/admin/updatesupplier/{{supplier.id_supplier}}">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <div class="text-center mt-3">
-    <button routerLink="/admin/addsupplier">Add new supplier</button>
-    <div> 
-      <br><br> <button (click)="downloadExcel()">Download Excel</button></div>
+    <button class="action-btn add-btn" routerLink="/admin/addsupplier">Add new supplier</button>
+    <div><br><br>    <button class="action-btn download-btn" (click)="downloadExcel()">Download Excel</button></div>
   </div>
-  
-  
   <div class="text-center mt-3">
     <button class="action-btn back-btn" routerLink="/admin/logistic">Back</button>
   </div>

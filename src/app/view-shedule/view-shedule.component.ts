@@ -5,6 +5,8 @@ import { MapDisplayFrontAzizComponent } from '../map-display-front-aziz/map-disp
 import { VenueService } from '../Services/venueManagement/venue.service';
 import { Venue } from '../core/venue';
 import { Event } from '../core/event';
+import { ParticipationService } from '../Services/participation.service';
+import { Participation } from '../core/particpation';
 
 @Component({
   selector: 'app-view-shedule',
@@ -13,13 +15,14 @@ import { Event } from '../core/event';
 })
 
 export class ViewSheduleComponent implements OnInit {
-  event: Event[] = [];
+  events: Event[] = [];
   schedule: string[] = [];   
   map: any;
   isEventFull: string = '';
   venue!: Venue 
   
-  constructor(private eventService: EventService, private venueService: VenueService) {}
+  constructor(private eventService: EventService, private venueService: VenueService,
+    private participationService: ParticipationService) {}
 
   ngOnInit(): void {
     // Appel de la méthode generateSchedule avec des valeurs d'exemple
@@ -43,7 +46,26 @@ export class ViewSheduleComponent implements OnInit {
     });
   }
 
+  addParticipation(): void {
+    const eventId = 1; // Assuming eventId is fixed as 1
+    const userId = 1; // Assuming userId is fixed as 1
+    const totalVotes = 0; // Assuming totalVotes is fixed as 0
 
+    const newParticipation: Participation = {
+      id_participation: 0, // This value will be ignored by the server since it's generated
+      showtime: null, // Adjust the default value as needed
+      participantCode: 0, // Assuming userId is the participantCode
+      totalVotes: totalVotes, // Assign totalVotes
+      status: 'PENDING', // Default status
+      expirationDate: new Date(new Date().getTime() + (7 * 24 * 60 * 60 * 1000)), // Default expiration date (7 days from today)
+      notes: 'Waiting for Approval', // Default notes
+    };
+
+    // Call the service method to add the participation
+    this.participationService.addParticipationAndAffectUser(newParticipation, eventId, userId).subscribe(() => {
+      alert('Participation Added Successfully.');
+    });
+  }
 
 
 }

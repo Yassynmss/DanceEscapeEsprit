@@ -1,48 +1,54 @@
 <!-- update-dg.component.html -->
 <div class="form-container">
-<form (ngSubmit)="updateGroup()" #updateGroupForm="ngForm">
-    <div class="form-group">
+    <form (ngSubmit)="updateGroup()" #updateGroupForm="ngForm">
+      <div class="form-group">
         <label for="groupNameToUpdate">Group Name to Update:</label>
-        <input type="text" class="form-control" id="groupNameToUpdate" name="groupNameToUpdate" [(ngModel)]="groupNameToUpdate" required>
-    </div>
-    <div class="form-group">
+        <select class="form-control" id="groupNameToUpdate" name="groupNameToUpdate" [(ngModel)]="groupNameToUpdate" required>
+          <option *ngFor="let groupName of existingGroupNames" [value]="groupName">{{ groupName }}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
         <label for="groupName">New Group Name:</label>
         <input type="text" class="form-control" id="groupName" name="groupName" [(ngModel)]="groupName" required>
-    </div>
-    <div class="form-group">
+      </div>
+      <div class="form-group">
         <label for="groupDescription">Group Description (max 150 characters):</label>
         <textarea class="form-control" id="groupDescription" name="groupDescription" [(ngModel)]="groupDescription" required maxlength="150"></textarea>
-    </div>
-    <div class="form-group">
+      </div>
+      <div class="form-group">
         <label for="members">Group Members:</label>
         <div *ngFor="let memberControl of members; let i = index" class="member-item">
-            <select [formControl]="memberControl" required class="form-control member-input">
-                <option *ngFor="let user of users; let j = index" [ngValue]="j">{{ user.firstname }} {{ user.lastname }}</option>
-            </select>
-            <button type="button" (click)="removeMember(i)" class="btn btn-danger remove-button">Remove</button>
+          <select [formControl]="memberControl" required class="form-control member-input">
+            <option *ngFor="let user of users; let j = index" [ngValue]="j">{{ user.firstname }} {{ user.lastname }}</option>
+          </select>
+          <button type="button" (click)="removeMember(i)" class="btn btn-danger remove-button">Remove</button>
         </div>
         <button type="button" (click)="addMember()" class="btn btn-primary" [disabled]="members.length >= 3">Add Member</button>
         <p *ngIf="members.length >= 3" class="text-danger">You have reached the maximum number of members (3).</p>
-    </div>
-      
-<!-- Other form elements... -->
-<button routerLink="/admin/dashboarddg" class="back-button">Back to Dashboard</button>
-<button type="button" (click)="openConfirmationModal(confirmUpdate)" class="btn btn-primary">Update</button>
-
-
-<!-- Confirmation modal definition -->
-<ng-template #confirmUpdate let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title">Confirm Update</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('cancel')">
+      </div>
+  
+      <!-- Other form elements... -->
+      <button routerLink="/admin/dashboarddg" class="back-button">Back to Dashboard</button>
+      <button type="button" (click)="openConfirmationModal(confirmUpdate)" class="btn btn-primary">Update</button>
+  
+  
+      <!-- Confirmation modal definition -->
+      <ng-template #confirmUpdate let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">Confirm Update</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('cancel')">
             <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        Are you sure you want to update the group?
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel')">Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="modal.close('confirm')">Confirm</button>
-    </div>
-</ng-template>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to update the group?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel')">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="modal.close('confirm')">Confirm</button>
+        </div>
+      </ng-template>
+    </form>
+  </div>
+  

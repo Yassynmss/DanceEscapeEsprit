@@ -1,0 +1,11 @@
+.chart-container {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    margin: 0 auto; /* Center horizontally */
+    border-radius: 5px; /* Slight border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Padding inside container */
+  
+  }

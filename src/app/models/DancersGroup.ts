@@ -5,13 +5,16 @@ export class DancersGroup {
     groupName: string;
     groupDescription: string;
     members: string; 
+    creationDate: Date; 
     users: User[]; 
-
+  
     constructor() {
-        this.groupID = 0; 
-        this.groupName = ''; 
-        this.groupDescription = ''; 
-        this.members = '';
-        this.users = []; 
+      this.groupID = 0; 
+      this.groupName = ''; 
+      this.groupDescription = ''; 
+      this.members = '';
+      this.creationDate = new Date(); 
+      this.users = []; 
     }
-}
+  }
+  

@@ -80,8 +80,306 @@ import { TicketComponent } from './component/ticket/ticket.component';
 import { TicketbookComponent } from './component/ticketbook/ticketbook.component';
 import { TicketAddComponent } from './component/ticket-add/ticket-add.component';
 import { TicketUpdateComponent } from './component/ticket-update/ticket-update.component';
+import { GroupStatsComponent } from './CROWN/group-stats/group-stats.component';
+import { IndexEventComponent } from './index-event/index-event.component';
 const routes: Routes = [
+  { path:"front",
+  component:AlltemplatefrontComponent,
+  children:[
+    {
+      path:"indexDanceBack",
+      component:DancecategorieComponent
 
+    },
+    {path:"hi",component:IndexEventComponent},
+    {
+      path:"book-ticket/:id_event",
+      component:TicketbookComponent
+    }, 
+    {
+      path:"add",
+      component:PostFeedbackComponent
+    },
+    {
+      path:"update/:id_resandfeed",
+      component:UpdateFeedbackComponent
+    },
+    {
+      path:"addfeedbackandresult",
+      component:PostFeedbackComponent
+    },
+    {
+      path:"view",
+      component:AllFeedbackComponent
+    },
+    {
+      path:"affichage",
+      component:AffichageComponent
+   
+     },
+
+  ]
+  
+ },    {path:"view", component:ViewSheduleComponent},
+
+{ path:"admin",
+    component:AlltemplatebackComponent,
+    children:[
+      {
+        path:"aff-ticket",
+        component:TicketComponent
+      },
+      {
+        path:"book-ticket/:id_event",
+        component:TicketbookComponent
+      },
+      {
+        path:"add-ticket",
+        component:TicketAddComponent
+      },
+      {
+        path:"updateT/:id_ticket",
+        component:TicketUpdateComponent
+      }, 
+      {
+        path:"addVote",
+        component:AddVoteComponent
+      },
+    {
+      path:"list",
+      component:FetchpartComponent
+    },
+    {
+      path:"eventparticipations",
+      component:EventparticipationsComponent
+    },
+  {path:"edit-participation/:id",
+  component:EditParticipationComponent},
+  {path:"votes",
+  component: VoteComponent},
+  {path:"updateVote/:id",
+  component: UpdatevoteComponent},
+  {
+    path:"add",
+    component:AddParticipationComponent
+  },
+      {
+      path:"indexeventback",
+      component:EventComponent
+    },{
+
+      path:"addEventBack",
+      component:EventaddComponent
+    },
+    {
+      path:"indexDanceBack",
+      component:DancecategorieComponent
+
+    },{
+      path:"addDanceBack",
+      component:DanceaddComponent
+    },{
+      path:"event/:id_event",
+    component:EventupdateComponent
+    },{
+
+      path:"searcheventback",
+      component:SearchbarComponent
+    },{
+      path:"view",
+      component:ViewSheduleComponent
+    },{
+      path:"venueadmin",
+      component:VenueAdminAzizComponent
+    },{
+      path:"venueAdd",
+      component:VenueAddAdminComponent
+    },{
+      path:"mapTest",
+      component:MapDisplayFrontAzizComponent
+    },
+    {
+      path:"listequipment",
+      component:ListEquipmentComponent
+  
+      
+    }, 
+    
+    
+
+
+    { path:"logistic",
+    component:LogisticComponent}, 
+    
+    
+
+
+    { path:"mlogistic",
+    component:MlogisticComponent},
+    
+    
+    {
+      path:"addequipment",
+      component:AddEquipmentComponent
+  
+      
+    },
+    {
+      path:"updateEquipment/:id_equipment",
+      component:UpdateEquipmentComponent
+  
+      
+    },
+    { path: "equipmentchart", 
+    component:EquipmentChartComponent
+  
+  }
+    ,
+    
+    {
+      path:"liststaff",
+      component:ListStaffComponent
+  
+      
+    },
+    
+    {
+      path:"addstaff",
+      component:AddStaffComponent
+  
+      
+    },
+    {
+
+      path:"chartstaf",
+      component:ChartStaffComponent
+    }
+    ,{
+      path:"updateStaff/:id_staff",
+      component:UpdateStaffComponent
+  
+      
+    }
+    ,
+    
+    {
+      path:"addsupplier",
+      component:AddSupplierComponent
+  
+      
+    }
+    ,
+    
+    {
+      path:"listsupplier",
+      component:ListSupplierComponent
+  
+      
+    }
+    ,
+    {
+      path:"updatesupplier/:id_supplier",
+      component:UpdateSupplierComponent
+  
+      
+    },
+    {
+      path:"updatevehicule/:id_vehicule",
+      component:UpdateVehiculeComponent
+  
+      
+    },
+    
+    
+    {path:'createdg', component:CreateDGComponent},
+      { path: 'dashboarddg', component: DancersGroupsDashboardComponent },
+      {path:'statsdg', component:StatsDGComponent},
+      {path:'deletedg', component:DeleteDGComponent},
+      {path:'onedg', component:OneDGComponent},
+      {path:'updatedg', component:UpdateDGComponent},
+      {path:'alldg', component:AllDGComponent},
+      {path:'', component:NavbarcomponentbackComponent},
+      {path:'banuser' , component:BanUserComponent},
+   
+    {
+  
+      path:"listvehicule",
+      component:ListVehiculeComponent
+    },
+    {
+  
+      path:"addvehicule",
+      component:AddVehiculeComponent
+    }
+  
+    
+  
+  
+, {path:"listtransport",
+  component:ListTransportComponent
+} ,
+{ path: 'addequipmentss/:id_transport', component: AddEquipmentDialogComponent },
+
+    {
+  
+      path:"addtransport",
+      component:AddTransportComponent
+    }
+    ,
+    {
+  
+      path:"updatetransport/:id_transport",
+      component:UpdateTransportComponent
+    }
+  
+  ]}
+,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{path:"statss", component:GroupStatsComponent },
   {
     path:"forbiden",
     component:ForbiddenComponent
@@ -101,6 +399,18 @@ const routes: Routes = [
   {
     path:"map",
     component:MapDisplayFrontAzizComponent
+  },
+  {
+    path:"vote",
+    component:CastvoteComponent
+  },
+  {
+    path:"details",
+    component:PartdetailsComponent
+  },
+  {
+    path:"results",
+    component:ResultsComponent
   }
   
  ]
@@ -137,11 +447,7 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   {path: 'profile' , component:ProfileComponent},
  
-    {
-      path:"affichage",
-      component:AffichageComponent
-   
-     },
+ 
      {
       path:"add",
       component:PostFeedbackComponent
@@ -163,7 +469,7 @@ const routes: Routes = [
       component:AppComponent
     },
     {
-      path:"admin",
+      path:"adminnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
       component:AlltemplatebackComponent,
       children:[
       {path:"aff-ticket",
@@ -220,12 +526,8 @@ const routes: Routes = [
   
         path:"addEventBack",
         component:EventaddComponent
-      },
-      {
-        path:"indexDanceBack",
-        component:DancecategorieComponent
-  
-      },{
+      }
+      ,{
         path:"addDanceBack",
         component:DanceaddComponent
       },{
@@ -246,15 +548,7 @@ const routes: Routes = [
         component:VenueAddAdminComponent
       },
       
-      {path:'createdg', component:CreateDGComponent},
-      { path: 'dashboarddg', component: DancersGroupsDashboardComponent },
-      {path:'statsdg', component:StatsDGComponent},
-      {path:'deletedg', component:DeleteDGComponent},
-      {path:'onedg', component:OneDGComponent},
-      {path:'updatedg', component:UpdateDGComponent},
-      {path:'alldg', component:AllDGComponent},
-      {path:'', component:NavbarcomponentbackComponent},
-      {path:'banuser' , component:BanUserComponent},
+      
       {
         path:"listequipment",
         component:ListEquipmentComponent

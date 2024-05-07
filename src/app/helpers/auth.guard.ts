@@ -9,37 +9,17 @@ import { map } from 'rxjs/operators';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private authService: AuthService, private router: Router){
-
-  }
+  constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(!this.authService.isLoggedIn()) {
+    if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/login']);
       return false;
     }
 
-    // Obtenir les rôles de l'utilisateur
-    return this.authService.getUserRoles().pipe(
-      map((userRoles: string[]) => {
-        // Si l'utilisateur est un ADMIN, rediriger loin de la route '/' (page d'accueil)
-        if(userRoles.includes('ADMIN')) {
-          this.router.navigateByUrl('/admin');
-          return false;
-        }
-        
-        // Si l'utilisateur est un EVALUATOR, rediriger loin de la route '/admin'
-        if(userRoles.includes('EVALUATOR')) {
-          this.router.navigateByUrl('/front');
-          return false;
-        }
-
-        // Autoriser l'accès aux autres routes
-        return true;
-      })
-    );
+    // Ajoutez une instruction de retour pour le cas où l'utilisateur est autorisé à accéder à la route
+    return true;
   }
-  
 }

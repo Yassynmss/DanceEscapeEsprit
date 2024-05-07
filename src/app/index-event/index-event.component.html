@@ -27,12 +27,15 @@
                   <td class="col-1">{{ event.public_capacity }}</td>
                   <td class="col-1">{{ event.kids ? 'Yes' : 'No' }}</td>
                   <td class="col-1">
+                    
+                     
+                    
                     <button (click)="displayTimeRemaining(event.id_event)" class="btn btn-dark">Time Remaining</button>
                     <button class="btn btn-dark">
-                      <a href="http://localhost:4200/view1" target="_blank" class="text-white">Voir</a>
+                      <a href="http://localhost:4200/view" target="_blank" class="text-white">Voir</a>
 
                     </button>
-                    
+                    <button [routerLink]="['/book-ticket', event.id_event]" class="btn btn-dark">Get your Ticket!</button>
                   </td>
                 </tr>
               </tbody>

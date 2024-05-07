@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Backoffice</title>
-  <link rel="shortcut icon" type="image/png" href="/assets/BackOffice/images/logos/favicon.png" />
-  <link rel="stylesheet" href="/assets/BackOffice/css/styles.min.css" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-</head>
+ 
 
 <body>
 
@@ -23,26 +14,11 @@
           </div>
           <div class="backoffice">
             <!-- Content for backoffice layout goes here -->
-            <app-headerfront></app-headerfront>
-            <app-admin-start-page-aziz></app-admin-start-page-aziz>
+         
             <div class="text-center">
               <h2>List of Tickets</h2>
             </div>
-            <form [formGroup]="searchForm"  class="container mt-4">
-              <div class="form-row">
-                <div class="form-group col-md-2">
-                  <input type="text" formControlName="title" id="title" class="form-control form-control-sm" placeholder="title" (input)="searchTicket()">
-                </div>
-                <div class="form-group col-md-2">
-                  <input type="number" formControlName="price" id="price" class="form-control form-control-sm" placeholder="price" (input)="searchTicket()">
-                </div>
-              
-                
-              
-             
-              
-              </div>
-            </form>
+          
             <div class="container mt-1">
               <div class="row">
                 <div class="col-4 text-left">
@@ -58,7 +34,7 @@
                   <tr>
                     <th scope="col">Title</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Event</th>
+                    <th scope="col">Quantity</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -66,7 +42,7 @@
                   <tr *ngFor="let ticket of tickets">
                     <td>{{ ticket.title }}</td>
                     <td>{{ ticket.price }}</td>
-                    <td>{{ ticket.event }}</td>
+                    <td>{{ ticket.quantity }}</td>
                     <td>
                    
                       <button [routerLink]="['/admin/updateT', ticket.id_ticket]" class="ml-2"> <!-- Ajoutez la classe "ml-2" pour une marge à gauche -->
@@ -80,12 +56,11 @@
                 </tbody>
               </table>
             </div>
-            <router-outlet></router-outlet>
-            <app-backoffice-layout></app-backoffice-layout>
+         
           </div>
         </div>
       </div>
-      <app-footerback></app-footerback>
+     
     </div>
   </div>
 

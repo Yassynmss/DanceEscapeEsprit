@@ -38,9 +38,11 @@
           <td>{{ event.kids ? 'Yes' : 'No' }}</td>
           <!-- Boutons d'action -->
           <td>
-            <button class="update-button" [routerLink]="['/event', event.id_event]" class="btn btn-primary">Update</button>
+            <button class="update-button" [routerLink]="['/admin/event', event.id_event]" class="btn btn-primary">Update</button>
             <button (click)="deleteEvent(event.id_event)" class="btn btn-primary">Delete</button>
             <button (click)="displayTimeRemaining(event.id_event)" class="btn btn-primary">Time Remaining</button>
+            <button class="btn btn-primary" routerLink="/admin/eventparticipations">View Participation</button>
+
           </td> 
         </tr>
       </tbody>

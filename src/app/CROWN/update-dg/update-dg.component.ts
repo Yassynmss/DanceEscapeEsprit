@@ -2,25 +2,34 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UserService } from 'src/app/services/user.service'; // Importe le service UserService
-
+import { UserService } from 'src/app/services/user.service';
+import { FormBuilder, FormGroup} from '@angular/forms';
 @Component({
   selector: 'app-update-dg',
   templateUrl: './update-dg.component.html',
   styleUrls: ['./update-dg.component.css']
 })
 export class UpdateDGComponent implements OnInit {
+  createGroupForm!: FormGroup; 
   groupNameToUpdate?: string;
+  existingGroupNames: string[] = [];
   groupName?: string;
   groupDescription?: string;
   members: FormControl[] = [new FormControl('', Validators.required)];
   users: any[] = []; // Stocke les utilisateurs DANCER récupérés du service
 
-  constructor(private http: HttpClient, private modalService: NgbModal, private userService: UserService) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private modalService: NgbModal, private userService: UserService) {
+    this.createGroupForm = this.fb.group({
+      groupName: ['', [Validators.required]], // Définissez les autres champs du formulaire
+      groupDescription: ['', [Validators.required, Validators.maxLength(150)]]
+    });
+  }
 
   ngOnInit(): void {
-    this.fetchDancerUsers(); // Appelle la méthode pour récupérer les utilisateurs DANCER
+    this.fetchDancerUsers(); // Récupère les utilisateurs DANCER
+    this.fetchExistingGroupNames(); // Récupère les noms des groupes existants
   }
+  
 
   fetchDancerUsers(): void {
     this.userService.getDancerUsers().subscribe(
@@ -32,7 +41,19 @@ export class UpdateDGComponent implements OnInit {
       }
     );
   }
-
+  fetchExistingGroupNames(): void {
+    const url = 'http://localhost:8080/DancersGroup/groupnamess';
+  
+    this.http.get<string[]>(url).subscribe(
+      (data) => {
+        this.existingGroupNames = data;
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des noms de groupe : ', error);
+      }
+    );
+  }
+  
   updateGroup(): void {
     const url = 'http://localhost:8080/DancersGroup/updategroup/' + this.groupNameToUpdate;
 
@@ -50,7 +71,8 @@ export class UpdateDGComponent implements OnInit {
     const body = {
       groupName: this.groupName,
       groupDescription: this.groupDescription,
-      members: membersString
+      members: membersString,
+      creationDate: new Date() // Ajouter la date de création
     };
 
     this.http.put(url, body, { headers }).subscribe(
@@ -84,5 +106,16 @@ export class UpdateDGComponent implements OnInit {
         console.log(`Dismissed with reason: ${reason}`);
       }
     );
+  } 
+   hasBadWords(description: string): boolean {
+    const badWords: string[] = ['badword1', 'badword2']; // Définissez votre liste de mots interdits
+    const words = description.split(' ');
+    for (const word of words) {
+      if (badWords.includes(word.toLowerCase())) {
+        return true;
+      }
+    }
+    return false;
   }
+
 }

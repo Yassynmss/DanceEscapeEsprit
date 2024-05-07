@@ -16,22 +16,25 @@ export class CreateDGComponent {
   membersArray: FormControl[] = [new FormControl('', Validators.required)]; 
   memberControls: FormControl[] = []; 
   users: any[] = []; 
+  creationDate: Date = new Date();
   availableUsers: any[] = []; 
   selectedMembers: any[] = []; 
   createGroupForm!: FormGroup;
-
-  constructor(private http: HttpClient , private userService : UserService , private modalService: NgbModal, private fb: FormBuilder ) {
-    this.createGroupForm = this.fb.group({
-      groupName: ['', [Validators.required, this.groupNameValidator]],
-      groupDescription: ['', [Validators.required, Validators.maxLength(150)]],
-      
-    }); 
-  }
+  constructor(private http: HttpClient , private userService : UserService , private modalService: NgbModal, private fb: FormBuilder ) {this.createGroupForm = this.fb.group({
+    groupName: ['', [Validators.required, this.groupNameValidator]],
+    
+  }); }
 
   ngOnInit(): void {
     this.fetchDancerUsers();
   }
-
+  groupNameValidator(control: AbstractControl) {
+    const groupName = control.value;
+    if (!groupName || groupName.trim() === '') {
+      return { required: true }; // Retourne une erreur si le champ est vide
+    }
+    return null; // Retourne null si le champ est valide
+  }
   fetchDancerUsers(): void {
     this.userService.getDancerUsers().subscribe(
       (data) => {
@@ -57,13 +60,14 @@ export class CreateDGComponent {
       const selectedIndex = control.value;
       return this.availableUsers[selectedIndex].firstname + ' ' + this.availableUsers[selectedIndex].lastname;
     });
-
+  
     const membersString = selectedMembersNames.join(',');
   
     const body = {
       groupName: this.groupName,
       groupDescription: this.groupDescription,
-      members: membersString 
+      members: membersString,
+      creationDate: new Date() // Ajouter la date de création
     };
   
     this.http.post(url, body, { headers }).subscribe(
@@ -89,34 +93,12 @@ export class CreateDGComponent {
   
   addMember(): void {
     // Sauvegarder les membres précédemment sélectionnés
-    const selectedMemberIndex = this.memberControls.map(control => control.value);
-    const selectedMembers = selectedMemberIndex
-      .filter(index => typeof index === 'number' && index >= 0 && index < this.availableUsers.length)
-      .map(index => this.availableUsers[index]);
-    
-    if (this.selectedMembers.some(member => selectedMembers.includes(member))) {
-      // Afficher un message d'erreur
-      console.error('Cet utilisateur a déjà été ajouté à un groupe.');
-      return;
-    }
-  
-    // Sauvegarder les membres précédemment sélectionnés
-    this.selectedMembers = selectedMembers;
+    this.selectedMembers = this.memberControls.map(control => control.value);
     const newMemberControl = new FormControl('', Validators.required);
-    this.memberControls.push(newMemberControl);
-    this.updateAvailableUsers();
+    this.memberControls.push(newMemberControl); 
+    this.updateAvailableUsers(); 
+    
   }
-  groupNameValidator(control: AbstractControl) {
-    const groupName = control.value;
-    if (!groupName || groupName.trim() === '') {
-      return { required: true }; // Retourne une erreur si le champ est vide
-    }
-    return null; // Retourne null si le champ est valide
-  }
-
-
-  
-  
   
   removeMember(index: number): void {
     const removedUserIndex = this.memberControls[index].value;
