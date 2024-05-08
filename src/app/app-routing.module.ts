@@ -109,7 +109,7 @@ const routes: Routes = [
       component:PostFeedbackComponent
     },
     {
-      path:"view",
+      path:"viewYASS",
       component:AllFeedbackComponent
     },
     {
@@ -538,7 +538,7 @@ const routes: Routes = [
         path:"searcheventback",
         component:SearchbarComponent
       },{
-        path:"view",
+        path:"view11",
         component:ViewSheduleComponent
       },{
         path:"venueadmin",
@@ -601,7 +601,7 @@ const routes: Routes = [
     path:"searcheventback",
     component:SearchbarComponent
   },{
-    path:"view",
+    path:"vie11w",
     component:ViewSheduleComponent
   }, 
       
@@ -748,7 +748,7 @@ const routes: Routes = [
       component:DancecategorieComponent
 
     },{
-      path:"view",
+      path:"vie11w",
       component:ViewSheduleComponent
     },{
 

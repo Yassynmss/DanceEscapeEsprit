@@ -114,8 +114,7 @@ loadStripe() {
         // Navigate to the program page
         //this.router.navigate(['/frontOffice/programs/program']);
       }
-    });
-  }
+    });  }
 }
 
 }
